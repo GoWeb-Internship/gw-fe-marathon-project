@@ -1,4 +1,5 @@
 ---
+title: Список підрозділів
 subhead_item:
   - subhead_value: general
     subhead_ua: Загальні питання
