@@ -1,0 +1,249 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+local_backend: true
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - label: 'List of Chapters'
+    name: 'list_of_chapters'
+    identifier_field: name
+    description: 'Список розділів'
+    folder: 'content/list-of-chapters'
+    create: false
+    delete: false
+    path: 'list-of-chapters'
+    fields:
+      [
+        {
+          label: 'Title at page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+        },
+        {
+          label: 'chapter item',
+          name: 'chapter_item',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'chapter name',
+                name: 'chapter_name',
+                widget: string,
+                required: true,
+                pattern:
+                  [
+                    '^[a-z]+[-]*[a-z0-9-]*[a-z0-9]+$',
+                    'Only lowercase latin letters, numbers and dash. Must starts
+                    with letter. Can exist a dash and numbers or letters after
+                    it. Must ends with letter or number',
+                  ],
+              },
+            ],
+        },
+      ]
+  - label: 'Chapters_RU'
+    name: 'chapters_ru'
+    folder: 'content/chapters'
+    label_singular: 'Chapters_RU'
+    slug: '{{fields.slug}}'
+    description: 'Разделы на русском языке'
+    create: true
+    delete: true
+    path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'ru' }
+    fields:
+      - {
+          label: 'Chapter',
+          name: 'chapter',
+          collection: 'list_of_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['chapter_item.*.chapter_name'],
+          value_field: 'chapter_item.*.chapter_name',
+          display_fields: ['chapter_item.*.chapter_name'],
+        }
+      - {
+          label: 'Title at page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['ru'],
+          default: 'ru',
+        }
+      - {
+          label: 'Subhead',
+          name: 'subhead',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Subhead title',
+                name: 'subhead_title',
+                widget: 'select',
+                options:
+                  [
+                    { label: 'Общие вопросы', value: 'Общие вопросы' },
+                    { label: 'VSCODE', value: 'vscode' },
+                  ],
+                default: 'Общие вопросы',
+              },
+              {
+                label: 'Questions',
+                name: 'questions',
+                widget: 'list',
+                fields:
+                  [
+                    {
+                      label: Question title,
+                      name: question_title,
+                      widget: markdown,
+                      editor_components: ['code-block'],
+                      required: true,
+                    },
+                    {
+                      label: Description,
+                      name: description,
+                      widget: 'markdown',
+                      editor_components: ['code-block'],
+                      required: true,
+                    },
+                    {
+                      label: Image,
+                      name: image,
+                      widget: object,
+                      required: false,
+                      fields:
+                        [
+                          {
+                            label: Image file,
+                            name: image,
+                            widget: image,
+                            required: false,
+                          },
+                          {
+                            label: Alternative description for Image,
+                            name: alt,
+                            widget: 'string',
+                            default: 'image for answer',
+                            required: false,
+                          },
+                        ],
+                    },
+                  ],
+              },
+            ],
+        }
+  - label: 'Chapters_UA'
+    name: 'chapters_ua'
+    folder: 'content/chapters'
+    label_singular: 'Chapters_UA'
+    slug: '{{fields.chapter}}'
+    description: 'Розділи українською мовою'
+    create: true
+    delete: true
+    path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'ua' }
+    fields:
+      - {
+          label: 'Chapter',
+          name: 'chapter',
+          collection: 'list_of_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['chapter_item.*.chapter_name'],
+          value_field: 'chapter_item.*.chapter_name',
+          display_fields: ['chapter_item.*.chapter_name'],
+        }
+      - {
+          label: 'Title at page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['ua'],
+          default: 'ua',
+        }
+      - {
+          label: 'Subhead',
+          name: 'subhead',
+          widget: 'list',
+          required: true,
+          fields:
+            [
+              {
+                label: 'Subhead title',
+                name: 'subhead_title',
+                widget: 'select',
+                required: true,
+                options:
+                  [
+                    { label: 'Загальні питання', value: 'Загальні питання' },
+                    { label: 'VSCODE', value: 'vscode' },
+                  ],
+                default: 'Загальні питання',
+              },
+              { label: 'Questions', name: 'questions', widget: 'list', fields: [
+                    {
+                      label: Question title,
+                      name: question_title,
+                      widget: markdown,
+                      editor_components: ['code-block'],
+                      required: true,
+                    },
+                    # {
+                    #   label: Question slug,
+                    #   name: question_slug,
+                    #   widget: string,
+                    #   required: true,
+                    # },
+                    {
+                      label: Description,
+                      name: description,
+                      widget: 'markdown',
+                      required: true,
+                      editor_components: ['code-block'],
+                    },
+                    {
+                      label: Image,
+                      name: image,
+                      widget: object,
+                      required: false,
+                      fields:
+                        [
+                          {
+                            label: Image file,
+                            name: image,
+                            widget: image,
+                            required: false,
+                          },
+                          {
+                            label: Alternative description for Image,
+                            name: alt,
+                            widget: 'string',
+                            default: 'image for answer',
+                            required: false,
+                          },
+                        ],
+                    },
+                  ] },
+            ],
+        }
