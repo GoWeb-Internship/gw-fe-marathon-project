@@ -10,4 +10,10 @@ subhead:
           Перевірте структуру вашого проекту, який завантажуєте на Netlify
 
           ![](boats-g7e1dfc3d5_1280.jpg)
+      - question_title: Н﻿е виходить ...
+        description: |-
+          О﻿пис .. 
+
+          ![](day1.jpg)
+        question_range: "1"
 ---
