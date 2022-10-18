@@ -20,7 +20,7 @@ subhead:
           марафону.
 
 
-          **Посилання на бот 👉** [](https://t.me/goit_html_ua_bot)<https://t.me/goit_html_ua_bot>
+          **Посилання на бот 👉** [https://t.me/goit_html_ua_bot](https://t.me/goit_html_ua_bot)
         question_range: "2"
       - question_title: Я новачок, як бути?
         description: Це ідеально! Адже марафон розрахований на новачків і охочих
