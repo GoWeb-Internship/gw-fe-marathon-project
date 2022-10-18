@@ -20,7 +20,7 @@ collections:
       'Перелік розділів. При зміні уже існуючих розділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Chapters_UA)'
     folder: 'content/list-of-chapters'
-    create: false
+    create: true
     delete: false
     path: 'list-of-chapters'
     fields:
@@ -60,7 +60,7 @@ collections:
       'Перелік підрозділів. При зміні уже існуючих підрозділів потрібно повторно
       обрати їх у вже існуючих колекціях (наприклад, Chapters_UA)'
     folder: 'content/list-of-subheads'
-    create: false
+    create: true
     delete: false
     path: 'list-of-subheads'
     fields:
@@ -119,7 +119,6 @@ collections:
       ]
   - label: 'Chapters_RU'
     name: 'chapters_ru'
-    media_folder: static/images
     folder: 'content/chapters'
     label_singular: 'Chapters_RU'
     slug: '{{fields.slug}}'
@@ -208,7 +207,6 @@ collections:
         }
   - label: 'Chapters_UA'
     name: 'chapters_ua'
-    media_folder: static/images
     folder: 'content/chapters'
     label_singular: 'Chapters_UA'
     slug: '{{fields.chapter}}'
