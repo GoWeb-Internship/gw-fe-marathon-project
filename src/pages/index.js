@@ -7,7 +7,6 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
 
-// const IndexPage = () => {
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;
@@ -50,9 +49,9 @@ const IndexPage = ({ data }) => {
                                 <h2>
                                   <Markdown>{question.question_title}</Markdown>
                                 </h2>
-                                <p>
+                                <div>
                                   <Markdown>{question.description}</Markdown>
-                                </p>
+                                </div>
                               </li>
                             );
                           })}
