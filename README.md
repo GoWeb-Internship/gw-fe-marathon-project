@@ -1,13 +1,27 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+## 🚀 Marathon-FE-FAQ
 
-## 🚀 Quick start
+### 1. Опис проекту
+
+Репозиторій: https://github.com/MishaDreamer-web/gw-fe-marathon-project
+
+**Основний стек:**
+
+- Gatsby.js
+- Netlify CMS
+- Tailwind CSS
+- i18next
+
+**Корисні посилання:**
+
+- Gatsby.js [Загальний туторіал](https://www.gatsbyjs.com/docs/tutorial/)
+
+- Netlify CMS На даний момент для работи Netlify Cms необхідна версія 17 react і
+  react-dom. [Docs для Gatsby](https://www.netlifycms.org/docs/gatsby/)
+  [Netlify CMS, підключення, налаштування](https://www.netlifycms.org/docs/gatsby/#enable-identity-and-git-gateway)
+
+- Tailwind CSS
+
+  [Підключення для Gatsby](https://tailwindcss.com/docs/guides/gatsby)
 
 1.  **Create a Gatsby site.**
 

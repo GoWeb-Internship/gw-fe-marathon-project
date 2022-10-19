@@ -3,6 +3,8 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-postcss`,
@@ -37,13 +39,13 @@ module.exports = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locale`,
-        languages: [`ua`, `ru`],
-        defaultLanguage: `ua`,
-        generateDefaultLanguagePage: '/ua',
+        languages: [`uk`, `ru`],
+        defaultLanguage: `uk`,
+        generateDefaultLanguagePage: '/uk',
         siteUrl: ``,
 
         i18nextOptions: {
-          lng: 'ua',
+          lng: 'uk',
           load: 'currentOnly',
 
           interpolation: {
