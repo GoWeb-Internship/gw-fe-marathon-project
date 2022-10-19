@@ -1,5 +1,5 @@
 ---
-chapter: start
+chapter: day-1
 title: Старт марафона
 language: ru
 subhead:
@@ -11,5 +11,14 @@ subhead:
           задания 18:00 следующего дня. В большинстве случаев урок+выполнение дз
           будет занимать до 2 часов вашего времени) но всё индивидуально).
         question_range: "1"
+      - question_title: "`Н﻿овый заголовок`"
+        description: |-
+          **т﻿ест картинки**
+
+          ![енуые](/img/screenshot_14.jpg "еуые")
+
+          в﻿торой текст картинки
+
+          ![фвфцв](/img/screenshot_14.jpg "фвцфцв")
 chapter_range: "1"
 ---
