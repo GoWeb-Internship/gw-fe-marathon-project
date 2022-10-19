@@ -6,7 +6,6 @@ import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
-import { StaticImage } from 'gatsby-plugin-image';
 
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
@@ -79,8 +78,6 @@ const IndexPage = ({ data }) => {
             : null}
         </ul>
         <Button text="adawadwad" handleClick={() => {}}></Button>
-        {/* <img src="content/images/day1.jpg" alt="" /> */}
-        <StaticImage src="../../content/images/day1.jpg" />
       </Section>
     </Layout>
   );
