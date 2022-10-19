@@ -14,28 +14,7 @@ subhead:
           індивідуально).
 
 
-          ![hello](/img/screenshot_24.jpg "hello")
+          ![hello](/img/boats-g7e1dfc3d5_1280.jpg "hello")
         question_range: "1"
-      - question_title: Н﻿авіщо нам чат-бот по вивченню тегів?
-        description: >-
-          Це як ваша підготовка для марафону, ви будете використовувати ці теги
-          протягом всього марафона та дуже добре, якщо ви встигнете вивчити їх
-          до старту 👍 якщо не встигли, нічого страшного, встигнете все під час
-          марафону.
-
-
-          **Посилання на бот 👉** <https://t.me/goit_html_ua_bot>
-
-
-          ![hello](/static/img/boats-g7e1dfc3d5_1280.jpg "hello")
-        question_range: "2"
-      - question_title: n﻿ew question
-        description: '![hello](/static/img/live-cycles.jpg "hello")'
-        question_range: "3"
-      - question_title: n﻿ew
-        description: |-
-          n﻿ew
-
-          ![new](/static/img/live-cycles.jpg "new")
 chapter_range: "1"
 ---
