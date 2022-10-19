@@ -1,27 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
-const Modal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
+const Modal = ({ isOpen, closeModal }) => {
   return (
     <Fragment>
-      <button
-        type="button"
-        onClick={openModal}
-        className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-      >
-        Open dialog
-      </button>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative" onClose={closeModal}>
           <Transition.Child
@@ -48,12 +30,12 @@ const Modal = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment successful
-                  </Dialog.Title>
+                  <input
+                    className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                    placeholder="Search for anything..."
+                    type="text"
+                    name="search"
+                  />
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
                       Your payment has been successfully submitted. We’ve sent

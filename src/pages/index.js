@@ -10,6 +10,16 @@ import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 
 const IndexPage = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;
   const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
@@ -27,7 +37,7 @@ const IndexPage = ({ data }) => {
   // }, []);
 
   return (
-    <Layout>
+    <Layout openModal={openModal}>
       <Section>
         <p>{t('Subtitle')}</p>
 
@@ -84,7 +94,7 @@ const IndexPage = ({ data }) => {
             : null}
         </ul>
         <Button text="adawadwad" handleClick={() => {}}></Button>
-        <Modal />
+        <Modal isOpen={isOpen} closeModal={closeModal} />
       </Section>
     </Layout>
   );
