@@ -11,7 +11,7 @@ subhead:
           шаблони (drafts)
 
 
-          ![how to copy layout](/content/images/day1.jpg "how to copy layout")
-        question_range: "1"
-chapter_range: "2"
+          ![how to copy layout](/img/day1.jpg)
+        question_range: '1'
+chapter_range: '2'
 ---
