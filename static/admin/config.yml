@@ -251,7 +251,7 @@ collections:
   - label: 'Chapters_UA'
     name: 'chapters_ua'
     folder: 'content/chapters'
-    media_folder: '/content/images'
+    media_folder: '/static/img'
     label_singular: 'Chapters_UA'
     slug: '{{fields.chapter}}'
     description:

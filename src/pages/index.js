@@ -6,11 +6,24 @@ import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;
   const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
+
+  // useEffect(() => {
+  //   if (window.netlifyIdentity) {
+  //     window.netlifyIdentity.on('init', user => {
+  //       if (!user) {
+  //         window.netlifyIdentity.on('login', () => {
+  //           document.location.href = '/admin/';
+  //         });
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   return (
     <Layout>
@@ -44,11 +57,14 @@ const IndexPage = ({ data }) => {
                         <h3>{subhead_title}</h3>
                         <ul key={index}>
                           {questions.map((question, index) => {
+                            console.log();
+
                             return (
                               <li key={index}>
                                 <h2>
                                   <Markdown>{question.question_title}</Markdown>
                                 </h2>
+                                {}
                                 <div>
                                   <Markdown>{question.description}</Markdown>
                                 </div>
@@ -63,6 +79,8 @@ const IndexPage = ({ data }) => {
             : null}
         </ul>
         <Button text="adawadwad" handleClick={() => {}}></Button>
+        {/* <img src="content/images/day1.jpg" alt="" /> */}
+        <StaticImage src="../../content/images/day1.jpg" />
       </Section>
     </Layout>
   );
