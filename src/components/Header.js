@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './Container';
-import SwitchLang from './SwitchLang';
+import SwitchLang from './SwitchLang/LangList';
 import ToggleTheme from './ToggleTheme';
 
 const Header = () => {
