@@ -1,5 +1,5 @@
 ---
-chapter: day-1
+chapter: start
 title: Старт марафона
 language: ru
 subhead:
