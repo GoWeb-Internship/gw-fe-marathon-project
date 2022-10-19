@@ -9,7 +9,7 @@ subhead:
         description: |-
           h﻿ello
 
-          ![hello](/img/photo.jpg "hello")
+          ![hello](/img/boats-g7e1dfc3d5_1280.jpg "hello")
 
           h﻿ello
         question_range: "2"
