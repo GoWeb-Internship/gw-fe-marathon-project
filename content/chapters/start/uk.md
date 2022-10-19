@@ -32,5 +32,10 @@ subhead:
       - question_title: n﻿ew question
         description: '![hello](/static/img/screenshot_14.jpg "hello")'
         question_range: "3"
+      - question_title: n﻿ew
+        description: |-
+          n﻿ew
+
+          ![new](/static/img/live-cycles.jpg "new")
 chapter_range: "1"
 ---
