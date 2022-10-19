@@ -18,7 +18,7 @@ subhead:
         description: |-
           h﻿ello
 
-          ![hello](/static/img/boats-g7e1dfc3d5_1280.jpg "hello")
+          ![hello](/static/img/photo.jpg "hello")
 
           h﻿ello
         question_range: "2"
