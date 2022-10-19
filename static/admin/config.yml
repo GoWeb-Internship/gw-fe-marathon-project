@@ -9,7 +9,7 @@ backend:
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
 local_backend: true
-media_folder: /content/images
+media_folder: /static/img
 public_folder: /img
 
 collections:
@@ -252,6 +252,7 @@ collections:
     name: 'chapters_ua'
     folder: 'content/chapters'
     media_folder: '/static/img'
+    public_folder: /img
     label_singular: 'Chapters_UA'
     slug: '{{fields.chapter}}'
     description:
