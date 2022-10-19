@@ -11,7 +11,18 @@ subhead:
           шаблони (drafts)
 
 
+
           ![how to copy layout](/img/day1.jpg)
         question_range: '1'
-chapter_range: '2'
+      - question_title: h﻿ello
+        description: |-
+          
+
+          h﻿ello
+
+          ![hello](/content/images/giphy.gif "hello")
+
+          h﻿ello
+        question_range: "2"
+chapter_range: "2"
 ---
