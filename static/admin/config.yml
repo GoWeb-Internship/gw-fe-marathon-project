@@ -208,7 +208,7 @@ collections:
                       name: description,
                       widget: 'markdown',
                       editor_components: ['image'],
-                      buttons: ['code', 'link', 'bulleted-list'],
+                      buttons: ['bold', 'code', 'link', 'bulleted-list'],
                       required: true,
                       hint: 'Введите ответ на вопрос',
                     },
@@ -260,7 +260,7 @@ collections:
     create: true
     delete: true
     path: '{{chapter}}/{{language}}'
-    filter: { field: 'language', value: 'ua' }
+    filter: { field: 'language', value: 'uk' }
     fields:
       - {
           label: 'Chapter',
@@ -286,8 +286,8 @@ collections:
           label: 'Language',
           name: 'language',
           widget: 'select',
-          options: ['ua'],
-          default: 'ua',
+          options: ['uk'],
+          default: 'uk',
         }
       - {
           label: 'Subhead',
@@ -327,7 +327,7 @@ collections:
                       name: description,
                       widget: 'markdown',
                       editor_components: ['image'],
-                      buttons: ['code', 'link', 'bulleted-list'],
+                      buttons: ['bold', 'code', 'link', 'bulleted-list'],
                       required: true,
                       hint: 'Введіть відповідь на запитання',
                     },
