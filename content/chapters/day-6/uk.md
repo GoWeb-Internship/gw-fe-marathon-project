@@ -5,13 +5,13 @@ language: uk
 subhead:
   - subhead_title: Загальні питання
     questions:
-      - question_title: Не вантажить проект на хостинг, що робити?
+      - question_title: Не вантажить проєкт на хостинг, що робити?
         description: |-
           Перевірте структуру вашого проєкту, який завантажуєте на Netlify:
 
           ![структура проєкту](/img/day-6-1.png "структура проєкту")
 
-          А також назву файлу - `index.html`.
+          А також назва файлу повинна бути `index.html`.
         question_range: "1"
       - question_title: Чи можна змінити назву посилання на Netlify?
         description: Можна змінити назву посилання на сторінці свого проєкту: **Settings
