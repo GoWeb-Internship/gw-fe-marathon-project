@@ -133,7 +133,8 @@ collections:
   - label: 'Chapters_RU'
     name: 'chapters_ru'
     folder: 'content/chapters'
-    media_folder: '/content/images'
+    media_folder: '/static/img'
+    public_folder: /img
     label_singular: 'Chapters_RU'
     slug: '{{fields.slug}}'
     description:
