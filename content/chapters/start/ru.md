@@ -13,11 +13,9 @@ subhead:
           занимать до 2 часов вашего времени) но всё индивидуально).
 
 
-          ![](/content/images/giphy.gif)
+          ![]()
 
 
-
-
-          ![](/content/images/day1.jpg)
+          ![]()
 chapter_range: "1"
 ---
