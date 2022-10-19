@@ -9,7 +9,7 @@ subhead:
         description: |-
           Щ﻿ось про мене
 
-          ![дфлвтфлдц](/img/photo.jpg "фвджєбфцєждбв")
+          ![дфлвтфлдц](/static/img/live-cycles.jpg "фвджєбфцєждбв")
         question_range: "3"
 chapter_range: "2"
 ---
