@@ -13,14 +13,12 @@ subhead:
 
 
           ![how to copy layout](/img/day1.jpg)
-        question_range: '1'
+        question_range: "1"
       - question_title: h﻿ello
         description: |-
-          
-
           h﻿ello
 
-          ![hello](/content/images/giphy.gif "hello")
+          ![hello](/static/img/boats-g7e1dfc3d5_1280.jpg "hello")
 
           h﻿ello
         question_range: "2"
