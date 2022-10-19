@@ -21,6 +21,9 @@ subhead:
 
 
           **Посилання на бот 👉** <https://t.me/goit_html_ua_bot>
+
+
+          ![hello](/static/img/boats-g7e1dfc3d5_1280.jpg "hello")
         question_range: "2"
 chapter_range: "1"
 ---
