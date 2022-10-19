@@ -4,7 +4,7 @@ import LangList from './LangList';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 
 export const normalizeLang = language =>
-  language === 'ua' ? 'UK' : language.toUpperCase();
+  language === 'uk' ? 'UA' : language.toUpperCase();
 
 const SwitchLang = () => {
   const { language } = useI18next();

@@ -6,7 +6,7 @@ const LangList = () => {
 
   const normalizedLand = lang => {
     switch (lang) {
-      case 'ua':
+      case 'uk':
         return 'Українська';
       case 'ru':
         return 'Російська';
