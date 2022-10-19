@@ -7,6 +7,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
+import Accordion from '../components/Accordion';
 
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
@@ -53,26 +54,30 @@ const IndexPage = ({ data }) => {
                 ?.frontmatter?.subhead?.map(
                   ({ subhead_title, questions }, index) => {
                     return (
-                      <div key={index}>
-                        <h3>{subhead_title}</h3>
-                        <ul key={index}>
-                          {questions.map((question, index) => {
-                            console.log();
-
-                            return (
-                              <li key={index}>
-                                <h2>
-                                  <Markdown>{question.question_title}</Markdown>
-                                </h2>
-                                {}
-                                <div>
-                                  <Markdown>{question.description}</Markdown>
-                                </div>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
+                      // <div key={index}>
+                      //   <h3>{subhead_title}</h3>
+                      //   <ul key={index}>
+                      //     {questions.map((question, index) => {
+                      //       return (
+                      //         <li key={index}>
+                      //           <h2>
+                      //             <Markdown>{question.title}</Markdown>
+                      //           </h2>
+                      //           {}
+                      //           <div>
+                      //             <Markdown>{question.content}</Markdown>
+                      //           </div>
+                      //         </li>
+                      //       );
+                      //     })}
+                      //   </ul>
+                      // </div>
+                      <Accordion
+                        key={index}
+                        subhead_title={subhead_title}
+                        questions={questions}
+                        index={index}
+                      />
                     );
                   },
                 )
@@ -100,8 +105,8 @@ export const query = graphql`
           subhead {
             subhead_title
             questions {
-              question_title
-              description
+              title: question_title
+              content: description
             }
           }
         }
