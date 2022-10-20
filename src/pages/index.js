@@ -6,10 +6,21 @@ import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
+import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 
 const IndexPage = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;
   const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
@@ -28,7 +39,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <SearchContext.Provider value={{ days: days }}>
-      <Layout>
+      <Layout openModal={openModal}>
         <Section>
           <p>{t('Subtitle')}</p>
 
@@ -85,6 +96,7 @@ const IndexPage = ({ data }) => {
               : null}
           </ul>
           <Button text="adawadwad" handleClick={() => {}}></Button>
+          <Modal isOpen={isOpen} closeModal={closeModal} />
         </Section>
       </Layout>
     </SearchContext.Provider>

@@ -16,6 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "gatsby": "^4.24.4",
     "gatsby-plugin-image": "^2.24.0",
