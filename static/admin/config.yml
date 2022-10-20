@@ -113,6 +113,15 @@ collections:
                   сторінці',
               },
               {
+                label: 'Subhead at page, en',
+                name: 'subhead_en',
+                widget: string,
+                required: true,
+                hint:
+                  'Назва підрозділу англійською мовою для відображення на
+                  сторінці',
+              },
+              {
                 label: 'Subhead range',
                 name: 'subhead_range',
                 widget: 'string',
@@ -368,3 +377,122 @@ collections:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
         }
+  - label: 'Chapters_EN'
+      name: 'chapters_en'
+      folder: 'content/chapters'
+      media_folder: '/static/img'
+      public_folder: /img
+      label_singular: 'Chapters_EN'
+      slug: '{{fields.chapter}}'
+      description:
+        'Розділи англійською мовою. Для створення нового розділу, будь ласка,
+        спочатку додайте його в колекцію List of Chapters'
+      create: true
+      delete: true
+      path: '{{chapter}}/{{language}}'
+      filter: { field: 'language', value: 'en' }
+      fields:
+        - {
+            label: 'Chapter',
+            name: 'chapter',
+            collection: 'list_of_chapters',
+            widget: 'relation',
+            required: true,
+            search_fields: ['chapter_item.*.chapter_name'],
+            value_field: 'chapter_item.*.chapter_name',
+            display_fields: ['chapter_item.*.chapter_name'],
+            hint: 'Виберіть назву папки для збереження даного розділу',
+          }
+        - {
+            label: 'Title at page',
+            name: 'title',
+            widget: 'string',
+            required: true,
+            hint:
+              'Введіть назву для даного розділу, яка буде відображатися на
+              сторінці',
+          }
+        - {
+            label: 'Language',
+            name: 'language',
+            widget: 'select',
+            options: ['en'],
+            default: 'en',
+          }
+        - {
+            label: 'Subhead',
+            name: 'subhead',
+            widget: 'list',
+            required: true,
+            fields:
+              [
+                {
+                  label: 'Subhead title',
+                  name: 'subhead_title',
+                  collection: 'list_of_subheads',
+                  widget: 'relation',
+                  required: true,
+                  search_fields: ['subhead_item.*.subhead_en'],
+                  value_field: 'subhead_item.*.subhead_en',
+                  display_fields: ['subhead_item.*.subhead_en'],
+                  hint: 'Виберіть назву підрозділу',
+                },
+                {
+                  label: 'Questions',
+                  name: 'questions',
+                  widget: 'list',
+                  fields:
+                    [
+                      {
+                        label: Question title,
+                        name: question_title,
+                        widget: markdown,
+                        editor_components: [],
+                        buttons: ['code'],
+                        required: true,
+                        hint: 'Введіть запитання',
+                      },
+                      {
+                        label: Description,
+                        name: description,
+                        widget: 'markdown',
+                        editor_components: ['image'],
+                        buttons: ['bold', 'code', 'link', 'bulleted-list'],
+                        required: true,
+                        hint: 'Введіть відповідь на запитання',
+                      },
+                      {
+                        label: 'Question range',
+                        name: 'question_range',
+                        widget: 'string',
+                        required: false,
+                        pattern:
+                          [
+                            '^[0-9]{1,2}$',
+                            'Може містити тільки цифри, що позначають черговість
+                            розміщення питання на веб-сторінці (зверху вниз)',
+                          ],
+                        hint:
+                          "*Необов'язкове поле. Введіть цифру, що позначатиме
+                          черговість розміщення питання на веб-сторінці (зверху
+                          вниз)",
+                      },
+                    ],
+                },
+              ],
+          }
+        - {
+            label: 'Chapter range',
+            name: 'chapter_range',
+            widget: 'string',
+            required: false,
+            pattern:
+              [
+                '^[0-9]{1,2}$',
+                'Може містити тільки цифри, що позначають черговість розміщення
+                розділу на веб-сторінці (зверху вниз)',
+              ],
+            hint:
+              "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
+              розміщення розділу на веб-сторінці (зверху вниз)",
+          }
