@@ -19,7 +19,7 @@ const Modal = ({ isOpen, closeModal }) => {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex min-h-full items-start justify-center p-28 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -37,10 +37,7 @@ const Modal = ({ isOpen, closeModal }) => {
                     name="search"
                   />
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
+                    <p className="text-sm text-gray-500"></p>
                   </div>
 
                   <div className="mt-4">
@@ -49,7 +46,7 @@ const Modal = ({ isOpen, closeModal }) => {
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
-                      Got it, thanks!
+                      Close modal
                     </button>
                   </div>
                 </Dialog.Panel>
