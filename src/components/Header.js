@@ -25,6 +25,10 @@ const Header = ({ openModal }) => {
                 placeholder="Введіть, що вас цікавить..."
                 type="text"
                 name="search"
+                onChange={e => {
+                  e.target.value = '';
+                  openModal();
+                }}
               />
               <MagnifyingGlassIcon className="absolute right-2 top-0 h-5 w-5 translate-y-1/2  text-slate-600" />
             </div>

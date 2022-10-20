@@ -13,13 +13,13 @@ import { SearchContext } from '../utils/searchContext.js';
 const IndexPage = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;

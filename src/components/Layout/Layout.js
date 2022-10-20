@@ -7,7 +7,7 @@ const Layout = ({ children, openModal }) => {
   return (
     <div>
       <Header openModal={openModal} />
-      <Search />
+      {/* <Search /> */}
       <main>{children}</main>
 
       <Footer />

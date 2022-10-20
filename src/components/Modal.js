@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import Search from './Search';
 
 const Modal = ({ isOpen, closeModal }) => {
   return (
@@ -30,12 +31,13 @@ const Modal = ({ isOpen, closeModal }) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <input
-                    className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  <Search />
+                  {/* <input
+                    className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm "
                     placeholder="Search for anything..."
                     type="text"
                     name="search"
-                  />
+                  /> */}
                   <div className="mt-2">
                     <p className="text-sm text-gray-500"></p>
                   </div>
