@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './Container';
-import SwitchLang from './SwitchLang/SwitchLang';
+import SwitchLang from './SwitchLang';
 import ToggleTheme from './ToggleTheme';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
