@@ -32,7 +32,7 @@ subhead:
           вкладку deploys, а потім перенесіть папку з оновленим проектом сюди:
 
 
-          ![how to refresh project at netlify](/img/day6-2.png "how to refresh project")
+          ![how to refresh project](/img/day6-2.png "how to refresh project")
         question_range: "4"
 chapter_range: "5"
 ---
