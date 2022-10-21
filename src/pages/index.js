@@ -22,18 +22,25 @@ const IndexPage = ({ data, location }) => {
   };
   const { t } = useTranslation();
   const days = data.allMarkdownRemark.nodes;
-  const chapter = location.search.split('').splice(1).join('');
+  // const chapter = location.search.split('').splice(1).join('');
+  const chapter = location.search.split('=')[1];
+
+  console.log(chapter);
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
-  // console.log(qs.parse('?', openedDayId));
+  const a = qs.parse({ page: `${openedDayId}` });
+
+  console.log(qs.stringify(a));
+  console.log(openedDayId);
+  const b = qs.stringify(a);
 
   useEffect(() => {
     const onNavigate = () => {
-      navigate(`?${openedDayId}`);
+      navigate(`?${qs.stringify(a)}`);
     };
     onNavigate();
-  }, [openedDayId]);
+  }, [a, openedDayId]);
 
   console.log(openedDayId);
   // const dayId = days[0].frontmatter.chapter;
@@ -69,7 +76,6 @@ const IndexPage = ({ data, location }) => {
                     >
                       <button
                         onClick={() => {
-                          // navigate(`?${openedDayId}`);
                           setOpenedDayId(frontmatter.chapter);
                         }}
                       >
