@@ -15,7 +15,7 @@ subhead:
         question_range: "1"
         id: "1666359804388"
         unicId: "1666378954607"
-      - question_title: Чи можна змінити назву посилання на Netlify?
+      - question_title: Чи можна змінити назву посилання на Netlify? ? ?
         description: Можна змінити назву посилання на сторінці свого проєкту: **Settings
           → General → Site details → Change site name.**
         question_range: "2"
