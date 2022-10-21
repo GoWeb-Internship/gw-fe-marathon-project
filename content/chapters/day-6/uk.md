@@ -19,7 +19,7 @@ subhead:
           → General → Site details → Change site name.**
         question_range: "2"
         id: "1666359804432"
-      - question_title: Як видалити\змінити проект на хостингу?
+      - question_title: Як видалити/змінити проект на хостингу?
         description: Ви можете видалити поточний проєкт, дотримуючись цієї
           інструкції: [https://i.goit.global/jyXy ](https://bit.ly/2T4SeHl)і
           залити новий виправлений проєкт.
