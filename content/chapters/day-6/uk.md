@@ -25,5 +25,14 @@ subhead:
           залити новий виправлений проєкт.
         question_range: "3"
         id: "1666359804487"
+      - id: "1666369779931"
+        question_title: Як оновити сайт на netlify?
+        description: >-
+          Ви можете оновити інформацію на Netlify. Для цього перейдіть на
+          вкладку deploys, а потім перенесіть папку з оновленим проектом сюди:
+
+
+          ![how to refresh project at netlify](/img/day6-2.png "how to refresh project")
+        question_range: "4"
 chapter_range: "5"
 ---
