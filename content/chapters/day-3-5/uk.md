@@ -14,6 +14,7 @@ subhead:
           класом `about-me-container`, класу `wrapper` потрібно
           написати `display: flex`."
         question_range: "1"
+        id: "1666359791541"
       - question_title: Я﻿к підключити шрифт?
         description: >-
           Для того, щоб підключити шрифт, додайте перед `</head>`:
@@ -24,6 +25,7 @@ subhead:
 
           ![як підключити шрифт](/img/day-3-5-1.jpg "як підключити шрифт")
         question_range: "2"
+        id: "1666359791633"
       - question_title: Як задати розмір фотографії?
         description: >-
           На наступних уроках через `css` ми будемо задавати розмір зображення.
@@ -32,5 +34,6 @@ subhead:
 
           `<img width="300" src="./img/photo.jpg" alt="My photo 123">`
         question_range: "3"
+        id: "1666359791680"
 chapter_range: "4"
 ---

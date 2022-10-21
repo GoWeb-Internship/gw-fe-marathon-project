@@ -9,6 +9,7 @@ subhead:
         description: Он обеспечивает для `HTML` - элементов лучшую кроссбраузерность в
           стилях по умолчанию.
         question_range: "1"
+        id: "1666359887575"
   - subhead_title: VSCode
     questions:
       - question_title: При сохранении редактируется /форматируется `index.html`. Что делать?
@@ -28,5 +29,6 @@ subhead:
 
           ![как отключить форматирование](/img/day2-2.jpg "как отключить форматирование")
         question_range: "1"
+        id: "1666359887677"
 chapter_range: "3"
 ---
