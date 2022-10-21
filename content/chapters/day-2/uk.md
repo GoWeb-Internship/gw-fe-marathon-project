@@ -9,6 +9,7 @@ subhead:
         description: Він забезпечує для `HTML` - елементів найкращу кросбраузерність у
           стилях за замовчуванням.
         question_range: "1"
+        id: "1666359762921"
   - subhead_title: VSCode
     questions:
       - question_title: При збереженні редагується `index.html`. Що робити?
@@ -27,5 +28,6 @@ subhead:
 
           ![як вимкнути форматування](/img/day2-2.jpg "як вимкнути форматування")
         question_range: "1"
+        id: "1666359763045"
 chapter_range: "3"
 ---
