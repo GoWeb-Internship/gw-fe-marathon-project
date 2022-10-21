@@ -3,7 +3,7 @@ chapter: day-1
 title: День 1
 language: uk
 subhead:
-  - subhead_title: Загальні питання
+  - subhead_title: VSCode
     questions:
       - question_title: Макет не відкривається, що робити?
         description: >-
@@ -23,5 +23,12 @@ subhead:
           Якщо не допомогає, то пропишіть html:5 та натисніть tab. Або пропишіть просто html і з випадаючого списку оберіть html:5 (у редакторі коду у файлі `index.html).`
         question_range: "2"
         id: "1666359593192"
+      - id: "1666375168709"
+        question_title: Т﻿ест заголовка
+        description: |-
+          Т﻿ест контента день один
+
+          ![тест](/img/photo.jpg "тест")
+        question_range: "1"
 chapter_range: "2"
 ---
