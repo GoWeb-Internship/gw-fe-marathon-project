@@ -133,18 +133,20 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
+          subhead {
+            questions {
+              description
+              id
+              question_range
+              question_title
+            }
+            subhead_title
+          }
+          title
+          chapter_range
           chapter
           language
-          title
-          subhead {
-            subhead_title
-            questions {
-              title: question_title
-              content: description
-            }
-          }
         }
-        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
@@ -158,17 +160,3 @@ export const query = graphql`
     }
   }
 `;
-
-// export const query = graphql`
-//   query ($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `;
