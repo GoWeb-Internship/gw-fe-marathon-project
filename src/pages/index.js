@@ -112,18 +112,19 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
+          subhead {
+            questions {
+              description
+              id
+              question_range
+              question_title
+            }
+            subhead_title
+          }
+          title
+          chapter_range
           chapter
           language
-          title
-          subhead {
-            subhead_title
-            questions {
-              title: question_title
-              content: description
-              question_range
-            }
-          }
-          chapter_range
         }
       }
     }
