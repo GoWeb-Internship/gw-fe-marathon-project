@@ -1,4 +1,4 @@
-import CMS from "netlify-cms-app";
-import uploadcare from "netlify-cms-media-library-uploadcare";
+import CMS from 'netlify-cms-app';
+import { IdControl, CustomWidgetPreview } from '../utils/customWidget';
 
-CMS.registerMediaLibrary(uploadcare);
+CMS.registerWidget('id', IdControl, CustomWidgetPreview);

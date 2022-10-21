@@ -120,10 +120,11 @@ export const query = graphql`
             questions {
               title: question_title
               content: description
+              question_range
             }
           }
+          chapter_range
         }
-        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
@@ -137,17 +138,3 @@ export const query = graphql`
     }
   }
 `;
-
-// export const query = graphql`
-//   query ($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `;
