@@ -14,6 +14,7 @@ subhead:
           классом `about-me-container`, классу `wrapper` нужно
           написать `display: flex`."
         question_range: "1"
+        id: "1666359906569"
       - question_title: Как подключить шрифт?
         description: >-
           Чтобы подключить шрифт, добавьте перед `</head>`:
@@ -24,5 +25,6 @@ subhead:
 
           ![как подключить шрифт](/img/day-3-5-1.jpg "как подключить шрифт")
         question_range: "2"
+        id: "1666359906679"
 chapter_range: "4"
 ---
