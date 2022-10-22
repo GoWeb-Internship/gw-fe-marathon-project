@@ -1,2 +1,2 @@
-export * from './CustomWidgetControl';
-export * from './CustomWidgetPreview';
+export { CustomWidgetPreview } from './CustomWidgetPreview';
+export { IdControl } from './CustomWidgetControl';

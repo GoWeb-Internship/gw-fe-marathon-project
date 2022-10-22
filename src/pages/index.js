@@ -111,20 +111,21 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
-          subhead {
-            questions {
-              content: description
-              id
-              question_range
-              title: question_title
-            }
-            subhead_title
-          }
           title
           chapter_range
           chapter
           language
+          subhead {
+            subhead_title
+            questions {
+              id
+              question_range
+              content: description
+              title: question_title
+            }
+          }
         }
+        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
