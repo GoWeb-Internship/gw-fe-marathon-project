@@ -13,6 +13,25 @@ import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const days = data.allMarkdownRemark.nodes;
+  const chapter = location.search?.split('=')[1]?.split('&')[0];
+  // const id = location.search.split('=')[2]
+  const [openedDayId, setOpenedDayId] = useState(
+    chapter || days[0].frontmatter.chapter,
+  );
+  const { t } = useTranslation();
+  const [questionId, setQuestionId] = useState(null);
+  let params = qs.parse({ page: `${openedDayId}` });
+
+  // handleUrl();
+  // console.log(qs.stringify(handleUrl()));
+  // setOpenedDayId(prev => {
+  //   if (openedDayId === prev) {
+  //     setQuestionId(null);
+  //   }
+  // });
+  // console.log(questionId);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -20,45 +39,51 @@ const IndexPage = ({ data, location }) => {
   const openModal = () => {
     setIsOpen(true);
   };
-  const { t } = useTranslation();
-  const days = data.allMarkdownRemark.nodes;
   // const chapter = location.search.split('').splice(1).join('');
-  const chapter = location.search.split('=')[1];
 
-  console.log(chapter);
-  const [openedDayId, setOpenedDayId] = useState(
-    chapter || days[0].frontmatter.chapter,
-  );
+  // console.log(chapter);
   const a = qs.parse({ page: `${openedDayId}` });
-
-  console.log(qs.stringify(a));
-  console.log(openedDayId);
+  const A = qs.parse({ page: `${openedDayId}`, title: `${questionId}` });
+  // console.log(qs.stringify(A));
+  // console.log(questionId);
+  // console.log(qs.stringify(a));
+  // console.log(openedDayId);
   const b = qs.stringify(a);
 
   useEffect(() => {
+    const handleUrl = () => {
+      questionId === null
+        ? (params = qs.parse({ page: `${openedDayId}` }))
+        : (params = qs.parse({
+            page: `${openedDayId}`,
+            title: `${questionId}`,
+          }));
+      return params;
+    };
+
     const onNavigate = () => {
-      navigate(`?${qs.stringify(a)}`);
+      navigate(`?${qs.stringify(handleUrl())}`);
     };
     onNavigate();
-  }, [a, openedDayId]);
+  }, [a]);
 
-  console.log(openedDayId);
+  // console.log(openedDayId);
   // const dayId = days[0].frontmatter.chapter;
   // console.log(navigate('?day-1'));
   // navigate('?day-1');
   // navigate(qs.stringify(dayId));
 
-  // useEffect(() => {
-  //   if (window.netlifyIdentity) {
-  //     window.netlifyIdentity.on('init', user => {
-  //       if (!user) {
-  //         window.netlifyIdentity.on('login', () => {
-  //           document.location.href = '/admin/';
-  //         });
-  //       }
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  }, []);
 
   return (
     <SearchContext.Provider value={{ days: days }}>
@@ -116,6 +141,7 @@ const IndexPage = ({ data, location }) => {
                           subhead_title={subhead_title}
                           questions={questions}
                           index={index}
+                          setQuestionId={setQuestionId}
                         />
                       );
                     },
