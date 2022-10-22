@@ -16,6 +16,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^35.2.1",
+    "@ckeditor/ckeditor5-react": "^5.0.2",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "gatsby": "^4.24.4",

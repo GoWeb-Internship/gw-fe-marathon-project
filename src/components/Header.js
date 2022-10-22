@@ -10,7 +10,7 @@ const Header = ({ openModal }) => {
 
   return (
     // adds temporary background styles
-    <header className="text-center bg-blue-400 dark:bg-indigo-900 transition linear duration-250">
+    <header className="text-center bg-blue-500 dark:bg-indigo-900 transition linear duration-250">
       <Container>
         <div className="flex justify-between">
           <p>logo</p>
