@@ -5,7 +5,7 @@ language: en
 subhead:
   - subhead_title: General questions
     questions:
-      - question_title: How will the marathon take place?
+      - question_title: How will the marathon take place ?
         description: You will receive all materials, links and videos in the "GoIT
           Marathon" chatbot every day at 19:00, the homework deadline is 18:00
           the next day. In most cases, the lesson + performance of homework will
