@@ -12,6 +12,9 @@ import { SearchContext } from '../utils/searchContext.js';
 
 const IndexPage = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const days = data.allMarkdownRemark.nodes;
+  const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
+  const { t } = useTranslation();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -20,10 +23,6 @@ const IndexPage = ({ data }) => {
   const openModal = () => {
     setIsOpen(true);
   };
-
-  const { t } = useTranslation();
-  const days = data.allMarkdownRemark.nodes;
-  const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
 
   // useEffect(() => {
   //   if (window.netlifyIdentity) {
