@@ -1,4 +1,5 @@
 import React from 'react';
+import Markdown from 'markdown-to-jsx';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSearch } from '../../utils/searchContext';
@@ -9,19 +10,21 @@ const Search = () => {
   const [filteredQuestions, setFilteredQuestions] = useState(null);
   const { days } = useSearch();
 
+  console.log(days);
+
   useEffect(() => {
     if (!days) return;
 
     const arrayOfQuestions = days?.reduce(
-      (prevVal, { frontmatter: { chapter, title, subhead } }) => {
+      (prevVal, { frontmatter: { chapter, subhead } }) => {
         return [
           ...prevVal,
-          ...subhead[0].questions.map(({ title: question_title, content }) => {
+          ...subhead[0].questions.map(({ id, title, content }) => {
             return {
-              question_title: question_title,
+              question_title: title,
               content: content,
               chapter: chapter,
-              title: title,
+              id: id,
             };
           }),
         ];
@@ -39,8 +42,7 @@ const Search = () => {
     }
 
     const filteredQuestions = arrayOfQuestions?.filter(
-      ({ question_title, content, title }) =>
-        title.toLowerCase().includes(searchPhrase) ||
+      ({ question_title, content }) =>
         question_title.toLowerCase().includes(searchPhrase) ||
         content.toLowerCase().includes(searchPhrase),
     );
@@ -51,6 +53,8 @@ const Search = () => {
   const handleInputChange = ({ target: { value } }) => {
     setSearchPhrase(value.toLowerCase());
   };
+
+  const handleRedirect = (chapter, id) => {};
 
   return (
     <div>
@@ -65,19 +69,21 @@ const Search = () => {
 
       {filteredQuestions ? (
         <ul>
-          {filteredQuestions?.map(
-            ({ question_title, chapter, title }, index) => {
-              return (
-                <li key={index}>
-                  {/* <a href=""> */}
-                  <h3>
-                    {question_title} <b>{title}</b>
-                  </h3>
-                  {/* </a> */}
-                </li>
-              );
-            },
-          )}
+          {filteredQuestions?.map(({ question_title, chapter, id }) => {
+            return (
+              <li
+                key={id}
+                onClick={() => handleRedirect(chapter, id)}
+                style={{
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Markdown>{question_title}</Markdown>
+              </li>
+            );
+          })}
         </ul>
       ) : null}
     </div>

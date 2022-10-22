@@ -14,22 +14,18 @@ import qs from 'qs';
 const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
   const days = data.allMarkdownRemark.nodes;
+  const { t } = useTranslation();
+
   const chapter = location.search?.split('=')[1]?.split('&')[0];
   // const id = location.search.split('=')[2]
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
-  const { t } = useTranslation();
   const [questionId, setQuestionId] = useState(null);
   let params = qs.parse({ page: `${openedDayId}` });
 
   // handleUrl();
   // console.log(qs.stringify(handleUrl()));
-  // setOpenedDayId(prev => {
-  //   if (openedDayId === prev) {
-  //     setQuestionId(null);
-  //   }
-  // });
   // console.log(questionId);
 
   const closeModal = () => {
@@ -50,40 +46,34 @@ const IndexPage = ({ data, location }) => {
   // console.log(openedDayId);
   const b = qs.stringify(a);
 
-  useEffect(() => {
-    const handleUrl = () => {
-      questionId === null
-        ? (params = qs.parse({ page: `${openedDayId}` }))
-        : (params = qs.parse({
-            page: `${openedDayId}`,
-            title: `${questionId}`,
-          }));
-      return params;
-    };
+  const handleUrl = () => {
+    questionId === null
+      ? (params = qs.parse({ page: `${openedDayId}` }))
+      : (params = qs.parse({
+          page: `${openedDayId}`,
+          title: `${questionId}`,
+        }));
+    return params;
+  };
 
+  useEffect(() => {
     const onNavigate = () => {
       navigate(`?${qs.stringify(handleUrl())}`);
     };
     onNavigate();
-  }, [a]);
+  }, [openedDayId]);
 
-  // console.log(openedDayId);
-  // const dayId = days[0].frontmatter.chapter;
-  // console.log(navigate('?day-1'));
-  // navigate('?day-1');
-  // navigate(qs.stringify(dayId));
-
-  useEffect(() => {
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        if (!user) {
-          window.netlifyIdentity.on('login', () => {
-            document.location.href = '/admin/';
-          });
-        }
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.netlifyIdentity) {
+  //     window.netlifyIdentity.on('init', user => {
+  //       if (!user) {
+  //         window.netlifyIdentity.on('login', () => {
+  //           document.location.href = '/admin/';
+  //         });
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   return (
     <SearchContext.Provider value={{ days: days }}>
