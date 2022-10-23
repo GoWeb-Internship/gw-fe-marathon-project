@@ -6,17 +6,21 @@
 
 **Основний стек:**
 
-- Gatsby.js
-- Netlify CMS
-- Tailwind CSS
+- ![Gatsby](https://img.shields.io/badge/Gatsby-%23663399.svg?style=for-the-badge&logo=gatsby&logoColor=white)
+- ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7),
+  Netlify CMS
+- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
 - i18next
+
+[Послідовність виконання](README.steps.md)
 
 **Корисні посилання:**
 
 - Gatsby.js [Загальний туторіал](https://www.gatsbyjs.com/docs/tutorial/)
 
-- Netlify CMS На даний момент для работи Netlify Cms необхідна версія 17 react і
-  react-dom. [Docs для Gatsby](https://www.netlifycms.org/docs/gatsby/)
+- Netlify CMS На даний момент для роботи Netlify Cms необхідна версія 17 React і
+  React-dom. [Docs для Gatsby](https://www.netlifycms.org/docs/gatsby/)
   [Netlify CMS, підключення, налаштування](https://www.netlifycms.org/docs/gatsby/#enable-identity-and-git-gateway)
 
 - Tailwind CSS
@@ -63,6 +67,7 @@
 
 ## 🚀 Quick start (Gatsby Cloud)
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+Deploy this starter with one click on
+[Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
 [<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
