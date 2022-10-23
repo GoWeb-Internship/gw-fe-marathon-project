@@ -1,11 +1,14 @@
 import React from 'react';
 import CMS from 'netlify-cms-app';
+import { Component } from 'react';
 
-export const IdControl = props => {
-  const DateTimeControl = CMS.getWidget('datetime').control;
-  return (
-    <div style={{ display: 'none' }}>
-      <DateTimeControl {...props} />
-    </div>
-  );
-};
+export class IdControl extends Component {
+  render() {
+    const DateTimeControl = CMS.getWidget('datetime').control;
+    return (
+      <div style={{ display: 'none' }}>
+        <DateTimeControl {...this.props} />
+      </div>
+    );
+  }
+}
