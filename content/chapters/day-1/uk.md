@@ -3,7 +3,7 @@ chapter: day-1
 title: День 1
 language: uk
 subhead:
-  - subhead_title: VSCode
+  - subhead_title: Загальні питання
     questions:
       - question_title: Макет не відкривається, що робити?
         description: >-
@@ -30,12 +30,8 @@ subhead:
 
           ![тест](/img/photo.jpg "тест")
         question_range: "1"
-      - question_title: Щ﻿о робити, якщо Windоws не підтримує VSCode?
-        description: Встановіть [32-бітний
-          VSCode](https://code.visualstudio.com/#alt-downloads). Також можна
-          використовувати [Sublime
-          Text](https://www.sublimetext.com/) або [Nodepad
-          ++](https://notepad-plus-plus.org/downloads/).
-        question_range: "4"
+      - question_title: Ч﻿ому текст підкреслено червоним?
+        description: Це підказка для вас про допущену помилку.
+        question_range: "5"
 chapter_range: "2"
 ---
