@@ -30,5 +30,12 @@ subhead:
 
           ![тест](/img/photo.jpg "тест")
         question_range: "1"
+      - question_title: Щ﻿о робити, якщо Windоws не підтримує VSCode?
+        description: Встановіть [32-бітний
+          VSCode](https://code.visualstudio.com/#alt-downloads). Також можна
+          використовувати [Sublime
+          Text](https://www.sublimetext.com/) або [Nodepad
+          ++](https://notepad-plus-plus.org/downloads/).
+        question_range: "4"
 chapter_range: "2"
 ---
