@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Search from './Search';
 
-const Modal = ({ isOpen, closeModal }) => {
+const Modal = ({ isOpen, closeModal, onNavigate }) => {
   return (
     <Fragment>
       <Transition appear show={isOpen} as={Fragment}>
@@ -20,7 +20,7 @@ const Modal = ({ isOpen, closeModal }) => {
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-start justify-center p-28 text-center">
+            <div className="flex min-h-full items-start justify-center pt-28 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -30,8 +30,8 @@ const Modal = ({ isOpen, closeModal }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Search />
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Search onNavigate={onNavigate} closeModal={closeModal} />
                   {/* <input
                     className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm "
                     placeholder="Search for anything..."

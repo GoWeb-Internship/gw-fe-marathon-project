@@ -15,18 +15,13 @@ const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
   const days = data.allMarkdownRemark.nodes;
   const { t } = useTranslation();
-
+  const [searchParams, setSearchParams] = useState('');
   const chapter = location.search?.split('=')[1]?.split('&')[0];
-  // const id = location.search.split('=')[2]
+  const id = location.search?.split('&')[1]?.split('=')[1];
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
-  const [questionId, setQuestionId] = useState(null);
-  let params = qs.parse({ page: `${openedDayId}` });
-
-  // handleUrl();
-  // console.log(qs.stringify(handleUrl()));
-  // console.log(questionId);
+  const [questionId, setQuestionId] = useState(id || null);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -35,33 +30,16 @@ const IndexPage = ({ data, location }) => {
   const openModal = () => {
     setIsOpen(true);
   };
-  // const chapter = location.search.split('').splice(1).join('');
 
-  // console.log(chapter);
-  const a = qs.parse({ page: `${openedDayId}` });
-  const A = qs.parse({ page: `${openedDayId}`, title: `${questionId}` });
-  // console.log(qs.stringify(A));
-  // console.log(questionId);
-  // console.log(qs.stringify(a));
-  // console.log(openedDayId);
-  const b = qs.stringify(a);
-
-  const handleUrl = () => {
-    questionId === null
-      ? (params = qs.parse({ page: `${openedDayId}` }))
-      : (params = qs.parse({
-          page: `${openedDayId}`,
-          title: `${questionId}`,
-        }));
-    return params;
+  const handleNavigate = redirect => {
+    setSearchParams(redirect);
   };
 
   useEffect(() => {
-    const onNavigate = () => {
-      navigate(`?${qs.stringify(handleUrl())}`);
-    };
-    onNavigate();
-  }, [openedDayId]);
+    if (searchParams) {
+      navigate(`?${searchParams}`);
+    }
+  }, [searchParams]);
 
   // useEffect(() => {
   //   if (window.netlifyIdentity) {
@@ -131,7 +109,7 @@ const IndexPage = ({ data, location }) => {
                           subhead_title={subhead_title}
                           questions={questions}
                           index={index}
-                          setQuestionId={setQuestionId}
+                          questionId={questionId}
                         />
                       );
                     },
@@ -139,7 +117,11 @@ const IndexPage = ({ data, location }) => {
               : null}
           </ul>
           <Button text="adawadwad" handleClick={() => {}}></Button>
-          <Modal isOpen={isOpen} closeModal={closeModal} />
+          <Modal
+            isOpen={isOpen}
+            closeModal={closeModal}
+            onNavigate={handleNavigate}
+          />
         </Section>
       </Layout>
     </SearchContext.Provider>
