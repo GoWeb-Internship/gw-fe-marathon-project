@@ -7,7 +7,7 @@ subhead:
     questions:
       - question_title: Не вантажить проєкт на хостинг, що робити?
         description: |-
-          Перевірте структуру вашого проєкту, який ви завантажуєте на Netlify:
+          Перевірте структуру проєкту, який ви завантажуєте на Netlify:
 
           ![структура проєкту](/img/day-3-5-1.jpg "структура проєкту")
 
@@ -16,7 +16,7 @@ subhead:
         id: "1666359804388"
         unicId: "1666378954607"
         dadsa: "1666380558126"
-      - question_title: Чи можна змінити назву посилання на Netlify? ? ?
+      - question_title: Чи можна змінити назву посилання на Netlify?
         description: Можна змінити назву посилання на сторінці свого проєкту: **Settings
           → General → Site details → Change site name.**
         question_range: "2"
@@ -42,13 +42,5 @@ subhead:
         question_range: "4"
         unicId: "1666378954744"
         dadsa: "1666380558257"
-      - id: "1666390067201"
-        question_title: d﻿elete later
-        description: d﻿elete later
-        question_range: "5"
-      - id: "1666515308590"
-        question_title: і﻿еик
-        description: е﻿ицні45ен
-        question_range: "6"
 chapter_range: "5"
 ---
