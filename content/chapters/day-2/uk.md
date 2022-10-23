@@ -29,8 +29,5 @@ subhead:
           ![як вимкнути форматування](/img/day2-2.jpg "як вимкнути форматування")
         question_range: "1"
         id: "1666359763045"
-      - id: "1666557584686"
-        question_title: t﻿est id
-        description: t﻿est id
 chapter_range: "3"
 ---
