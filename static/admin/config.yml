@@ -139,126 +139,6 @@ collections:
             ],
         },
       ]
-  - label: 'Chapters_RU'
-    name: 'chapters_ru'
-    folder: 'content/chapters'
-    media_folder: '/static/img'
-    public_folder: /img
-    label_singular: 'Chapters_RU'
-    slug: '{{fields.slug}}'
-    description:
-      'Разделы на русском языке. Для создания нового раздела, пожалуйста,
-      сначала добавьте его в коллекцию List of Chapters'
-    create: true
-    delete: true
-    path: '{{chapter}}/{{language}}'
-    filter: { field: 'language', value: 'ru' }
-    fields:
-      - {
-          label: 'Chapter',
-          name: 'chapter',
-          collection: 'list_of_chapters',
-          widget: 'relation',
-          required: true,
-          search_fields: ['chapter_item.*.chapter_name'],
-          value_field: 'chapter_item.*.chapter_name',
-          display_fields: ['chapter_item.*.chapter_name'],
-          hint: 'Выберите название папки для сохранения данного раздела',
-        }
-      - {
-          label: 'Title at page',
-          name: 'title',
-          widget: 'string',
-          required: true,
-          hint:
-            'Введите название для данного раздела, которое будет отображаться на
-            странице',
-        }
-      - {
-          label: 'Language',
-          name: 'language',
-          widget: 'select',
-          options: ['ru'],
-          default: 'ru',
-        }
-      - {
-          label: 'Subhead',
-          name: 'subhead',
-          widget: 'list',
-          fields:
-            [
-              {
-                label: 'Subhead title',
-                name: 'subhead_title',
-                collection: 'list_of_subheads',
-                widget: 'relation',
-                required: true,
-                search_fields: ['subhead_item.*.subhead_ru'],
-                value_field: 'subhead_item.*.subhead_ru',
-                display_fields: ['subhead_item.*.subhead_ru'],
-                hint: 'Выберите название подраздела',
-              },
-              {
-                label: 'Questions',
-                name: 'questions',
-                widget: 'list',
-                fields:
-                  [
-                    {
-                      label: Question title,
-                      name: question_title,
-                      widget: markdown,
-                      editor_components: [],
-                      buttons: ['code'],
-                      required: true,
-                      hint: 'Введите вопрос',
-                    },
-                    {
-                      label: Description,
-                      name: description,
-                      widget: 'markdown',
-                      editor_components: ['image'],
-                      buttons: ['bold', 'code', 'link', 'bulleted-list'],
-                      required: true,
-                      hint: 'Введите ответ на вопрос',
-                    },
-                    {
-                      label: 'Question range',
-                      name: 'question_range',
-                      widget: 'string',
-                      required: false,
-                      pattern:
-                        [
-                          '^[0-9]{1,2}$',
-                          'Может содержать только цифры, обозначающие
-                          очередность размещение вопроса на веб-странице (сверху
-                          вниз)',
-                        ],
-                      hint:
-                        '*Необьязательное поле. Введите цифру, которая обозначит
-                        очередность размещение вопроса на веб-странице (сверху
-                        вниз)',
-                    },
-                    { label: 'id', name: 'id', widget: id, format: x },
-                  ],
-              },
-            ],
-        }
-      - {
-          label: 'Chapter range',
-          name: 'chapter_range',
-          widget: 'string',
-          required: false,
-          pattern:
-            [
-              '^[0-9]{1,2}$',
-              'Может содержать только цифры, обозначающие очередность размещения
-              раздела на веб-странице (сверху вниз)',
-            ],
-          hint:
-            '*Необьязательное поле. Введите цифру, которая обозначит очередность
-            размещение раздела на веб-странице (сверху вниз)',
-        }
   - label: 'Chapters_UA'
     name: 'chapters_ua'
     folder: 'content/chapters'
@@ -378,6 +258,126 @@ collections:
           hint:
             "*Необов'язкове поле. Введіть цифру, що позначатиме черговість
             розміщення розділу на веб-сторінці (зверху вниз)",
+        }
+  - label: 'Chapters_RU'
+    name: 'chapters_ru'
+    folder: 'content/chapters'
+    media_folder: '/static/img'
+    public_folder: /img
+    label_singular: 'Chapters_RU'
+    slug: '{{fields.slug}}'
+    description:
+      'Разделы на русском языке. Для создания нового раздела, пожалуйста,
+      сначала добавьте его в коллекцию List of Chapters'
+    create: true
+    delete: true
+    path: '{{chapter}}/{{language}}'
+    filter: { field: 'language', value: 'ru' }
+    fields:
+      - {
+          label: 'Chapter',
+          name: 'chapter',
+          collection: 'list_of_chapters',
+          widget: 'relation',
+          required: true,
+          search_fields: ['chapter_item.*.chapter_name'],
+          value_field: 'chapter_item.*.chapter_name',
+          display_fields: ['chapter_item.*.chapter_name'],
+          hint: 'Выберите название папки для сохранения данного раздела',
+        }
+      - {
+          label: 'Title at page',
+          name: 'title',
+          widget: 'string',
+          required: true,
+          hint:
+            'Введите название для данного раздела, которое будет отображаться на
+            странице',
+        }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['ru'],
+          default: 'ru',
+        }
+      - {
+          label: 'Subhead',
+          name: 'subhead',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Subhead title',
+                name: 'subhead_title',
+                collection: 'list_of_subheads',
+                widget: 'relation',
+                required: true,
+                search_fields: ['subhead_item.*.subhead_ru'],
+                value_field: 'subhead_item.*.subhead_ru',
+                display_fields: ['subhead_item.*.subhead_ru'],
+                hint: 'Выберите название подраздела',
+              },
+              {
+                label: 'Questions',
+                name: 'questions',
+                widget: 'list',
+                fields:
+                  [
+                    {
+                      label: Question title,
+                      name: question_title,
+                      widget: markdown,
+                      editor_components: [],
+                      buttons: ['code'],
+                      required: true,
+                      hint: 'Введите вопрос',
+                    },
+                    {
+                      label: Description,
+                      name: description,
+                      widget: 'markdown',
+                      editor_components: ['image'],
+                      buttons: ['bold', 'code', 'link', 'bulleted-list'],
+                      required: true,
+                      hint: 'Введите ответ на вопрос',
+                    },
+                    {
+                      label: 'Question range',
+                      name: 'question_range',
+                      widget: 'string',
+                      required: false,
+                      pattern:
+                        [
+                          '^[0-9]{1,2}$',
+                          'Может содержать только цифры, обозначающие
+                          очередность размещение вопроса на веб-странице (сверху
+                          вниз)',
+                        ],
+                      hint:
+                        '*Необьязательное поле. Введите цифру, которая обозначит
+                        очередность размещение вопроса на веб-странице (сверху
+                        вниз)',
+                    },
+                    { label: 'id', name: 'id', widget: id, format: x },
+                  ],
+              },
+            ],
+        }
+      - {
+          label: 'Chapter range',
+          name: 'chapter_range',
+          widget: 'string',
+          required: false,
+          pattern:
+            [
+              '^[0-9]{1,2}$',
+              'Может содержать только цифры, обозначающие очередность размещения
+              раздела на веб-странице (сверху вниз)',
+            ],
+          hint:
+            '*Необьязательное поле. Введите цифру, которая обозначит очередность
+            размещение раздела на веб-странице (сверху вниз)',
         }
   - label: 'Chapters_EN'
     name: 'chapters_en'
