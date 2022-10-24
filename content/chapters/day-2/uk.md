@@ -38,5 +38,12 @@ subhead:
           ![як вимкнути форматування](/img/day2-2.jpg "як вимкнути форматування")
         question_range: "1"
         id: "1666359763045"
+      - id: "1666604496595"
+        question_title: Я﻿к зменшити відступ?
+        description: |-
+          Потрібно натиснути `shift + tab`.
+
+          ![зменшення відступу](/img/giphy-1-.gif "зменшення відступу")
+        question_range: "2"
 chapter_range: "3"
 ---
