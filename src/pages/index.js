@@ -92,24 +92,6 @@ const IndexPage = ({ data, location }) => {
                   ?.frontmatter?.subhead?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
-                        // <div key={index}>
-                        //   <h3>{subhead_title}</h3>
-                        //   <ul key={index}>
-                        //     {questions.map((question, index) => {
-                        //       return (
-                        //         <li key={index}>
-                        //           <h2>
-                        //             <Markdown>{question.title}</Markdown>
-                        //           </h2>
-                        //           {}
-                        //           <div>
-                        //             <Markdown>{question.content}</Markdown>
-                        //           </div>
-                        //         </li>
-                        //       );
-                        //     })}
-                        //   </ul>
-                        // </div>
                         <Accordion
                           key={index}
                           subhead_title={subhead_title}
