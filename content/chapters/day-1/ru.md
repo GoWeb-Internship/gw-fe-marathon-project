@@ -47,5 +47,10 @@ subhead:
           посмотрите [видео](https://www.youtube.com/watch?v=2835_ZJGCQA) или
           установите `sublime`.
         question_range: "6"
+      - id: "1666611165766"
+        question_title: С﻿ каким браузером лучше/удобнее работать?
+        description: Мы рекомендуем использовать [Google
+          Chrome](https://www.google.com/intl/uk/chrome/)
+        question_range: "7"
 chapter_range: "2"
 ---
