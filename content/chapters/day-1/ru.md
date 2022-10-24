@@ -41,5 +41,11 @@ subhead:
         question_title: П﻿очему текст подчеркнут красным?
         description: Это подсказка для Вас о допущенной ошибке.
         question_range: "5"
+      - id: "1666611096499"
+        question_title: Ч﻿то делать, если в `VSCode` черный экран?
+        description: Если чёрный экран
+          посмотрите [видео](https://www.youtube.com/watch?v=2835_ZJGCQA) или
+          установите `sublime`.
+        question_range: "6"
 chapter_range: "2"
 ---
