@@ -19,5 +19,9 @@ subhead:
           details → Change site name**.
         question_range: "2"
         id: "1666359923703"
+      - id: "1666612897430"
+        question_title: К﻿ак удалять проект с Netlify?
+        description: "[Следуя этой инструкции](https://bit.ly/2T4SeHl)"
+        question_range: "3"
 chapter_range: "5"
 ---
