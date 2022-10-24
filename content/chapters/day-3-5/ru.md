@@ -35,5 +35,17 @@ subhead:
 
           `<img width="300" src="./img/photo.jpg" alt="My photo 123">`
         question_range: "3"
+      - id: "1666612098136"
+        question_title: Ч﻿то делать, если не появляется красный `+`, чтобы выбрать шрифт?
+        description: >-
+          Нажмите на `"Return to classic site"` или попробуйте
+          отключить `adblock`.
+
+
+          ![](/img/screen_gf.jpeg)
+
+
+          ![](/img/adblock_1.jpeg)
+        question_range: "4"
 chapter_range: "4"
 ---
