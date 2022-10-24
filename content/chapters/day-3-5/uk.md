@@ -47,5 +47,17 @@ subhead:
 
           ![](/img/adblock_1.jpeg)
         question_range: "4"
+      - id: "1666605271180"
+        question_title: Я﻿к перемогти автоформатування? Текст contacts (телефон email)
+          встають в один рядок при збереженні.
+        description: >-
+          Спробуйте додати у
+          налаштування `prettier` рядок `"htmlWhitespaceSensitivity"`: `"ignore"`,
+          цей параметр можна додати у налаштування розширення `prettier`, або
+          додати у файл `prettier.json`.
+
+
+          [Завантажити `prettier.json`](https://faq.m.goit.global/ua/assets/fonts/download/prettier.json)
+        question_range: "5"
 chapter_range: "4"
 ---
