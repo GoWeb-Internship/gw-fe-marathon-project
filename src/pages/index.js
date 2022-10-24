@@ -27,8 +27,6 @@ const IndexPage = ({ data, location }) => {
   );
   const [questionId, setQuestionId] = useState(id || null);
 
-  console.log(days);
-
   const closeModal = () => {
     setIsOpen(false);
   };
