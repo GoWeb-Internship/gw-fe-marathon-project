@@ -13,7 +13,11 @@ import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const days = data.allMarkdownRemark.nodes;
+  const days = [
+    ...data.allMarkdownRemark.nodes.sort(
+      (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
+    ),
+  ];
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useState('');
   const chapter = location.search?.split('=')[1]?.split('&')[0];
@@ -22,6 +26,8 @@ const IndexPage = ({ data, location }) => {
     chapter || days[0].frontmatter.chapter,
   );
   const [questionId, setQuestionId] = useState(id || null);
+
+  console.log(days);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -61,7 +67,7 @@ const IndexPage = ({ data, location }) => {
 
           <ul className="flex gap-3">
             {days
-              ? days?.map(({ id, frontmatter }) => {
+              ? days?.map(({ frontmatter }) => {
                   return (
                     <li
                       key={frontmatter.title}
@@ -151,7 +157,6 @@ export const query = graphql`
             }
           }
         }
-        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
