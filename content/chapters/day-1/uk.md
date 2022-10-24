@@ -42,5 +42,9 @@ subhead:
           встановлений в VSCode. Все, що залишається - це написати, наприклад:
           img і натиснути tab."
         question_range: "3"
+      - id: "1666603180710"
+        question_title: Щ﻿о робити, якщо в VSCode чорний екран?
+        description: Якщо у вас чорний екран, спробуйте відео або встановіть sublime.
+        question_range: "6"
 chapter_range: "2"
 ---
