@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
-import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
 import Section from '../components/Section';
@@ -22,10 +21,25 @@ const IndexPage = ({ data, location }) => {
   const [searchParams, setSearchParams] = useState('');
   const chapter = location.search?.split('=')[1]?.split('&')[0];
   const id = location.search?.split('&')[1]?.split('=')[1];
+
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
-  const [questionId, setQuestionId] = useState(id || null);
+
+  let obj = {};
+
+  const [questionId, setQuestionId] = useState({});
+
+  useEffect(() => {
+    data.allMarkdownRemark.nodes?.map(item => {
+      item.frontmatter.subhead.map(element => {
+        element.questions.map(el => {
+          obj[String(el.id)] = false;
+        });
+      });
+    }, {});
+    setQuestionId(obj);
+  }, []);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -94,8 +108,8 @@ const IndexPage = ({ data, location }) => {
                           key={index}
                           subhead_title={subhead_title}
                           questions={questions}
-                          index={index}
                           questionId={questionId}
+                          changeId={setQuestionId}
                         />
                       );
                     },
