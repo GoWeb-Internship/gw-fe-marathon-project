@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Button from '../components/Button';
@@ -9,12 +9,19 @@ import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
+import qs from 'qs';
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
   const days = data.allMarkdownRemark.nodes;
-  const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
   const { t } = useTranslation();
+  const [searchParams, setSearchParams] = useState('');
+  const chapter = location.search?.split('=')[1]?.split('&')[0];
+  const id = location.search?.split('&')[1]?.split('=')[1];
+  const [openedDayId, setOpenedDayId] = useState(
+    chapter || days[0].frontmatter.chapter,
+  );
+  const [questionId, setQuestionId] = useState(id || null);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -23,6 +30,16 @@ const IndexPage = ({ data }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
+  const handleNavigate = redirect => {
+    setSearchParams(redirect);
+  };
+
+  useEffect(() => {
+    if (searchParams) {
+      navigate(`?${searchParams}`);
+    }
+  }, [searchParams]);
 
   // useEffect(() => {
   //   if (window.netlifyIdentity) {
@@ -50,7 +67,11 @@ const IndexPage = ({ data }) => {
                       key={frontmatter.title}
                       className="flex gap-3 p-4 rounded-md duration-300 bg-blue-700 text-white hover:bg-blue-400"
                     >
-                      <button onClick={() => setOpenedDayId(id)}>
+                      <button
+                        onClick={() => {
+                          setOpenedDayId(frontmatter.chapter);
+                        }}
+                      >
                         {frontmatter.title}
                       </button>
                     </li>
@@ -61,7 +82,7 @@ const IndexPage = ({ data }) => {
           <ul>
             {days
               ? days
-                  ?.find(day => openedDayId === day.id)
+                  ?.find(day => openedDayId === day.frontmatter.chapter)
                   ?.frontmatter?.subhead?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
@@ -88,6 +109,7 @@ const IndexPage = ({ data }) => {
                           subhead_title={subhead_title}
                           questions={questions}
                           index={index}
+                          questionId={questionId}
                         />
                       );
                     },
@@ -95,7 +117,11 @@ const IndexPage = ({ data }) => {
               : null}
           </ul>
           <Button text="adawadwad" handleClick={() => {}}></Button>
-          <Modal isOpen={isOpen} closeModal={closeModal} />
+          <Modal
+            isOpen={isOpen}
+            closeModal={closeModal}
+            onNavigate={handleNavigate}
+          />
         </Section>
       </Layout>
     </SearchContext.Provider>

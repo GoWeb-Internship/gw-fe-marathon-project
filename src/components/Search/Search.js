@@ -3,14 +3,13 @@ import Markdown from 'markdown-to-jsx';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSearch } from '../../utils/searchContext';
+import qs from 'qs';
 
-const Search = () => {
+const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
   const { days } = useSearch();
-
-  console.log(days);
 
   useEffect(() => {
     if (!days) return;
@@ -54,7 +53,11 @@ const Search = () => {
     setSearchPhrase(value.toLowerCase());
   };
 
-  const handleRedirect = (chapter, id) => {};
+  const handleRedirect = (chapter, id) => {
+    const redirect = qs.parse({ page: chapter, title: id });
+    onNavigate(qs.stringify(redirect));
+    closeModal();
+  };
 
   return (
     <div>
@@ -73,7 +76,9 @@ const Search = () => {
             return (
               <li
                 key={id}
-                onClick={() => handleRedirect(chapter, id)}
+                onClick={() => {
+                  handleRedirect(chapter, id);
+                }}
                 style={{
                   textOverflow: 'ellipsis',
                   overflow: 'hidden',
