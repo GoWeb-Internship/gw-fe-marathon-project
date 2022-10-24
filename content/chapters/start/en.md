@@ -13,9 +13,5 @@ subhead:
           individual).
         question_range: "1"
         id: "1666345028081"
-      - id: "1666599462318"
-        question_title: e﻿ta
-        description: a﻿tsrt
-        question_range: "1"
 chapter_range: "1"
 ---
