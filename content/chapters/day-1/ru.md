@@ -30,5 +30,12 @@ subhead:
           установлен в `VSCode`. Все, что остается, это написать,
           например: `img` и нажать `tab`.
         question_range: "3"
+      - id: "1666610933483"
+        question_title: Ч﻿то делать, если Windows не поддерживает `VSCode`?
+        description: Установите [32-битный
+          VSCode](https://code.visualstudio.com/#alt-downloads). Также можно
+          использовать [Sublime Text](https://www.sublimetext.com/) или [Nodepad
+          ++](https://notepad-plus-plus.org/downloads/).
+        question_range: "4"
 chapter_range: "2"
 ---
