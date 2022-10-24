@@ -10,6 +10,15 @@ subhead:
           стилях по умолчанию.
         question_range: "1"
         id: "1666359887575"
+      - id: "1666611653634"
+        question_title: К﻿ак сделать комментарий?
+        description: |-
+          Нажмите `ctrl + /`
+
+          ![](/img/giphy.gif)
+
+          [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
+        question_range: "2"
   - subhead_title: VSCode
     questions:
       - question_title: При сохранении редактируется /форматируется `index.html`. Что делать?
