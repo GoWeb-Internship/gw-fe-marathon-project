@@ -63,8 +63,6 @@ const Search = ({ onNavigate, closeModal }) => {
     closeModal();
   };
 
-  console.log(filteredQuestions);
-
   return (
     <div>
       <form>
