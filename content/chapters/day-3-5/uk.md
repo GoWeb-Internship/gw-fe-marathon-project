@@ -35,5 +35,17 @@ subhead:
           `<img width="300" src="./img/photo.jpg" alt="My photo 123">`
         question_range: "3"
         id: "1666359791680"
+      - id: "1666605015050"
+        question_title: Н﻿е зʼявляється червоний + щоб вибрати шрифт, де шукати?
+        description: >-
+          Натисніть на `"Return to classic site"` або спробуйте
+          відключити `adblock`.
+
+
+          ![](/img/screen_gf.jpeg)
+
+
+          ![](/img/adblock_1.jpeg)
+        question_range: "4"
 chapter_range: "4"
 ---
