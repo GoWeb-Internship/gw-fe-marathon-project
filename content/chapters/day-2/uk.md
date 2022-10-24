@@ -45,5 +45,29 @@ subhead:
 
           ![зменшення відступу](/img/giphy-1-.gif "зменшення відступу")
         question_range: "2"
+      - id: "1666604713716"
+        question_title: Н﻿е відображається <img>, що робити?
+        description: >-
+          
+
+
+
+          Перевірте, чи правильна у вас ієрархія папок. У папці `project` у нас повинні бути:
+
+
+          * – файл `index.html`,
+
+          * – папка `img` (у ній зображення `photo.jpg`),
+
+          * – папка `css` (у ній надалі буде файл зі стилями),
+
+            ![](/img/day2_scren-img.jpeg)
+
+            в такому випадку в `index.html` пишемо: `<img src="./img/photo.jpg" alt="my photo">`
+
+            ![](/img/day2_scren1-img.jpeg)
+
+            – в назвах папок і файлів у нас немає кирилиці, пропусків і великих букв.
+        question_range: "3"
 chapter_range: "3"
 ---
