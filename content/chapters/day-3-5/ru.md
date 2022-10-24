@@ -47,5 +47,17 @@ subhead:
 
           ![](/img/adblock_1.jpeg)
         question_range: "4"
+      - id: "1666612422135"
+        question_title: К﻿ак не допустить автоформатирование? Текст под `contacts
+          `(телефон и email) становиться в одну строку при форматировании.
+        description: >-
+          Попробуйте добавить в
+          настройки `prettier` строку `"htmlWhitespaceSensitivity"`: `"ignore"`,
+          этот параметр можно внести в настройках расширения `prettier`, или
+          внести в файл `prettier.json`.
+
+
+          [Скачать `prettier.json`](https://faq.m.goit.global/ua-ru/assets/fonts/download/prettier.json)
+        question_range: "5"
 chapter_range: "4"
 ---
