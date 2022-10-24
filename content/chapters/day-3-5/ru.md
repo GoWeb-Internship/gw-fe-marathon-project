@@ -26,5 +26,14 @@ subhead:
           ![как подключить шрифт](/img/day-3-5-1.jpg "как подключить шрифт")
         question_range: "2"
         id: "1666359906679"
+      - id: "1666612042945"
+        question_title: К﻿ак правильно задать размер фото?
+        description: >-
+          В следующих уроках через `css` мы будем задавать размер изображению.
+          Но пока что можно сделать так:
+
+
+          `<img width="300" src="./img/photo.jpg" alt="My photo 123">`
+        question_range: "3"
 chapter_range: "4"
 ---
