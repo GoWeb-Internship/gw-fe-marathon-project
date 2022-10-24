@@ -39,5 +39,12 @@ subhead:
           ![как отключить форматирование](/img/day2-2.jpg "как отключить форматирование")
         question_range: "1"
         id: "1666359887677"
+      - id: "1666611733866"
+        question_title: К﻿ак уменьшить отступ выделяя строки, как на видео 2 урока?
+        description: |-
+          Нужно нажать `shift+tab`.
+
+          ![](/img/giphy-1-.gif)
+        question_range: "2"
 chapter_range: "3"
 ---
