@@ -46,5 +46,9 @@ subhead:
         question_title: Щ﻿о робити, якщо в VSCode чорний екран?
         description: Якщо у вас чорний екран, спробуйте відео або встановіть sublime.
         question_range: "6"
+      - id: "1666603326742"
+        question_title: З﻿ яким браузером краще працювати?
+        description: Ми рекомендуємо використовувати Google Chrome.
+        question_range: "7"
 chapter_range: "2"
 ---
