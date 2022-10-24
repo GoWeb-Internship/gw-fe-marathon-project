@@ -59,5 +59,21 @@ subhead:
 
           [Завантажити `prettier.json`](https://faq.m.goit.global/ua/assets/fonts/download/prettier.json)
         question_range: "5"
+      - id: "1666605791401"
+        question_title: Я﻿к правильно іменувати класи?
+        description: >-
+          
+
+          Використовуйте тільки латиницю і пишіть класи з маленької літери.
+
+
+          *  `class="футер"`- не використовуйте кирилицю
+
+          *  `class="footer"`- використовуйте тільки латиницю
+
+          *  `class="Header"`- не використовуйте великі літери в назві класу (верхній регістр)
+
+          *  `class="header"`- використовуйте тільки маленькі букви (нижній регист)
+        question_range: "6"
 chapter_range: "4"
 ---
