@@ -35,13 +35,12 @@ subhead:
           ++](https://notepad-plus-plus.org/downloads/).
         question_range: "4"
         id: "1666557262076"
-      - id: "1666599141122"
-        question_title: Т﻿ест
-        description: Т﻿ест
-        question_range: "6"
-      - id: "1666599297101"
-        question_title: Т﻿ест 2
-        description: Т﻿ест 2
-        question_range: "7"
+      - id: "1666602960172"
+        question_title: Коли прописуєш теги (наприклад <﻿t>, <img>, або <link>) не
+          проставляються атрибути, що робити?
+        description: "Для цього використовується плагін emmet, який по дефолту вже
+          встановлений в VSCode. Все, що залишається - це написати, наприклад:
+          img і натиснути tab."
+        question_range: "3"
 chapter_range: "2"
 ---
