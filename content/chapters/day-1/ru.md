@@ -37,5 +37,9 @@ subhead:
           использовать [Sublime Text](https://www.sublimetext.com/) или [Nodepad
           ++](https://notepad-plus-plus.org/downloads/).
         question_range: "4"
+      - id: "1666611034326"
+        question_title: П﻿очему текст подчеркнут красным?
+        description: Это подсказка для Вас о допущенной ошибке.
+        question_range: "5"
 chapter_range: "2"
 ---
