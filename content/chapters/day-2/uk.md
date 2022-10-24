@@ -46,7 +46,7 @@ subhead:
           ![зменшення відступу](/img/giphy-1-.gif "зменшення відступу")
         question_range: "2"
       - id: "1666604713716"
-        question_title: Н﻿е відображається <img>, що робити?
+        question_title: Н﻿е відображається `<img>`, що робити?
         description: >-
           
 
