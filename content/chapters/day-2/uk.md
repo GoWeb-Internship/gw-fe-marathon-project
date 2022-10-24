@@ -10,6 +10,15 @@ subhead:
           стилях за замовчуванням.
         question_range: "1"
         id: "1666359762921"
+      - id: "1666604247489"
+        question_title: Я﻿к робити коментар?
+        description: |-
+          Натисніть `ctrl + /`
+
+          ![](/img/giphy.gif)
+
+          [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
+        question_range: "2"
   - subhead_title: VSCode
     questions:
       - question_title: При збереженні редагується `index.html`. Що робити?
