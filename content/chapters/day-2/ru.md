@@ -46,5 +46,27 @@ subhead:
 
           ![](/img/giphy-1-.gif)
         question_range: "2"
+      - id: "1666611845307"
+        question_title: П﻿очему не отображается `<img>`?
+        description: >-
+          
+
+          Проверьте, правильна ли у Вас иерархия папок. В папке `project` должны быть:
+
+
+          * – файл `index.html`,
+
+          * – папка `img` (в ней изображение `photo.jpg`),
+
+          * – папка `css` (в ней в дальнейшем будет файл со стилями),
+
+            ![](/img/day2_scren-img.jpeg)
+
+            в таком случае в `index.html` пишем: `<img src="./img/photo.jpg" alt="my photo">`
+
+            ![](/img/day2_scren1-img.jpeg)
+
+            – в названиях папок и файлов у нас нет кириллицы, пробелов и заглавных букв.
+        question_range: "3"
 chapter_range: "3"
 ---
