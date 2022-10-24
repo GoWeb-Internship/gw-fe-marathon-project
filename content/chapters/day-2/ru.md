@@ -10,6 +10,15 @@ subhead:
           стилях по умолчанию.
         question_range: "1"
         id: "1666359887575"
+      - id: "1666611653634"
+        question_title: К﻿ак сделать комментарий?
+        description: |-
+          Нажмите `ctrl + /`
+
+          ![](/img/giphy.gif)
+
+          [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
+        question_range: "2"
   - subhead_title: VSCode
     questions:
       - question_title: При сохранении редактируется /форматируется `index.html`. Что делать?
@@ -30,5 +39,34 @@ subhead:
           ![как отключить форматирование](/img/day2-2.jpg "как отключить форматирование")
         question_range: "1"
         id: "1666359887677"
+      - id: "1666611733866"
+        question_title: К﻿ак уменьшить отступ выделяя строки, как на видео 2 урока?
+        description: |-
+          Нужно нажать `shift+tab`.
+
+          ![](/img/giphy-1-.gif)
+        question_range: "2"
+      - id: "1666611845307"
+        question_title: П﻿очему не отображается `<img>`?
+        description: >-
+          
+
+          Проверьте, правильна ли у Вас иерархия папок. В папке `project` должны быть:
+
+
+          * – файл `index.html`,
+
+          * – папка `img` (в ней изображение `photo.jpg`),
+
+          * – папка `css` (в ней в дальнейшем будет файл со стилями),
+
+            ![](/img/day2_scren-img.jpeg)
+
+            в таком случае в `index.html` пишем: `<img src="./img/photo.jpg" alt="my photo">`
+
+            ![](/img/day2_scren1-img.jpeg)
+
+            – в названиях папок и файлов у нас нет кириллицы, пробелов и заглавных букв.
+        question_range: "3"
 chapter_range: "3"
 ---
