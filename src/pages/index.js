@@ -13,7 +13,11 @@ import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const days = data.allMarkdownRemark.nodes;
+  const days = [
+    ...data.allMarkdownRemark.nodes.sort(
+      (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
+    ),
+  ];
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useState('');
   const chapter = location.search?.split('=')[1]?.split('&')[0];
@@ -61,7 +65,7 @@ const IndexPage = ({ data, location }) => {
 
           <ul className="flex gap-3">
             {days
-              ? days?.map(({ id, frontmatter }) => {
+              ? days?.map(({ frontmatter }) => {
                   return (
                     <li
                       key={frontmatter.title}
@@ -86,24 +90,6 @@ const IndexPage = ({ data, location }) => {
                   ?.frontmatter?.subhead?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
-                        // <div key={index}>
-                        //   <h3>{subhead_title}</h3>
-                        //   <ul key={index}>
-                        //     {questions.map((question, index) => {
-                        //       return (
-                        //         <li key={index}>
-                        //           <h2>
-                        //             <Markdown>{question.title}</Markdown>
-                        //           </h2>
-                        //           {}
-                        //           <div>
-                        //             <Markdown>{question.content}</Markdown>
-                        //           </div>
-                        //         </li>
-                        //       );
-                        //     })}
-                        //   </ul>
-                        // </div>
                         <Accordion
                           key={index}
                           subhead_title={subhead_title}
@@ -151,7 +137,6 @@ export const query = graphql`
             }
           }
         }
-        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
