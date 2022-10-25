@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
+import { DebounceInput } from 'react-debounce-input';
 import { useSearch } from '../../utils/searchContext';
 
 const Search = ({ onNavigate, closeModal }) => {
@@ -66,7 +67,8 @@ const Search = ({ onNavigate, closeModal }) => {
   return (
     <div>
       <form>
-        <input
+        <DebounceInput
+          debounceTimeout={300}
           className="border-b-2 placeholder:text-slate-400 focus:outline-none w-80 focus:border-sky-500  pt-2 pb-2 pl-3"
           type="text"
           onChange={handleInputChange}
