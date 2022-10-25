@@ -32,7 +32,10 @@ module.exports = {
       },
       // ALL COLORS
       colors: {
-        body: '#ffffff', // class="bg-body"
+        body: {
+          DEFAULT: '#FCFCFC',
+          dark: '#1D1C4B',
+        }, // class="bg-body"
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           light: '#202020', // class="bg-black-light text-black-light border-black-light"
@@ -40,9 +43,12 @@ module.exports = {
         },
         white: {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
-          dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
+          primary: '#FCFCFC', // class="bg-white-dark text-white-dark border-white-dark"
         },
-        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
+        accent: {
+          DEFAULT: '#3B82F6',
+          dark: '#0F0E39',
+        }, // class="bg-accent text-accent border-accent"
         primary: '#f1f1f1',
         second: '#f2f2f2',
       },
