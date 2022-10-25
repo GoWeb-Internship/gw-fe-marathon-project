@@ -25,10 +25,17 @@ subhead:
 
 
           Chatbot link **👉 <https://t.me/goit_html_ua_bot>**
+        question_range: "2"
       - id: "1666697660177"
         question_title: I﻿'m newcomer in IT, what I have to do?
         description: It's perfect! After all, the marathon was developed for beginners
           and those, who want to try their hand at programming😎
         question_range: "3"
+      - id: "1666698056120"
+        question_title: C﻿an I take the marathon by mobile phone?
+        description: You need a computer or laptop to complete the marathon
+          successfully. After all, you are beginner programmers and you will
+          definitely "work" for real **👌**
+        question_range: "4"
 chapter_range: "1"
 ---
