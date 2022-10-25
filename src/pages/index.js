@@ -13,7 +13,7 @@ import qs from 'qs';
 const IndexPage = ({ data, location }) => {
   const [isOpen, setIsOpen] = useState(false);
   const days = [
-    ...data.allMarkdownRemark.nodes.sort(
+    ...data?.allMarkdownRemark?.nodes?.sort(
       (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
     ),
   ];
