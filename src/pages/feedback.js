@@ -6,7 +6,7 @@ const FeedbackPage = () => {
   const { t } = useTranslation();
   return (
     <Layout>
-      <p>{t('Form')}</p>
+      {/* <p>{t('Form')}</p> */}
       <form>
         <input />
       </form>
