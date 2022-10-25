@@ -1,5 +1,11 @@
 {
   "Blog": "Blog",
   "Title": "Questions and Answers",
-  "Subtitle": "I did it with the Gatsby Tutorial "
+  "Subtitle": "I did it with the Gatsby Tutorial ",
+  "input": "Enter what interests you...",
+  "noAnswer": {
+    "title": "Sorry, we did not find an answer about",
+    "description": "The mentor is waiting for your question",
+    "button": "Write to the mentor"
+  }
 }
