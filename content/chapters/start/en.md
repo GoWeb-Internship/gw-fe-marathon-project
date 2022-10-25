@@ -37,5 +37,11 @@ subhead:
           successfully. After all, you are beginner programmers and you will
           definitely "work" for real **👌**
         question_range: "4"
+      - id: "1666698417037"
+        question_title: If I will be late for  the beginning of lessons?
+        description: All materials and videos will be waiting for you in the chatbot,
+          the main thing is to be in time for the deadline for submitting the HW
+          🔥
+        question_range: "5"
 chapter_range: "1"
 ---
