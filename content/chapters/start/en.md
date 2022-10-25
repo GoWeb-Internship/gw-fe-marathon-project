@@ -25,5 +25,10 @@ subhead:
 
 
           Chatbot link **👉 <https://t.me/goit_html_ua_bot>**
+      - id: "1666697660177"
+        question_title: I﻿'m newcomer in IT, what I have to do?
+        description: It's perfect! After all, the marathon was developed for beginners
+          and those, who want to try their hand at programming😎
+        question_range: "3"
 chapter_range: "1"
 ---
