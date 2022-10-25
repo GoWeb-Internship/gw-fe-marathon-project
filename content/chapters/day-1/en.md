@@ -19,4 +19,5 @@ subhead:
 
           If it does not help, then write html:5 and press tab. Or simply write html and select html:5 from the drop-down list (in the code editor in the `index.html` file)
         question_range: "2"
+chapter_range: "2"
 ---
