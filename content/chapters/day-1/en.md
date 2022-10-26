@@ -54,5 +54,25 @@ subhead:
           Continue with the tasks and send a new HW (until 18:00 the next day),
           which will be checked on.
         question_range: "8"
+      - id: "1666779534749"
+        question_title: Why doesn't the `index.html` open in the browser?
+        description: >-
+          Most likely, you drag into the search, and you need to the address
+          line😉
+
+          A little higher🤗
+
+
+          ![](/img/day1-1.png)
+
+
+          \-﻿ here,
+
+
+          ![](/img/day1-2.png)
+
+
+          n﻿ot here.
+        question_range: "9"
 chapter_range: "2"
 ---
