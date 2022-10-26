@@ -8,6 +8,7 @@ import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
+import Hero from '../components/Hero';
 
 const IndexPage = ({ data, location }) => {
   const days = [
@@ -100,6 +101,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
+        <Hero />
         <Section>
           <p>{t('Subtitle')}</p>
 
