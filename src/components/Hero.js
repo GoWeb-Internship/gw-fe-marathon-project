@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section className="relative flex overflow-hidden justify-center h-[220px] md:block md:h-[240px]">
       <Container>
-        <h2 className="text-center font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[329px] md:text-left md:mb-11">
+        <h2 className="text-center font-montserrat font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[329px] md:text-left md:mb-11">
           {t('Title')}
         </h2>
       </Container>
