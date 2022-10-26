@@ -74,5 +74,20 @@ subhead:
 
           n﻿ot here.
         question_range: "9"
+      - id: "1666779744360"
+        question_title: How to write tags correctly?
+        description: |-
+          There are only a few rules to follow:
+
+          * Use Latin only;
+          * Write tags only from a small letter;
+          * Where you need to specify an attribute, use only double tabs.
+
+            <html>- use latin only
+            <HTML>- do not use upper case
+            <html>- use the lower case only
+            src='images/arena.png'- do not use single tabs
+            src="images/arena.png"- use only double tabs
+        question_range: "10"
 chapter_range: "2"
 ---
