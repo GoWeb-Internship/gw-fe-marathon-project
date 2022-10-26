@@ -5,7 +5,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useSearch } from '../../utils/searchContext';
+import { useSearch } from '../utils/searchContext';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');

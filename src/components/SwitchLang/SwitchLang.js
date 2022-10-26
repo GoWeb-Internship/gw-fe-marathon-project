@@ -19,11 +19,11 @@ const SwitchLang = () => {
     <div className="relative">
       <button
         type="button"
-        className="flex items-center gap-x-2 py-2 px-2 text-main"
+        className="flex w-full h-full items-center gap-x-2 text-main "
         onClick={toggle}
       >
-        <span>{normalizeLang(language)}</span>
-        <GlobeAltIcon className="h-6 w-6" />
+        <span className="text-font-light">{normalizeLang(language)}</span>
+        <GlobeAltIcon className="h-6 w-6 text-font-light" />
       </button>
       {dropdown && (
         <>
