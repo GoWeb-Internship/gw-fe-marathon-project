@@ -4,25 +4,44 @@ import SwitchLang from './SwitchLang';
 import ToggleTheme from './ToggleTheme';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import Logo from './Logo';
+import { useState } from 'react';
+import Menu from './Menu';
+import { useEffect } from 'react';
+
+import { Transition } from '@tailwindui/react';
 
 const Header = ({ openModal }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation();
+
+  const toggleMenu = () => {
+    isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
+  };
+
+  useEffect(() => {
+    isMenuOpen
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
+  }, [isMenuOpen]);
 
   return (
     // adds temporary background styles
-    <header className="text-center bg-blue-500 dark:bg-indigo-900 transition linear duration-250">
+    <header className="text-center bg-accent dark:bg-accent-dark transition linear duration-250 pt-8 pb-8">
       <Container>
-        <div className="flex justify-between">
-          <p>logo</p>
-          <div className="flex gap-5">
-            <h1>{t('Title')}</h1>
+        <div className="flex justify-between items-center">
+          <Logo />
+          <div className="flex md:hidden">
             <div
-              className="relative rounded-xl shadow-md md:w-[228px] xl:w-96"
+              className="relative flex  items-center rounded-xl shadow-md md:w-[228px] xl:w-96 mr-3"
               onClick={openModal}
             >
               <input
-                className="placeholder:italic placeholder:text-slate-400 block bg-white w-96 border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                placeholder="Введіть, що вас цікавить..."
+                className="w-12 h-12 relative z-1 bg-transparent cursor-default"
+                // className="placeholder:italic placeholder:text-slate-400 block bg-white w-96 border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                // placeholder="Введіть, що вас цікавить..."
                 type="text"
                 name="search"
                 onChange={e => {
@@ -30,12 +49,43 @@ const Header = ({ openModal }) => {
                   openModal();
                 }}
               />
-              <MagnifyingGlassIcon className="absolute right-2 top-0 h-5 w-5 translate-y-1/2  text-slate-600" />
+              <MagnifyingGlassIcon className="absolute bottom-3.5 left-3.5 h-5 w-5 z-0  text-font-light" />
             </div>
-            <SwitchLang />
-            <ToggleTheme />
+
+            <button
+              aria-label="menu-toggle"
+              className="relative z-20 w-12 h-12 flex justify-center items-center "
+              onClick={toggleMenu}
+            >
+              {isMenuOpen ? (
+                <XMarkIcon className="h-6 w-6 text-font-light" />
+              ) : (
+                <Bars3Icon className="h-6 w-6 text-font-light" />
+              )}
+            </button>
           </div>
+
+          <ul className="max-md:hidden flex items-center">
+            <li className="mr-6">
+              <SwitchLang />
+            </li>
+            <li>
+              <ToggleTheme />
+            </li>
+          </ul>
         </div>
+
+        <Transition
+          show={isMenuOpen}
+          enter="transition-opacity duration-450"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-450"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {isMenuOpen ? <Menu toggleMenu={toggleMenu} /> : null}
+        </Transition>
       </Container>
     </header>
   );

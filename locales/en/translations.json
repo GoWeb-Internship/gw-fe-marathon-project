@@ -1,11 +1,27 @@
 {
   "Blog": "Blog",
-  "Title": "Questions and Answers",
+  "Title": "<Questions> and <Answers>",
   "Subtitle": "I did it with the Gatsby Tutorial ",
   "input": "Enter what interests you...",
   "noAnswer": {
     "title": "Sorry, we did not find an answer about",
     "description": "The mentor is waiting for your question",
     "button": "Write to the mentor"
+  },
+  "Form": {
+    "title": "Write to the mentor",
+    "email": "Email",
+    "name": "Name",
+    "question": "Ask a question",
+    "send": "Send",
+    "successTitle": "Your question has been sent successfully",
+    "successAnswer": "Wait for a response from the mentor",
+    "home": "Home"
+  },
+  "formValidation": {
+    "required": "Field is required",
+    "email": "Enter a valid email address",
+    "nameLength": "Name must be at least 2 characters long",
+    "messageLength": "Message must be at least 10 characters long"
   }
 }

@@ -22,10 +22,10 @@ const ToggleTheme = () => {
   return (
     <div className="toggle-bar flex items-center ">
       <Toggle
-        className="mr-3 w-10 h-5"
+        className="w-10 h-5"
         icons={{
-          checked: <MoonIcon className="h-4 w-4 text-slate-50" />,
-          unchecked: <SunIcon className="h-4 w-4 text-blue-500" />,
+          checked: <MoonIcon className="h-4 w-4 text-accent-dark" />,
+          unchecked: <SunIcon className="h-4 w-4 text-accent" />,
         }}
         checked={theme === 'light' ? false : true}
         onChange={ThemeToggle}

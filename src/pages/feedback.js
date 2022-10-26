@@ -1,15 +1,12 @@
 import React from 'react';
-import Layout from '../components/Layout/Layout';
 import { graphql } from 'gatsby';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import Layout from '../components/Layout/Layout';
+import FeedbackForm from '../components/FeedbackForm';
+
 const FeedbackPage = () => {
-  const { t } = useTranslation();
   return (
     <Layout>
-      {/* <p>{t('Form')}</p> */}
-      <form>
-        <input />
-      </form>
+      <FeedbackForm />
     </Layout>
   );
 };
