@@ -48,5 +48,11 @@ subhead:
         description: W﻿e recommend you to use [Google
           Chrome](https://www.google.com/intl/uk/chrome/)
         question_range: "7"
+      - id: "1666779123474"
+        question_title: Сan i submit my homework later?
+        description: If the deadline has passed you, there is no need to send this HW.
+          Continue with the tasks and send a new HW (until 18:00 the next day),
+          which will be checked on.
+        question_range: "8"
 chapter_range: "2"
 ---
