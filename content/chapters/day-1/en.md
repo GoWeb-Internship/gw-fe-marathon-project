@@ -43,5 +43,10 @@ subhead:
           [video](https://www.youtube.com/watch?v=2835_ZJGCQA)  or install
           `sublime`.
         question_range: "6"
+      - id: "1666778999346"
+        question_title: Which browser is better to work with?
+        description: W﻿e recommend you to use [Google
+          Chrome](https://www.google.com/intl/uk/chrome/)
+        question_range: "7"
 chapter_range: "2"
 ---
