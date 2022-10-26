@@ -38,8 +38,8 @@ module.exports = {
           dark: '#0F0E39', // class="bg-accent-dark text-accent-dark border-accent-dark"
         },
         overlay: {
-          DEFAULT: 'rgba(59, 130, 246, 0.5)', // class="bg-accent text-accent border-accent"
-          dark: 'rgba(29, 28, 74, 0.7)', // class="bg-accent-dark text-accent-dark border-accent-dark"
+          DEFAULT: 'rgba(29, 28, 74, 0.7);', // class="bg-accent text-accent border-accent"
+          dark: 'rgba(252, 252, 252, 0.7);', // class="bg-accent-dark text-accent-dark border-accent-dark"
         },
         menu: {
           DEFAULT: 'rgba(59, 130, 246, 0.9)', // class="bg-accent text-accent border-accent"

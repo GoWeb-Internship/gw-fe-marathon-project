@@ -96,7 +96,6 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Hero />
         <Section>
           <p>{t('Subtitle')}</p>
 
