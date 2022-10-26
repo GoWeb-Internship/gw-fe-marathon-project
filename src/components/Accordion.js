@@ -1,20 +1,10 @@
-import Markdown from 'markdown-to-jsx';
 import React from 'react';
-import { useState, useEffect } from 'react';
 
-const Accordion = ({ subhead_title, questions, index, questionId }) => {
-  const [active, setActive] = useState(null);
+import AccordionItem from './AccordionItem';
 
-  const handleClick = id => {
-    setActive(id);
-  };
-
-  useEffect(() => {
-    setActive(questionId);
-  }, [questionId]);
-
+const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
   return (
-    <div key={index}>
+    <div>
       <h2>{subhead_title}</h2>
       <ul>
         {[
@@ -22,25 +12,12 @@ const Accordion = ({ subhead_title, questions, index, questionId }) => {
             .sort((a, b) => a.question_range - b.question_range)
             .map(question => {
               return (
-                <li className="accordion" key={question.id}>
-                  <div
-                    onClick={() => handleClick(question.id)}
-                    className="accordionHeading cursor-pointer p-3 text-xl font-bold mb-4 duration-300 bg-blue-800 hover:bg-blue-500 text-white"
-                  >
-                    <h3 className="title">
-                      <Markdown>{question.title}</Markdown>
-                    </h3>
-                  </div>
-                  <div
-                    className={`${
-                      active === question.id
-                        ? 'h-auto opacity-1 p-3'
-                        : 'h-0 opacity-0'
-                    } accordionContent bg-black md:block text-white  overflow-hidden duration-300 ease-in-out`}
-                  >
-                    <Markdown>{question.content}</Markdown>
-                  </div>
-                </li>
+                <AccordionItem
+                  key={question.id}
+                  data={question}
+                  titleId={questionId}
+                  changeId={changeId}
+                />
               );
             }),
         ]}

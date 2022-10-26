@@ -9,12 +9,9 @@ module.exports = {
   theme: {
     // MEDIA QUERIES
     screens: {
-      smOnly: { max: '767.98px' },
       sm: '480px',
-      mdOnly: { min: '768px', max: '1279.98px' },
       md: '768px',
       xl: '1280px',
-      notXl: { max: '1279.98px' },
     },
     // BASE FONT
     fontFamily: {
@@ -23,31 +20,34 @@ module.exports = {
     },
     // SHADOW
     boxShadow: {
-      orange: '2px 8px 29px rgba(240, 127, 46, 0.2)', // class="shadow-orange"
+      main: '0px 2px 2px rgba(125, 198, 252, 0.24), 0px -2px 2px rgba(125, 198, 252, 0.24)', // class="shadow-main"
     },
     // THEME
     extend: {
       backgroundColor: theme => ({
         ...theme('colors'),
       }),
-      backgroundImage: {
-        check: "url('../images/check.svg')",
-      },
       // ALL COLORS
       colors: {
-        body: '#ffffff', // class="bg-body"
-        black: {
-          DEFAULT: '#000000', // class="bg-black text-black border-black"
-          light: '#202020', // class="bg-black-light text-black-light border-black-light"
-          dark: '#010101',
+        body: {
+          DEFAULT: '#FCFCFC', // class="bg-body"
+          dark: '#1D1C4B', // class="bg-body-dark"
         },
-        white: {
-          DEFAULT: '#ffffff', // class="bg-white text-white border-white"
-          dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
+        accent: {
+          DEFAULT: '#3B82F6', // class="bg-accent text-accent border-accent"
+          dark: '#0F0E39', // class="bg-accent-dark text-accent-dark border-accent-dark"
         },
-        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
-        primary: '#f1f1f1',
-        second: '#f2f2f2',
+        font: {
+          dark: '#1D1C4A', // class="bg-font-dark text-font-dark border-font-dark"
+          light: '#FCFCFC', // class="bg-font-light text-font-light border-font-light"
+          placeholder: '#9A9A9A', // class="bg-font-placeholder text-font-placeholder border-font-placeholder"
+        },
+        icon: {
+          secondary: '#A6B3C9', // class="text-icon-secondary border-icon-secondary"
+          light: '#FCFCFC', // class="bg-icon-light text-icon-light border-icon-light"
+          accent: '#3B82F6', // class="bg-icon-accent text-icon-accent border-icon-accent"
+        },
+        hover: '#1D4ED8',
       },
       // CONTAINER
       container: {
@@ -58,17 +58,6 @@ module.exports = {
           md: '2rem',
           xl: '2.5rem',
         },
-      },
-      // KEYFRAMES
-      keyframes: {
-        side: {
-          '0%, 100%': { transform: 'translateX(25%)' },
-          '50%': { transform: ' translateY(0)' },
-        },
-      },
-      // ANIMATION
-      animation: {
-        side: 'side 1s ease-in-out infinite',
       },
     },
   },
