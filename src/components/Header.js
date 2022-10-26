@@ -9,6 +9,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import Logo from './Logo';
 import { useState } from 'react';
 import Menu from './Menu';
+import { useEffect } from 'react';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,12 @@ const Header = ({ openModal }) => {
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };
+
+  useEffect(() => {
+    isMenuOpen
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'scroll');
+  }, [isMenuOpen]);
 
   return (
     // adds temporary background styles
@@ -45,7 +52,7 @@ const Header = ({ openModal }) => {
 
             <button
               aria-label="menu-toggle"
-              className="w-12 h-12 flex justify-center items-center "
+              className="relative z-20 w-12 h-12 flex justify-center items-center "
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
@@ -54,8 +61,6 @@ const Header = ({ openModal }) => {
                 <Bars3Icon className="h-6 w-6 text-font-light" />
               )}
             </button>
-            {/* <SwitchLang /> */}
-            {/* <ToggleTheme /> */}
           </div>
 
           <ul className="max-md:hidden flex items-center">
@@ -68,7 +73,7 @@ const Header = ({ openModal }) => {
           </ul>
         </div>
 
-        {isMenuOpen ? <Menu /> : null}
+        {isMenuOpen ? <Menu toggleMenu={toggleMenu} /> : null}
       </Container>
     </header>
   );
