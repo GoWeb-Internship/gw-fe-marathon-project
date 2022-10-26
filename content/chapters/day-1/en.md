@@ -26,5 +26,12 @@ subhead:
           `VSCode `by default. All that remains is to write, for example: `img
           `and press `tab`."
         question_range: "3"
+      - id: "1666777973886"
+        question_title: I﻿f Windows doesn't support `VSCode`?
+        description: I﻿nstall [32-bit
+          VSCode](https://code.visualstudio.com/#alt-downloads)You can use
+          [Sublime Text](https://www.sublimetext.com/) or [Nodepad
+          ++](https://notepad-plus-plus.org/downloads/) as well.
+        question_range: "4"
 chapter_range: "2"
 ---
