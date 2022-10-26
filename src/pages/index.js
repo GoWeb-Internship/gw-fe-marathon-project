@@ -39,7 +39,7 @@ const IndexPage = ({ data, location }) => {
     }, {});
 
     setQuestionId(obj);
-  }, []);
+  }, [chapter, id]);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
@@ -47,22 +47,17 @@ const IndexPage = ({ data, location }) => {
 
   useEffect(() => {
     if (chapter) setOpenedDayId(chapter);
-  }, [chapter]);
-
-  useEffect(() => {
-    if (id) {
-      activateCurrentAccordion(questionId, id);
-    }
-  }, [id]);
+    if (id) activateCurrentAccordion(obj, id);
+  }, [chapter, id]);
 
   function activateCurrentAccordion(obj, id) {
     if (Object.keys(obj).length > 0) {
       for (let key in obj) {
         obj[key] = false;
       }
-      for (let key in obj) {
-        obj[id] = true;
-      }
+
+      obj[id] = true;
+
       setQuestionId(obj);
     }
   }
@@ -77,6 +72,7 @@ const IndexPage = ({ data, location }) => {
 
   const handleNavigate = redirect => {
     setSearchParams(redirect);
+    // navigate(`?${redirect}`);
   };
 
   useEffect(() => {
