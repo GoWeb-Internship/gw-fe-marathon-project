@@ -37,6 +37,14 @@ module.exports = {
           DEFAULT: '#3B82F6', // class="bg-accent text-accent border-accent"
           dark: '#0F0E39', // class="bg-accent-dark text-accent-dark border-accent-dark"
         },
+        overlay: {
+          DEFAULT: 'rgba(59, 130, 246, 0.5)', // class="bg-accent text-accent border-accent"
+          dark: 'rgba(29, 28, 74, 0.7)', // class="bg-accent-dark text-accent-dark border-accent-dark"
+        },
+        menu: {
+          DEFAULT: 'rgba(59, 130, 246, 0.9)', // class="bg-accent text-accent border-accent"
+          dark: 'rgba(29, 28, 74, 0.9)', // class="bg-accent-dark text-accent-dark border-accent-dark"
+        },
         font: {
           dark: '#1D1C4A', // class="bg-font-dark text-font-dark border-font-dark"
           light: '#FCFCFC', // class="bg-font-light text-font-light border-font-light"
