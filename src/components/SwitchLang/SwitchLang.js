@@ -16,7 +16,7 @@ const SwitchLang = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full p-4 box-border">
       <button
         type="button"
         className="flex w-full h-full items-center gap-x-2 text-main "

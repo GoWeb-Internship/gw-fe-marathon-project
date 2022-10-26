@@ -10,7 +10,7 @@ const Hero = () => {
   const media = useMediaRules();
 
   return (
-    <section className="relative flex justify-center  h-[220px] bg-accent dark:bg-accent-dark md:block md:h-[240px]">
+    <section className="relative flex overflow-hidden justify-center h-[220px] md:block md:h-[240px]">
       <Container>
         <h2 className="text-center font-montserrat font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[329px] md:text-left md:mb-11">
           {t('Title')}

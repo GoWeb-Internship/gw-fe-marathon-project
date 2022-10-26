@@ -11,8 +11,6 @@ import { useState } from 'react';
 import Menu from './Menu';
 import { useEffect } from 'react';
 
-import { Transition } from '@tailwindui/react';
-
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation();
@@ -28,8 +26,7 @@ const Header = ({ openModal }) => {
   }, [isMenuOpen]);
 
   return (
-    // adds temporary background styles
-    <header className="text-center bg-accent dark:bg-accent-dark transition linear duration-250 pt-8 pb-8">
+    <header className="text-center transition linear duration-250 pt-8 pb-8">
       <Container>
         <div className="flex justify-between items-center">
           <Logo />
@@ -40,8 +37,6 @@ const Header = ({ openModal }) => {
             >
               <input
                 className="w-12 h-12 relative z-1 bg-transparent cursor-default"
-                // className="placeholder:italic placeholder:text-slate-400 block bg-white w-96 border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                // placeholder="Введіть, що вас цікавить..."
                 type="text"
                 name="search"
                 onChange={e => {
@@ -75,17 +70,7 @@ const Header = ({ openModal }) => {
           </ul>
         </div>
 
-        <Transition
-          show={isMenuOpen}
-          enter="transition-opacity duration-450"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-450"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {isMenuOpen ? <Menu toggleMenu={toggleMenu} /> : null}
-        </Transition>
+        <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       </Container>
     </header>
   );
