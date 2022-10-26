@@ -7,7 +7,7 @@ import ToggleTheme from './ToggleTheme';
 export default function Menu({ toggleMenu }) {
   return (
     <>
-      <div className="fixed left-0 top-0 z-10 pt-11 h-80 w-screen bg-accent dark:bg-accent-dark md:hidden">
+      <div className="fixed left-0 top-0 z-10 pt-11 h-80 w-screen bg-menu dark:bg-menu-dark md:hidden">
         <Container>
           <Logo />
 
@@ -23,11 +23,9 @@ export default function Menu({ toggleMenu }) {
       </div>
 
       <div
-        className="fixed left-0 top-0 -z-0 w-screen h-screen md:hidden"
+        className="fixed left-0 top-0 -z-0 w-screen h-screen md:hidden bg-overlay bg-overlay-dark"
         onClick={toggleMenu}
       ></div>
     </>
   );
 }
-
-// bg-accent dark:bg-accent-dark

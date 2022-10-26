@@ -11,6 +11,8 @@ import { useState } from 'react';
 import Menu from './Menu';
 import { useEffect } from 'react';
 
+import { Transition } from '@tailwindui/react';
+
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useTranslation();
@@ -73,7 +75,17 @@ const Header = ({ openModal }) => {
           </ul>
         </div>
 
-        {isMenuOpen ? <Menu toggleMenu={toggleMenu} /> : null}
+        <Transition
+          show={isMenuOpen}
+          enter="transition-opacity duration-450"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-450"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {isMenuOpen ? <Menu toggleMenu={toggleMenu} /> : null}
+        </Transition>
       </Container>
     </header>
   );
