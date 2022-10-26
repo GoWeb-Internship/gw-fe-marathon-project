@@ -17,6 +17,7 @@ const IndexPage = ({ data, location }) => {
     ),
   ];
 
+  const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useState('');
   const [openedDayId, setOpenedDayId] = useState(
@@ -25,8 +26,6 @@ const IndexPage = ({ data, location }) => {
   const [questionId, setQuestionId] = useState({});
 
   const { t } = useTranslation();
-
-  const { page: chapter, title: id } = qs.parse(location.search.slice(1));
 
   let obj = {};
 

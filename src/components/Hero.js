@@ -8,9 +8,9 @@ import useMediaRules from '../helpers/getMedia';
 const Hero = () => {
   const { t } = useTranslation();
   const media = useMediaRules();
-  console.log(media);
+
   return (
-    <section className="relative flex justify-center w-screen h-[220px] bg-accent dark:bg-accent-dark md:block md:h-[240px]">
+    <section className="relative overflow-hidden flex justify-center  h-[220px] bg-accent dark:bg-accent-dark md:block md:h-[240px]">
       <Container>
         <h2 className="text-center font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[329px] md:text-left md:mb-11">
           {t('Title')}
