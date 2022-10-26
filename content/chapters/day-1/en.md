@@ -30,8 +30,12 @@ subhead:
         question_title: I﻿f Windows doesn't support `VSCode`?
         description: I﻿nstall [32-bit
           VSCode](https://code.visualstudio.com/#alt-downloads)You can use
-          [Sublime Text](https://www.sublimetext.com/) or [Nodepad
+          [Sublime Text](https://www.sublimetext.com/)or [Nodepad
           ++](https://notepad-plus-plus.org/downloads/) as well.
         question_range: "4"
+      - id: "1666778416442"
+        question_title: Why the text is underlined red?
+        description: This is a hint to you about the mistake.
+        question_range: "5"
 chapter_range: "2"
 ---
