@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import Button from '../components/Button';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
@@ -11,24 +10,24 @@ import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const days = [
     ...data.allMarkdownRemark.nodes.sort(
       (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
     ),
   ];
-  const { t } = useTranslation();
-  const [searchParams, setSearchParams] = useState('');
-  const chapter = location.search?.split('=')[1]?.split('&')[0];
-  const id = location.search?.split('&')[1]?.split('=')[1];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchParams, setSearchParams] = useState('');
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
+  const [questionId, setQuestionId] = useState({});
+
+  const { t } = useTranslation();
+
+  const { page: chapter, title: id } = qs.parse(location.search.slice(1));
 
   let obj = {};
-
-  const [questionId, setQuestionId] = useState({});
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
@@ -38,8 +37,30 @@ const IndexPage = ({ data, location }) => {
         });
       });
     }, {});
+
     setQuestionId(obj);
-  }, []);
+  }, [chapter, id]);
+
+  const handleChangeAccordion = id => {
+    setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
+  };
+
+  useEffect(() => {
+    if (chapter) setOpenedDayId(chapter);
+    if (id) activateCurrentAccordion(obj, id);
+  }, [chapter, id]);
+
+  function activateCurrentAccordion(obj, id) {
+    if (Object.keys(obj).length > 0) {
+      for (let key in obj) {
+        obj[key] = false;
+      }
+
+      obj[id] = true;
+
+      setQuestionId(obj);
+    }
+  }
 
   const closeModal = () => {
     setIsOpen(false);
@@ -51,6 +72,7 @@ const IndexPage = ({ data, location }) => {
 
   const handleNavigate = redirect => {
     setSearchParams(redirect);
+    // navigate(`?${redirect}`);
   };
 
   useEffect(() => {
@@ -109,14 +131,13 @@ const IndexPage = ({ data, location }) => {
                           subhead_title={subhead_title}
                           questions={questions}
                           questionId={questionId}
-                          changeId={setQuestionId}
+                          changeId={handleChangeAccordion}
                         />
                       );
                     },
                   )
               : null}
           </ul>
-          <Button text="adawadwad" handleClick={() => {}}></Button>
           <Modal
             isOpen={isOpen}
             closeModal={closeModal}
