@@ -37,5 +37,11 @@ subhead:
         question_title: Why the text is underlined red?
         description: This is a hint to you about the mistake.
         question_range: "5"
+      - id: "1666778680157"
+        question_title: What to do if the `VSCode` has a black screen?
+        description: I﻿f you have a black screen, try the
+          [video](https://www.youtube.com/watch?v=2835_ZJGCQA)  or install
+          `sublime`.
+        question_range: "6"
 chapter_range: "2"
 ---
