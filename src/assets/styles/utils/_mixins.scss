@@ -8,8 +8,7 @@
 ) {
   @font-face {
     font-family: quote($font-name); /* IE9 Compat Modes */
-    src: url($path + '.eot');
-    src: url($path + '.eot?#iefix') format('embedded-opentype'),
+    src: 
       /* Safari, Android, iOS */ url($path + '.woff') format('woff'),
       /* Modern Browsers */ url($path + '.woff2') format('woff2'),
       /* Legacy iOS */ url($path + '.ttf') format('truetype');

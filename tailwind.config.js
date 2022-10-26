@@ -16,7 +16,7 @@ module.exports = {
     // BASE FONT
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
-      // exo: ['"Exo 2"', 'sans-serif'],
+      inter: ['Inter', 'sans-serif'], // class="font-inter"
     },
     // SHADOW
     boxShadow: {

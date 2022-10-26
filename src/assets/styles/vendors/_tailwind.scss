@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 @layer base {
-  // @include font-face('Montserrat', '../fonts/Montserrat-Thin', 100);
+  @include font-face('Montserrat', '../fonts/Montserrat-Regular', 400);
+  @include font-face('Montserrat', '../fonts/Montserrat-Bold', 700);
+  @include font-face('Inter', '../fonts/Inter-ExtraLight', 200);
+  @include font-face('Inter', '../fonts/Inter-Light', 300);
+  @include font-face('Inter', '../fonts/Inter-Regular', 400);
+  @include font-face('Inter', '../fonts/Inter-Medium', 500);
+  @include font-face('Inter', '../fonts/Inter-SemiBold', 600);
 }
 
 body {
-  @apply dark:text-font-light  text-font-dark;
+  @apply font-inter font-normal dark:text-font-light  text-font-dark;
 }
 
 .visually-hidden {
