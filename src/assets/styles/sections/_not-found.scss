@@ -1,0 +1,24 @@
+.not-found {
+  @media screen and (min-width: 768px) {
+    background-image: url(../images/404/bg.svg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: contain;
+  }
+
+  .container {
+    background-image: url(../images/404/404.svg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 300px auto;
+
+    @media screen and (min-width: 768px) {
+      background-size: auto;
+      background-position: center right;
+    }
+    @media screen and (min-width: 768px) {
+      background-size: 688px auto;
+      background-position: center right 3rem;
+    }
+  }
+}
