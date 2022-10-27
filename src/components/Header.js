@@ -10,6 +10,7 @@ import Logo from './Logo';
 import { useState } from 'react';
 import Menu from './Menu';
 import { useEffect } from 'react';
+import icons from '../assets/images/sprite.svg';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,17 +27,17 @@ const Header = ({ openModal }) => {
   }, [isMenuOpen]);
 
   return (
-    <header className="text-center transition linear duration-250 pt-8 pb-8">
+    <header className="linear duration-250 pt-8 text-center transition md:max-xl:pt-9 xl:pt-11">
       <Container>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <Logo />
           <div className="flex md:hidden">
             <div
-              className="relative flex  items-center rounded-xl shadow-md md:w-[228px] xl:w-96 mr-3"
+              className="shadow-md relative  mr-3 flex items-center rounded-xl md:w-[228px] xl:w-96"
               onClick={openModal}
             >
               <input
-                className="w-12 h-12 relative z-1 bg-transparent cursor-default"
+                className="z-1 relative h-12 w-12 cursor-default bg-transparent"
                 type="text"
                 name="search"
                 onChange={e => {
@@ -44,12 +45,12 @@ const Header = ({ openModal }) => {
                   openModal();
                 }}
               />
-              <MagnifyingGlassIcon className="absolute bottom-3.5 left-3.5 h-5 w-5 z-0  text-font-light" />
+              <MagnifyingGlassIcon className="absolute bottom-3.5 left-3.5 z-0 h-5 w-5  text-font-light" />
             </div>
 
             <button
               aria-label="menu-toggle"
-              className="relative z-20 w-12 h-12 flex justify-center items-center "
+              className="relative z-20 flex h-12 w-12 items-center justify-center "
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
@@ -60,7 +61,7 @@ const Header = ({ openModal }) => {
             </button>
           </div>
 
-          <ul className="max-md:hidden flex items-center">
+          <ul className="flex items-center max-md:hidden">
             <li className="mr-6">
               <SwitchLang />
             </li>
@@ -72,6 +73,10 @@ const Header = ({ openModal }) => {
 
         <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       </Container>
+
+      <svg className="absolute -top-1 -left-1 h-[53px] w-[42px]">
+        <use href={`${icons}#hero-top`} />
+      </svg>
     </header>
   );
 };

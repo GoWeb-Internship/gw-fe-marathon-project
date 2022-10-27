@@ -16,10 +16,10 @@ const SwitchLang = () => {
   };
 
   return (
-    <div className="relative w-full p-4 box-border">
+    <div className="relative box-border w-full max-md:p-4">
       <button
         type="button"
-        className="flex w-full h-full items-center gap-x-2 text-main "
+        className="text-main flex h-full w-full items-center gap-x-2 "
         onClick={toggle}
       >
         <span className="text-font-light">{normalizeLang(language)}</span>
