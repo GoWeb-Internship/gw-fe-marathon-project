@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-
-import AccordionItem from './AccordionItem';
+import React from 'react';
+import AccordionItem from '../AccordionItem/AccordionItem';
+import { subheadTitle, subhead } from './Accordion.module.css';
 
 const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
   return (
-    <div>
-      <h2>{subhead_title}</h2>
+    <div className={subhead}>
+      <h2 className={subheadTitle}>{subhead_title}</h2>
       <ul>
         {[
           ...questions

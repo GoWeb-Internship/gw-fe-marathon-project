@@ -1,0 +1,7 @@
+.subheadTitle {
+  @apply mb-6 font-montserrat text-lg font-bold leading-[22px] md:mb-[34px] md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px];
+}
+
+.subhead {
+  @apply mt-6 first:mt-0 md:mt-[34px];
+}

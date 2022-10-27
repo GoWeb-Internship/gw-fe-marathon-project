@@ -41,12 +41,16 @@ const Header = ({ openModal }) => {
         <div className={headerContainer}>
           <Logo />
           <div className={mobileBtnsWrapper}>
-            <button className={glassBtn} onClick={openModal}>
+            <button
+              className={glassBtn}
+              onClick={openModal}
+              aria-label="search button"
+            >
               <MagnifyingGlassIcon className={glassIcon} />
             </button>
 
             <button
-              aria-label="menu-toggle"
+              aria-label="menu button"
               className={menuBtn}
               onClick={toggleMenu}
             >
