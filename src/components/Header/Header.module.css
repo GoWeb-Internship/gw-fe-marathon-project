@@ -11,7 +11,7 @@
 }
 
 .glassBtn {
-  @apply relative z-0 mr-3 h-12 w-12 cursor-default bg-transparent;
+  @apply relative z-0 mr-3 h-12 w-12 cursor-default cursor-pointer bg-transparent;
 }
 
 .glassIcon {

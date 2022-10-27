@@ -52,7 +52,7 @@ module.exports = {
           search: '#D9D9D9',
         },
         icon: {
-          secondary: '#A6B3C9', // class="text-icon-secondary border-icon-secondary"
+          secondary: '#8892A4', // class="text-icon-secondary border-icon-secondary"
           light: '#FCFCFC', // class="bg-icon-light text-icon-light border-icon-light"
           accent: '#3B82F6', // class="bg-icon-accent text-icon-accent border-icon-accent"
         },

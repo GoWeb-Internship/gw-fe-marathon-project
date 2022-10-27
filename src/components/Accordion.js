@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import AccordionItem from './AccordionItem';
+import AccordionItem from './AccordionItem/AccordionItem';
 
 const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
   return (
