@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
+import Backdrop from './Backdrop';
 import Container from './Container';
 import SwitchLang from './SwitchLang';
 import ToggleTheme from './ToggleTheme';
@@ -22,7 +23,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <div
-        className={`fixed left-0 top-0 z-10 pt-28 h-80 w-screen bg-menu dark:bg-menu-dark md:hidden transition ease-in-out duration-200 ${
+        className={`fixed left-0 top-0 z-10 h-80 w-screen bg-menu pt-28 transition duration-200 ease-in-out dark:bg-menu-dark md:hidden ${
           isMenuOpen
             ? 'translate-x-0 opacity-100'
             : '-translate-x-full opacity-0'
@@ -30,24 +31,24 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
       >
         <Container>
           <ul>
-            <li className="rounded-lg mb-4 shadow-main bg-accent dark:bg-accent-dark">
+            <li className="mb-4 rounded-lg bg-accent shadow-main dark:bg-accent-dark">
               <SwitchLang />
             </li>
-            <li className="p-4 rounded-lg shadow-main bg-accent dark:bg-accent-dark">
+            <li className="rounded-lg bg-accent p-4 shadow-main dark:bg-accent-dark">
               <ToggleTheme />
             </li>
           </ul>
         </Container>
       </div>
 
-      <div
-        className={`fixed left-0 top-0 -z-0 w-screen h-screen md:hidden bg-overlay dark:bg-overlay-dark transition ease-in-out duration-200  ${
+      <Backdrop
+        className={`fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out dark:bg-overlay-dark md:hidden  ${
           isMenuOpen
             ? 'translate-x-0 opacity-100'
             : '-translate-x-full opacity-0'
         }`}
-        onClick={toggleMenu}
-      ></div>
+        handleCloseFunction={toggleMenu}
+      />
     </>
   );
 }
