@@ -4,6 +4,7 @@ import Backdrop from './Backdrop';
 import Container from './Container';
 import SwitchLang from './SwitchLang';
 import ToggleTheme from './ToggleTheme';
+import PropTypes from 'prop-types';
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
@@ -52,3 +53,8 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
     </>
   );
 }
+
+Menu.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
+};

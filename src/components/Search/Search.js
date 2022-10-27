@@ -5,14 +5,24 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useSearch } from '../utils/searchContext';
+import { useSearch } from '../../utils/searchContext';
+import PropTypes from 'prop-types';
+import {
+  searchInput,
+  foundOption,
+  noResultsWrapper,
+  noResultsTitle,
+  searchWord,
+  noResultsDesc,
+  btnToFeedbackPage,
+} from './Search.module.css';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
-  const { days } = useSearch();
 
+  const { days } = useSearch();
   const { t } = useTranslation();
   const noAnswer = t('noAnswer', { returnObjects: true });
 
@@ -69,7 +79,7 @@ const Search = ({ onNavigate, closeModal }) => {
       <form>
         <DebounceInput
           debounceTimeout={300}
-          className="border-b-2 placeholder:text-slate-400 focus:outline-none w-80 focus:border-sky-500  pt-2 pb-2 pl-3"
+          className={searchInput}
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
@@ -87,7 +97,7 @@ const Search = ({ onNavigate, closeModal }) => {
                   onClick={() => {
                     handleRedirect(chapter, id);
                   }}
-                  className="text-left truncate cursor-pointer hover:text-blue-900"
+                  className={foundOption}
                 >
                   <Markdown>{question_title}</Markdown>
                 </li>
@@ -98,13 +108,12 @@ const Search = ({ onNavigate, closeModal }) => {
       ) : null}
 
       {filteredQuestions?.length === 0 && (
-        <div className="flex flex-col items-center mt-4">
-          <h3 className="text-slate-900 font-bold text-xl leading-6 w-80 ">
-            {noAnswer.title}{' '}
-            <span className="text-blue-500">{searchPhrase}</span>
+        <div className={noResultsWrapper}>
+          <h3 className={noResultsTitle}>
+            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
           </h3>
-          <p className="mt-5 text-base">{noAnswer.description}</p>
-          <button className="bg-blue-700 rounded border-2 duration-300 mt-4 border-blue-700 text-white py-4 px-8 hover:text-blue-700 hover:bg-white">
+          <p className={noResultsDesc}>{noAnswer.description}</p>
+          <button className={btnToFeedbackPage}>
             <Link to="/feedback">{noAnswer.button}</Link>
           </button>
         </div>
@@ -114,3 +123,8 @@ const Search = ({ onNavigate, closeModal }) => {
 };
 
 export default Search;
+
+Search.propTypes = {
+  onNavigate: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};

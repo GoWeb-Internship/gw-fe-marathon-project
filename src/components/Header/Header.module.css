@@ -1,0 +1,39 @@
+.header {
+  @apply pt-8 text-center transition md:max-xl:pt-9 xl:pt-11;
+}
+
+.headerContainer {
+  @apply flex items-center justify-between;
+}
+
+.mobileBtnsWrapper {
+  @apply flex md:hidden;
+}
+
+.glassBtn {
+  @apply relative z-0 mr-3 h-12 w-12 cursor-default bg-transparent;
+}
+
+.glassIcon {
+  @apply absolute bottom-3.5 left-3.5 z-0 h-5 w-5  text-font-light;
+}
+
+.menuBtn {
+  @apply relative z-20 flex h-12 w-12 items-center justify-center;
+}
+
+.menuIcon {
+  @apply h-6 w-6 text-font-light;
+}
+
+.switchWrapper {
+  @apply flex items-center max-md:hidden;
+}
+
+.switchWrapperFirstItem {
+  @apply mr-6;
+}
+
+.decorIcon {
+  @apply absolute -top-1 -left-1 h-[53px] w-[42px];
+}

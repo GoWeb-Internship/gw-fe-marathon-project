@@ -56,7 +56,11 @@ module.exports = {
           light: '#FCFCFC', // class="bg-icon-light text-icon-light border-icon-light"
           accent: '#3B82F6', // class="bg-icon-accent text-icon-accent border-icon-accent"
         },
-        hover: '#1D4ED8',
+        hover: {
+          DEFAULT: '#1D4ED8',
+          light: '#E0E7FF',
+          dark: '#0F0E39',
+        },
       },
       // CONTAINER
       container: {
