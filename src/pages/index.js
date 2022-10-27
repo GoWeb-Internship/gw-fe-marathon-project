@@ -8,7 +8,7 @@ import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
-import Hero from '../components/Hero';
+import Hero from '../components/Hero/Hero';
 
 const IndexPage = ({ data, location }) => {
   const days = [
@@ -105,7 +105,7 @@ const IndexPage = ({ data, location }) => {
                   return (
                     <li
                       key={frontmatter.title}
-                      className="flex gap-3 p-4 rounded-md duration-300 bg-blue-700 text-white hover:bg-blue-400"
+                      className="flex gap-3 rounded-md bg-blue-700 p-4 text-white duration-300 hover:bg-blue-400"
                     >
                       <button
                         onClick={() => {
