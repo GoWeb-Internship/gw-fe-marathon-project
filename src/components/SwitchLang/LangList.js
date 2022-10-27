@@ -18,20 +18,20 @@ const LangList = ({ active }) => {
   };
 
   return (
-    <ul className="absolute left-0 mt-6 max-h-60 w-full box-border overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-20">
+    <ul className="shadow-lg absolute left-0 z-20 mt-6 box-border max-h-60 w-full overflow-auto rounded-md bg-white ring-1 ring-black ring-opacity-5">
       {languages.map(lng => (
         <li
           key={lng}
-          className="h-12 flex items-center justify-center cursor-pointer shadow-main block transition-all  text-sm leading-4 py-1 active:accent dark:text-font-light bg-light dark:bg-accent-dark hover:border-b-2 hover:border-accent  accent dark:hover:text-hover border-b-2 last:border-transparent"
+          className="bg-light block flex h-11 cursor-pointer items-center justify-center border-b-2 py-1  text-sm leading-4 shadow-main transition-all last:border-transparent hover:bg-hover-light dark:bg-body-dark dark:bg-accent-dark dark:text-font-light dark:hover:bg-hover-dark"
         >
           <Link
             to={originalPath}
             language={lng}
             className={`${
               active === lng
-                ? 'underline underline-offset-4 decoration-accent text-accent hover:text-hover '
-                : 'text-font-dark dark:text-font-light dark:hover:text-hover hover:text-hover'
-            } block w-full h-full flex items-center hover:text-hover justify-center`}
+                ? 'text-accent underline decoration-accent underline-offset-4'
+                : 'text-font-dark dark:text-font-light '
+            } block flex h-full w-full items-center justify-center `}
           >
             {normalizedLang(lng)}
           </Link>

@@ -1,16 +1,16 @@
 import * as React from 'react';
-import Header from '../Header';
+import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
 
 const Layout = ({ children, openModal }) => {
   return (
     <div>
-      <div className="bg-accent dark:bg-accent-dark">
+      <div className="bg-accent dark:bg-accent-dark ">
         <Header openModal={openModal} />
-        <Hero />
+        <Hero openModal={openModal} />
       </div>
-      <main>{children}</main>
+      <main className="bg-body dark:bg-body-dark ">{children}</main>
 
       <Footer />
     </div>

@@ -49,13 +49,18 @@ module.exports = {
           dark: '#1D1C4A', // class="bg-font-dark text-font-dark border-font-dark"
           light: '#FCFCFC', // class="bg-font-light text-font-light border-font-light"
           placeholder: '#9A9A9A', // class="bg-font-placeholder text-font-placeholder border-font-placeholder"
+          search: '#D9D9D9',
         },
         icon: {
           secondary: '#A6B3C9', // class="text-icon-secondary border-icon-secondary"
           light: '#FCFCFC', // class="bg-icon-light text-icon-light border-icon-light"
           accent: '#3B82F6', // class="bg-icon-accent text-icon-accent border-icon-accent"
         },
-        hover: '#1D4ED8',
+        hover: {
+          DEFAULT: '#1D4ED8',
+          light: '#E0E7FF',
+          dark: '#0F0E39',
+        },
       },
       // CONTAINER
       container: {
