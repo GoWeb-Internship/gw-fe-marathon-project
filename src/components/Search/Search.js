@@ -5,15 +5,24 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useSearch } from '../utils/searchContext';
+import { useSearch } from '../../utils/searchContext';
 import PropTypes from 'prop-types';
+import {
+  searchInput,
+  foundOption,
+  noResultsWrapper,
+  noResultsTitle,
+  searchWord,
+  noResultsDesc,
+  btnToFeedbackPage,
+} from './Search.module.css';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
-  const { days } = useSearch();
 
+  const { days } = useSearch();
   const { t } = useTranslation();
   const noAnswer = t('noAnswer', { returnObjects: true });
 
@@ -70,7 +79,7 @@ const Search = ({ onNavigate, closeModal }) => {
       <form>
         <DebounceInput
           debounceTimeout={300}
-          className="w-80 border-b-2 pt-2 pb-2 pl-3  placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
+          className={searchInput}
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
@@ -88,7 +97,7 @@ const Search = ({ onNavigate, closeModal }) => {
                   onClick={() => {
                     handleRedirect(chapter, id);
                   }}
-                  className="cursor-pointer truncate text-left hover:text-blue-900"
+                  className={foundOption}
                 >
                   <Markdown>{question_title}</Markdown>
                 </li>
@@ -99,13 +108,12 @@ const Search = ({ onNavigate, closeModal }) => {
       ) : null}
 
       {filteredQuestions?.length === 0 && (
-        <div className="mt-4 flex flex-col items-center">
-          <h3 className="w-80 text-xl font-bold leading-6 text-slate-900 ">
-            {noAnswer.title}{' '}
-            <span className="text-blue-500">{searchPhrase}</span>
+        <div className={noResultsWrapper}>
+          <h3 className={noResultsTitle}>
+            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
           </h3>
-          <p className="mt-5 text-base">{noAnswer.description}</p>
-          <button className="mt-4 rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700">
+          <p className={noResultsDesc}>{noAnswer.description}</p>
+          <button className={btnToFeedbackPage}>
             <Link to="/feedback">{noAnswer.button}</Link>
           </button>
         </div>
