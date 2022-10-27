@@ -5,7 +5,9 @@ import * as yup from 'yup';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { Link } from 'gatsby';
 import { sendFeedbackMessage } from '../utils/feedbackFormApi';
-import Container from './Container';
+import Section from './Section';
+import Button from './Button';
+import icons from '../assets/images/sprite.svg';
 
 const resizeTextarea = {
   resize: 'none',
@@ -75,49 +77,89 @@ const FeedbackForm = () => {
   // }, [formState, reset]);
 
   return (
-    <section className="pt-[34px] pb-[34px]">
-      <Container>
-        {formResult ? (
-          <div>
-            <h2>{formText.successTitle}</h2>
-            <p>{formText.successAnswer}</p>
-            <Link onClick={backToPage} to="/">
+    <Section styles="pt-[34px] pb-[34px] xl:pt-[80px] xl:pb-[80px]">
+      {formResult ? (
+        <div className="md:flex md:flex-row-reverse md:justify-between">
+          <div className="text-left md:w-[337px] xl:w-[472px] xl:pt-[98px]">
+            <h2 className="mb-4 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
+              {formText.successTitle}
+            </h2>
+            <p className="mb-6 font-inter text-base font-normal leading-[19px] text-font-dark dark:text-font-light md:mb-9 md:text-lg md:font-light md:leading-[22px] xl:mb-16 xl:text-2xl xl:leading-[29px]">
+              {formText.successAnswer}
+            </p>
+            <Link
+              className="inline-block rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700 xl:text-lg xl:font-semibold xl:leading-[22px]"
+              onClick={backToPage}
+              to="/"
+            >
               {formText.home}
             </Link>
           </div>
-        ) : (
-          <div>
-            <h2 className="text-font-dark text-xl leading-6 font-bold">
+          <svg className="h-[212px] w-[334px] max-md:min-w-full xl:h-[436px] xl:w-[684px]">
+            <use href={`${icons}#success-section`} />
+          </svg>
+        </div>
+      ) : (
+        <div className="flex-row-reverse justify-between md:flex">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="text-left max-md:mb-[34px] max-sm:min-w-full md:w-[337px] xl:w-[480px]"
+          >
+            <h2 className="mb-8 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
               {formText.title}
             </h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+
+            <div className="relative mb-8">
               <input
-                className="bg-amber-300"
+                className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                {...register('name')}
+                placeholder={formText.name}
+              />
+              <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                {errors.name?.message}
+              </p>
+            </div>
+
+            <div className="relative mb-14">
+              <input
+                className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
                 {...register('email')}
                 placeholder={formText.email}
                 type="email"
               />
-              <p>{errors.email?.message}</p>
-              <input
-                className="bg-amber-300"
-                {...register('name')}
-                placeholder={formText.name}
-              />
-              <p>{errors.name?.message}</p>
+              <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                {errors.email?.message}
+              </p>
+            </div>
+
+            <div className="relative mb-10">
               <textarea
-                className="w-60 h-60 bg-amber-300"
+                className=" h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
                 {...register('message')}
                 placeholder={formText.question}
                 style={resizeTextarea}
               />
-              <p>{errors.message?.message}</p>
+              <p className="absolute top-[124px] left-2 font-inter text-xs font-extralight dark:text-font-light">
+                {errors.message?.message}
+              </p>
+            </div>
 
-              <button type="submit">{formText.send}</button>
-            </form>
+            <Button text={formText.send} type="submit"></Button>
+          </form>
+          <div className="md:flex md:flex-col-reverse">
+            <svg className=" h-[212px] w-[334px] max-md:min-w-full md:hidden">
+              <use href={`${icons}#feedback-page`} />
+            </svg>
+            <svg className="h-[285px] w-[334px] max-md:hidden md:mb-[100px] xl:hidden ">
+              <use href={`${icons}#feedback-page-tablet`} />
+            </svg>
+            <svg className="h-[436px] w-[687px] max-xl:hidden xl:mb-[18px]">
+              <use href={`${icons}#feedback-page-desktop`} />
+            </svg>
           </div>
-        )}
-      </Container>
-    </section>
+        </div>
+      )}
+    </Section>
   );
 };
 
