@@ -6,9 +6,9 @@ import Hero from '../Hero';
 const Layout = ({ children, openModal }) => {
   return (
     <div>
-      <div className="bg-accent dark:bg-accent-dark">
+      <div className="bg-accent dark:bg-accent-dark ">
         <Header openModal={openModal} />
-        <Hero />
+        <Hero openModal={openModal} />
       </div>
       <main>{children}</main>
 
