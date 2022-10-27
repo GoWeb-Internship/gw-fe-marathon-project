@@ -8,7 +8,6 @@ import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
-import Hero from '../components/Hero/Hero';
 
 const IndexPage = ({ data, location }) => {
   const days = [
