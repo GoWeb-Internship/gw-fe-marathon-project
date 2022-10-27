@@ -10,7 +10,7 @@ const Layout = ({ children, openModal }) => {
         <Header openModal={openModal} />
         <Hero openModal={openModal} />
       </div>
-      <main>{children}</main>
+      <main className="bg-body dark:bg-body-dark ">{children}</main>
 
       <Footer />
     </div>
