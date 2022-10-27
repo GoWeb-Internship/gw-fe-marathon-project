@@ -10,7 +10,7 @@ import Logo from './Logo';
 import { useState } from 'react';
 import Menu from './Menu';
 import { useEffect } from 'react';
-import icons from '../assets/images/sprite.svg';
+import Icon from './Icon';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,9 +74,10 @@ const Header = ({ openModal }) => {
         <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       </Container>
 
-      <svg className="absolute -top-1 -left-1 h-[53px] w-[42px]">
-        <use href={`${icons}#hero-top`} />
-      </svg>
+      <Icon
+        className="absolute -top-1 -left-1 h-[53px] w-[42px]"
+        iconId="hero-top"
+      />
     </header>
   );
 };

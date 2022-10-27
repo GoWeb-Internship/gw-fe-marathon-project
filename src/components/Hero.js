@@ -1,9 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Container from './Container';
-import icons from '../assets/images/sprite.svg';
 import useMediaRules from '../helpers/getMedia';
+
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
+import Icon from './Icon';
 
 const Hero = ({ openModal }) => {
   const { t } = useTranslation();
@@ -25,12 +27,14 @@ const Hero = ({ openModal }) => {
           </button>
         )}
       </Container>
-      <svg className="absolute  bottom-0 h-[172px] w-[268px] md:right-[-13px] md:bottom-[-3px] md:h-[231px] md:w-[369px] xl:bottom-[-7px] xl:right-[-20px] xl:h-[508px] xl:w-[812px]">
-        <use href={`${icons}#hero-section`} />
-      </svg>
-      <svg className="absolute bottom-0 left-0 h-[53px] w-[42px]">
-        <use href={`${icons}#hero-bottom`} />
-      </svg>
+      <Icon
+        className="absolute  bottom-0 h-[172px] w-[268px] md:right-[-13px] md:bottom-[-3px] md:h-[231px] md:w-[369px] xl:bottom-[-7px] xl:right-[-20px] xl:h-[508px] xl:w-[812px]"
+        iconId="hero-section"
+      />
+      <Icon
+        className="absolute bottom-0 left-0 h-[53px] w-[42px]"
+        iconId="hero-bottom"
+      />
     </section>
   );
 };
