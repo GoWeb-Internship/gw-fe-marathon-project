@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import { StaticImage } from 'gatsby-plugin-image';
 import Container from './Container';
 import icons from '../assets/images/sprite.svg';
 import useMediaRules from '../helpers/getMedia';
@@ -11,41 +10,28 @@ const Hero = ({ openModal }) => {
   const media = useMediaRules();
 
   return (
-    <section className="relative flex overflow-hidden justify-center h-[220px] md:block md:h-[240px] xl:h-[477px] ">
+    <section className="relative  flex justify-center overflow-hidden pb-[194px] pt-[22px]  md:block md:pt-16 md:pb-[70px] xl:py-[149px] ">
       <Container>
-        <h2 className="text-center font-montserrat font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[342px] md:text-left md:mb-11 xl:pt-[146px] xl:mb-16">
+        <h2 className=" text-center font-montserrat text-xl font-bold leading-[1.2] text-font-light md:mb-11 md:w-[342px] md:text-left md:text-[40px] md:leading-[1.225] xl:mb-16 xl:w-[420px] xl:text-5xl xl:leading-[59px]">
           {t('Title')}
         </h2>
         {media !== 'mobile' && (
           <button
-            className="relative  md:w-[336px] md:h-[28px] border-b-2 border-solid border-b-font-light xl:w-96"
+            className="relative border-b-2 border-solid border-b-font-light  text-left font-inter text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] xl:h-9 xl:w-96"
             onClick={openModal}
           >
-            <MagnifyingGlassIcon className="absolute top-0 right-[10px] h-5 w-5 z-0  text-font-light" />
+            {t('input')}
+            <MagnifyingGlassIcon className="absolute top-0 right-[10px] z-0 h-5 w-5  text-font-light" />
           </button>
         )}
       </Container>
-      {/* <StaticImage
-        src="../assets/images/hero-mob.png"
-        alt="hero"
-        className="absolute h-[167px] w-[266px] top-0"
-      /> */}
-      <svg className="absolute  w-[268px] h-[172px] bottom-0 md:right-0 md:w-[369px] md:h-[231px] md:bottom-[-3px] xl:w-[812px] xl:h-[510px] ">
+      <svg className="absolute  bottom-0 h-[172px] w-[268px] md:right-[-13px] md:bottom-[-3px] md:h-[231px] md:w-[369px] xl:bottom-[-7px] xl:right-[-20px] xl:h-[508px] xl:w-[812px]">
         <use href={`${icons}#hero-section`} />
       </svg>
-      <svg className="absolute bottom-0 left-0 w-[42px] h-[53px]">
+      <svg className="absolute bottom-0 left-0 h-[53px] w-[42px]">
         <use href={`${icons}#hero-bottom`} />
       </svg>
     </section>
-    // <input
-    //   className="w-12 h-12 relative z-1 bg-transparent cursor-default"
-    //   type="text"
-    //   name="search"
-    //   onChange={e => {
-    //     e.target.value = '';
-    //     openModal();
-    //   }}
-    // />
   );
 };
 export default Hero;
