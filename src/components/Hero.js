@@ -13,7 +13,7 @@ const Hero = ({ openModal }) => {
   return (
     <section className="relative flex overflow-hidden justify-center h-[220px] md:block md:h-[240px] xl:h-[477px] ">
       <Container>
-        <h2 className="text-center font-montserrat font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[342px] md:text-left md:mb-11 xl:py-[146px]">
+        <h2 className="text-center font-montserrat font-bold text-xl leading-[1.2] text-font-light md:text-[40px] md:leading-[1.225] md:w-[342px] md:text-left md:mb-11 xl:pt-[146px] xl:mb-16">
           {t('Title')}
         </h2>
         {media !== 'mobile' && (
