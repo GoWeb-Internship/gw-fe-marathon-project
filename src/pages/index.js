@@ -8,7 +8,7 @@ import Modal from '../components/Modal';
 import Accordion from '../components/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
-import Hero from '../components/Hero/Hero';
+import ChapterList from '../components/Chapter';
 
 const IndexPage = ({ data, location }) => {
   const days = [
@@ -98,27 +98,11 @@ const IndexPage = ({ data, location }) => {
       <Layout openModal={openModal}>
         <Section>
           <p>{t('Subtitle')}</p>
-
-          <ul className="flex gap-3">
-            {days
-              ? days?.map(({ frontmatter }) => {
-                  return (
-                    <li
-                      key={frontmatter.title}
-                      className="flex gap-3 rounded-md bg-blue-700 p-4 text-white duration-300 hover:bg-blue-400"
-                    >
-                      <button
-                        onClick={() => {
-                          setOpenedDayId(frontmatter.chapter);
-                        }}
-                      >
-                        {frontmatter.title}
-                      </button>
-                    </li>
-                  );
-                })
-              : null}
-          </ul>
+          <ChapterList
+            days={days}
+            setOpenedDayId={setOpenedDayId}
+            openedDayId={openedDayId}
+          />
           <ul>
             {days
               ? days

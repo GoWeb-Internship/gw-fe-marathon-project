@@ -1,0 +1,15 @@
+.list {
+  @apply mb-[34px] md:mb-11 xl:mb-16 xl:flex;
+}
+
+.item {
+  @apply mb-2 font-inter text-base font-normal leading-[19px] text-font-dark last:mb-0  md:text-[18px] md:leading-[22px] xl:mr-6 xl:mb-0 xl:text-[24px] xl:leading-[29px] xl:last:mr-0;
+}
+
+.button {
+  @apply w-full rounded-lg border border-solid border-accent bg-transparent py-4 px-6 text-left duration-300 hover:border-hover hover:bg-hover  hover:text-font-light;
+}
+
+.activeButton {
+  @apply border-accent bg-accent text-font-light;
+}

@@ -1,13 +1,17 @@
 import React from 'react';
+import { item, button, activeButton } from './Chapter.module.css';
 
-const ChapterItem = ({ setOpenedDayId, frontmatter }) => {
+const ChapterItem = ({ onClick, active, frontmatter }) => {
   return (
-    <li>
+    <li className={`${item} dark:text-white`}>
       <button
-        onClick={() => {
-          setOpenedDayId(frontmatter.chapter);
-        }}
-      ></button>
+        className={`${
+          active === frontmatter.chapter && activeButton
+        } ${button} `}
+        onClick={onClick}
+      >
+        {frontmatter.title}
+      </button>
     </li>
   );
 };
