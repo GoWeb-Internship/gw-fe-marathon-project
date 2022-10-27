@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 export default function Logo() {
   return (
-    <Link to="/" className="relative z-20 block h-full w-full  ">
+    <Link to="/" className="w-25 relative z-20 block h-full">
       <img
         src={logo}
         alt="company logo"
