@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useI18next } from 'gatsby-plugin-react-i18next';
 import LangList from './LangList';
-import LangBackdrop from './LangBackdrop';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import Backdrop from '../Backdrop';
 
 export const normalizeLang = language =>
   language === 'uk' ? 'UA' : language.toUpperCase();
@@ -28,7 +28,10 @@ const SwitchLang = () => {
       {dropdown && (
         <>
           <LangList active={language} />
-          <LangBackdrop onClose={toggle} />
+          <Backdrop
+            className="fixed top-0 left-0 z-10 h-full w-full"
+            handleCloseFunction={toggle}
+          />
         </>
       )}
     </div>
