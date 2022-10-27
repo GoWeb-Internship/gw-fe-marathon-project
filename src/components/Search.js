@@ -6,6 +6,7 @@ import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
 import { useSearch } from '../utils/searchContext';
+import PropTypes from 'prop-types';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -69,7 +70,7 @@ const Search = ({ onNavigate, closeModal }) => {
       <form>
         <DebounceInput
           debounceTimeout={300}
-          className="border-b-2 placeholder:text-slate-400 focus:outline-none w-80 focus:border-sky-500  pt-2 pb-2 pl-3"
+          className="w-80 border-b-2 pt-2 pb-2 pl-3  placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
@@ -87,7 +88,7 @@ const Search = ({ onNavigate, closeModal }) => {
                   onClick={() => {
                     handleRedirect(chapter, id);
                   }}
-                  className="text-left truncate cursor-pointer hover:text-blue-900"
+                  className="cursor-pointer truncate text-left hover:text-blue-900"
                 >
                   <Markdown>{question_title}</Markdown>
                 </li>
@@ -98,13 +99,13 @@ const Search = ({ onNavigate, closeModal }) => {
       ) : null}
 
       {filteredQuestions?.length === 0 && (
-        <div className="flex flex-col items-center mt-4">
-          <h3 className="text-slate-900 font-bold text-xl leading-6 w-80 ">
+        <div className="mt-4 flex flex-col items-center">
+          <h3 className="w-80 text-xl font-bold leading-6 text-slate-900 ">
             {noAnswer.title}{' '}
             <span className="text-blue-500">{searchPhrase}</span>
           </h3>
           <p className="mt-5 text-base">{noAnswer.description}</p>
-          <button className="bg-blue-700 rounded border-2 duration-300 mt-4 border-blue-700 text-white py-4 px-8 hover:text-blue-700 hover:bg-white">
+          <button className="mt-4 rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700">
             <Link to="/feedback">{noAnswer.button}</Link>
           </button>
         </div>
@@ -114,3 +115,8 @@ const Search = ({ onNavigate, closeModal }) => {
 };
 
 export default Search;
+
+Search.propTypes = {
+  onNavigate: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};

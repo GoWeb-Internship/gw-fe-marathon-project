@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Menu from './Menu';
 import { useEffect } from 'react';
 import Icon from './Icon';
+import PropTypes from 'prop-types';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,3 +84,7 @@ const Header = ({ openModal }) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  openModal: PropTypes.func.isRequired,
+};
