@@ -2,6 +2,7 @@ import Markdown from 'markdown-to-jsx';
 import React from 'react';
 import { memo } from 'react';
 import {
+  accordionItem,
   accordionHeading,
   accordionHeadingShown,
   accordionContent,
@@ -19,7 +20,7 @@ const AccordionItem = memo(({ data, titleId, changeId }) => {
   }
 
   return (
-    <li className="accordion">
+    <li className={accordionItem}>
       <div
         onClick={() => hamdleClick(data.id)}
         className={titleId[data.id] ? accordionHeadingShown : accordionHeading}

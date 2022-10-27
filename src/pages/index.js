@@ -5,7 +5,7 @@ import { graphql, navigate } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
-import Accordion from '../components/Accordion';
+import Accordion from '../components/Accordion/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
