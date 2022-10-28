@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
 
-const Layout = ({ children, openModal }) => {
+const Layout = ({ children, openModal, display }) => {
   return (
     <div className=" flex min-h-screen flex-col">
       <div className="bg-accent dark:bg-accent-dark ">
