@@ -1,5 +1,5 @@
 .logoLink {
-  @apply relative z-20 block h-full w-24;
+  @apply relative z-20 block h-full w-20 md:w-24;
 }
 
 .logo {
