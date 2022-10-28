@@ -76,19 +76,17 @@ const Search = ({ onNavigate, closeModal }) => {
 
   return (
     <div>
-      <form>
-        <DebounceInput
-          debounceTimeout={300}
-          className={`${searchInput} dark:text-font-dark`}
-          type="text"
-          onChange={handleInputChange}
-          value={searchPhrase}
-          placeholder={t('input')}
-        />
-      </form>
+      <DebounceInput
+        debounceTimeout={300}
+        className={`${searchInput} dark:bg-overlay-dark dark:text-font-dark  `}
+        type="text"
+        onChange={handleInputChange}
+        value={searchPhrase}
+        placeholder={t('input')}
+      />
 
-      {filteredQuestions ? (
-        <div>
+      <div className="mt-7 rounded-lg bg-body p-4 dark:bg-body-dark ">
+        {filteredQuestions ? (
           <ul>
             {filteredQuestions?.map(({ question_title, chapter, id }) => {
               return (
@@ -104,20 +102,23 @@ const Search = ({ onNavigate, closeModal }) => {
               );
             })}
           </ul>
-        </div>
-      ) : null}
+        ) : null}
 
-      {filteredQuestions?.length === 0 && (
-        <div className={noResultsWrapper}>
-          <h3 className={noResultsTitle}>
-            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
-          </h3>
-          <p className={noResultsDesc}>{noAnswer.description}</p>
-          <button className={btnToFeedbackPage}>
-            <Link to="/feedback">{noAnswer.button}</Link>
-          </button>
-        </div>
-      )}
+        {filteredQuestions?.length === 0 && (
+          <div
+            className={`${noResultsWrapper} rounded-lg bg-body p-4 dark:bg-body-dark`}
+          >
+            <h3 className={noResultsTitle}>
+              {noAnswer.title}{' '}
+              <span className={searchWord}>{searchPhrase}</span>
+            </h3>
+            <p className={noResultsDesc}>{noAnswer.description}</p>
+            <button className={btnToFeedbackPage}>
+              <Link to="/feedback">{noAnswer.button}</Link>
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

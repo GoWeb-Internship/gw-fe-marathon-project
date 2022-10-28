@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Search from './Search/Search';
+import Container from './Container';
 
 const Modal = ({ isOpen, closeModal, onNavigate }) => {
   return (
@@ -30,7 +31,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="shadow-xl w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle transition-all dark:bg-body-dark">
+                <Dialog.Panel className="shadow-xl max-w-xs transform overflow-hidden  text-center  align-middle  transition-all dark:bg-body-dark dark:text-font-light md:px-8">
                   <Search onNavigate={onNavigate} closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>

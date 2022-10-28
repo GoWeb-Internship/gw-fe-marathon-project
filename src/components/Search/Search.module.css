@@ -1,5 +1,5 @@
 .searchInput {
-  @apply w-80 border-b-2 pt-2 pb-2 pl-3  placeholder:text-slate-400 focus:border-sky-500 focus:outline-none;
+  @apply w-[329px] border-b-2 bg-transparent pb-3 pl-3 text-left text-font-light caret-current outline-none placeholder:text-font-placeholder  md:w-[374px];
 }
 
 .foundOption {
@@ -7,11 +7,11 @@
 }
 
 .noResultsWrapper {
-  @apply mt-4 flex flex-col items-center;
+  @apply flex flex-col items-center;
 }
 
 .noResultsTitle {
-  @apply w-80 text-xl font-bold leading-6;
+  @apply text-xl font-bold leading-6;
 }
 
 .searchWord {
