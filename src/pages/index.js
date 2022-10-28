@@ -94,7 +94,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section>
+        <Section styles="py-8">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
