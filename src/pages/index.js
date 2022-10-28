@@ -127,7 +127,7 @@ const IndexPage = ({ data, location }) => {
           />
           <Icon
             iconId="main-page-desktop"
-            className="max-xl:hidden xl:absolute  xl:top-[283px] xl:h-[464px] xl:w-[482px]"
+            className=" max-xl:hidden xl:absolute  xl:top-[283px] xl:h-[464px] xl:w-[482px]"
           />
           <Modal
             isOpen={isOpen}
