@@ -1,5 +1,5 @@
 .subheadTitle {
-  @apply mb-[22px] font-montserrat text-lg font-bold leading-[22px] md:mb-[34px] md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px];
+  @apply mb-[22px] font-montserrat text-lg font-bold leading-[22px] md:mb-8 md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px];
 }
 
 .subhead {

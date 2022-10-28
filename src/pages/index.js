@@ -95,13 +95,13 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-[34px]">
+        <Section styles="py-[34px] md:py-11 xl:relative">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
             openedDayId={openedDayId}
           />
-          <ul className="pb-8">
+          <ul className="pb-8 xl:ml-auto xl:w-[686px] xl:max-w-[686px]">
             {days
               ? days
                   ?.find(day => openedDayId === day.frontmatter.chapter)
@@ -121,7 +121,14 @@ const IndexPage = ({ data, location }) => {
               : null}
           </ul>
 
-          <Icon iconId="main-section" />
+          <Icon
+            iconId="main-page"
+            className="mx-auto h-[212px] w-[335px] md:h-[442px] md:w-[704px] xl:hidden"
+          />
+          <Icon
+            iconId="main-page-desktop"
+            className="max-xl:hidden xl:absolute xl:top-[300px] xl:h-[464px] xl:w-[482px]"
+          />
           <Modal
             isOpen={isOpen}
             closeModal={closeModal}
