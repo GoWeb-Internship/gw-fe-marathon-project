@@ -9,6 +9,7 @@ import Accordion from '../components/Accordion/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
+import Icon from '../components/Icon';
 
 const IndexPage = ({ data, location }) => {
   const days = [
@@ -94,13 +95,13 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-8">
+        <Section styles="py-[34px]">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
             openedDayId={openedDayId}
           />
-          <ul>
+          <ul className="pb-8">
             {days
               ? days
                   ?.find(day => openedDayId === day.frontmatter.chapter)
@@ -119,6 +120,8 @@ const IndexPage = ({ data, location }) => {
                   )
               : null}
           </ul>
+
+          <Icon iconId="main-section" />
           <Modal
             isOpen={isOpen}
             closeModal={closeModal}
