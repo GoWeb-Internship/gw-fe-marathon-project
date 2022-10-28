@@ -79,7 +79,7 @@ const Search = ({ onNavigate, closeModal }) => {
       <form>
         <DebounceInput
           debounceTimeout={300}
-          className={searchInput}
+          className={`${searchInput} dark:text-font-dark`}
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
