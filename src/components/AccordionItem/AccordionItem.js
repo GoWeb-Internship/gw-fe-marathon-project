@@ -23,16 +23,20 @@ const AccordionItem = memo(({ data, titleId, changeId }) => {
     <li className={accordionItem}>
       <div
         onClick={() => hamdleClick(data.id)}
-        className={titleId[data.id] ? accordionHeadingShown : accordionHeading}
+        className={
+          titleId[data.id]
+            ? `${accordionHeadingShown} dark:!bg-hover-dark`
+            : accordionHeading
+        }
       >
         <h3 className={title}>
           <Markdown>{data.title}</Markdown>
         </h3>
 
         {titleId[data.id] ? (
-          <MinusCircleIcon className={minusIcon} />
+          <MinusCircleIcon className={`${minusIcon} ml-4`} />
         ) : (
-          <PlusCircleIcon className={plusIcon} />
+          <PlusCircleIcon className={`${plusIcon} ml-4`} />
         )}
       </div>
 
