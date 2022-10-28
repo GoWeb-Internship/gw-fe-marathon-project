@@ -16,7 +16,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-overlay dark:bg-overlay-dark" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -30,7 +30,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="shadow-xl w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle transition-all">
+                <Dialog.Panel className="shadow-xl w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle transition-all dark:bg-body-dark">
                   <Search onNavigate={onNavigate} closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>

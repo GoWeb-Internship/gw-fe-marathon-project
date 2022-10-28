@@ -13,7 +13,7 @@
 }
 
 body {
-  @apply font-inter font-normal  text-font-dark;
+  @apply font-inter font-normal text-font-dark  dark:text-font-light;
 }
 
 .visually-hidden {

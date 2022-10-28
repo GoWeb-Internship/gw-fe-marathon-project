@@ -25,8 +25,6 @@ const IndexPage = ({ data, location }) => {
   );
   const [questionId, setQuestionId] = useState({});
 
-  const { t } = useTranslation();
-
   let obj = {};
 
   useEffect(() => {
@@ -97,7 +95,6 @@ const IndexPage = ({ data, location }) => {
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
         <Section>
-          <p>{t('Subtitle')}</p>
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
