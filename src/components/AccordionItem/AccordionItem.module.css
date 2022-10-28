@@ -22,11 +22,11 @@
 }
 
 .plusIcon {
-  @apply h-[18px] w-[18px] text-accent md:h-6 md:w-6;
+  @apply h-[18px] w-[18px] shrink-0 text-accent md:h-6 md:w-6;
 }
 
 .minusIcon {
-  @apply h-[18px] w-[18px] text-icon-secondary md:h-6 md:w-6;
+  @apply h-[18px] w-[18px] shrink-0 text-icon-secondary md:h-6 md:w-6;
 }
 
 .content {
@@ -43,13 +43,12 @@
   overflow: hidden;
   box-sizing: content-box;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out; */
+  transition: all 0.2s ease-in-out; */
 }
 
 .accordionContentShow {
-  @apply mb-4 rounded-lg p-4 text-xs leading-4 shadow-main last:mb-0 dark:!bg-hover-dark md:text-base md:leading-5 xl:text-lg xl:leading-6;
-  /* max-height:
-  2000px ;
+  /* @apply mb-4 rounded-lg p-4 text-xs leading-4 shadow-main last:mb-0 dark:!bg-hover-dark md:text-base md:leading-5 xl:text-lg xl:leading-6;
+  max-height: 2000px;
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow: scroll;
