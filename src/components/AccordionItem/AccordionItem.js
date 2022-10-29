@@ -7,7 +7,6 @@ import {
   accordionHeadingShown,
   accordionContent,
   accordionContentShow,
-  title,
   plusIcon,
   minusIcon,
 } from './AccordionItem.module.css';
@@ -29,7 +28,7 @@ const AccordionItem = memo(({ data, titleId, changeId }) => {
             : accordionHeading
         }
       >
-        <h3 className={title}>
+        <h3>
           <Markdown>{data.title}</Markdown>
         </h3>
 
