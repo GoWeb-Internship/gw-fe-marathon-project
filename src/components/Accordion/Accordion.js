@@ -2,7 +2,14 @@ import React from 'react';
 import AccordionItem from '../AccordionItem/AccordionItem';
 import { subheadTitle, subhead } from './Accordion.module.css';
 
-const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
+const Accordion = ({
+  subhead_title,
+  questions,
+  questionId,
+  changeId,
+  location,
+  chapter,
+}) => {
   return (
     <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>
@@ -17,6 +24,8 @@ const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
                   data={question}
                   titleId={questionId}
                   changeId={changeId}
+                  location={location}
+                  chapter={chapter}
                 />
               );
             }),

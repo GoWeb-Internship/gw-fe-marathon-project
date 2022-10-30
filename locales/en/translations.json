@@ -30,5 +30,6 @@
     "title": "Sorry, temporary system failure",
     "description": "Would you like to return to the home page?",
     "button": "Home"
-  }
+  },
+  "copyLink": "Link copied"
 }

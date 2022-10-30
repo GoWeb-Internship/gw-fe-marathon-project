@@ -141,6 +141,8 @@ const IndexPage = ({ data, location }) => {
                           questions={questions}
                           questionId={questionId}
                           changeId={handleChangeAccordion}
+                          location={location}
+                          chapter={openedDayId}
                         />
                       );
                     },
