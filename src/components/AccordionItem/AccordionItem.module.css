@@ -38,3 +38,11 @@
 .accordionContentShow code {
   @apply font-bold;
 }
+
+.copyIcon {
+  @apply z-10 ml-auto h-6 w-6 shrink-0 text-hover-light;
+}
+
+.copyIconHover {
+  @apply z-10 ml-auto h-6 w-6 shrink-0 text-accent;
+}
