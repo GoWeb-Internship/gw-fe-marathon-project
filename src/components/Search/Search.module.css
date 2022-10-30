@@ -3,11 +3,11 @@
 }
 
 .searchWrap {
-  @apply relative w-[300px] xs:w-[329px]  md:w-[374px];
+  @apply relative w-[300px]   md:w-[336px] xl:w-[375px];
 }
 
 .searchInput {
-  @apply w-[300px] border-b-2 bg-transparent pb-2 pl-2 text-left text-[16px]   text-font-light caret-current outline-none placeholder:text-font-placeholder xs:w-[329px]  md:w-[374px];
+  @apply w-[300px] border-b-2 bg-transparent pb-2 pl-2 text-left text-[16px]   text-font-light caret-current outline-none placeholder:text-font-placeholder  md:w-[335px]  xl:w-[375px];
 }
 
 .xMarkIcon {

@@ -9,7 +9,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
         <Dialog as="div" className="relative" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="ease-out duration-200"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="ease-in duration-200"
@@ -20,7 +20,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
           </Transition.Child>
 
           <div className="fixed inset-0 z-20  overflow-y-auto">
-            <div className="flex min-h-full items-start justify-center pt-32 pb-7 text-center md:pt-20 xl:pt-32">
+            <div className="flex min-h-full items-start justify-center pt-32 pb-7 text-center md:pt-[268px] xl:pt-[407px]">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"

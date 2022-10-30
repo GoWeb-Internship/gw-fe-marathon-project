@@ -62,7 +62,7 @@ const Search = ({ onNavigate, closeModal }) => {
 
     setArrayOfQuestions(arrayOfQuestions);
   }, [days]);
-  console.log(filteredQuestions);
+
   useEffect(() => {
     if (!searchPhrase.trim() || !arrayOfQuestions) {
       setFilteredQuestions(null);
