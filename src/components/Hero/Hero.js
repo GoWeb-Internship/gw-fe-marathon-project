@@ -11,9 +11,11 @@ import {
   iconBottom,
   section,
   search,
+  searchIconHidden,
+  searchHidden,
 } from './Hero.module.css';
 
-const Hero = ({ openModal }) => {
+const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
   const media = useMediaRules();
 
@@ -22,9 +24,14 @@ const Hero = ({ openModal }) => {
       <Container>
         <h2 className={title}>{t('title')}</h2>
         {media !== 'mobile' && (
-          <button className={search} onClick={openModal}>
+          <button
+            className={`${isOpen ? searchHidden : search}`}
+            onClick={openModal}
+          >
             {t('input')}
-            <MagnifyingGlassIcon className={searchIcon} />
+            <MagnifyingGlassIcon
+              className={`${isOpen ? searchIconHidden : searchIcon}`}
+            />
           </button>
         )}
         <Icon className={people} iconId="hero-section" />
