@@ -1,10 +1,20 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import Backdrop from './Backdrop';
-import Container from './Container';
-import SwitchLang from './SwitchLang';
-import ToggleTheme from './ToggleTheme';
+import Backdrop from '../Backdrop';
+import Container from '../Container';
+import SwitchLang from '../SwitchLang';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import PropTypes from 'prop-types';
+import {
+  menuWrapper,
+  menuShown,
+  menuHidden,
+  menuLangItem,
+  menuThemeItem,
+  menuBackdrop,
+  menuBackdropShown,
+  menuBackdropHidden,
+} from './Menu.module.css';
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
@@ -24,18 +34,15 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <div
-        className={`fixed left-0 top-0 z-10 h-80 w-screen bg-menu pt-28 transition duration-200 ease-in-out dark:bg-menu-dark md:hidden ${
-          isMenuOpen
-            ? 'translate-x-0 opacity-100'
-            : '-translate-x-full opacity-0'
-        }`}
+        className={`${menuWrapper} 
+          ${isMenuOpen ? menuShown : menuHidden}`}
       >
         <Container>
           <ul>
-            <li className="mb-4 rounded-lg bg-accent shadow-main dark:bg-accent-dark">
+            <li className={menuLangItem}>
               <SwitchLang />
             </li>
-            <li className="rounded-lg bg-accent p-4 shadow-main dark:bg-accent-dark">
+            <li className={menuThemeItem}>
               <ToggleTheme />
             </li>
           </ul>
@@ -43,10 +50,8 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
       </div>
 
       <Backdrop
-        className={`fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out dark:bg-overlay-dark md:hidden  ${
-          isMenuOpen
-            ? 'translate-x-0 opacity-100'
-            : '-translate-x-full opacity-0'
+        className={`${menuBackdrop} ${
+          isMenuOpen ? menuBackdropShown : menuBackdropHidden
         }`}
         handleCloseFunction={toggleMenu}
       />

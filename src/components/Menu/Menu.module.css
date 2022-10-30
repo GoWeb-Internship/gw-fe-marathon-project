@@ -1,0 +1,31 @@
+.menuWrapper {
+  @apply fixed left-0 top-0 z-10 h-80 w-screen bg-menu pt-28 transition duration-200 ease-in-out dark:bg-menu-dark md:hidden;
+}
+
+.menuShown {
+  @apply translate-x-0 opacity-100;
+}
+
+.menuHidden {
+  @apply -translate-x-full opacity-0;
+}
+
+.menuLangItem {
+  @apply mb-4 rounded-lg bg-accent shadow-main dark:bg-accent-dark;
+}
+
+.menuThemeItem {
+  @apply rounded-lg bg-accent p-4 shadow-main dark:bg-accent-dark;
+}
+
+.menuBackdrop {
+  @apply fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out dark:bg-overlay-dark md:hidden;
+}
+
+.menuBackdropShown {
+  @apply translate-x-0 opacity-100;
+}
+
+.menuBackdropHidden {
+  @apply -translate-x-full opacity-0;
+}
