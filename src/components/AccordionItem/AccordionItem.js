@@ -49,7 +49,7 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
         className={
           titleId[data.id]
             ? `${accordionHeadingShown} dark:!bg-hover-dark`
-            : `${accordionHeading} `
+            : accordionHeading
         }
       >
         <h3>
