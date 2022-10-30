@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
@@ -7,7 +6,11 @@ import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
 import { useSearch } from '../../utils/searchContext';
 import PropTypes from 'prop-types';
+import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
 import {
+  modalWrap,
+  searchWrap,
   searchInput,
   foundOption,
   noResultsWrapper,
@@ -15,6 +18,10 @@ import {
   searchWord,
   noResultsDesc,
   btnToFeedbackPage,
+  iconGlass,
+  xMarkIcon,
+  infoWrap,
+  link,
 } from './Search.module.css';
 
 const Search = ({ onNavigate, closeModal }) => {
@@ -48,7 +55,7 @@ const Search = ({ onNavigate, closeModal }) => {
 
     setArrayOfQuestions(arrayOfQuestions);
   }, [days]);
-
+  console.log(filteredQuestions);
   useEffect(() => {
     if (!searchPhrase.trim() || !arrayOfQuestions) {
       setFilteredQuestions(null);
@@ -75,17 +82,29 @@ const Search = ({ onNavigate, closeModal }) => {
   };
 
   return (
-    <div>
-      <DebounceInput
-        debounceTimeout={300}
-        className={`${searchInput} dark:bg-overlay-dark dark:text-font-dark  `}
-        type="text"
-        onChange={handleInputChange}
-        value={searchPhrase}
-        placeholder={t('input')}
-      />
+    <div className={modalWrap}>
+      <div className={searchWrap}>
+        <DebounceInput
+          debounceTimeout={300}
+          className={`${searchInput}  dark:border-font-dark dark:text-font-dark dark:placeholder:text-font-dark `}
+          type="text"
+          onChange={handleInputChange}
+          value={searchPhrase}
+          placeholder={t('input')}
+        />
+        <XMarkIcon
+          className={`${xMarkIcon} dark:text-font-dark`}
+          onClick={closeModal}
+        />
+      </div>
 
-      <div className="mt-7 rounded-lg bg-body p-4 dark:bg-body-dark ">
+      <div
+        className={`${
+          filteredQuestions === null
+            ? 'hidden'
+            : `${infoWrap} dark:bg-body-dark`
+        } `}
+      >
         {filteredQuestions ? (
           <ul>
             {filteredQuestions?.map(({ question_title, chapter, id }) => {
@@ -96,7 +115,9 @@ const Search = ({ onNavigate, closeModal }) => {
                     handleRedirect(chapter, id);
                   }}
                   className={foundOption}
+                  title={question_title}
                 >
+                  <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{question_title}</Markdown>
                 </li>
               );
@@ -105,16 +126,16 @@ const Search = ({ onNavigate, closeModal }) => {
         ) : null}
 
         {filteredQuestions?.length === 0 && (
-          <div
-            className={`${noResultsWrapper} rounded-lg bg-body p-4 dark:bg-body-dark`}
-          >
+          <div className={`${noResultsWrapper}`}>
             <h3 className={noResultsTitle}>
               {noAnswer.title}{' '}
               <span className={searchWord}>{searchPhrase}</span>
             </h3>
             <p className={noResultsDesc}>{noAnswer.description}</p>
             <button className={btnToFeedbackPage}>
-              <Link to="/feedback">{noAnswer.button}</Link>
+              <Link to="/feedback" className={link}>
+                {noAnswer.button}
+              </Link>
             </button>
           </div>
         )}
