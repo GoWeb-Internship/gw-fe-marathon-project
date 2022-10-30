@@ -4,7 +4,7 @@ import { subheadTitle, subhead } from './Accordion.module.css';
 
 const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
   return (
-    <div className={subhead}>
+    <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>
       <ul>
         {[
@@ -22,7 +22,7 @@ const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
             }),
         ]}
       </ul>
-    </div>
+    </li>
   );
 };
 

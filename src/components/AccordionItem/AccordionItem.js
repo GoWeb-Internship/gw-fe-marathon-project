@@ -14,14 +14,14 @@ import { PlusCircleIcon } from '@heroicons/react/24/solid';
 import { MinusCircleIcon } from '@heroicons/react/24/outline';
 
 const AccordionItem = memo(({ data, titleId, changeId }) => {
-  function hamdleClick(id) {
+  function handleClick(id) {
     changeId(id);
   }
 
   return (
     <li className={accordionItem}>
       <div
-        onClick={() => hamdleClick(data.id)}
+        onClick={() => handleClick(data.id)}
         className={
           titleId[data.id]
             ? `${accordionHeadingShown} dark:!bg-hover-dark`
