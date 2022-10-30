@@ -101,25 +101,28 @@ const IndexPage = ({ data, location }) => {
             setOpenedDayId={setOpenedDayId}
             openedDayId={openedDayId}
           />
-          <ul className="pb-8 xl:ml-auto xl:w-[686px] xl:max-w-[686px]">
-            {days
-              ? days
-                  ?.find(day => openedDayId === day.frontmatter.chapter)
-                  ?.frontmatter?.subhead?.map(
-                    ({ subhead_title, questions }, index) => {
-                      return (
-                        <Accordion
-                          key={index}
-                          subhead_title={subhead_title}
-                          questions={questions}
-                          questionId={questionId}
-                          changeId={handleChangeAccordion}
-                        />
-                      );
-                    },
-                  )
-              : null}
-          </ul>
+
+          <div>
+            <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-[686px] xl:max-w-[686px]">
+              {days
+                ? days
+                    ?.find(day => openedDayId === day.frontmatter.chapter)
+                    ?.frontmatter?.subhead?.map(
+                      ({ subhead_title, questions }, index) => {
+                        return (
+                          <Accordion
+                            key={index}
+                            subhead_title={subhead_title}
+                            questions={questions}
+                            questionId={questionId}
+                            changeId={handleChangeAccordion}
+                          />
+                        );
+                      },
+                    )
+                : null}
+            </ul>
+          </div>
 
           <Icon
             iconId="main-page"
