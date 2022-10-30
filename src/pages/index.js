@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
@@ -10,13 +9,17 @@ import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
+import getArrayOfQuestions from '../utils/getArrayOfQuestions';
 
 const IndexPage = ({ data, location }) => {
-  const days = [
-    ...data?.allMarkdownRemark?.nodes?.sort(
-      (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
-    ),
-  ];
+  const days = useMemo(
+    () => [
+      ...data?.allMarkdownRemark?.nodes?.sort(
+        (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
+      ),
+    ],
+    [data],
+  );
 
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +28,29 @@ const IndexPage = ({ data, location }) => {
     chapter || days[0].frontmatter.chapter,
   );
   const [questionId, setQuestionId] = useState({});
+  const [dataByChapter, setDataByChapter] = useState(null);
+  const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  console.log(isBtnMoreShown);
 
   let obj = {};
+
+  useEffect(() => {
+    const openedDayData = days?.find(
+      day => openedDayId === day.frontmatter.chapter,
+    ).frontmatter;
+
+    setDataByChapter(openedDayData);
+    setIsBtnMoreShown(false);
+  }, [days, openedDayId]);
+
+  useEffect(() => {
+    if (!dataByChapter) return;
+    const subhead = dataByChapter?.subhead;
+
+    const arrayOfQuestions = getArrayOfQuestions(subhead, chapter);
+
+    arrayOfQuestions?.length > 5 && setIsBtnMoreShown(true);
+  }, [chapter, dataByChapter]);
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
@@ -95,7 +119,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[775px] xl:pt-20 pb-15">
+        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 pb-15">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
@@ -103,25 +127,25 @@ const IndexPage = ({ data, location }) => {
           />
 
           <div>
-            <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-[686px] xl:max-w-[686px]">
-              {days
-                ? days
-                    ?.find(day => openedDayId === day.frontmatter.chapter)
-                    ?.frontmatter?.subhead?.map(
-                      ({ subhead_title, questions }, index) => {
-                        return (
-                          <Accordion
-                            key={index}
-                            subhead_title={subhead_title}
-                            questions={questions}
-                            questionId={questionId}
-                            changeId={handleChangeAccordion}
-                          />
-                        );
-                      },
-                    )
+            <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
+              {dataByChapter
+                ? dataByChapter?.subhead?.map(
+                    ({ subhead_title, questions }, index) => {
+                      return (
+                        <Accordion
+                          key={index}
+                          subhead_title={subhead_title}
+                          questions={questions}
+                          questionId={questionId}
+                          changeId={handleChangeAccordion}
+                        />
+                      );
+                    },
+                  )
                 : null}
             </ul>
+
+            {isBtnMoreShown ? <button>Переглянути ще</button> : null}
           </div>
 
           <Icon
@@ -130,7 +154,7 @@ const IndexPage = ({ data, location }) => {
           />
           <Icon
             iconId="main-page-desktop"
-            className=" max-xl:hidden xl:absolute  xl:top-[283px] xl:h-[464px] xl:w-[482px]"
+            className=" max-xl:hidden xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px]"
           />
           <Modal
             isOpen={isOpen}
