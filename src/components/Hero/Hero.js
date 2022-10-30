@@ -20,7 +20,7 @@ const Hero = ({ openModal }) => {
   return (
     <section className={section}>
       <Container>
-        <h2 className={title}>{t('Title')}</h2>
+        <h2 className={title}>{t('title')}</h2>
         {media !== 'mobile' && (
           <button className={search} onClick={openModal}>
             {t('input')}

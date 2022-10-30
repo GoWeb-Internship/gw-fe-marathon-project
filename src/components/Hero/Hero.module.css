@@ -11,7 +11,7 @@
 }
 
 .search {
-  @apply relative border-b-2 border-solid border-b-font-light  text-left font-inter text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] xl:h-9 xl:w-96;
+  @apply relative border-b-2 border-solid  border-b-font-light text-left font-inter  text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] md:pl-[6px] xl:h-9 xl:w-96 xl:pl-3;
 }
 
 .searchIcon {
