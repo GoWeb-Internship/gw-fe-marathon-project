@@ -1,7 +1,5 @@
 {
-  "Blog": "Blog",
-  "Title": "<Questions> and <Answers>",
-  "Subtitle": "I did it with the Gatsby Tutorial ",
+  "title": "<Questions> and <Answers>",
   "input": "Enter what interests you...",
   "noAnswer": {
     "title": "Sorry, we did not find an answer about",
@@ -23,5 +21,14 @@
     "email": "Enter a valid email address",
     "nameLength": "Name must be at least 2 characters long",
     "messageLength": "Message must be at least 10 characters long"
+  },
+  "showMoreButton": {
+    "show": "Show more",
+    "hide": "Hide"
+  },
+  "404": {
+    "title": "Sorry, temporary system failure",
+    "description": "Would you like to return to the home page?",
+    "button": "Home"
   }
 }

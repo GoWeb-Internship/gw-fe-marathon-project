@@ -10,6 +10,7 @@ import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
 import getArrayOfQuestions from '../utils/getArrayOfQuestions';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -30,6 +31,8 @@ const IndexPage = ({ data, location }) => {
   const [questionId, setQuestionId] = useState({});
   const [dataByChapter, setDataByChapter] = useState(null);
   const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  const { t } = useTranslation();
+  const button = t('showMoreButton', { returnObjects: true });
   console.log(isBtnMoreShown);
 
   let obj = {};
@@ -145,7 +148,7 @@ const IndexPage = ({ data, location }) => {
                 : null}
             </ul>
 
-            {isBtnMoreShown ? <button>Переглянути ще</button> : null}
+            {isBtnMoreShown ? <button>{button.show}</button> : null}
           </div>
 
           <Icon
