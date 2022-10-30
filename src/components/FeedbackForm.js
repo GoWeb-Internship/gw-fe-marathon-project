@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, CSSProperties } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,6 +8,7 @@ import { sendFeedbackMessage } from '../utils/feedbackFormApi';
 import Section from './Section';
 import Button from './Button';
 import icons from '../assets/images/sprite.svg';
+import SyncLoader from 'react-spinners/SyncLoader';
 
 const resizeTextarea = {
   resize: 'none',
@@ -22,8 +23,11 @@ const FeedbackForm = () => {
     .object({
       email: yup
         .string()
-        .email(formValidation.email)
-        .required(formValidation.required),
+        .required(formValidation.required)
+        .matches(
+          /^(?=^.{3,63}$)(((^[^<>()!?-\\.\/а-яА-ЯёЁЇїІіЄєҐґ][^а-яА-ЯёЁЇїІіЄєҐґ<>()[\],;:\s@"]{2,}(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,10})))$/,
+          formValidation.email,
+        ),
       name: yup
         .string()
         .required(formValidation.required)
@@ -46,6 +50,7 @@ const FeedbackForm = () => {
     formState: { errors },
     reset,
   } = useForm({
+    mode: 'onChange',
     defaultValues: {
       email: '',
       name: '',
@@ -54,15 +59,34 @@ const FeedbackForm = () => {
     resolver: yupResolver(schema),
   });
 
+  const spinnerDefault = '#3b82f6';
+  const spinnerDarkTheme = '#fcfcfc';
+
   const [result, setResult] = useState(null);
-  console.log(result);
+  const [loading, setLoading] = useState(false);
+  const [color, setColor] = useState(spinnerDefault);
+
+  const htmlDark = document.querySelector('.dark');
+  const darkSpinner = () => {
+    if (htmlDark) {
+      setColor(spinnerDarkTheme);
+    }
+  };
+
   const formResult = result;
   function onSubmit(data) {
-    const res = sendFeedbackMessage(data);
-    res.then(res => {
-      setResult(res.data.ok);
-    });
-    reset();
+    darkSpinner();
+    setLoading(true);
+    setTimeout(() => {
+      const res = sendFeedbackMessage(data);
+      res.then(res => {
+        setResult(res.data.ok);
+        if (result) {
+          setLoading(false);
+        }
+      });
+      reset();
+    }, 500);
   }
 
   const backToPage = () => {
@@ -71,7 +95,7 @@ const FeedbackForm = () => {
   };
 
   // useEffect(() => {
-  //   if (formState.isSubmitSuccessful) {
+  // if (formState.isSubmitSuccessful) {
   //     reset();
   //   }
   // }, [formState, reset]);
@@ -101,51 +125,68 @@ const FeedbackForm = () => {
         </div>
       ) : (
         <div className="flex-row-reverse justify-between md:flex">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="text-left max-md:mb-[34px] max-sm:min-w-full md:w-[337px] xl:w-[480px]"
-          >
-            <h2 className="mb-8 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
-              {formText.title}
-            </h2>
-
-            <div className="relative mb-8">
-              <input
-                className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
-                {...register('name')}
-                placeholder={formText.name}
-              />
-              <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
-                {errors.name?.message}
-              </p>
+          {loading ? (
+            <div className="relative h-[394px] max-md:mb-[34px] max-sm:min-w-full md:h-[460px] md:w-[337px] xl:h-[481px] xl:w-[480px]">
+              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <SyncLoader
+                  color={color}
+                  cssOverride={{
+                    display: 'block',
+                    margin: '0 auto',
+                  }}
+                />
+              </div>
             </div>
+          ) : (
+            <form
+              id="form"
+              autoComplete="off"
+              noValidate
+              onSubmit={handleSubmit(onSubmit)}
+              className="text-left max-md:mb-[34px] max-sm:min-w-full md:w-[337px] xl:w-[480px]"
+            >
+              <h2 className="mb-8 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
+                {formText.title}
+              </h2>
 
-            <div className="relative mb-14">
-              <input
-                className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
-                {...register('email')}
-                placeholder={formText.email}
-                type="email"
-              />
-              <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
-                {errors.email?.message}
-              </p>
-            </div>
+              <div className="relative mb-8">
+                <input
+                  className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  {...register('name')}
+                  placeholder={formText.name}
+                />
+                <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                  {errors.name?.message}
+                </p>
+              </div>
 
-            <div className="relative mb-10">
-              <textarea
-                className=" h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
-                {...register('message')}
-                placeholder={formText.question}
-                style={resizeTextarea}
-              />
-              <p className="absolute top-[124px] left-2 font-inter text-xs font-extralight dark:text-font-light">
-                {errors.message?.message}
-              </p>
-            </div>
+              <div className="relative mb-14">
+                <input
+                  className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  {...register('email')}
+                  placeholder={formText.email}
+                  type="email"
+                />
+                <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                  {errors.email?.message}
+                </p>
+              </div>
 
-            <Button text={formText.send} type="submit"></Button>
-          </form>
+              <div className="relative mb-10">
+                <textarea
+                  className=" h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  {...register('message')}
+                  placeholder={formText.question}
+                  style={resizeTextarea}
+                />
+                <p className="absolute top-[124px] left-2 font-inter text-xs font-extralight dark:text-font-light">
+                  {errors.message?.message}
+                </p>
+              </div>
+
+              <Button text={formText.send} type="submit"></Button>
+            </form>
+          )}
           <div className="md:flex md:flex-col-reverse">
             <svg className=" h-[212px] w-[334px] max-md:min-w-full md:hidden">
               <use href={`${icons}#feedback-page`} />

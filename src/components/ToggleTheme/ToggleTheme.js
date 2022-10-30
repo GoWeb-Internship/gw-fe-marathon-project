@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 
-// adds toggle logic elements and styles
 const ToggleTheme = () => {
   let websiteTheme;
   if (typeof window !== `undefined`) {
@@ -20,12 +20,12 @@ const ToggleTheme = () => {
   };
 
   return (
-    <div className="toggle-bar flex items-center ">
+    <div className={toggleBar}>
       <Toggle
-        className="h-5 w-10"
+        className={toggle}
         icons={{
-          checked: <MoonIcon className="h-4 w-4 text-accent-dark" />,
-          unchecked: <SunIcon className="h-4 w-4 text-accent" />,
+          checked: <MoonIcon className={moonIcon} />,
+          unchecked: <SunIcon className={sunIcon} />,
         }}
         checked={theme === 'light' ? false : true}
         onChange={ThemeToggle}

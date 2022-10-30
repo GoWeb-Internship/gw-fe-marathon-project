@@ -3,11 +3,11 @@
 }
 
 .accordionHeading {
-  @apply flex cursor-pointer items-center justify-between rounded-lg p-4 text-sm leading-4 shadow-main md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:leading-7;
+  @apply flex cursor-pointer items-center justify-between rounded-lg p-4 text-sm leading-4 shadow-main duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:leading-7;
 }
 
 .accordionHeadingShown {
-  @apply mb-2 flex cursor-pointer items-center justify-between rounded-lg  bg-hover-light p-4 text-sm leading-4   md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:leading-7;
+  @apply mb-2 flex cursor-pointer items-center justify-between rounded-lg  bg-hover-light p-4 text-sm leading-4   duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:leading-7;
 }
 
 .accordionHeading code,
@@ -24,11 +24,11 @@
 }
 
 .accordionContent {
-  @apply box-content h-0 overflow-hidden px-3 duration-300 ease-in-out md:block;
+  @apply mb-4 box-border h-0 overflow-hidden rounded-lg px-4 py-0 text-xs leading-4 shadow-main transition-all duration-300  ease-in-out last:mb-0 md:block md:px-6 md:py-0 md:text-base md:leading-5 xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow {
-  @apply mb-4 box-content h-auto rounded-lg p-4 px-3 text-xs leading-4 shadow-main duration-300 ease-in-out last:mb-0 md:block md:p-6 md:text-base md:leading-5 xl:text-lg xl:leading-6;
+  @apply mb-4 box-border h-auto rounded-lg px-4 py-4 text-xs leading-4 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow p {

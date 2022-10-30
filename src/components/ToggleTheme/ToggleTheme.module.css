@@ -1,0 +1,15 @@
+.toggleBar {
+  @apply flex items-center;
+}
+
+.toggle {
+  @apply h-5 w-10;
+}
+
+.moonIcon {
+  @apply h-4 w-4 text-accent-dark;
+}
+
+.sunIcon {
+  @apply h-4 w-4 text-accent;
+}
