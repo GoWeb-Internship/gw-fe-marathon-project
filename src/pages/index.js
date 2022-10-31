@@ -11,7 +11,7 @@ import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { useCallback } from 'react';
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
+import { ArrowUpIcon } from '@heroicons/react/24/solid';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -214,26 +214,25 @@ const IndexPage = ({ data, location }) => {
             {isBtnMoreShown ? (
               <button
                 onClick={handleToggleShowMore}
-                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-light md:text-base md:font-medium md:max-xl:mb-8"
+                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-dark dark:text-font-light md:text-base md:font-medium md:max-xl:mb-8"
               >
                 {isShownFullChapter ? button.hide : button.show}
 
-                {isShownFullChapter ? (
-                  <ArrowUpIcon className="ml-[20px] h-6 w-6 text-accent" />
-                ) : (
-                  <ArrowDownIcon className="ml-[20px] h-6 w-6 text-accent" />
-                )}
+                <ArrowUpIcon
+                  className={`ml-[20px] h-6 w-6 text-accent transition-all duration-300 
+          ${isShownFullChapter ? 'rotate-0' : '-rotate-180'}`}
+                />
               </button>
             ) : null}
           </div>
 
           <Icon
             iconId="main-page"
-            className="mx-auto h-[212px] w-[335px] md:h-[442px] md:w-[704px] xl:hidden"
+            className="mx-auto h-[212px] w-[335px] max-xs:h-[177px] max-xs:w-[280px] md:h-[442px] md:w-[704px] xl:hidden"
           />
           <Icon
             iconId="main-page-desktop"
-            className=" max-xl:hidden xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px]"
+            className="max-xl:hidden  xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px]"
           />
           <Modal
             isOpen={isOpen}
