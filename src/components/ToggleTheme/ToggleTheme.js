@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 
-// adds toggle logic elements and styles
 const ToggleTheme = () => {
   let websiteTheme;
   if (typeof window !== `undefined`) {
@@ -10,24 +10,34 @@ const ToggleTheme = () => {
   }
   useEffect(() => {
     setTheme(window.__theme);
-  }, []);
+  }, [websiteTheme]);
 
   const [theme, setTheme] = useState(websiteTheme);
+  const [checked, setChecked] = useState(theme === 'dark');
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
     setTheme(websiteTheme === 'dark' ? 'light' : 'dark');
+    setChecked(
+      localStorage.getItem('preferred-theme') === 'dark' ? true : false,
+    );
   };
 
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+  mql.addEventListener('change', e => {
+    setChecked(e.matches);
+  });
+
   return (
-    <div className="toggle-bar flex items-center ">
+    <div className={toggleBar}>
       <Toggle
-        className="w-10 h-5"
+        className={toggle}
         icons={{
-          checked: <MoonIcon className="h-4 w-4 text-accent-dark" />,
-          unchecked: <SunIcon className="h-4 w-4 text-accent" />,
+          checked: <MoonIcon className={moonIcon} />,
+          unchecked: <SunIcon className={sunIcon} />,
         }}
-        checked={theme === 'light' ? false : true}
+        checked={checked}
         onChange={ThemeToggle}
       />
     </div>

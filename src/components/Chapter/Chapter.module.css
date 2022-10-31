@@ -1,5 +1,5 @@
 .list {
-  @apply mb-[34px] md:mb-11 xl:mb-16 xl:flex;
+  @apply mb-8 md:mb-11 xl:mb-16 xl:flex;
 }
 
 .item {

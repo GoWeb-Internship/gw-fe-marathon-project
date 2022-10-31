@@ -1,21 +1,27 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
 import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
+import Icon from '../components/Icon';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useCallback } from 'react';
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
 
 const IndexPage = ({ data, location }) => {
-  const days = [
-    ...data?.allMarkdownRemark?.nodes?.sort(
-      (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
-    ),
-  ];
+  const days = useMemo(
+    () => [
+      ...data?.allMarkdownRemark?.nodes?.sort(
+        (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
+      ),
+    ],
+    [data],
+  );
 
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +30,91 @@ const IndexPage = ({ data, location }) => {
     chapter || days[0].frontmatter.chapter,
   );
   const [questionId, setQuestionId] = useState({});
+  const [dataByChapter, setDataByChapter] = useState(null);
+  const [visibleQuestions, setVisibleQuestions] = useState(null);
+  const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  const [isShownFullChapter, setIsShownFullChapter] = useState(false);
+
+  const { t } = useTranslation();
+  const button = t('showMoreButton', { returnObjects: true });
 
   let obj = {};
+
+  useEffect(() => {
+    const openedDayData = days?.find(
+      day => openedDayId === day.frontmatter.chapter,
+    ).frontmatter;
+
+    setDataByChapter(openedDayData);
+    setIsBtnMoreShown(false);
+    setIsShownFullChapter(false);
+  }, [days, openedDayId]);
+
+  const showLessQuestions = useCallback(() => {
+    const arrayOfSubheads = dataByChapter?.subhead;
+
+    const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
+      return [...prev, ...questions];
+    }, []);
+
+    if (allQuestions.length <= 5) {
+      setVisibleQuestions(arrayOfSubheads);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+
+      if (arrayOfSubheads[0].questions.length < 5) {
+        const longArray = [
+          ...shortArray,
+          ...getShortArray(
+            arrayOfSubheads,
+            1,
+            5 - arrayOfSubheads[0].questions.length,
+          ),
+        ];
+
+        setVisibleQuestions(longArray);
+        setIsBtnMoreShown(true);
+        return;
+      }
+
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    }
+  }, [dataByChapter]);
+
+  useEffect(() => {
+    if (!dataByChapter) return;
+
+    showLessQuestions();
+  }, [chapter, dataByChapter, isBtnMoreShown, showLessQuestions]);
+
+  function getShortArray(array, i, count) {
+    return [
+      {
+        subhead_title: array[i].subhead_title,
+        questions: array[i].questions.filter((el, index) => index < count),
+      },
+    ];
+  }
+
+  function handleToggleShowMore() {
+    isShownFullChapter
+      ? setIsShownFullChapter(false)
+      : setIsShownFullChapter(true);
+  }
+
+  useEffect(() => {
+    if (!dataByChapter) return;
+
+    isShownFullChapter
+      ? setVisibleQuestions(dataByChapter?.subhead)
+      : showLessQuestions();
+  }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
@@ -94,17 +183,17 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-8">
+        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20 pb-15">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
             openedDayId={openedDayId}
           />
-          <ul>
-            {days
-              ? days
-                  ?.find(day => openedDayId === day.frontmatter.chapter)
-                  ?.frontmatter?.subhead?.map(
+
+          <div>
+            <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
+              {visibleQuestions
+                ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
                         <Accordion
@@ -113,12 +202,39 @@ const IndexPage = ({ data, location }) => {
                           questions={questions}
                           questionId={questionId}
                           changeId={handleChangeAccordion}
+                          location={location}
+                          chapter={openedDayId}
                         />
                       );
                     },
                   )
-              : null}
-          </ul>
+                : null}
+            </ul>
+
+            {isBtnMoreShown ? (
+              <button
+                onClick={handleToggleShowMore}
+                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-light md:text-base md:font-medium md:max-xl:mb-8"
+              >
+                {isShownFullChapter ? button.hide : button.show}
+
+                {isShownFullChapter ? (
+                  <ArrowUpIcon className="ml-[20px] h-6 w-6 text-accent" />
+                ) : (
+                  <ArrowDownIcon className="ml-[20px] h-6 w-6 text-accent" />
+                )}
+              </button>
+            ) : null}
+          </div>
+
+          <Icon
+            iconId="main-page"
+            className="mx-auto h-[212px] w-[335px] md:h-[442px] md:w-[704px] xl:hidden"
+          />
+          <Icon
+            iconId="main-page-desktop"
+            className=" max-xl:hidden xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px]"
+          />
           <Modal
             isOpen={isOpen}
             closeModal={closeModal}

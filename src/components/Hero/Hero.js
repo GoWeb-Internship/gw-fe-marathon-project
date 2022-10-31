@@ -12,6 +12,7 @@ import {
   section,
   search,
 } from './Hero.module.css';
+import PropTypes from 'prop-types';
 
 const Hero = ({ openModal }) => {
   const { t } = useTranslation();
@@ -20,17 +21,21 @@ const Hero = ({ openModal }) => {
   return (
     <section className={section}>
       <Container>
-        <h2 className={title}>{t('Title')}</h2>
+        <h2 className={title}>{t('title')}</h2>
         {media !== 'mobile' && (
           <button className={search} onClick={openModal}>
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
         )}
+        <Icon className={people} iconId="hero-section" />
       </Container>
-      <Icon className={people} iconId="hero-section" />
       <Icon className={iconBottom} iconId="hero-bottom" />
     </section>
   );
 };
 export default Hero;
+
+Hero.propTypes = {
+  openModal: PropTypes.func,
+};

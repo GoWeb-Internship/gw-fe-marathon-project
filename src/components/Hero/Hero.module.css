@@ -7,15 +7,23 @@
 }
 
 .people {
-  @apply absolute  bottom-0 h-[172px] w-[268px] md:right-[-13px] md:bottom-[-3px] md:h-[231px] md:w-[369px] xl:bottom-[-7px] xl:right-[-20px] xl:h-[508px] xl:w-[812px];
+  @apply absolute bottom-0 left-2/4 h-[172px] w-[268px] -translate-x-1/2 md:right-[-13px] md:bottom-[-3px] md:left-1/2 md:h-[231px] md:w-[369px] md:translate-x-[4%] md:translate-y-[-1%] xl:left-1/2 xl:bottom-[-7px] xl:h-[508px] xl:w-[812px] xl:translate-x-[-20%] xl:translate-y-[-1%];
 }
 
 .search {
-  @apply relative border-b-2 border-solid border-b-font-light  text-left font-inter text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] xl:h-9 xl:w-96;
+  @apply relative border-b-2 border-solid  border-b-font-light text-left font-inter  text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] md:pl-[6px] xl:h-9 xl:w-96 xl:pl-3;
+}
+
+.searchHidden {
+  @apply relative border-b-2 border-solid  border-b-transparent text-left font-inter  text-xs font-extralight text-transparent md:h-[28px] md:w-[336px] md:pl-[6px] xl:h-9 xl:w-96 xl:pl-3;
 }
 
 .searchIcon {
   @apply absolute top-0 right-[10px] z-0 h-5 w-5  text-font-light;
+}
+
+.searchIconHidden {
+  @apply absolute top-0 right-[10px] z-0 h-5 w-5  text-transparent;
 }
 
 .iconBottom {

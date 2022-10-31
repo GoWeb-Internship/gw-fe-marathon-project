@@ -1,21 +1,42 @@
+.modalWrap {
+  @apply relative leading-[21px];
+}
+
+.searchWrap {
+  @apply relative mx-auto  w-[268px] 	xs:w-[303px]  md:w-[336px] xl:w-[375px];
+}
+
 .searchInput {
-  @apply w-80 border-b-2 pt-2 pb-2 pl-3  placeholder:text-slate-400 focus:border-sky-500 focus:outline-none;
+  @apply w-[268px] border-b-2 border-font-dark bg-transparent pb-2 pl-2 pr-6 text-left text-[16px] text-font-dark   caret-current outline-none placeholder:text-font-dark xs:w-[303px]  md:w-[335px]  xl:w-[375px];
+}
+
+.xMarkIcon {
+  @apply absolute right-0 top-0 h-6 w-6 text-font-dark;
+}
+
+.iconGlass {
+  @apply mr-2 inline h-6 w-6 cursor-pointer text-font-dark;
+}
+
+.infoWrap {
+  @apply mt-7  overflow-y-auto;
+  max-height: calc(100vh - 70vh);
 }
 
 .foundOption {
-  @apply cursor-pointer truncate text-left hover:text-blue-900;
+  @apply mb-4 cursor-pointer  text-ellipsis text-left last:mb-0;
 }
 
 .noResultsWrapper {
-  @apply mt-4 flex flex-col items-center;
+  @apply flex flex-col items-center text-ellipsis;
 }
 
 .noResultsTitle {
-  @apply w-80 text-xl font-bold leading-6;
+  @apply font-montserrat text-base font-bold;
 }
 
 .searchWord {
-  @apply text-blue-500;
+  @apply text-accent;
 }
 
 .noResultsDesc {
@@ -23,5 +44,9 @@
 }
 
 .btnToFeedbackPage {
-  @apply mt-4 rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700;
+  @apply mt-4 rounded border-transparent  bg-accent  text-white duration-300 hover:bg-hover;
+}
+
+.link {
+  @apply block py-4 px-8;
 }

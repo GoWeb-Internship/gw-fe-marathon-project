@@ -4,9 +4,9 @@ import { Bars3Icon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import Container from '../Container';
 import SwitchLang from '../SwitchLang';
-import ToggleTheme from '../ToggleTheme';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import Logo from '../Logo/Logo';
-import Menu from '../Menu';
+import Menu from '../Menu/Menu';
 import Icon from '../Icon';
 import PropTypes from 'prop-types';
 import {
@@ -32,7 +32,7 @@ const Header = ({ openModal }) => {
   useEffect(() => {
     isMenuOpen
       ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'scroll');
+      : (document.body.style.overflowY = 'auto');
   }, [isMenuOpen]);
 
   return (
@@ -82,5 +82,5 @@ const Header = ({ openModal }) => {
 export default Header;
 
 Header.propTypes = {
-  openModal: PropTypes.func.isRequired,
+  openModal: PropTypes.func,
 };

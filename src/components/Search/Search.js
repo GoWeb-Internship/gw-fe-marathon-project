@@ -1,20 +1,21 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
 import { useSearch } from '../../utils/searchContext';
 import PropTypes from 'prop-types';
+import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import NotFound from './NotFound';
+import { Link } from 'react-scroll';
 import {
+  modalWrap,
+  searchWrap,
   searchInput,
   foundOption,
-  noResultsWrapper,
-  noResultsTitle,
-  searchWord,
-  noResultsDesc,
-  btnToFeedbackPage,
+  iconGlass,
+  xMarkIcon,
+  infoWrap,
 } from './Search.module.css';
 
 const Search = ({ onNavigate, closeModal }) => {
@@ -24,7 +25,6 @@ const Search = ({ onNavigate, closeModal }) => {
 
   const { days } = useSearch();
   const { t } = useTranslation();
-  const noAnswer = t('noAnswer', { returnObjects: true });
 
   useEffect(() => {
     if (!days) return;
@@ -33,14 +33,19 @@ const Search = ({ onNavigate, closeModal }) => {
       (prevVal, { frontmatter: { chapter, subhead } }) => {
         return [
           ...prevVal,
-          ...subhead[0].questions.map(({ id, title, content }) => {
-            return {
-              question_title: title,
-              content: content,
-              chapter: chapter,
-              id: id,
-            };
-          }),
+          ...subhead.reduce((prevVal, { questions }) => {
+            return [
+              ...prevVal,
+              ...questions.map(({ id, title, content }) => {
+                return {
+                  question_title: title,
+                  content: content,
+                  chapter: chapter,
+                  id: id,
+                };
+              }),
+            ];
+          }, []),
         ];
       },
       [],
@@ -75,48 +80,50 @@ const Search = ({ onNavigate, closeModal }) => {
   };
 
   return (
-    <div>
-      <form>
+    <div className={modalWrap}>
+      <div className={searchWrap}>
         <DebounceInput
           debounceTimeout={300}
-          className={`${searchInput} dark:text-font-dark`}
+          className={`${searchInput}  dark:border-font-light dark:text-font-light dark:placeholder:text-font-light `}
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
           placeholder={t('input')}
         />
-      </form>
+        <XMarkIcon
+          className={`${xMarkIcon} dark:text-font-light`}
+          onClick={closeModal}
+        />
+      </div>
 
       {filteredQuestions ? (
-        <div>
-          <ul>
-            {filteredQuestions?.map(({ question_title, chapter, id }) => {
-              return (
-                <li
-                  key={id}
-                  onClick={() => {
+        <ul className={infoWrap}>
+          {filteredQuestions?.map(({ question_title, chapter, id }) => {
+            return (
+              <li key={id} className={foundOption} title={question_title}>
+                <Link
+                  to={id}
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  className="block"
+                  onClick={e => {
+                    console.log(e.target);
                     handleRedirect(chapter, id);
                   }}
-                  className={foundOption}
                 >
+                  <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{question_title}</Markdown>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       ) : null}
 
       {filteredQuestions?.length === 0 && (
-        <div className={noResultsWrapper}>
-          <h3 className={noResultsTitle}>
-            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
-          </h3>
-          <p className={noResultsDesc}>{noAnswer.description}</p>
-          <button className={btnToFeedbackPage}>
-            <Link to="/feedback">{noAnswer.button}</Link>
-          </button>
-        </div>
+        <NotFound searchPhrase={searchPhrase} />
       )}
     </div>
   );

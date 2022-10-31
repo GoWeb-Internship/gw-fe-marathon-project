@@ -1,10 +1,18 @@
 import React from 'react';
 import AccordionItem from '../AccordionItem/AccordionItem';
 import { subheadTitle, subhead } from './Accordion.module.css';
+import PropTypes from 'prop-types';
 
-const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
+const Accordion = ({
+  subhead_title,
+  questions,
+  questionId,
+  changeId,
+  location,
+  chapter,
+}) => {
   return (
-    <div className={subhead}>
+    <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>
       <ul>
         {[
@@ -17,13 +25,24 @@ const Accordion = ({ subhead_title, questions, questionId, changeId }) => {
                   data={question}
                   titleId={questionId}
                   changeId={changeId}
+                  location={location}
+                  chapter={chapter}
                 />
               );
             }),
         ]}
       </ul>
-    </div>
+    </li>
   );
 };
 
 export default Accordion;
+
+Accordion.propTypes = {
+  subhead_title: PropTypes.string.isRequired,
+  // questions: PropTypes.arrayOf(PropTypes.shape({})),
+  // questionId: PropTypes.object.isRequired,
+  // changeId,
+  // location,
+  chapter: PropTypes.string.isRequired,
+};
