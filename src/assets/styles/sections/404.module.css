@@ -1,0 +1,24 @@
+.section {
+  @apply flex min-h-[100vh] items-center bg-accent dark:bg-body-dark md:flex md:items-center md:justify-center;
+  background-image: url(../../images/404/404.svg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 300px auto;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    background-image: url(../../images/404/bg.svg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: contain;
+  }
+}
+
+.wrapper {
+  @apply pb-[300px] md:max-w-[50%] md:py-12 xl:py-48;
+}
+
+.title {
+  @apply mb-4 justify-center text-center font-montserrat text-[1.25rem] font-bold leading-[1.2] text-font-light md:text-start xl:max-w-[380px] xl:text-[2rem];
+}
