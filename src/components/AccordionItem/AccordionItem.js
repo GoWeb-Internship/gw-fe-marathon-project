@@ -12,7 +12,6 @@ import {
   copyIcon,
   copyIconHover,
 } from './AccordionItem.module.css';
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
 import {
   MinusCircleIcon,
   DocumentDuplicateIcon,
@@ -22,6 +21,9 @@ import copy from 'copy-to-clipboard';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes from 'prop-types';
+import Icon from '../Icon';
+
+import myPlusIcon from '../../assets/images/plus-icon.svg';
 
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   const { t } = useTranslation();
@@ -79,9 +81,9 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
           }}
         />
         {titleId[data.id] ? (
-          <MinusCircleIcon className={`${minusIcon} ml-3`} />
+          <MinusCircleIcon className={minusIcon} />
         ) : (
-          <PlusCircleIcon className={`${plusIcon} ml-3`} />
+          <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
         )}
       </div>
 

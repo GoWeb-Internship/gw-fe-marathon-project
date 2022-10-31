@@ -16,11 +16,11 @@
 }
 
 .plusIcon {
-  @apply h-[18px] w-[18px] shrink-0 text-accent md:h-6 md:w-6;
+  @apply ml-3 h-[18px] w-[18px] shrink-0 text-accent md:h-6 md:w-6;
 }
 
 .minusIcon {
-  @apply h-[18px] w-[18px] shrink-0 text-icon-secondary md:h-6 md:w-6;
+  @apply ml-3 h-[18px] w-[18px] shrink-0 text-icon-secondary md:h-6  md:w-6;
 }
 
 .accordionContent {
