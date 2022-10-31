@@ -5,13 +5,14 @@ import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
-import { SearchContext } from '../utils/searchContext.js';
+import { SearchContext } from '../hooks/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { useCallback } from 'react';
 import { ArrowUpIcon } from '@heroicons/react/24/solid';
+import { useRef } from 'react';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -111,6 +112,13 @@ const IndexPage = ({ data, location }) => {
   useEffect(() => {
     if (!dataByChapter) return;
 
+    // if (isShownFullChapter) {
+    //   setVisibleQuestions(dataByChapter?.subhead);
+    //   document.getElementById('footer').scrollIntoView();
+    // } else {
+    //   showLessQuestions();
+    // }
+
     isShownFullChapter
       ? setVisibleQuestions(dataByChapter?.subhead)
       : showLessQuestions();
@@ -191,7 +199,7 @@ const IndexPage = ({ data, location }) => {
           />
 
           <div>
-            <ul className="mb-[34px] xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
+            <ul className="subhead-list">
               {visibleQuestions
                 ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
@@ -212,27 +220,21 @@ const IndexPage = ({ data, location }) => {
             </ul>
 
             {isBtnMoreShown ? (
-              <button
-                onClick={handleToggleShowMore}
-                className="ml-auto flex w-max items-center justify-end font-inter text-sm font-normal text-font-dark dark:text-font-light max-xl:mb-[34px] max-xl:mt-[34px] md:text-base md:font-medium xl:mt-[24px]"
-              >
+              <button onClick={handleToggleShowMore} className="btn-show-more ">
                 {isShownFullChapter ? button.hide : button.show}
 
                 <ArrowUpIcon
-                  className={`ml-[20px] h-6 w-6 text-accent transition-all duration-300 
+                  className={`btn-show-more-icon 
           ${isShownFullChapter ? 'rotate-0' : '-rotate-180'}`}
                 />
               </button>
             ) : null}
           </div>
 
-          <Icon
-            iconId="main-page"
-            className="mx-auto h-[212px] w-[335px] max-xs:h-[177px] max-xs:w-[280px] md:h-[442px] md:w-[704px] xl:hidden"
-          />
+          <Icon iconId="main-page" className="main-page-image-mobile" />
           <Icon
             iconId="main-page-desktop"
-            className="max-xl:hidden  xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px]"
+            className="main-page-image-desktop"
           />
           <Modal
             isOpen={isOpen}

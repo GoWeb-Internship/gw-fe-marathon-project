@@ -3,7 +3,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useSearch } from '../../utils/searchContext';
+import { useSearch } from '../../hooks/searchContext';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import NotFound from './NotFound';
