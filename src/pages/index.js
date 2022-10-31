@@ -30,10 +30,12 @@ const IndexPage = ({ data, location }) => {
   );
   const [questionId, setQuestionId] = useState({});
   const [dataByChapter, setDataByChapter] = useState(null);
+  const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
   const { t } = useTranslation();
   const button = t('showMoreButton', { returnObjects: true });
-  console.log(isBtnMoreShown);
+
+  // console.log(days);
 
   let obj = {};
 
@@ -48,12 +50,48 @@ const IndexPage = ({ data, location }) => {
 
   useEffect(() => {
     if (!dataByChapter) return;
-    const subhead = dataByChapter?.subhead;
 
-    const arrayOfQuestions = getArrayOfQuestions(subhead, chapter);
+    const arrayOfSubheads = dataByChapter?.subhead;
 
-    arrayOfQuestions?.length > 5 && setIsBtnMoreShown(true);
-  }, [chapter, dataByChapter]);
+    const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
+      return [...prev, ...questions];
+    }, []);
+
+    if (allQuestions.length <= 5) {
+      setVisibleQuestions(arrayOfSubheads);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
+      console.log('>5, =1');
+
+      const shortArray = getShortArray(arrayOfSubheads, 5);
+
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
+      console.log('>5, >1');
+      let shortArray = getShortArray(arrayOfSubheads, 5);
+
+      if (arrayOfSubheads[0].length < 5) {
+        shortArray = [
+          ...shortArray,
+          ...getShortArray(arrayOfSubheads, 5 - arrayOfSubheads[0].length),
+        ];
+      }
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    }
+  }, [chapter, dataByChapter, isBtnMoreShown]);
+
+  console.log(visibleQuestions);
+  console.log(isBtnMoreShown);
+
+  function getShortArray(array, count) {
+    return [
+      {
+        subhead_title: array[0].subhead_title,
+        questions: array[0].questions.filter((el, index) => index < count),
+      },
+    ];
+  }
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
