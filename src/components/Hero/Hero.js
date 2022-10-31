@@ -12,6 +12,7 @@ import {
   section,
   search,
 } from './Hero.module.css';
+import PropTypes from 'prop-types';
 
 const Hero = ({ openModal }) => {
   const { t } = useTranslation();
@@ -34,3 +35,7 @@ const Hero = ({ openModal }) => {
   );
 };
 export default Hero;
+
+Hero.propTypes = {
+  openModal: PropTypes.func,
+};
