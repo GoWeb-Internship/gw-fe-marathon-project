@@ -19,8 +19,8 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
             <div className="fixed inset-0 z-20 bg-overlay	 dark:bg-overlay-dark" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-20  overflow-y-auto">
-            <div className="flex min-h-full items-start justify-center pt-32 pb-7 text-center md:pt-[268px] xl:pt-[407px]">
+          <div className="fixed inset-0 z-20 ">
+            <div className=" absolute  top-1/3  left-1/2 min-h-full -translate-x-1/2  text-center ">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -30,7 +30,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="shadow-xl w-[300px] transform overflow-hidden  text-center  align-middle  transition-all dark:text-font-light xs:w-[335px]  sm:w-[440px] md:w-[704px]  xl:w-[1200px] ">
+                <Dialog.Panel className=" w-[300px] transform overflow-hidden bg-body px-4 py-6 text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px]  md:w-[704px] xl:w-[1200px]  xl:rounded ">
                   <Search onNavigate={onNavigate} closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>
