@@ -1,15 +1,42 @@
-import React, { useEffect, useState, CSSProperties } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { Link } from 'gatsby';
 import Swal from 'sweetalert2';
-import { sendFeedbackMessage } from '../utils/feedbackFormApi';
-import Section from './Section';
-import Button from './Button';
-import icons from '../assets/images/sprite.svg';
+import { sendFeedbackMessage } from '../../utils/feedbackFormApi';
+import Section from '../Section';
+import Button from '../Button';
+import icons from '../../assets/images/sprite.svg';
 import SyncLoader from 'react-spinners/SyncLoader';
+import {
+  feedbackFormSection,
+  feedbackFormBlock,
+  form,
+  formTitle,
+  nameContainer,
+  nameInput,
+  nameInputValidationMessage,
+  emailContainer,
+  emailInput,
+  emailInputValidationMessage,
+  messageContainer,
+  messageInput,
+  messageInputValidation,
+  imageWrapper,
+  imageMobile,
+  imageTablet,
+  imageDesktop,
+  loaderContainer,
+  loaderWrapper,
+  successPageSection,
+  successPageContainer,
+  successPageTitle,
+  successPageText,
+  successPageLink,
+  successPageImageWrapper,
+} from './FeedbackForm.module.css';
 
 const resizeTextarea = {
   resize: 'none',
@@ -47,7 +74,6 @@ const FeedbackForm = () => {
   const {
     register,
     handleSubmit,
-    formState,
     formState: { errors },
     reset,
   } = useForm({
@@ -105,33 +131,29 @@ const FeedbackForm = () => {
   };
 
   return (
-    <Section styles="pt-[34px] pb-[34px] xl:pt-[80px] xl:pb-[80px]">
+    <Section styles={feedbackFormSection}>
       {formResult ? (
-        <div className="md:flex md:flex-row-reverse md:justify-between">
-          <div className="text-left md:w-[337px] xl:w-[472px] xl:pt-[98px]">
-            <h2 className="mb-4 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
+        <div className={successPageSection}>
+          <div className={successPageContainer}>
+            <h2 className={`${successPageTitle} dark:text-font-light`}>
               {formText.successTitle}
             </h2>
-            <p className="mb-6 font-inter text-base font-normal leading-[19px] text-font-dark dark:text-font-light md:mb-9 md:text-lg md:font-light md:leading-[22px] xl:mb-16 xl:text-2xl xl:leading-[29px]">
+            <p className={`${successPageText} dark:text-font-light`}>
               {formText.successAnswer}
             </p>
-            <Link
-              className="inline-block rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700 xl:text-lg xl:font-semibold xl:leading-[22px]"
-              onClick={backToPage}
-              to="/"
-            >
+            <Link className={successPageLink} onClick={backToPage} to="/">
               {formText.home}
             </Link>
           </div>
-          <svg className="h-[212px] w-[334px] max-md:min-w-full xl:h-[436px] xl:w-[684px]">
+          <svg className={successPageImageWrapper}>
             <use href={`${icons}#success-section`} />
           </svg>
         </div>
       ) : (
-        <div className="flex-row-reverse justify-between md:flex">
+        <div className={feedbackFormBlock}>
           {loading ? (
-            <div className="relative h-[394px] max-md:mb-[34px] max-sm:min-w-full md:h-[460px] md:w-[337px] xl:h-[481px] xl:w-[480px]">
-              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <div className={loaderContainer}>
+              <div className={loaderWrapper}>
                 <SyncLoader
                   color={color}
                   cssOverride={{
@@ -147,43 +169,43 @@ const FeedbackForm = () => {
               autoComplete="off"
               noValidate
               onSubmit={handleSubmit(onSubmit)}
-              className="text-left max-md:mb-[34px] max-sm:min-w-full md:w-[337px] xl:w-[480px]"
+              className={form}
             >
-              <h2 className="mb-8 font-montserrat text-lg font-bold leading-[22px] text-font-dark dark:text-font-light md:text-xl md:leading-6 xl:text-[32px] xl:leading-[39px]">
+              <h2 className={`${formTitle} dark:text-font-light `}>
                 {formText.title}
               </h2>
 
-              <div className="relative mb-8">
+              <div className={nameContainer}>
                 <input
-                  className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  className={`${nameInput} dark:bg-transparent dark:text-font-light`}
                   {...register('name')}
                   placeholder={formText.name}
                 />
-                <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                <p className={nameInputValidationMessage}>
                   {errors.name?.message}
                 </p>
               </div>
 
-              <div className="relative mb-14">
+              <div className={emailContainer}>
                 <input
-                  className="min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  className={`${emailInput} dark:bg-transparent dark:text-font-light`}
                   {...register('email')}
                   placeholder={formText.email}
                   type="email"
                 />
-                <p className="absolute  left-2 font-inter text-xs font-extralight dark:text-font-light">
+                <p className={emailInputValidationMessage}>
                   {errors.email?.message}
                 </p>
               </div>
 
-              <div className="relative mb-10">
+              <div className={messageContainer}>
                 <textarea
-                  className=" h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none dark:bg-transparent dark:text-font-light xl:text-lg xl:leading-[22px]"
+                  className={`${messageInput} dark:bg-transparent dark:text-font-light`}
                   {...register('message')}
                   placeholder={formText.question}
                   style={resizeTextarea}
                 />
-                <p className="absolute top-[124px] left-2 font-inter text-xs font-extralight dark:text-font-light">
+                <p className={messageInputValidation}>
                   {errors.message?.message}
                 </p>
               </div>
@@ -191,14 +213,14 @@ const FeedbackForm = () => {
               <Button text={formText.send} type="submit"></Button>
             </form>
           )}
-          <div className="md:flex md:flex-col-reverse">
-            <svg className=" h-[212px] w-[334px] max-md:min-w-full md:hidden">
+          <div className={imageWrapper}>
+            <svg className={imageMobile}>
               <use href={`${icons}#feedback-page`} />
             </svg>
-            <svg className="h-[285px] w-[334px] max-md:hidden md:mb-[100px] xl:hidden ">
+            <svg className={imageTablet}>
               <use href={`${icons}#feedback-page-tablet`} />
             </svg>
-            <svg className="h-[436px] w-[687px] max-xl:hidden xl:mb-[18px]">
+            <svg className={imageDesktop}>
               <use href={`${icons}#feedback-page-desktop`} />
             </svg>
           </div>
