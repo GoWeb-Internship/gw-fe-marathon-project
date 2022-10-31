@@ -11,6 +11,7 @@ import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
 import getArrayOfQuestions from '../utils/getArrayOfQuestions';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useCallback } from 'react';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -32,10 +33,10 @@ const IndexPage = ({ data, location }) => {
   const [dataByChapter, setDataByChapter] = useState(null);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  const [isShownFullChapter, setIsShownFullChapter] = useState(false);
+
   const { t } = useTranslation();
   const button = t('showMoreButton', { returnObjects: true });
-
-  // console.log(days);
 
   let obj = {};
 
@@ -46,11 +47,10 @@ const IndexPage = ({ data, location }) => {
 
     setDataByChapter(openedDayData);
     setIsBtnMoreShown(false);
+    setIsShownFullChapter(false);
   }, [days, openedDayId]);
 
-  useEffect(() => {
-    if (!dataByChapter) return;
-
+  const showLessQuestions = useCallback(() => {
     const arrayOfSubheads = dataByChapter?.subhead;
 
     const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
@@ -60,38 +60,65 @@ const IndexPage = ({ data, location }) => {
     if (allQuestions.length <= 5) {
       setVisibleQuestions(arrayOfSubheads);
     } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
-      console.log('>5, =1');
-
-      const shortArray = getShortArray(arrayOfSubheads, 5);
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
 
       setVisibleQuestions(shortArray);
       setIsBtnMoreShown(true);
     } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
-      console.log('>5, >1');
-      let shortArray = getShortArray(arrayOfSubheads, 5);
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
 
-      if (arrayOfSubheads[0].length < 5) {
-        shortArray = [
+      if (arrayOfSubheads[0].questions.length < 5) {
+        const longArray = [
           ...shortArray,
-          ...getShortArray(arrayOfSubheads, 5 - arrayOfSubheads[0].length),
+          ...getShortArray(
+            arrayOfSubheads,
+            1,
+            5 - arrayOfSubheads[0].questions.length,
+          ),
         ];
+
+        setVisibleQuestions(longArray);
+        setIsBtnMoreShown(true);
+        return;
       }
+
       setVisibleQuestions(shortArray);
       setIsBtnMoreShown(true);
     }
-  }, [chapter, dataByChapter, isBtnMoreShown]);
+  }, [dataByChapter]);
 
-  console.log(visibleQuestions);
-  console.log(isBtnMoreShown);
+  useEffect(() => {
+    if (!dataByChapter) return;
 
-  function getShortArray(array, count) {
+    showLessQuestions();
+  }, [chapter, dataByChapter, isBtnMoreShown, showLessQuestions]);
+
+  function getShortArray(array, i, count) {
     return [
       {
-        subhead_title: array[0].subhead_title,
-        questions: array[0].questions.filter((el, index) => index < count),
+        subhead_title: array[i].subhead_title,
+        questions: array[i].questions.filter((el, index) => index < count),
       },
     ];
   }
+
+  function handleToggleShowMore() {
+    isShownFullChapter
+      ? setIsShownFullChapter(false)
+      : setIsShownFullChapter(true);
+  }
+
+  useEffect(() => {
+    if (!dataByChapter) return;
+
+    isShownFullChapter
+      ? setVisibleQuestions(dataByChapter?.subhead)
+      : showLessQuestions();
+  }, [dataByChapter, isShownFullChapter, showLessQuestions]);
+
+  console.log(isBtnMoreShown);
+  console.log(isShownFullChapter);
+  console.log(visibleQuestions);
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
@@ -169,8 +196,8 @@ const IndexPage = ({ data, location }) => {
 
           <div>
             <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
-              {dataByChapter
-                ? dataByChapter?.subhead?.map(
+              {visibleQuestions
+                ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
                         <Accordion
@@ -188,7 +215,9 @@ const IndexPage = ({ data, location }) => {
                 : null}
             </ul>
 
-            {isBtnMoreShown ? <button>{button.show}</button> : null}
+            {isBtnMoreShown ? (
+              <button onClick={handleToggleShowMore}>{button.show}</button>
+            ) : null}
           </div>
 
           <Icon
