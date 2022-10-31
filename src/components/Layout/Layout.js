@@ -3,12 +3,12 @@ import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
 
-const Layout = ({ children, openModal, isOpen }) => {
+const Layout = ({ children, openModal }) => {
   return (
     <div className=" flex min-h-screen flex-col">
       <div className="bg-accent dark:bg-accent-dark ">
         <Header openModal={openModal} />
-        <Hero openModal={openModal} isOpen={isOpen} />
+        <Hero openModal={openModal} />
       </div>
       <main className="grow bg-body dark:bg-body-dark">{children}</main>
 

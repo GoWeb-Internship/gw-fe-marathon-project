@@ -3,23 +3,24 @@
 }
 
 .searchWrap {
-  @apply relative w-[300px]   md:w-[336px] xl:w-[375px];
+  @apply relative mx-auto  w-[268px] 	xs:w-[303px]  md:w-[336px] xl:w-[375px];
 }
 
 .searchInput {
-  @apply w-[300px] border-b-2 bg-transparent pb-2 pl-2 text-left text-[16px]   text-font-light caret-current outline-none placeholder:text-font-placeholder  md:w-[335px]  xl:w-[375px];
+  @apply w-[268px] border-b-2 border-font-dark bg-transparent pb-2 pl-2 pr-6 text-left text-[16px] text-font-dark   caret-current outline-none placeholder:text-font-dark xs:w-[303px]  md:w-[335px]  xl:w-[375px];
 }
 
 .xMarkIcon {
-  @apply absolute right-0 top-0 h-6 w-6 text-font-light;
+  @apply absolute right-0 top-0 h-6 w-6 text-font-dark;
 }
 
 .iconGlass {
-  @apply mr-2 inline h-6 w-6 cursor-pointer text-icon-secondary;
+  @apply mr-2 inline h-6 w-6 cursor-pointer text-font-dark;
 }
 
 .infoWrap {
-  @apply mt-7 rounded-lg bg-body p-4  xl:mt-3  xl:rounded;
+  @apply mt-7  overflow-y-auto;
+  max-height: calc(100vh - 70vh);
 }
 
 .foundOption {

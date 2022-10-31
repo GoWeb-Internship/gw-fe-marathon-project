@@ -93,60 +93,51 @@ const Search = ({ onNavigate, closeModal }) => {
       <div className={searchWrap}>
         <DebounceInput
           debounceTimeout={300}
-          className={`${searchInput}  dark:border-font-dark dark:text-font-dark dark:placeholder:text-font-dark `}
+          className={`${searchInput}  dark:border-font-light dark:text-font-light dark:placeholder:text-font-light `}
           type="text"
           onChange={handleInputChange}
           value={searchPhrase}
           placeholder={t('input')}
         />
         <XMarkIcon
-          className={`${xMarkIcon} dark:text-font-dark`}
+          className={`${xMarkIcon} dark:text-font-light`}
           onClick={closeModal}
         />
       </div>
 
-      <div
-        className={`${
-          filteredQuestions === null
-            ? 'hidden'
-            : `${infoWrap} dark:bg-body-dark`
-        } `}
-      >
-        {filteredQuestions ? (
-          <ul>
-            {filteredQuestions?.map(({ question_title, chapter, id }) => {
-              return (
-                <li
-                  key={id}
-                  onClick={() => {
-                    handleRedirect(chapter, id);
-                  }}
-                  className={foundOption}
-                  title={question_title}
-                >
-                  <MagnifyingGlassIcon className={iconGlass} />
-                  <Markdown>{question_title}</Markdown>
-                </li>
-              );
-            })}
-          </ul>
-        ) : null}
+      {filteredQuestions ? (
+        <ul className={infoWrap}>
+          {filteredQuestions?.map(({ question_title, chapter, id }) => {
+            return (
+              <li
+                key={id}
+                onClick={() => {
+                  handleRedirect(chapter, id);
+                }}
+                className={foundOption}
+                title={question_title}
+              >
+                <MagnifyingGlassIcon className={iconGlass} />
+                <Markdown>{question_title}</Markdown>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
 
-        {filteredQuestions?.length === 0 && (
-          <div className={`${noResultsWrapper}`}>
-            <h3 className={noResultsTitle}>
-              {noAnswer.title}{' '}
-              <span className={searchWord}>{searchPhrase}</span>
-            </h3>
-            <p className={noResultsDesc}>{noAnswer.description}</p>
-            <button className={btnToFeedbackPage}>
-              <Link to="/feedback" className={link}>
-                {noAnswer.button}
-              </Link>
-            </button>
-          </div>
-        )}
-      </div>
+      {filteredQuestions?.length === 0 && (
+        <div className={`${noResultsWrapper}`}>
+          <h3 className={`${noResultsTitle} `}>
+            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
+          </h3>
+          <p className={noResultsDesc}>{noAnswer.description}</p>
+          <button className={btnToFeedbackPage}>
+            <Link to="/feedback" className={link}>
+              {noAnswer.button}
+            </Link>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
