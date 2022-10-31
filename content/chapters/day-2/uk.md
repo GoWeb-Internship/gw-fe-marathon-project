@@ -19,9 +19,6 @@ subhead:
 
           [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
         question_range: "2"
-      - id: "1667215879853"
-        question_title: T﻿est 1
-        description: ﻿Test 2
   - subhead_title: VSCode
     questions:
       - question_title: При збереженні редагується `index.html`. Що робити?
