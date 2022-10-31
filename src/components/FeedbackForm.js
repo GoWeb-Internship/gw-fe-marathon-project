@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { Link } from 'gatsby';
+import Swal from 'sweetalert2';
 import { sendFeedbackMessage } from '../utils/feedbackFormApi';
 import Section from './Section';
 import Button from './Button';
@@ -80,7 +81,16 @@ const FeedbackForm = () => {
     setTimeout(() => {
       const res = sendFeedbackMessage(data);
       res.then(res => {
-        setResult(res.data.ok);
+        if (!res?.data.ok) {
+          Swal.fire({
+            icon: 'error',
+            title: formText.errorMessageTitle,
+            text: formText.errorMessageText,
+          });
+          setLoading(false);
+          return;
+        }
+        setResult(res?.data.ok);
         if (result) {
           setLoading(false);
         }
@@ -93,12 +103,6 @@ const FeedbackForm = () => {
     setResult(null);
     return;
   };
-
-  // useEffect(() => {
-  // if (formState.isSubmitSuccessful) {
-  //     reset();
-  //   }
-  // }, [formState, reset]);
 
   return (
     <Section styles="pt-[34px] pb-[34px] xl:pt-[80px] xl:pb-[80px]">

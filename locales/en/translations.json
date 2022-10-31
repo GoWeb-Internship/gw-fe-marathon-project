@@ -14,7 +14,9 @@
     "send": "Send",
     "successTitle": "Your question has been sent successfully",
     "successAnswer": "Wait for a response from the mentor",
-    "home": "Home"
+    "home": "Home",
+    "errorMessageTitle": "Oops...something went wrong!",
+    "errorMessageText": "Try again later."
   },
   "formValidation": {
     "required": "Field is required",
