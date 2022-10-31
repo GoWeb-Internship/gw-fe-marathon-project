@@ -8,5 +8,5 @@ function Container({ children, styles = '' }) {
 export default Container;
 
 Container.propTypes = {
-  styles: PropTypes.string.isRequired,
+  styles: PropTypes.string,
 };

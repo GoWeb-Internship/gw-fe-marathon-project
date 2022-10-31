@@ -13,5 +13,5 @@ function Section({ children, styles = '' }) {
 export default Section;
 
 Section.propTypes = {
-  styles: PropTypes.string.isRequired,
+  styles: PropTypes.string,
 };

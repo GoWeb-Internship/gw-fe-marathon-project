@@ -41,7 +41,7 @@ export default Accordion;
 Accordion.propTypes = {
   subhead_title: PropTypes.string.isRequired,
   // questions: PropTypes.arrayOf(PropTypes.shape({})),
-  questionId: PropTypes.string.isRequired,
+  // questionId: PropTypes.object.isRequired,
   // changeId,
   // location,
   chapter: PropTypes.string.isRequired,

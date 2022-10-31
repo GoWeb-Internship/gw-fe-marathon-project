@@ -84,7 +84,7 @@ AccordionItem.propTypes = {
   // data: PropTypes.shape({
 
   // }),
-  titleId: PropTypes.string.isRequired,
+  // titleId: PropTypes.string.isRequired,
   // changeId,
   // location,
   chapter: PropTypes.string.isRequired,
