@@ -24,11 +24,11 @@
 }
 
 .foundOption {
-  @apply mb-4 cursor-pointer truncate text-left last:mb-0;
+  @apply mb-4 cursor-pointer  text-ellipsis text-left last:mb-0;
 }
 
 .noResultsWrapper {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center text-ellipsis;
 }
 
 .noResultsTitle {

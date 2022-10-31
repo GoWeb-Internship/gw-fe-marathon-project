@@ -30,7 +30,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className=" w-[300px] transform overflow-hidden bg-body px-4 py-6 text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px]  md:w-[704px] xl:w-[1200px]  xl:rounded ">
+                <Dialog.Panel className=" w-[300px] transform overflow-hidden rounded bg-body px-4 py-6 text-center  align-middle  transition-all  dark:bg-body-dark dark:text-font-light xs:w-[335px]  sm:w-[440px] md:w-[704px]  xl:w-[1200px] ">
                   <Search onNavigate={onNavigate} closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>

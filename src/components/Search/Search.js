@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
@@ -7,21 +6,16 @@ import { DebounceInput } from 'react-debounce-input';
 import { useSearch } from '../../utils/searchContext';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-
+import NotFound from './NotFound';
+import { Link } from 'react-scroll';
 import {
   modalWrap,
   searchWrap,
   searchInput,
   foundOption,
-  noResultsWrapper,
-  noResultsTitle,
-  searchWord,
-  noResultsDesc,
-  btnToFeedbackPage,
   iconGlass,
   xMarkIcon,
   infoWrap,
-  link,
 } from './Search.module.css';
 
 const Search = ({ onNavigate, closeModal }) => {
@@ -31,7 +25,6 @@ const Search = ({ onNavigate, closeModal }) => {
 
   const { days } = useSearch();
   const { t } = useTranslation();
-  const noAnswer = t('noAnswer', { returnObjects: true });
 
   useEffect(() => {
     if (!days) return;
@@ -107,16 +100,22 @@ const Search = ({ onNavigate, closeModal }) => {
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ question_title, chapter, id }) => {
             return (
-              <li
-                key={id}
-                onClick={() => {
-                  handleRedirect(chapter, id);
-                }}
-                className={foundOption}
-                title={question_title}
-              >
-                <MagnifyingGlassIcon className={iconGlass} />
-                <Markdown>{question_title}</Markdown>
+              <li key={id} className={foundOption} title={question_title}>
+                <Link
+                  to={id}
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  className="block"
+                  onClick={e => {
+                    console.log(e.target);
+                    handleRedirect(chapter, id);
+                  }}
+                >
+                  <MagnifyingGlassIcon className={iconGlass} />
+                  <Markdown>{question_title}</Markdown>
+                </Link>
               </li>
             );
           })}
@@ -124,17 +123,7 @@ const Search = ({ onNavigate, closeModal }) => {
       ) : null}
 
       {filteredQuestions?.length === 0 && (
-        <div className={`${noResultsWrapper}`}>
-          <h3 className={`${noResultsTitle} `}>
-            {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
-          </h3>
-          <p className={noResultsDesc}>{noAnswer.description}</p>
-          <button className={btnToFeedbackPage}>
-            <Link to="/feedback" className={link}>
-              {noAnswer.button}
-            </Link>
-          </button>
-        </div>
+        <NotFound searchPhrase={searchPhrase} />
       )}
     </div>
   );
