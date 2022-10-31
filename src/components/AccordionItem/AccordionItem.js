@@ -25,7 +25,22 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   const { t } = useTranslation();
 
-  function handleClick(id) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
+
+  function handleClick(e, id) {
+    if (e.target.dataset.svg === 'copy') {
+      return;
+    }
     changeId(id);
   }
 
@@ -34,28 +49,29 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
     const copyLink = `${location.origin}${location.pathname}${params} `;
     copy(copyLink);
 
-    Swal.fire({
+    Toast.fire({
       icon: 'success',
       title: t('copyLink'),
-      showConfirmButton: false,
-      timer: 1000,
     });
   };
 
   return (
-    <li className={accordionItem}>
+    <li className={accordionItem} id={data.id}>
       <div
-        onClick={() => handleClick(data.id)}
+        onClick={e => {
+          handleClick(e, data.id);
+        }}
         className={
           titleId[data.id]
             ? `${accordionHeadingShown} dark:!bg-hover-dark`
             : accordionHeading
         }
       >
-        <h3 id={data.id}>
+        <h3>
           <Markdown>{data.title}</Markdown>
         </h3>
         <DocumentDuplicateIcon
+          data-svg="copy"
           className={titleId[data.id] ? copyIconHover : copyIcon}
           onClick={() => {
             handleCopyLink(chapter, data.id);
