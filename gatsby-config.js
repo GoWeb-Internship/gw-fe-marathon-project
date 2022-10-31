@@ -80,22 +80,6 @@ module.exports = {
           keySeparator: false,
           nsSeparator: true,
         },
-        pages: [
-          {
-            matchPath: '/:lang?/404',
-            getLanguageFromPath: false,
-          },
-          {
-            matchPath: '/:lang?/:uid',
-            getLanguageFromPath: true,
-            excludeLanguages: ['ru'],
-          },
-          {
-            matchPath: '/:lang?/:uid',
-            getLanguageFromPath: true,
-            excludeLanguages: ['uk'],
-          },
-        ],
       },
     },
   ],
