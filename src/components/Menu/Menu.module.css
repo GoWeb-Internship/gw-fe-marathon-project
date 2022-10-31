@@ -1,5 +1,5 @@
 .menuWrapper {
-  @apply fixed left-0 top-0 z-10 h-80 w-screen bg-menu pt-28 transition duration-200 ease-in-out dark:bg-menu-dark md:hidden;
+  @apply fixed left-0 top-0 z-10 h-80 w-screen bg-menu pt-28 transition duration-200 ease-in-out md:hidden;
 }
 
 .menuShown {
@@ -11,15 +11,15 @@
 }
 
 .menuLangItem {
-  @apply mb-4 rounded-lg bg-accent shadow-main dark:bg-accent-dark;
+  @apply mb-4 rounded-lg bg-accent shadow-main;
 }
 
 .menuThemeItem {
-  @apply rounded-lg bg-accent p-4 shadow-main dark:bg-accent-dark;
+  @apply rounded-lg bg-accent p-4 shadow-main;
 }
 
 .menuBackdrop {
-  @apply fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out dark:bg-overlay-dark md:hidden;
+  @apply fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out  md:hidden;
 }
 
 .menuBackdropShown {

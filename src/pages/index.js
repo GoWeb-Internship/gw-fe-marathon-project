@@ -9,8 +9,9 @@ import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
-import getArrayOfQuestions from '../utils/getArrayOfQuestions';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { useCallback } from 'react';
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -30,10 +31,12 @@ const IndexPage = ({ data, location }) => {
   );
   const [questionId, setQuestionId] = useState({});
   const [dataByChapter, setDataByChapter] = useState(null);
+  const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  const [isShownFullChapter, setIsShownFullChapter] = useState(false);
+
   const { t } = useTranslation();
   const button = t('showMoreButton', { returnObjects: true });
-  console.log(isBtnMoreShown);
 
   let obj = {};
 
@@ -44,16 +47,74 @@ const IndexPage = ({ data, location }) => {
 
     setDataByChapter(openedDayData);
     setIsBtnMoreShown(false);
+    setIsShownFullChapter(false);
   }, [days, openedDayId]);
+
+  const showLessQuestions = useCallback(() => {
+    const arrayOfSubheads = dataByChapter?.subhead;
+
+    const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
+      return [...prev, ...questions];
+    }, []);
+
+    if (allQuestions.length <= 5) {
+      setVisibleQuestions(arrayOfSubheads);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
+      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+
+      if (arrayOfSubheads[0].questions.length < 5) {
+        const longArray = [
+          ...shortArray,
+          ...getShortArray(
+            arrayOfSubheads,
+            1,
+            5 - arrayOfSubheads[0].questions.length,
+          ),
+        ];
+
+        setVisibleQuestions(longArray);
+        setIsBtnMoreShown(true);
+        return;
+      }
+
+      setVisibleQuestions(shortArray);
+      setIsBtnMoreShown(true);
+    }
+  }, [dataByChapter]);
 
   useEffect(() => {
     if (!dataByChapter) return;
-    const subhead = dataByChapter?.subhead;
 
-    const arrayOfQuestions = getArrayOfQuestions(subhead, chapter);
+    showLessQuestions();
+  }, [chapter, dataByChapter, isBtnMoreShown, showLessQuestions]);
 
-    arrayOfQuestions?.length > 5 && setIsBtnMoreShown(true);
-  }, [chapter, dataByChapter]);
+  function getShortArray(array, i, count) {
+    return [
+      {
+        subhead_title: array[i].subhead_title,
+        questions: array[i].questions.filter((el, index) => index < count),
+      },
+    ];
+  }
+
+  function handleToggleShowMore() {
+    isShownFullChapter
+      ? setIsShownFullChapter(false)
+      : setIsShownFullChapter(true);
+  }
+
+  useEffect(() => {
+    if (!dataByChapter) return;
+
+    isShownFullChapter
+      ? setVisibleQuestions(dataByChapter?.subhead)
+      : showLessQuestions();
+  }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
@@ -122,7 +183,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 pb-15">
+        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20 pb-15">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
@@ -131,8 +192,8 @@ const IndexPage = ({ data, location }) => {
 
           <div>
             <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
-              {dataByChapter
-                ? dataByChapter?.subhead?.map(
+              {visibleQuestions
+                ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
                         <Accordion
@@ -150,7 +211,20 @@ const IndexPage = ({ data, location }) => {
                 : null}
             </ul>
 
-            {isBtnMoreShown ? <button>{button.show}</button> : null}
+            {isBtnMoreShown ? (
+              <button
+                onClick={handleToggleShowMore}
+                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-light md:text-base md:font-medium md:max-xl:mb-8"
+              >
+                {isShownFullChapter ? button.hide : button.show}
+
+                {isShownFullChapter ? (
+                  <ArrowUpIcon className="ml-[20px] h-6 w-6 text-accent" />
+                ) : (
+                  <ArrowDownIcon className="ml-[20px] h-6 w-6 text-accent" />
+                )}
+              </button>
+            ) : null}
           </div>
 
           <Icon

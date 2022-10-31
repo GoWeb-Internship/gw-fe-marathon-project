@@ -14,7 +14,6 @@ const ToggleTheme = () => {
 
   const [theme, setTheme] = useState(websiteTheme);
   const [checked, setChecked] = useState(theme === 'dark');
-  console.log(theme);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');

@@ -17,7 +17,6 @@ import {
   xMarkIcon,
   infoWrap,
 } from './Search.module.css';
-import getArrayOfQuestions from '../../utils/getArrayOfQuestions';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -34,20 +33,20 @@ const Search = ({ onNavigate, closeModal }) => {
       (prevVal, { frontmatter: { chapter, subhead } }) => {
         return [
           ...prevVal,
-          // ...subhead.reduce((prevVal, { questions }) => {
-          //   return [
-          //     ...prevVal,
-          //     ...questions.map(({ id, title, content }) => {
-          //       return {
-          //         question_title: title,
-          //         content: content,
-          //         chapter: chapter,
-          //         id: id,
-          //       };
-          //     }),
-          //   ];
-          // }, []),
-          ...getArrayOfQuestions(subhead, chapter),
+          ...subhead.reduce((prevVal, { questions }) => {
+            return [
+              ...prevVal,
+              ...questions.map(({ id, title, content }) => {
+                return {
+                  question_title: title,
+                  content: content,
+                  chapter: chapter,
+                  id: id,
+                };
+              }),
+            ];
+          }, []),
+          // ...getArrayOfQuestions(subhead, chapter),
         ];
       },
       [],
