@@ -191,7 +191,7 @@ const IndexPage = ({ data, location }) => {
           />
 
           <div>
-            <ul className="mb-8 xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
+            <ul className="mb-[34px] xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px]">
               {visibleQuestions
                 ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
@@ -214,7 +214,7 @@ const IndexPage = ({ data, location }) => {
             {isBtnMoreShown ? (
               <button
                 onClick={handleToggleShowMore}
-                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-dark dark:text-font-light md:text-base md:font-medium md:max-xl:mb-8"
+                className="ml-auto flex w-max items-center justify-end font-inter text-sm font-normal text-font-dark dark:text-font-light max-xl:mb-[34px] max-xl:mt-[34px] md:text-base md:font-medium xl:mt-[24px]"
               >
                 {isShownFullChapter ? button.hide : button.show}
 
