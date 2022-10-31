@@ -1,6 +1,7 @@
 import React from 'react';
 import AccordionItem from '../AccordionItem/AccordionItem';
 import { subheadTitle, subhead } from './Accordion.module.css';
+import PropTypes from 'prop-types';
 
 const Accordion = ({
   subhead_title,
@@ -36,3 +37,12 @@ const Accordion = ({
 };
 
 export default Accordion;
+
+Accordion.propTypes = {
+  subhead_title: PropTypes.string.isRequired,
+  // questions: PropTypes.arrayOf(PropTypes.shape({})),
+  questionId: PropTypes.string.isRequired,
+  // changeId,
+  // location,
+  chapter: PropTypes.string.isRequired,
+};

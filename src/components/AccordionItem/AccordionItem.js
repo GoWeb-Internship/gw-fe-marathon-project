@@ -21,6 +21,7 @@ import qs from 'qs';
 import copy from 'copy-to-clipboard';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
+import PropTypes from 'prop-types';
 
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   const { t } = useTranslation();
@@ -78,3 +79,13 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
 });
 
 export default AccordionItem;
+
+AccordionItem.propTypes = {
+  // data: PropTypes.shape({
+
+  // }),
+  titleId: PropTypes.string.isRequired,
+  // changeId,
+  // location,
+  chapter: PropTypes.string.isRequired,
+};

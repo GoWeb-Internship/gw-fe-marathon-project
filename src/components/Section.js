@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from './Container';
+import PropTypes from 'prop-types';
 
 function Section({ children, styles = '' }) {
   return (
@@ -10,3 +11,7 @@ function Section({ children, styles = '' }) {
 }
 
 export default Section;
+
+Section.propTypes = {
+  styles: PropTypes.string.isRequired,
+};
