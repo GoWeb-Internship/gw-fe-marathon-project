@@ -34,15 +34,15 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <div
-        className={`${menuWrapper} 
+        className={`${menuWrapper} dark:bg-menu-dark
           ${isMenuOpen ? menuShown : menuHidden}`}
       >
         <Container>
           <ul>
-            <li className={menuLangItem}>
+            <li className={`${menuLangItem} dark:bg-accent-dark`}>
               <SwitchLang />
             </li>
-            <li className={menuThemeItem}>
+            <li className={`${menuThemeItem} dark:bg-accent-dark`}>
               <ToggleTheme />
             </li>
           </ul>
@@ -50,7 +50,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
       </div>
 
       <Backdrop
-        className={`${menuBackdrop} ${
+        className={`${menuBackdrop} dark:bg-overlay-dark ${
           isMenuOpen ? menuBackdropShown : menuBackdropHidden
         }`}
         handleCloseFunction={toggleMenu}
