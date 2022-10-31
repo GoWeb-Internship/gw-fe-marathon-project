@@ -23,7 +23,6 @@ import {
   infoWrap,
   link,
 } from './Search.module.css';
-// import getArrayOfQuestions from '../../utils/getArrayOfQuestions';
 
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
