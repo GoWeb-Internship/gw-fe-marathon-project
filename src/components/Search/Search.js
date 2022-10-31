@@ -46,7 +46,6 @@ const Search = ({ onNavigate, closeModal }) => {
               }),
             ];
           }, []),
-          // ...getArrayOfQuestions(subhead, chapter),
         ];
       },
       [],

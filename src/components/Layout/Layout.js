@@ -2,6 +2,7 @@ import * as React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
+import PropTypes from 'prop-types';
 
 const Layout = ({ children, openModal }) => {
   return (
@@ -18,3 +19,7 @@ const Layout = ({ children, openModal }) => {
 };
 
 export default Layout;
+
+Layout.propTypes = {
+  openModal: PropTypes.func,
+};
