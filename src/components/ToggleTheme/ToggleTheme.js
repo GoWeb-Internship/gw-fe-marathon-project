@@ -10,14 +10,25 @@ const ToggleTheme = () => {
   }
   useEffect(() => {
     setTheme(window.__theme);
-  }, []);
+  }, [websiteTheme]);
 
   const [theme, setTheme] = useState(websiteTheme);
+  const [checked, setChecked] = useState(theme === 'dark');
+  console.log(theme);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
     setTheme(websiteTheme === 'dark' ? 'light' : 'dark');
+    setChecked(
+      localStorage.getItem('preferred-theme') === 'dark' ? true : false,
+    );
   };
+
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+  mql.addEventListener('change', e => {
+    setChecked(e.matches);
+  });
 
   return (
     <div className={toggleBar}>
@@ -27,7 +38,7 @@ const ToggleTheme = () => {
           checked: <MoonIcon className={moonIcon} />,
           unchecked: <SunIcon className={sunIcon} />,
         }}
-        checked={theme === 'light' ? false : true}
+        checked={checked}
         onChange={ThemeToggle}
       />
     </div>

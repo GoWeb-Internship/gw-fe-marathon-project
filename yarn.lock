@@ -1581,14 +1581,14 @@
   dependencies:
     "@lezer/common" "^0.15.0"
 
-"@lmdb/lmdb-win32-x64@2.5.2":
-  "integrity" "sha512-zrBczSbXKxEyK2ijtbRdICDygRqWSRPpZMN5dD1T8VMEW5RIhIbwFWw2phDRXuBQdVDpSjalCIUMWMV2h3JaZA=="
-  "resolved" "https://registry.npmjs.org/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.5.2.tgz"
+"@lmdb/lmdb-linux-x64@2.5.2":
+  "integrity" "sha512-xUdUfwDJLGjOUPH3BuPBt0NlIrR7f/QHKgu3GZIXswMMIihAekj2i97oI0iWG5Bok/b+OBjHPfa8IU9velnP/Q=="
+  "resolved" "https://registry.npmjs.org/@lmdb/lmdb-linux-x64/-/lmdb-linux-x64-2.5.2.tgz"
   "version" "2.5.2"
 
-"@lmdb/lmdb-win32-x64@2.5.3":
-  "integrity" "sha512-cK+Elf3RjEzrm3SerAhrFWL5oQAsZSJ/LmjL1joIpTfEP1etJJ9CTRvdaV6XLYAxaEkfdhk/9hOvHLbR9yIhCA=="
-  "resolved" "https://registry.npmjs.org/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.5.3.tgz"
+"@lmdb/lmdb-linux-x64@2.5.3":
+  "integrity" "sha512-qaReO5aV8griBDsBr8uBF/faO3ieGjY1RY4p8JvTL6Mu1ylLrTVvOONqKFlNaCwrmUjWw5jnf7VafxDAeQHTow=="
+  "resolved" "https://registry.npmjs.org/@lmdb/lmdb-linux-x64/-/lmdb-linux-x64-2.5.3.tgz"
   "version" "2.5.3"
 
 "@mapbox/jsonlint-lines-primitives@~2.0.2":
@@ -1629,9 +1629,9 @@
     "@lezer/lr" "^0.15.4"
     "json5" "^2.2.1"
 
-"@msgpackr-extract/msgpackr-extract-win32-x64@2.1.2":
-  "integrity" "sha512-rIZVR48zA8hGkHIK7ED6+ZiXsjRCcAVBJbm8o89OKAMTmEAQ2QvoOxoiu3w2isAaWwzgtQIOFIqHwvZDyLKCvw=="
-  "resolved" "https://registry.npmjs.org/@msgpackr-extract/msgpackr-extract-win32-x64/-/msgpackr-extract-win32-x64-2.1.2.tgz"
+"@msgpackr-extract/msgpackr-extract-linux-x64@2.1.2":
+  "integrity" "sha512-RjRoRxg7Q3kPAdUSC5EUUPlwfMkIVhmaRTIe+cqHbKrGZ4M6TyCA/b5qMaukQ/1CHWrqYY2FbKOAU8Hg0pQFzg=="
+  "resolved" "https://registry.npmjs.org/@msgpackr-extract/msgpackr-extract-linux-x64/-/msgpackr-extract-linux-x64-2.1.2.tgz"
   "version" "2.1.2"
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
@@ -4105,7 +4105,7 @@
   "resolved" "https://registry.npmjs.org/copy-text-to-clipboard/-/copy-text-to-clipboard-3.0.1.tgz"
   "version" "3.0.1"
 
-"copy-to-clipboard@^3.3.1":
+"copy-to-clipboard@^3.3.1", "copy-to-clipboard@^3.3.2":
   "integrity" "sha512-Vme1Z6RUDzrb6xAI7EZlVZ5uvOk2F//GaxKUxajDqm9LhOVM1inxNAD2vy+UZDYsd0uyA9s7b3/FVZPSxqrCfg=="
   "resolved" "https://registry.npmjs.org/copy-to-clipboard/-/copy-to-clipboard-3.3.2.tgz"
   "version" "3.3.2"
@@ -12623,6 +12623,11 @@
   "version" "2.0.2"
   dependencies:
     "tslib" "^2.0.3"
+
+"sweetalert2@^11.6.5":
+  "integrity" "sha512-4/2dD+HoGbMnemYJlY/IXhLUgVFVxLgH3dlEDLY1yufOAW9HLEI8VHmgCo4+pmXbUBlKZU/pDbSgw3wkysi8jQ=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.6.5.tgz"
+  "version" "11.6.5"
 
 "symbol-observable@^1.0.2", "symbol-observable@^1.0.3":
   "integrity" "sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ=="

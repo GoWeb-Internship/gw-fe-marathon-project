@@ -15,7 +15,9 @@
     "send": "Відправити",
     "successTitle": "Ваше питання успішно відправлено",
     "successAnswer": "Очікуйте відповіді від ментора",
-    "home": "На головну"
+    "home": "На головну",
+    "errorMessageTitle": "Ой...щось пішло не так!",
+    "errorMessageText": "Спробуйте ще раз пізніше."
   },
   "formValidation": {
     "required": "Поле обовʼязкове",
