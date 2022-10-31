@@ -52,7 +52,7 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
             : accordionHeading
         }
       >
-        <h3>
+        <h3 id={data.id}>
           <Markdown>{data.title}</Markdown>
         </h3>
         <DocumentDuplicateIcon
