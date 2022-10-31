@@ -99,7 +99,6 @@ const Search = ({ onNavigate, closeModal }) => {
       {filteredQuestions ? (
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ question_title, chapter, id }) => {
-            console.log(id);
             return (
               <li key={id} className={foundOption} title={question_title}>
                 <Link
