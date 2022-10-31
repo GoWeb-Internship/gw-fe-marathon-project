@@ -9,9 +9,9 @@ import { SearchContext } from '../utils/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
-import getArrayOfQuestions from '../utils/getArrayOfQuestions';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { useCallback } from 'react';
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -116,10 +116,6 @@ const IndexPage = ({ data, location }) => {
       : showLessQuestions();
   }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
-  console.log(isBtnMoreShown);
-  console.log(isShownFullChapter);
-  console.log(visibleQuestions);
-
   useEffect(() => {
     data.allMarkdownRemark.nodes?.map(item => {
       item.frontmatter.subhead.map(element => {
@@ -187,7 +183,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <SearchContext.Provider value={{ days: days }}>
       <Layout openModal={openModal}>
-        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 pb-15">
+        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20 pb-15">
           <ChapterList
             days={days}
             setOpenedDayId={setOpenedDayId}
@@ -216,7 +212,18 @@ const IndexPage = ({ data, location }) => {
             </ul>
 
             {isBtnMoreShown ? (
-              <button onClick={handleToggleShowMore}>{button.show}</button>
+              <button
+                onClick={handleToggleShowMore}
+                className="ml-auto mt-8 mb-[22px] flex w-max items-center justify-end font-inter text-sm font-normal  text-font-light md:text-base md:font-medium md:max-xl:mb-8"
+              >
+                {isShownFullChapter ? button.hide : button.show}
+
+                {isShownFullChapter ? (
+                  <ArrowUpIcon className="ml-[20px] h-6 w-6 text-accent" />
+                ) : (
+                  <ArrowDownIcon className="ml-[20px] h-6 w-6 text-accent" />
+                )}
+              </button>
             ) : null}
           </div>
 
