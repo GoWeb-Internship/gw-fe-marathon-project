@@ -39,8 +39,6 @@ const IndexPage = ({ data, location }) => {
   const { t } = useTranslation();
   const button = t('showMoreButton', { returnObjects: true });
 
-  let obj = {};
-
   useEffect(() => {
     const openedDayData = days?.find(
       day => openedDayId === day.frontmatter.chapter,
@@ -124,17 +122,16 @@ const IndexPage = ({ data, location }) => {
       : showLessQuestions();
   }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
-  useEffect(() => {
-    data.allMarkdownRemark.nodes?.map(item => {
-      item.frontmatter.subhead.map(element => {
-        element.questions.map(el => {
-          obj[String(el.id)] = false;
-        });
-      });
-    }, {});
+  let objForAccordion = {};
+  data.allMarkdownRemark.nodes?.map(item =>
+    item.frontmatter.subhead.map(element =>
+      element.questions.map(el => (objForAccordion[String(el.id)] = false)),
+    ),
+  );
 
-    setQuestionId(obj);
-  }, [chapter, id]);
+  useEffect(() => {
+    setQuestionId(objForAccordion);
+  }, []);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
@@ -142,8 +139,11 @@ const IndexPage = ({ data, location }) => {
 
   useEffect(() => {
     if (chapter) setOpenedDayId(chapter);
-    if (id) activateCurrentAccordion(obj, id);
-  }, [chapter, id]);
+  }, [chapter]);
+
+  useEffect(() => {
+    if (id) activateCurrentAccordion(questionId, id);
+  }, [id, questionId]);
 
   function activateCurrentAccordion(obj, id) {
     if (Object.keys(obj).length > 0) {
@@ -167,7 +167,6 @@ const IndexPage = ({ data, location }) => {
 
   const handleNavigate = redirect => {
     setSearchParams(redirect);
-    // navigate(`?${redirect}`);
   };
 
   useEffect(() => {

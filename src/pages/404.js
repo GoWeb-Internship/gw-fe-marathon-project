@@ -10,7 +10,7 @@ const NotFoundPage = () => {
 
   return (
     <main>
-      <section className={css.section}>
+      <section className={`${css.section} dark:bg-body-dark`}>
         <Container styles={css.container}>
           <div className={css.wrapper}>
             <h1 className={css.title}>{content.title}</h1>
