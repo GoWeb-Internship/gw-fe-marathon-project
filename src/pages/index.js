@@ -102,24 +102,29 @@ const IndexPage = ({ data, location }) => {
   }
 
   function handleToggleShowMore() {
-    isShownFullChapter
-      ? setIsShownFullChapter(false)
-      : setIsShownFullChapter(true);
+    if (isShownFullChapter) {
+      setIsShownFullChapter(false);
+      document
+        .getElementById('subhead-list')
+        .scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setIsShownFullChapter(true);
+    }
   }
 
   useEffect(() => {
     if (!dataByChapter) return;
 
-    // if (isShownFullChapter) {
-    //   setVisibleQuestions(dataByChapter?.subhead);
-    //   document.getElementById('footer').scrollIntoView();
-    // } else {
-    //   showLessQuestions();
-    // }
+    if (isShownFullChapter) {
+      setVisibleQuestions(dataByChapter?.subhead);
 
-    isShownFullChapter
-      ? setVisibleQuestions(dataByChapter?.subhead)
-      : showLessQuestions();
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    } else {
+      showLessQuestions();
+    }
   }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
   let objForAccordion = {};
@@ -198,7 +203,7 @@ const IndexPage = ({ data, location }) => {
           />
 
           <div>
-            <ul className="subhead-list">
+            <ul className="subhead-list" id="subhead-list">
               {visibleQuestions
                 ? visibleQuestions?.map(
                     ({ subhead_title, questions }, index) => {
