@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Toggle from 'react-toggle';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 
 const ToggleTheme = () => {
   let websiteTheme;
+  let mql;
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme;
+
+    mql = window.matchMedia('(prefers-color-scheme: dark)');
+    mql.addEventListener('change', e => {
+      setChecked(e.matches);
+    });
   }
   useEffect(() => {
     setTheme(window.__theme);
@@ -14,6 +20,7 @@ const ToggleTheme = () => {
 
   const [theme, setTheme] = useState(websiteTheme);
   const [checked, setChecked] = useState(theme === 'dark');
+  console.log(theme);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
@@ -22,12 +29,6 @@ const ToggleTheme = () => {
       localStorage.getItem('preferred-theme') === 'dark' ? true : false,
     );
   };
-
-  const mql = window.matchMedia('(prefers-color-scheme: dark)');
-
-  mql.addEventListener('change', e => {
-    setChecked(e.matches);
-  });
 
   return (
     <div className={toggleBar}>
