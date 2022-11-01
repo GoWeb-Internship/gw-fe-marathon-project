@@ -10,6 +10,10 @@ const ToggleTheme = () => {
     websiteTheme = window.__theme;
 
     mql = window.matchMedia('(prefers-color-scheme: dark)');
+    mql.addEventListener('change', e => {
+      setChecked(e.matches);
+    });
+
   }
   useEffect(() => {
     setTheme(window.__theme);
