@@ -24,6 +24,8 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon';
 
 import myPlusIcon from '../../assets/images/plus-icon.svg';
+import { navigate } from 'gatsby';
+import { Link } from 'react-scroll';
 
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   const { t } = useTranslation();
@@ -41,10 +43,15 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   });
 
   function handleClick(e, id) {
-    if (e.target.dataset.svg === 'copy') {
-      return;
-    }
-    changeId(id);
+    // if (e.target.dataset.svg === 'copy') {
+    //   return;
+    // }
+    // changeId(id);
+
+    const params = `?${qs.stringify(qs.parse({ page: chapter, title: id }))}`;
+    navigate(params);
+
+    // console.log(params);
   }
 
   const handleCopyLink = (chapter, id) => {
@@ -60,38 +67,41 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
 
   return (
     <li className={accordionItem} id={data.id}>
-      <div
-        onClick={e => {
-          handleClick(e, data.id);
-        }}
-        className={
-          titleId[data.id]
-            ? `${accordionHeadingShown} dark:!bg-hover-dark`
-            : accordionHeading
-        }
-      >
-        <h3>
-          <Markdown>{data.title}</Markdown>
-        </h3>
-        <DocumentDuplicateIcon
-          data-svg="copy"
-          className={titleId[data.id] ? copyIconHover : copyIcon}
-          onClick={() => {
-            handleCopyLink(chapter, data.id);
+      <Link href={data.id} smooth to={data.id}>
+        <div
+          onClick={e => {
+            handleClick(e, data.id);
           }}
-        />
-        {titleId[data.id] ? (
-          <MinusCircleIcon className={minusIcon} />
-        ) : (
-          <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
-        )}
-      </div>
+          className={
+            titleId[data.id]
+              ? `${accordionHeadingShown} dark:!bg-hover-dark`
+              : accordionHeading
+          }
+        >
+          <h3>
+            <Markdown>{data.title}</Markdown>
+          </h3>
 
-      <div
-        className={titleId[data.id] ? accordionContentShow : accordionContent}
-      >
-        <Markdown>{data.content}</Markdown>
-      </div>
+          <DocumentDuplicateIcon
+            data-svg="copy"
+            className={titleId[data.id] ? copyIconHover : copyIcon}
+            onClick={() => {
+              handleCopyLink(chapter, data.id);
+            }}
+          />
+          {titleId[data.id] ? (
+            <MinusCircleIcon className={minusIcon} />
+          ) : (
+            <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
+          )}
+        </div>
+
+        <div
+          className={titleId[data.id] ? accordionContentShow : accordionContent}
+        >
+          <Markdown>{data.content}</Markdown>
+        </div>
+      </Link>
     </li>
   );
 });

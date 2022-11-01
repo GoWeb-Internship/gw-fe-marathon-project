@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useState, useEffect } from 'react';
-import Layout from '../components/Layout/Layout';
+import { Layout } from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
@@ -51,7 +51,6 @@ const IndexPage = ({ data, location }) => {
 
   const showLessQuestions = useCallback(() => {
     const arrayOfSubheads = dataByChapter?.subhead;
-
     const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
       return [...prev, ...questions];
     }, []);
@@ -60,7 +59,6 @@ const IndexPage = ({ data, location }) => {
       setVisibleQuestions(arrayOfSubheads);
     } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
       const shortArray = getShortArray(arrayOfSubheads, 0, 5);
-
       setVisibleQuestions(shortArray);
       setIsBtnMoreShown(true);
     } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
@@ -78,6 +76,7 @@ const IndexPage = ({ data, location }) => {
 
         setVisibleQuestions(longArray);
         setIsBtnMoreShown(true);
+
         return;
       }
 
@@ -228,7 +227,7 @@ const IndexPage = ({ data, location }) => {
                 {isShownFullChapter ? button.hide : button.show}
 
                 <ArrowUpIcon
-                  className={`btn-show-more-icon 
+                  className={`btn-show-more-icon
           ${isShownFullChapter ? 'rotate-0' : '-rotate-180'}`}
                 />
               </button>
@@ -240,6 +239,7 @@ const IndexPage = ({ data, location }) => {
             iconId="main-page-desktop"
             className="main-page-image-desktop"
           />
+
           <Modal
             isOpen={isOpen}
             closeModal={closeModal}

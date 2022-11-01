@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import Hero from '../Hero';
 import PropTypes from 'prop-types';
 
-const Layout = ({ children, openModal }) => {
+export const Layout = ({ children, openModal }) => {
   return (
     <div className=" flex min-h-screen flex-col">
       <div className="bg-accent dark:bg-accent-dark ">
@@ -18,7 +18,13 @@ const Layout = ({ children, openModal }) => {
   );
 };
 
-export default Layout;
+export const withLayout = Component => props => {
+  return (
+    <Layout>
+      <Component {...props} />
+    </Layout>
+  );
+};
 
 Layout.propTypes = {
   openModal: PropTypes.func,
