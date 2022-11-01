@@ -13,7 +13,6 @@ const ToggleTheme = () => {
     mql.addEventListener('change', e => {
       setChecked(e.matches);
     });
-
   }
   useEffect(() => {
     setTheme(window.__theme);
@@ -30,10 +29,6 @@ const ToggleTheme = () => {
       localStorage.getItem('preferred-theme') === 'dark' ? true : false,
     );
   };
-
-  mql.addEventListener('change', e => {
-    setChecked(e.matches);
-  });
 
   return (
     <div className={toggleBar}>
