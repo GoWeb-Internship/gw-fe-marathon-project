@@ -148,7 +148,7 @@ const IndexPage = ({ data, location }) => {
 
   useEffect(() => {
     if (id) activateCurrentAccordion(questionId, id);
-  }, [id, questionId]);
+  }, [id]);
 
   function activateCurrentAccordion(obj, id) {
     if (Object.keys(obj).length > 0) {
