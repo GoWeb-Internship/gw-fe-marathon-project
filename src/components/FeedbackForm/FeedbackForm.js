@@ -93,7 +93,11 @@ const FeedbackForm = () => {
   const [loading, setLoading] = useState(false);
   const [color, setColor] = useState(spinnerDefault);
 
-  const htmlDark = document.querySelector('.dark');
+  let htmlDark;
+
+  if (typeof window !== 'undefined') {
+    htmlDark = document.querySelector('.dark');
+  }
   const darkSpinner = () => {
     if (htmlDark) {
       setColor(spinnerDarkTheme);
