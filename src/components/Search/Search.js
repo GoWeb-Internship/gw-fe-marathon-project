@@ -18,6 +18,9 @@ import {
   infoWrap,
 } from './Search.module.css';
 
+// node.frontmatter.language === i18n.language &&
+// const { i18n } = useTranslation();
+
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
