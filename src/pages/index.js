@@ -23,10 +23,10 @@ const IndexPage = ({ data, location }) => {
     ],
     [data],
   );
-  console.log(location.pathname.split('/'));
+
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchParams, setSearchParams] = useState('');
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [searchParams, setSearchParams] = useState('');
   const [openedDayId, setOpenedDayId] = useState(
     chapter || days[0].frontmatter.chapter,
   );
@@ -76,23 +76,23 @@ const IndexPage = ({ data, location }) => {
     }
   }
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+  // const closeModal = () => {
+  //   setIsOpen(false);
+  // };
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
+  // const openModal = () => {
+  //   setIsOpen(true);
+  // };
 
-  const handleNavigate = redirect => {
-    setSearchParams(redirect);
-  };
+  // const handleNavigate = redirect => {
+  //   setSearchParams(redirect);
+  // };
 
-  useEffect(() => {
-    if (searchParams) {
-      navigate(`?${searchParams}`);
-    }
-  }, [searchParams]);
+  // useEffect(() => {
+  //   if (searchParams) {
+  //     navigate(`?${searchParams}`);
+  //   }
+  // }, [searchParams]);
 
   // useEffect(() => {
   //   if (window.netlifyIdentity) {
@@ -108,7 +108,7 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <SearchContext.Provider value={{ days: days }}>
-      <Layout openModal={openModal}>
+      <Layout>
         <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20 pb-15">
           <ChapterList
             days={days}
@@ -143,11 +143,11 @@ const IndexPage = ({ data, location }) => {
             iconId="main-page-desktop"
             className="main-page-image-desktop"
           />
-          <Modal
+          {/* <Modal
             isOpen={isOpen}
             closeModal={closeModal}
             onNavigate={handleNavigate}
-          />
+          /> */}
         </Section>
       </Layout>
     </SearchContext.Provider>

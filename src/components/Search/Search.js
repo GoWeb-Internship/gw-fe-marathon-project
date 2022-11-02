@@ -7,7 +7,7 @@ import { useSearch } from '../../hooks/searchContext';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import NotFound from './NotFound';
-import { Link } from 'react-scroll';
+import { Link } from 'gatsby';
 import {
   modalWrap,
   searchWrap,
@@ -82,6 +82,8 @@ const Search = ({ onNavigate, closeModal }) => {
     closeModal();
   };
 
+  const normalizedPath = path => (path === 'start' ? '' : path);
+
   return (
     <div className={modalWrap}>
       <div className={searchWrap}>
@@ -102,19 +104,15 @@ const Search = ({ onNavigate, closeModal }) => {
       {filteredQuestions ? (
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ question_title, chapter, id }) => {
+            console.log(normalizedPath(chapter));
             return (
               <li key={id} className={foundOption} title={question_title}>
                 <Link
-                  to={id}
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  className="block"
-                  onClick={e => {
-                    console.log(e.target);
-                    handleRedirect(chapter, id);
-                  }}
+                  to={`/${normalizedPath(chapter)}?${id}`}
+                  // onClick={e => {
+                  // console.log(e.target);
+                  // handleRedirect(chapter, id);
+                  // }}
                 >
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{question_title}</Markdown>
@@ -135,6 +133,6 @@ const Search = ({ onNavigate, closeModal }) => {
 export default Search;
 
 Search.propTypes = {
-  onNavigate: PropTypes.func.isRequired,
+  // onNavigate: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
