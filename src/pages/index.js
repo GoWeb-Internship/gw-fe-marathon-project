@@ -5,60 +5,45 @@ import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
-import { SearchContext } from '../hooks/searchContext.js';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
-// import { useCallback } from 'react';
-// import { ArrowUpIcon } from '@heroicons/react/24/solid';
-// import { useRef } from 'react';
 
 const IndexPage = ({ data, location }) => {
-  const days = useMemo(
-    () => [
-      ...data?.allMarkdownRemark?.nodes?.sort(
-        (a, b) => a.frontmatter.chapter_range - b.frontmatter.chapter_range,
-      ),
-    ],
-    [data],
-  );
-
+  const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
+  const chapterOfMainPage = day.chapter;
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useState('');
-  const [openedDayId, setOpenedDayId] = useState(
-    chapter || days[0].frontmatter.chapter,
-  );
+  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   const [questionId, setQuestionId] = useState({});
-  const [dataByChapter, setDataByChapter] = useState(null);
+  // const [dataByChapter, setDataByChapter] = useState(null);
 
-  useEffect(() => {
-    const openedDayData = days?.find(
-      day => openedDayId === day.frontmatter.chapter,
-    ).frontmatter;
+  // useEffect(() => {
+  //   const openedDayData = days?.find(
+  //     day => openedDayId === day.frontmatter.chapter,
+  //   ).frontmatter;
 
-    setDataByChapter(openedDayData);
-  }, [days, openedDayId]);
+  //   setDataByChapter(openedDayData);
+  // }, [days, openedDayId]);
 
   let objForAccordion = {};
-  days?.map(item =>
-    item.frontmatter.subhead.map(element =>
-      element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-    ),
+
+  day.subhead.map(element =>
+    element.questions.map(el => (objForAccordion[String(el.id)] = false)),
   );
 
-  useEffect(() => {
-    setQuestionId(objForAccordion);
-  }, []);
+  // useEffect(() => {
+  //   setQuestionId(objForAccordion);
+  // }, []);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
   };
 
-  useEffect(() => {
-    if (chapter) setOpenedDayId(chapter);
-  }, [chapter]);
+  // useEffect(() => {
+  //   if (chapter) setOpenedDayId(chapter);
+  // }, [chapter]);
 
   useEffect(() => {
     if (id) activateCurrentAccordion(questionId, id);
@@ -107,50 +92,39 @@ const IndexPage = ({ data, location }) => {
   // }, []);
 
   return (
-    <SearchContext.Provider value={{ days: days }}>
-      <Layout openModal={openModal}>
-        <Section styles="py-[34px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20 pb-15">
-          <ChapterList
-            days={days}
-            setOpenedDayId={setOpenedDayId}
-            openedDayId={openedDayId}
-          />
+    <Layout openModal={openModal}>
+      <Section styles="main-section">
+        <ChapterList day={day} openedDayId={chapterOfMainPage} />
 
-          <div>
-            <ul className="subhead-list" id="subhead-list">
-              {dataByChapter
-                ? dataByChapter?.subhead?.map(
-                    ({ subhead_title, questions }, index) => {
-                      return (
-                        <Accordion
-                          key={index}
-                          subhead_title={subhead_title}
-                          questions={questions}
-                          questionId={questionId}
-                          changeId={handleChangeAccordion}
-                          location={location}
-                          chapter={openedDayId}
-                        />
-                      );
-                    },
-                  )
-                : null}
-            </ul>
-          </div>
+        <div>
+          <ul className="subhead-list" id="subhead-list">
+            {day
+              ? day?.subhead?.map(({ subhead_title, questions }, index) => {
+                  return (
+                    <Accordion
+                      key={index}
+                      subhead_title={subhead_title}
+                      questions={questions}
+                      questionId={questionId}
+                      changeId={handleChangeAccordion}
+                      location={location}
+                      chapter={chapterOfMainPage}
+                    />
+                  );
+                })
+              : null}
+          </ul>
+        </div>
 
-          <Icon iconId="main-page" className="main-page-image-mobile" />
-          <Icon
-            iconId="main-page-desktop"
-            className="main-page-image-desktop"
-          />
-          <Modal
-            isOpen={isOpen}
-            closeModal={closeModal}
-            onNavigate={handleNavigate}
-          />
-        </Section>
-      </Layout>
-    </SearchContext.Provider>
+        <Icon iconId="main-page" className="main-page-image-mobile" />
+        <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
+        <Modal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          onNavigate={handleNavigate}
+        />
+      </Section>
+    </Layout>
   );
 };
 
@@ -159,7 +133,9 @@ export default IndexPage;
 export const query = graphql`
   query ($language: String!) {
     allMarkdownRemark(
-      filter: { frontmatter: { language: { eq: $language } } }
+      filter: {
+        frontmatter: { language: { eq: $language }, chapter: { eq: "start" } }
+      }
     ) {
       nodes {
         frontmatter {
