@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
-import Layout from '../components/Layout/Layout';
+import { withLayout } from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
 import Modal from '../components/Modal';
@@ -15,8 +15,9 @@ const IndexPage = ({ data, location }) => {
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useState('');
-  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   const [questionId, setQuestionId] = useState({});
+
+  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
   // useEffect(() => {
@@ -92,43 +93,45 @@ const IndexPage = ({ data, location }) => {
   // }, []);
 
   return (
-    <Layout openModal={openModal}>
-      <Section styles="main-section">
-        <ChapterList day={day} openedDayId={chapterOfMainPage} />
+    // <Layout openModal={openModal}>
+    <Section styles="main-section">
+      <ChapterList day={day} openedDayId={chapterOfMainPage} />
 
-        <div>
-          <ul className="subhead-list" id="subhead-list">
-            {day
-              ? day?.subhead?.map(({ subhead_title, questions }, index) => {
-                  return (
-                    <Accordion
-                      key={index}
-                      subhead_title={subhead_title}
-                      questions={questions}
-                      questionId={questionId}
-                      changeId={handleChangeAccordion}
-                      location={location}
-                      chapter={chapterOfMainPage}
-                    />
-                  );
-                })
-              : null}
-          </ul>
-        </div>
+      <div>
+        <ul className="subhead-list" id="subhead-list">
+          {day
+            ? day?.subhead?.map(({ subhead_title, questions }, index) => {
+                return (
+                  <Accordion
+                    key={index}
+                    subhead_title={subhead_title}
+                    questions={questions}
+                    questionId={questionId}
+                    changeId={handleChangeAccordion}
+                    location={location}
+                    chapter={chapterOfMainPage}
+                  />
+                );
+              })
+            : null}
+        </ul>
+      </div>
 
-        <Icon iconId="main-page" className="main-page-image-mobile" />
-        <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
-        <Modal
-          isOpen={isOpen}
-          closeModal={closeModal}
-          onNavigate={handleNavigate}
-        />
-      </Section>
-    </Layout>
+      <Icon iconId="main-page" className="main-page-image-mobile" />
+      <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        onNavigate={handleNavigate}
+      />
+    </Section>
+    // </Layout>
   );
 };
 
-export default IndexPage;
+export default withLayout(IndexPage);
+
+// export default IndexPage;
 
 export const query = graphql`
   query ($language: String!) {

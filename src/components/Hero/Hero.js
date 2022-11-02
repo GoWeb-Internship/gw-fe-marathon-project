@@ -13,16 +13,20 @@ import {
   search,
 } from './Hero.module.css';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-use';
+import { routes } from '../../utils/routes';
 
 const Hero = ({ openModal }) => {
   const { t } = useTranslation();
   const media = useMediaRules();
+  const { pathname } = useLocation();
 
   return (
     <section className={section}>
       <Container>
         <h2 className={title}>{t('title')}</h2>
-        {media !== 'mobile' && (
+
+        {media !== 'mobile' && pathname !== routes.FEEDBACK && (
           <button className={search} onClick={openModal}>
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
