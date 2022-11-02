@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { useLocation } from 'react-use';
 import { item, button, activeButton } from './Chapter.module.css';
+import PropTypes from 'prop-types';
 
 const ChapterItem = ({ frontmatter }) => {
   const { pathname } = useLocation();
@@ -23,3 +24,7 @@ const ChapterItem = ({ frontmatter }) => {
 };
 
 export default ChapterItem;
+
+ChapterItem.propTypes = {
+  frontmatter: PropTypes.object.isRequired,
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import PropTypes from 'prop-types';
 
 const LangList = ({ active }) => {
   const { languages, originalPath } = useI18next();
@@ -42,3 +43,7 @@ const LangList = ({ active }) => {
 };
 
 export default LangList;
+
+LangList.propTypes = {
+  active: PropTypes.string.isRequired,
+};

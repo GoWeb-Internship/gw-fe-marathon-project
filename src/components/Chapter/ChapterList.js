@@ -2,6 +2,7 @@ import React from 'react';
 import ChapterItem from './ChapterItem';
 import { list } from './Chapter.module.css';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
 const ChapterList = ({ days }) => {
   console.log(days);
@@ -52,3 +53,7 @@ const ChapterList = ({ days }) => {
 };
 
 export default ChapterList;
+
+ChapterList.propTypes = {
+  days: PropTypes.array.isRequired,
+};

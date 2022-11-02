@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Search from '../Search/Search';
+import PropTypes from 'prop-types';
 
-const Modal = ({ isOpen, closeModal, onNavigate }) => {
+const Modal = ({ isOpen, closeModal }) => {
   return (
     <Fragment>
       <Transition appear show={isOpen} as={Fragment}>
@@ -31,7 +32,7 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className=" w-[300px] transform overflow-hidden rounded bg-body px-4 py-6 text-center  align-middle  transition-all  dark:bg-body-dark dark:text-font-light xs:w-[335px]  sm:w-[440px] md:w-[704px]  xl:w-[1200px] ">
-                  <Search onNavigate={onNavigate} closeModal={closeModal} />
+                  <Search closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -43,3 +44,8 @@ const Modal = ({ isOpen, closeModal, onNavigate }) => {
 };
 
 export default Modal;
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
