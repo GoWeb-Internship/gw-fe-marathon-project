@@ -1,17 +1,23 @@
 import React from 'react';
+import { Link } from 'gatsby';
+import { useLocation } from 'react-use';
 import { item, button, activeButton } from './Chapter.module.css';
 
-const ChapterItem = ({ onClick, active, frontmatter }) => {
+const ChapterItem = ({ frontmatter }) => {
+  const { pathname } = useLocation();
+  const activeDay = pathname.split('/')[2];
+  const normalizedPath = path => (path === 'start' ? '' : path);
+
   return (
     <li className={`${item} dark:text-white`}>
-      <button
+      <Link
         className={`${
-          active === frontmatter.chapter && activeButton
+          activeDay === normalizedPath(frontmatter.chapter) && activeButton
         } ${button} `}
-        onClick={onClick}
+        to={`/${normalizedPath(frontmatter.chapter)}`}
       >
         {frontmatter.title}
-      </button>
+      </Link>
     </li>
   );
 };

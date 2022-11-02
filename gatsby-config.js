@@ -39,6 +39,13 @@ module.exports = {
         path: `${__dirname}/content/chapters/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `chapters`,
+        path: `${__dirname}/content/list-of-chapters/`,
+      },
+    },
 
     {
       resolve: `gatsby-source-filesystem`,
@@ -70,6 +77,9 @@ module.exports = {
         siteUrl: ``,
 
         i18nextOptions: {
+          lng: 'uk',
+          load: 'currentOnly',
+
           interpolation: {
             escapeValue: false,
           },

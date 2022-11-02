@@ -7,7 +7,7 @@
 }
 
 .button {
-  @apply w-full rounded-lg border border-solid border-accent bg-transparent py-4 px-6 text-left duration-300 hover:border-hover hover:bg-hover  hover:text-font-light;
+  @apply block w-full rounded-lg border border-solid border-accent bg-transparent py-4 px-6 text-left duration-300 hover:border-hover hover:bg-hover  hover:text-font-light;
 }
 
 .activeButton {

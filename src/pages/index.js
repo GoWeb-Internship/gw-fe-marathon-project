@@ -23,7 +23,7 @@ const IndexPage = ({ data, location }) => {
     ],
     [data],
   );
-
+  console.log(location.pathname.split('/'));
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useState('');
