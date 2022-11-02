@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 const ChapterList = ({ days }) => {
-  console.log(days);
   return (
     // <StaticQuery
     //   query={graphql`
@@ -42,7 +41,6 @@ const ChapterList = ({ days }) => {
     <ul className={list}>
       {days
         ? days?.map(({ frontmatter }) => {
-            console.log(frontmatter.chapter);
             return (
               <ChapterItem key={frontmatter.title} frontmatter={frontmatter} />
             );
