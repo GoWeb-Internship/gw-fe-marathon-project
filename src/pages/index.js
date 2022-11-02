@@ -10,9 +10,9 @@ import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import { useCallback } from 'react';
-import { ArrowUpIcon } from '@heroicons/react/24/solid';
-import { useRef } from 'react';
+// import { useCallback } from 'react';
+// import { ArrowUpIcon } from '@heroicons/react/24/solid';
+// import { useRef } from 'react';
 
 const IndexPage = ({ data, location }) => {
   const days = useMemo(
@@ -32,12 +32,12 @@ const IndexPage = ({ data, location }) => {
   );
   const [questionId, setQuestionId] = useState({});
   const [dataByChapter, setDataByChapter] = useState(null);
-  const [visibleQuestions, setVisibleQuestions] = useState(null);
-  const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
-  const [isShownFullChapter, setIsShownFullChapter] = useState(false);
+  // const [visibleQuestions, setVisibleQuestions] = useState(null);
+  // const [isBtnMoreShown, setIsBtnMoreShown] = useState(false);
+  // const [isShownFullChapter, setIsShownFullChapter] = useState(false);
 
   const { t } = useTranslation();
-  const button = t('showMoreButton', { returnObjects: true });
+  // const button = t('showMoreButton', { returnObjects: true });
 
   useEffect(() => {
     const openedDayData = days?.find(
@@ -45,87 +45,87 @@ const IndexPage = ({ data, location }) => {
     ).frontmatter;
 
     setDataByChapter(openedDayData);
-    setIsBtnMoreShown(false);
-    setIsShownFullChapter(false);
+    // setIsBtnMoreShown(false);
+    // setIsShownFullChapter(false);
   }, [days, openedDayId]);
 
-  const showLessQuestions = useCallback(() => {
-    const arrayOfSubheads = dataByChapter?.subhead;
+  // const showLessQuestions = useCallback(() => {
+  //   const arrayOfSubheads = dataByChapter?.subhead;
 
-    const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
-      return [...prev, ...questions];
-    }, []);
+  //   const allQuestions = arrayOfSubheads.reduce((prev, { questions }) => {
+  //     return [...prev, ...questions];
+  //   }, []);
 
-    if (allQuestions.length <= 5) {
-      setVisibleQuestions(arrayOfSubheads);
-    } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
-      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+  //   if (allQuestions.length <= 5) {
+  //     setVisibleQuestions(arrayOfSubheads);
+  //   } else if (allQuestions.length > 5 && arrayOfSubheads.length === 1) {
+  //     const shortArray = getShortArray(arrayOfSubheads, 0, 5);
 
-      setVisibleQuestions(shortArray);
-      setIsBtnMoreShown(true);
-    } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
-      const shortArray = getShortArray(arrayOfSubheads, 0, 5);
+  //     setVisibleQuestions(shortArray);
+  //     setIsBtnMoreShown(true);
+  //   } else if (allQuestions.length > 5 && arrayOfSubheads.length > 1) {
+  //     const shortArray = getShortArray(arrayOfSubheads, 0, 5);
 
-      if (arrayOfSubheads[0].questions.length < 5) {
-        const longArray = [
-          ...shortArray,
-          ...getShortArray(
-            arrayOfSubheads,
-            1,
-            5 - arrayOfSubheads[0].questions.length,
-          ),
-        ];
+  //     if (arrayOfSubheads[0].questions.length < 5) {
+  //       const longArray = [
+  //         ...shortArray,
+  //         ...getShortArray(
+  //           arrayOfSubheads,
+  //           1,
+  //           5 - arrayOfSubheads[0].questions.length,
+  //         ),
+  //       ];
 
-        setVisibleQuestions(longArray);
-        setIsBtnMoreShown(true);
-        return;
-      }
+  //       setVisibleQuestions(longArray);
+  //       setIsBtnMoreShown(true);
+  //       return;
+  //     }
 
-      setVisibleQuestions(shortArray);
-      setIsBtnMoreShown(true);
-    }
-  }, [dataByChapter]);
+  //     setVisibleQuestions(shortArray);
+  //     setIsBtnMoreShown(true);
+  //   }
+  // }, [dataByChapter]);
 
-  useEffect(() => {
-    if (!dataByChapter) return;
+  // useEffect(() => {
+  // if (!dataByChapter) return;
 
-    showLessQuestions();
-  }, [chapter, dataByChapter, isBtnMoreShown, showLessQuestions]);
+  // showLessQuestions();
+  // }, [chapter, dataByChapter, isBtnMoreShown, showLessQuestions]);
 
-  function getShortArray(array, i, count) {
-    return [
-      {
-        subhead_title: array[i].subhead_title,
-        questions: array[i].questions.filter((el, index) => index < count),
-      },
-    ];
-  }
+  // function getShortArray(array, i, count) {
+  //   return [
+  //     {
+  //       subhead_title: array[i].subhead_title,
+  //       questions: array[i].questions.filter((el, index) => index < count),
+  //     },
+  //   ];
+  // }
 
-  function handleToggleShowMore() {
-    if (isShownFullChapter) {
-      setIsShownFullChapter(false);
-      document
-        .getElementById('subhead-list')
-        .scrollIntoView({ behavior: 'smooth' });
-    } else {
-      setIsShownFullChapter(true);
-    }
-  }
+  // function handleToggleShowMore() {
+  //   if (isShownFullChapter) {
+  //     setIsShownFullChapter(false);
+  //     document
+  //       .getElementById('subhead-list')
+  //       .scrollIntoView({ behavior: 'smooth' });
+  //   } else {
+  //     setIsShownFullChapter(true);
+  //   }
+  // }
 
-  useEffect(() => {
-    if (!dataByChapter) return;
+  // useEffect(() => {
+  //   if (!dataByChapter) return;
 
-    if (isShownFullChapter) {
-      setVisibleQuestions(dataByChapter?.subhead);
+  //   if (isShownFullChapter) {
+  //     setVisibleQuestions(dataByChapter?.subhead);
 
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth',
-      });
-    } else {
-      showLessQuestions();
-    }
-  }, [dataByChapter, isShownFullChapter, showLessQuestions]);
+  //     window.scrollTo({
+  //       top: document.documentElement.scrollHeight,
+  //       behavior: 'smooth',
+  //     });
+  //   } else {
+  //     showLessQuestions();
+  //   }
+  // }, [dataByChapter, isShownFullChapter, showLessQuestions]);
 
   let objForAccordion = {};
   data.allMarkdownRemark.nodes?.map(item =>
@@ -204,8 +204,8 @@ const IndexPage = ({ data, location }) => {
 
           <div>
             <ul className="subhead-list" id="subhead-list">
-              {visibleQuestions
-                ? visibleQuestions?.map(
+              {dataByChapter
+                ? dataByChapter?.subhead?.map(
                     ({ subhead_title, questions }, index) => {
                       return (
                         <Accordion
@@ -223,16 +223,16 @@ const IndexPage = ({ data, location }) => {
                 : null}
             </ul>
 
-            {isBtnMoreShown ? (
+            {/* {isBtnMoreShown ? (
               <button onClick={handleToggleShowMore} className="btn-show-more ">
-                {isShownFullChapter ? button.hide : button.show}
+                {isShownFullChapter ? button.hide : button.show} */}
 
-                <ArrowUpIcon
+            {/* <ArrowUpIcon
                   className={`btn-show-more-icon 
           ${isShownFullChapter ? 'rotate-0' : '-rotate-180'}`}
                 />
               </button>
-            ) : null}
+            ) : null} */}
           </div>
 
           <Icon iconId="main-page" className="main-page-image-mobile" />
