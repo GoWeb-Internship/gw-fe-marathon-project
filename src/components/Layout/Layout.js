@@ -29,7 +29,13 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export const withLayout = Component => props => {
+  return (
+    <Layout>
+      <Component {...props} />
+    </Layout>
+  );
+};
 
 Layout.propTypes = {
   openModal: PropTypes.func,
