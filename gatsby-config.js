@@ -65,7 +65,7 @@ module.exports = {
         localeJsonSourceName: `locale`,
         languages: [`uk`, `ru`, `en`],
         defaultLanguage: `uk`,
-        // generateDefaultLanguagePage: '/uk',
+        generateDefaultLanguagePage: '/uk',
         siteUrl: ``,
 
         i18nextOptions: {

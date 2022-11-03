@@ -11,7 +11,8 @@ import Icon from '../components/Icon';
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
-  const { page: chapter, title: id } = qs.parse(location.search.slice(1));
+  // const id = location.search.split('=')[1];
+  const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
 
   // const [searchParams, setSearchParams] = useState('');
@@ -48,6 +49,12 @@ const IndexPage = ({ data, location }) => {
   //   if (chapter) setOpenedDayId(chapter);
   // }, [chapter]);
 
+  useEffect(() => {
+    if (location.search) {
+      setId(location.search.split('=')[1]);
+    }
+  }, [location.search]);
+  console.log(id);
   useEffect(() => {
     if (id) activateCurrentAccordion(questionId, id);
   }, [id]);

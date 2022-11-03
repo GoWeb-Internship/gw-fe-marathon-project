@@ -15,7 +15,7 @@ const Day = ({ data, pageContext, location }) => {
   const { i18n } = useTranslation();
   console.log(datas);
 
-  const { page: chapters, title: id } = qs.parse(location.search.slice(1));
+  const id = location.search.split('=')[1];
   const [questionId, setQuestionId] = useState({});
 
   const chapterOfPage = chapter.chapter;
