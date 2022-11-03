@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -35,8 +36,4 @@ export const withLayout = Component => props => {
       <Component {...props} />
     </Layout>
   );
-};
-
-Layout.propTypes = {
-  openModal: PropTypes.func,
 };

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { withLayout } from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
-import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
@@ -15,7 +14,6 @@ const IndexPage = ({ data, location }) => {
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
   const [questionId, setQuestionId] = useState({});
 
-  // const [isOpen, setIsOpen] = useState(false);
   // const [searchParams, setSearchParams] = useState('');
   // const [openedDayId, setOpenedDayId] = useState(
   //   chapter || days[0].frontmatter.chapter,
@@ -66,14 +64,6 @@ const IndexPage = ({ data, location }) => {
     }
   }
 
-  // const closeModal = () => {
-  //   setIsOpen(false);
-  // };
-
-  // const openModal = () => {
-  //   setIsOpen(true);
-  // };
-
   // const handleNavigate = redirect => {
   //   setSearchParams(redirect);
   // };
@@ -98,7 +88,7 @@ const IndexPage = ({ data, location }) => {
 
   return (
     <Section styles="main-section">
-      <ChapterList data={day} />
+      <ChapterList />
 
       <div>
         <ul className="subhead-list" id="subhead-list">

@@ -42,13 +42,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `chapters`,
-        path: `${__dirname}/content/list-of-chapters/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/locales`,
         name: `locale`,
       },
@@ -71,7 +64,7 @@ module.exports = {
       options: {
         localeJsonSourceName: `locale`,
         languages: [`uk`, `ru`, `en`],
-        // defaultLanguage: `uk`,
+        defaultLanguage: `uk`,
         // generateDefaultLanguagePage: '/uk',
         siteUrl: ``,
 

@@ -1,46 +1,37 @@
 import React from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { graphql, useStaticQuery } from 'gatsby';
 import ChapterItem from './ChapterItem';
 import { list } from './Chapter.module.css';
-import { StaticQuery, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 
-const ChapterList = ({ days }) => {
+const ChapterList = () => {
+  const { i18n } = useTranslation();
+
+  const data = useStaticQuery(graphql`
+    query ChapterList {
+      allMarkdownRemark(
+        sort: { order: ASC, fields: frontmatter___chapter_range }
+      ) {
+        nodes {
+          frontmatter {
+            chapter
+            chapter_range
+            title
+            language
+          }
+        }
+      }
+    }
+  `);
+  const days = data.allMarkdownRemark.nodes;
+  const filteredDays = days?.filter(
+    ({ frontmatter: { language } }) => language === i18n.language,
+  );
+
   return (
-    // <StaticQuery
-    //   query={graphql`
-    //     query ChapterList {
-    //       allMarkdownRemark(
-    //         filter: {
-    //           frontmatter: {
-    //             chapter_item: { elemMatch: { chapter_name: { glob: "*" } } }
-    //           }
-    //         }
-    //       ) {
-    //         nodes {
-    //           frontmatter {
-    //             chapter_item {
-    //               chapter_name
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   `}
-    //   render={data => (
-    //     <ul className={list}>
-    //       {data
-    //         ? data?.allMarkdownRemark.nodes.map(({ frontmatter }) => {
-    //             return frontmatter.chapter_item.map(({ chapter_name }) => {
-    //               return <ChapterItem key={chapter_name} name={chapter_name} />;
-    //             });
-    //           })
-    //         : null}
-    //     </ul>
-    //   )}
-    // />
     <ul className={list}>
       {days
-        ? days?.map(({ frontmatter }) => {
+        ? filteredDays?.map(({ frontmatter }) => {
             return (
               <ChapterItem key={frontmatter.title} frontmatter={frontmatter} />
             );
@@ -52,6 +43,4 @@ const ChapterList = ({ days }) => {
 
 export default ChapterList;
 
-ChapterList.propTypes = {
-  days: PropTypes.array.isRequired,
-};
+ChapterList.propTypes = {};
