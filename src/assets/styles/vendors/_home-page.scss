@@ -1,3 +1,7 @@
+.main-section {
+  @apply py-[34px] pb-[60px] md:py-11 xl:relative xl:min-h-[792px] xl:pt-20 xl:pb-20;
+}
+
 .subhead-list {
   @apply mb-[34px] xl:ml-auto xl:mb-0 xl:w-full xl:max-w-[686px];
 }

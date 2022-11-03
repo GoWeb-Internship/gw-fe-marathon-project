@@ -1,17 +1,18 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
+import { withLayout } from '../components/Layout/Layout';
 import FeedbackForm from '../components/FeedbackForm';
 
 const FeedbackPage = () => {
   return (
-    <Layout>
-      <FeedbackForm />
-    </Layout>
+    // <Layout>
+    <FeedbackForm />
+    // </Layout>
   );
 };
 
-export default FeedbackPage;
+// export default FeedbackPage;
+export default withLayout(FeedbackPage);
 
 export const query = graphql`
   query ($language: String!) {

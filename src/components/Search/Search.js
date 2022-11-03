@@ -3,7 +3,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useSearch } from '../../hooks/searchContext';
+import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import NotFound from './NotFound';
@@ -18,31 +18,54 @@ import {
   infoWrap,
 } from './Search.module.css';
 
-// node.frontmatter.language === i18n.language &&
-// const { i18n } = useTranslation();
-
 const Search = ({ onNavigate, closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
 
-  const { days } = useSearch();
   const { t } = useTranslation();
+
+  const data = useStaticQuery(graphql`
+    query SearchQuery {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            chapter
+            language
+            subhead {
+              subhead_title
+              questions {
+                description
+                id
+                question_range
+                question_title
+              }
+            }
+            title
+          }
+        }
+      }
+    }
+  `);
+
+  const days = data.allMarkdownRemark.nodes;
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     if (!days) return;
 
-    const arrayOfQuestions = days?.reduce(
-      (prevVal, { frontmatter: { chapter, subhead } }) => {
+    const arrayOfQuestions = days
+      ?.filter(({ frontmatter: { language } }) => language === i18n.language)
+      .reduce((prevVal, { frontmatter: { chapter, subhead } }) => {
         return [
           ...prevVal,
           ...subhead.reduce((prevVal, { questions }) => {
             return [
               ...prevVal,
-              ...questions.map(({ id, title, content }) => {
+              ...questions.map(({ id, question_title, description }) => {
                 return {
-                  question_title: title,
-                  content: content,
+                  title: question_title,
+                  content: description,
                   chapter: chapter,
                   id: id,
                 };
@@ -50,12 +73,10 @@ const Search = ({ onNavigate, closeModal }) => {
             ];
           }, []),
         ];
-      },
-      [],
-    );
+      }, []);
 
     setArrayOfQuestions(arrayOfQuestions);
-  }, [days]);
+  }, [days, i18n.language]);
 
   useEffect(() => {
     if (!searchPhrase.trim() || !arrayOfQuestions) {
@@ -64,8 +85,8 @@ const Search = ({ onNavigate, closeModal }) => {
     }
 
     const filteredQuestions = arrayOfQuestions?.filter(
-      ({ question_title, content }) =>
-        question_title.toLowerCase().includes(searchPhrase) ||
+      ({ title, content }) =>
+        title.toLowerCase().includes(searchPhrase) ||
         content.toLowerCase().includes(searchPhrase),
     );
 
@@ -101,9 +122,9 @@ const Search = ({ onNavigate, closeModal }) => {
 
       {filteredQuestions ? (
         <ul className={infoWrap}>
-          {filteredQuestions?.map(({ question_title, chapter, id }) => {
+          {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
-              <li key={id} className={foundOption} title={question_title}>
+              <li key={id} className={foundOption} title={title}>
                 <Link
                   to={id}
                   spy={true}
@@ -117,7 +138,7 @@ const Search = ({ onNavigate, closeModal }) => {
                   }}
                 >
                   <MagnifyingGlassIcon className={iconGlass} />
-                  <Markdown>{question_title}</Markdown>
+                  <Markdown>{title}</Markdown>
                 </Link>
               </li>
             );
