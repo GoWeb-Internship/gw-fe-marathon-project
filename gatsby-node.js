@@ -35,18 +35,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           frontmatter {
             chapter
-            chapter_range
-            language
-            title
-            subhead {
-              subhead_title
-              questions {
-                description
-                id
-                question_range
-                question_title
-              }
-            }
           }
         }
       }
@@ -63,9 +51,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: `/${chapter}`,
       component: path.resolve('./src/templates/day.js'),
-      context: {
-        chapter: node.frontmatter,
-      },
     });
   });
 };
