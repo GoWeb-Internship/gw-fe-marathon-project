@@ -42,13 +42,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `list of chapters`,
-        path: `${__dirname}/content/list-of-chapters/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/locales`,
         name: `locale`,
       },
