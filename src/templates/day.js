@@ -4,12 +4,11 @@ import Section from '../components/Section';
 // import { graphql } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
-const Day = () => {
-  // const day = pageContext;
+const Day = ({ pageContext }) => {
+  const day = pageContext;
   const { i18n } = useTranslation();
 
-  // console.log(day);
-  // console.log(day.language);
+  console.log(day);
 
   return (
     // <Layout>

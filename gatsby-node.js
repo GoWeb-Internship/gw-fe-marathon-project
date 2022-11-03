@@ -29,24 +29,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const data = await graphql(`
-    query Days {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              chapter
-              chapter_range
-              language
-              title
-              subhead {
-                subhead_title
-                questions {
-                  description
-                  id
-                  question_range
-                  question_title
-                }
+  const result = await graphql(`
+    query {
+      allMarkdownRemark(filter: { frontmatter: { chapter: { ne: "start" } } }) {
+        nodes {
+          frontmatter {
+            chapter
+            chapter_range
+            language
+            title
+            subhead {
+              subhead_title
+              questions {
+                description
+                id
+                question_range
+                question_title
               }
             }
           }
@@ -55,21 +53,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  console.table(data.allMarkdownRemark.edges);
-
-  if (data.errors) {
+  if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
 
-  // data.allMarkdownRemark.nodes.forEach(node => {
-  //   const { chapter, language } = node.frontmatter;
-  //   createPage({
-  //     path: `/${language}/${chapter}`,
-  //     component: path.resolve('src/templates/day.js'),
-  //     context: {
-  //       chapter,
-  //     },
-  //   });
-  // });
+  result.data.allMarkdownRemark.nodes.forEach(node => {
+    const { chapter } = node.frontmatter;
+    createPage({
+      path: `/${chapter}`,
+      component: path.resolve('./src/templates/day.js'),
+      context: {
+        chapter: node.frontmatter,
+      },
+    });
+  });
 };
