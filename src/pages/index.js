@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { withLayout } from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
 import Section from '../components/Section';
-import Modal from '../components/Modal';
 import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
@@ -13,9 +12,12 @@ const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
   const { page: chapter, title: id } = qs.parse(location.search.slice(1));
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchParams, setSearchParams] = useState('');
   const [questionId, setQuestionId] = useState({});
+
+  // const [searchParams, setSearchParams] = useState('');
+  // const [openedDayId, setOpenedDayId] = useState(
+  //   chapter || days[0].frontmatter.chapter,
+  // );
 
   // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
@@ -62,23 +64,15 @@ const IndexPage = ({ data, location }) => {
     }
   }
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+  // const handleNavigate = redirect => {
+  //   setSearchParams(redirect);
+  // };
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const handleNavigate = redirect => {
-    setSearchParams(redirect);
-  };
-
-  useEffect(() => {
-    if (searchParams) {
-      navigate(`?${searchParams}`);
-    }
-  }, [searchParams]);
+  // useEffect(() => {
+  //   if (searchParams) {
+  //     navigate(`?${searchParams}`);
+  //   }
+  // }, [searchParams]);
 
   useEffect(() => {
     if (window.netlifyIdentity) {
@@ -93,9 +87,8 @@ const IndexPage = ({ data, location }) => {
   }, []);
 
   return (
-    // <Layout openModal={openModal}>
     <Section styles="main-section">
-      <ChapterList day={day} openedDayId={chapterOfMainPage} />
+      <ChapterList />
 
       <div>
         <ul className="subhead-list" id="subhead-list">
@@ -119,13 +112,7 @@ const IndexPage = ({ data, location }) => {
 
       <Icon iconId="main-page" className="main-page-image-mobile" />
       <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
-      <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        onNavigate={handleNavigate}
-      />
     </Section>
-    // </Layout>
   );
 };
 

@@ -1,21 +1,39 @@
 import React from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import { graphql, useStaticQuery } from 'gatsby';
 import ChapterItem from './ChapterItem';
 import { list } from './Chapter.module.css';
 
-const ChapterList = ({ days, setOpenedDayId, openedDayId }) => {
+const ChapterList = () => {
+  const { i18n } = useTranslation();
+
+  const data = useStaticQuery(graphql`
+    query ChapterList {
+      allMarkdownRemark(
+        sort: { order: ASC, fields: frontmatter___chapter_range }
+      ) {
+        nodes {
+          frontmatter {
+            chapter
+            chapter_range
+            title
+            language
+          }
+        }
+      }
+    }
+  `);
+  const days = data.allMarkdownRemark.nodes;
+  const filteredDays = days?.filter(
+    ({ frontmatter: { language } }) => language === i18n.language,
+  );
+
   return (
     <ul className={list}>
       {days
-        ? days?.map(({ frontmatter }) => {
+        ? filteredDays?.map(({ frontmatter }) => {
             return (
-              <ChapterItem
-                key={frontmatter.title}
-                onClick={() => {
-                  setOpenedDayId(frontmatter.chapter);
-                }}
-                frontmatter={frontmatter}
-                active={openedDayId}
-              />
+              <ChapterItem key={frontmatter.title} frontmatter={frontmatter} />
             );
           })
         : null}
@@ -24,3 +42,5 @@ const ChapterList = ({ days, setOpenedDayId, openedDayId }) => {
 };
 
 export default ChapterList;
+
+ChapterList.propTypes = {};

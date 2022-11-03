@@ -64,7 +64,7 @@ module.exports = {
       options: {
         localeJsonSourceName: `locale`,
         languages: [`uk`, `ru`, `en`],
-        defaultLanguage: `uk`,
+        // defaultLanguage: `uk`,
         generateDefaultLanguagePage: '/uk',
         siteUrl: ``,
 

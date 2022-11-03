@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import NotFound from './NotFound';
-import { Link } from 'react-scroll';
+import { Link } from 'gatsby';
 import {
   modalWrap,
   searchWrap,
@@ -18,7 +18,7 @@ import {
   infoWrap,
 } from './Search.module.css';
 
-const Search = ({ onNavigate, closeModal }) => {
+const Search = ({ closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [arrayOfQuestions, setArrayOfQuestions] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
@@ -97,11 +97,13 @@ const Search = ({ onNavigate, closeModal }) => {
     setSearchPhrase(value.toLowerCase());
   };
 
-  const handleRedirect = (chapter, id) => {
-    const redirect = qs.parse({ page: chapter, title: id });
-    onNavigate(qs.stringify(redirect));
-    closeModal();
-  };
+  // const handleRedirect = (chapter, id) => {
+  //   const redirect = qs.parse({ page: chapter, title: id });
+  //   onNavigate(qs.stringify(redirect));
+  //   closeModal();
+  // };
+
+  const normalizedPath = path => (path === 'start' ? '' : path);
 
   return (
     <div className={modalWrap}>
@@ -125,18 +127,7 @@ const Search = ({ onNavigate, closeModal }) => {
           {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
               <li key={id} className={foundOption} title={title}>
-                <Link
-                  to={id}
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                  className="block"
-                  onClick={e => {
-                    console.log(e.target);
-                    handleRedirect(chapter, id);
-                  }}
-                >
+                <Link to={`/${normalizedPath(chapter)}?id=${id}`}>
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>
                 </Link>
@@ -156,6 +147,5 @@ const Search = ({ onNavigate, closeModal }) => {
 export default Search;
 
 Search.propTypes = {
-  onNavigate: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
