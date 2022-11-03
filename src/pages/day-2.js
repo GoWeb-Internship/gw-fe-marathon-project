@@ -9,7 +9,7 @@ import ChapterList from '../components/Chapter/ChapterList';
 const Day = ({ data, location }) => {
   return (
     // <Layout>
-    <Section>
+    <Section styles="main-section">
       <ChapterList />
       <div className="flex h-1/3 flex-col items-center justify-center">
         <h1 className="font-montserrat text-4xl font-bold text-gray-700">
