@@ -3,6 +3,7 @@ import React from 'react';
 import Section from '../components/Section';
 // import { graphql } from 'gatsby';
 import { useTranslation } from 'react-i18next';
+import ChapterList from '../components/Chapter/ChapterList';
 
 const Day = ({ pageContext }) => {
   const day = pageContext;
@@ -13,6 +14,7 @@ const Day = ({ pageContext }) => {
   return (
     // <Layout>
     <Section styles="main-section">
+      <ChapterList />
       <div className="flex h-screen flex-col items-center justify-center">
         <h1 className="font-montserrat text-4xl font-bold text-gray-700">
           День 1
