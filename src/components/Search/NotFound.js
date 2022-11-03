@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-
+import PropTypes from 'prop-types';
 import {
   noResultsWrapper,
   noResultsTitle,
@@ -30,3 +30,7 @@ const NotFound = ({ searchPhrase }) => {
 };
 
 export default NotFound;
+
+NotFound.propTypes = {
+  searchPhrase: PropTypes.string.isRequired,
+};
