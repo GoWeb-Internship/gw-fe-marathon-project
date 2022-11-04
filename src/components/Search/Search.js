@@ -126,7 +126,12 @@ const Search = ({ closeModal }) => {
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
-              <li key={id} className={foundOption} title={title}>
+              <li
+                key={id}
+                className={foundOption}
+                title={title}
+                onClick={closeModal}
+              >
                 <Link to={`/${normalizedPath(chapter)}?id=${id}`}>
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>

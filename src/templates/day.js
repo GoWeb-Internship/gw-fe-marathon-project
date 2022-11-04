@@ -14,8 +14,9 @@ const Day = ({ data, pageContext, location }) => {
     day => chapter === day.frontmatter.chapter,
   ).frontmatter;
 
-  const { page: chapters, title: id } = qs.parse(location.search.slice(1));
   const [questionId, setQuestionId] = useState({});
+  const [id, setId] = useState(null);
+
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [numberOfPage, setNumberOfPage] = useState(1);
@@ -123,32 +124,42 @@ const Day = ({ data, pageContext, location }) => {
     }
   }, [allQuestions]);
 
-  // const chapterOfPage = chapter.chapter;
   let objForAccordion = {};
 
-  // data.subhead.map(element =>
-  //   element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-  // );
+  day.subhead.map(element =>
+    element.questions.map(el => (objForAccordion[String(el.id)] = false)),
+  );
+
+  useEffect(() => {
+    setQuestionId(objForAccordion);
+  }, []);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
   };
 
   useEffect(() => {
-    if (id) activateCurrentAccordion(questionId, id);
-  }, [id]);
-
-  function activateCurrentAccordion(obj, id) {
-    if (Object.keys(obj).length > 0) {
-      for (let key in obj) {
-        obj[key] = false;
-      }
-
-      obj[id] = true;
-
-      setQuestionId(obj);
+    if (location.search) {
+      setId(location.search.split('=')[1]);
     }
-  }
+  }, [location.search]);
+
+  useEffect(() => {
+    function activateCurrentAccordion(obj, id) {
+      if (Object.keys(obj).length > 0) {
+        for (let key in obj) {
+          obj[key] = false;
+        }
+
+        obj[id] = true;
+
+        setQuestionId(obj);
+      }
+    }
+    if (id !== null) {
+      activateCurrentAccordion(questionId, id);
+    }
+  }, [id, questionId]);
 
   return (
     <Section styles="main-section">
@@ -167,6 +178,7 @@ const Day = ({ data, pageContext, location }) => {
                     changeId={handleChangeAccordion}
                     location={location}
                     chapter={chapter}
+                    id={id}
                   />
                 );
               })

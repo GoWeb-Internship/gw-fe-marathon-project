@@ -11,6 +11,7 @@ const Accordion = ({
   changeId,
   location,
   chapter,
+  id,
 }) => {
   return (
     <li className={subhead}>
@@ -28,6 +29,7 @@ const Accordion = ({
                   changeId={changeId}
                   location={location}
                   chapter={chapter}
+                  id={id}
                 />
               );
             }),

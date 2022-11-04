@@ -12,8 +12,10 @@ import SyncLoader from 'react-spinners/SyncLoader';
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
-  const { page: chapter, title: id } = qs.parse(location.search.slice(1));
+  const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
+  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
+  // const [dataByChapter, setDataByChapter] = useState(null);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
@@ -127,9 +129,9 @@ const IndexPage = ({ data, location }) => {
     element.questions.map(el => (objForAccordion[String(el.id)] = false)),
   );
 
-  // useEffect(() => {
-  //   setQuestionId(objForAccordion);
-  // }, []);
+  useEffect(() => {
+    setQuestionId(objForAccordion);
+  }, []);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
@@ -140,20 +142,27 @@ const IndexPage = ({ data, location }) => {
   // }, [chapter]);
 
   useEffect(() => {
-    if (id) activateCurrentAccordion(questionId, id);
-  }, [id]);
-
-  function activateCurrentAccordion(obj, id) {
-    if (Object.keys(obj).length > 0) {
-      for (let key in obj) {
-        obj[key] = false;
-      }
-
-      obj[id] = true;
-
-      setQuestionId(obj);
+    if (location.search) {
+      setId(location.search.split('=')[1]);
     }
-  }
+  }, [location.search]);
+
+  useEffect(() => {
+    function activateCurrentAccordion(obj, id) {
+      if (Object.keys(obj).length > 0) {
+        for (let key in obj) {
+          obj[key] = false;
+        }
+
+        obj[id] = true;
+
+        setQuestionId(obj);
+      }
+    }
+    if (id !== null) {
+      activateCurrentAccordion(questionId, id);
+    }
+  }, [id, questionId]);
 
   // const handleNavigate = redirect => {
   //   setSearchParams(redirect);
