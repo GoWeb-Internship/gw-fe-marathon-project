@@ -21,9 +21,7 @@ import copy from 'copy-to-clipboard';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
 import { Link } from 'gatsby';
-
 import myPlusIcon from '../../assets/images/plus-icon.svg';
 
 const AccordionItem = memo(
@@ -127,5 +125,5 @@ AccordionItem.propTypes = {
   // titleId: PropTypes.string.isRequired,
   // changeId,
   // location,
-  chapter: PropTypes.string.isRequired,
+  chapter: PropTypes.string,
 };

@@ -19,5 +19,13 @@
 }
 
 .main-page-image-desktop {
-  @apply max-xl:hidden  xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px];
+  @apply max-xl:hidden xl:absolute xl:top-[283px] xl:h-[464px] xl:w-[482px];
+}
+
+.loaderContainer {
+  @apply relative mx-auto h-[100px] max-md:mb-[34px] max-sm:min-w-full md:w-[337px] xl:mx-0 xl:ml-auto xl:h-[150px] xl:w-[686px];
+}
+
+.loaderWrapper {
+  @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
 }

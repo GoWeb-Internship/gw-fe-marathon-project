@@ -7,28 +7,121 @@ import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
+import SyncLoader from 'react-spinners/SyncLoader';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
-
-  // const [searchParams, setSearchParams] = useState('');
-  // const [openedDayId, setOpenedDayId] = useState(
-  //   chapter || days[0].frontmatter.chapter,
-  // );
-
   const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
-  // useEffect(() => {
-  //   const openedDayData = days?.find(
-  //     day => openedDayId === day.frontmatter.chapter,
-  //   ).frontmatter;
+  const [isSpinnerShown, setIsSpinnerShown] = useState(false);
+  const [visibleQuestions, setVisibleQuestions] = useState(null);
+  const [numberOfPage, setNumberOfPage] = useState(1);
+  const [countOfPages, setCountOfPages] = useState(1);
+  const [visibleQuestionsId, setVisibleQuestionsId] = useState(null);
+  const [allQuestions, setAllQuestions] = useState(null);
+  const countOfQuestionsAtPage = 5;
+  const target = document.getElementById('spinner');
 
-  //   setDataByChapter(openedDayData);
-  // }, [days, openedDayId]);
+  const spinnerDefault = '#3b82f6';
+  const spinnerDarkTheme = '#fcfcfc';
+  const [color, setColor] = useState(spinnerDefault);
+  let htmlDark;
+
+  if (typeof window !== 'undefined') {
+    htmlDark = document.querySelector('.dark');
+  }
+  const darkSpinner = () => {
+    if (htmlDark) {
+      setColor(spinnerDarkTheme);
+    }
+  };
+
+  useEffect(() => {
+    numberOfPage < countOfPages
+      ? setIsSpinnerShown(true)
+      : setIsSpinnerShown(false);
+  }, [countOfPages, numberOfPage]);
+
+  useEffect(() => {
+    if (!target) return;
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    });
+    function handleIntersection(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setNumberOfPage(prevState => prevState + 1);
+        }
+      });
+    }
+
+    observer?.observe(target);
+  }, [target]);
+
+  useEffect(() => {
+    if (!visibleQuestionsId) {
+      return;
+    }
+    const arrayOfSubheads = day.subhead;
+
+    const visibleQuestionsAtPage = arrayOfSubheads.map(subhead => {
+      return {
+        subhead_title: subhead.subhead_title,
+        questions: subhead.questions.filter(({ id }) =>
+          visibleQuestionsId.includes(id),
+        ),
+      };
+    });
+
+    setVisibleQuestions(visibleQuestionsAtPage);
+  }, [day, visibleQuestionsId]);
+
+  //return all or cut and return array of needed id
+  useEffect(() => {
+    const arrayOfSubheads = day.subhead;
+
+    //if it's the last page
+    if (countOfPages / numberOfPage === 1) {
+      setVisibleQuestions(arrayOfSubheads);
+      return;
+    } else if (countOfPages / numberOfPage > 1) {
+      const countOfNeededQuestions = countOfQuestionsAtPage * numberOfPage;
+
+      const visibleQ = allQuestions?.slice(0, countOfNeededQuestions);
+
+      const visibleQId = visibleQ.map(({ id }) => id);
+      setVisibleQuestionsId(visibleQId);
+    }
+  }, [countOfPages, day, numberOfPage, allQuestions]);
+
+  //return array of all questions (sorted)
+  useEffect(() => {
+    const allOfTheQuestions = day?.subhead?.reduce((prev, { questions }) => {
+      return [
+        ...prev,
+        ...questions.sort((a, b) => a.question_range - b.question_range),
+      ];
+    }, []);
+
+    setAllQuestions(allOfTheQuestions);
+  }, [day?.subhead]);
+
+  //calculate count of pages for lazy load
+  useEffect(() => {
+    if (allQuestions?.length <= countOfQuestionsAtPage) {
+      setCountOfPages(1);
+      return;
+    } else {
+      setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
+    }
+  }, [allQuestions]);
 
   let objForAccordion = {};
 
@@ -100,8 +193,8 @@ const IndexPage = ({ data, location }) => {
 
       <div>
         <ul className="subhead-list" id="subhead-list">
-          {day
-            ? day?.subhead?.map(({ subhead_title, questions }, index) => {
+          {visibleQuestions
+            ? visibleQuestions?.map(({ subhead_title, questions }, index) => {
                 return (
                   <Accordion
                     key={index}
@@ -116,6 +209,20 @@ const IndexPage = ({ data, location }) => {
               })
             : null}
         </ul>
+
+        {isSpinnerShown ? (
+          <div className="loaderContainer" id="spinner">
+            <div className="loaderWrapper">
+              <SyncLoader
+                color={color}
+                cssOverride={{
+                  display: 'block',
+                  margin: '0 auto',
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <Icon iconId="main-page" className="main-page-image-mobile" />
