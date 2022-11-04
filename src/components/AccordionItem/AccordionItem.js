@@ -27,7 +27,7 @@ import myPlusIcon from '../../assets/images/plus-icon.svg';
 const AccordionItem = memo(
   ({ data, titleId, changeId, location, chapter, id }) => {
     const { t } = useTranslation();
-    console.log(location.href);
+    // console.log(location.href);
 
     let url = new URL(location.href);
 
@@ -52,7 +52,7 @@ const AccordionItem = memo(
       }
       url.searchParams.set('id', id);
       const idUrl = url.searchParams.get('id');
-      console.log(idUrl);
+      // console.log(idUrl);
       changeId(id);
       // alert(url);
     }

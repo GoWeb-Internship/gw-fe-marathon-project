@@ -150,11 +150,10 @@ const Day = ({ data, pageContext, location }) => {
         for (let key in obj) {
           obj[key] = false;
         }
-        console.log(obj);
+
         obj[id] = true;
-        console.log(obj[id]);
+
         setQuestionId(obj);
-        console.log(questionId);
       }
     }
     if (id !== null) {
@@ -162,8 +161,6 @@ const Day = ({ data, pageContext, location }) => {
     }
   }, [id, questionId]);
 
-  console.log(id);
-  console.log(chapter);
   return (
     <Section styles="main-section">
       <ChapterList />
