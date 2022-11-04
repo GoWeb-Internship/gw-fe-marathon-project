@@ -100,5 +100,12 @@ subhead:
 
           *  `src="images/arena.png"`- використовуємо виключно подвійні лапки
         question_range: "10"
+      - id: "1667558525099"
+        question_title: Н﻿адя умнічка
+        description: 1﻿00%
+        question_range: ""
+      - id: "1667558574773"
+        description: "![](/img/day.png)"
+        question_title: С﻿вято
 chapter_range: "2"
 ---
