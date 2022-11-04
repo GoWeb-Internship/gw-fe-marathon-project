@@ -10,6 +10,7 @@ const Accordion = ({
   changeId,
   location,
   chapter,
+  id,
 }) => {
   console.log(questionId);
 
@@ -29,6 +30,7 @@ const Accordion = ({
                   changeId={changeId}
                   location={location}
                   chapter={chapter}
+                  id={id}
                 />
               );
             }),

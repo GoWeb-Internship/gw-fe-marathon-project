@@ -11,25 +11,15 @@ const Day = ({ data, pageContext, location }) => {
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
   ).frontmatter;
-  // console.log(chapter);
-  // console.log(day);
 
-  // const id = location.search.split('=')[1];
-  // const [openedDayId, setOpenedDayId] = useState(
-  //   chapter || days[0].frontmatter.chapter,
-  // );
   const [questionId, setQuestionId] = useState({});
   const [id, setId] = useState(null);
 
-  // const chapterOfPage = chapter.chapter;
   let objForAccordion = {};
 
-  data.allMarkdownRemark.nodes?.map(item =>
-    item.frontmatter.subhead.map(element =>
-      element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-    ),
+  day.subhead.map(element =>
+    element.questions.map(el => (objForAccordion[String(el.id)] = false)),
   );
-
   useEffect(() => {
     setQuestionId(objForAccordion);
   }, []);
@@ -45,26 +35,25 @@ const Day = ({ data, pageContext, location }) => {
   }, [location.search]);
 
   useEffect(() => {
+    function activateCurrentAccordion(obj, id) {
+      if (Object.keys(obj).length > 0) {
+        for (let key in obj) {
+          obj[key] = false;
+        }
+        console.log(obj);
+        obj[id] = true;
+        console.log(obj[id]);
+        setQuestionId(obj);
+        console.log(questionId);
+      }
+    }
     if (id !== null) {
-      console.log(id);
       activateCurrentAccordion(questionId, id);
     }
   }, [id, questionId]);
 
   console.log(id);
-  function activateCurrentAccordion(obj, id) {
-    if (Object.keys(obj).length > 0) {
-      for (let key in obj) {
-        obj[key] = false;
-      }
-      console.log(obj);
-      obj[id] = true;
-      console.log(obj[id]);
-      setQuestionId(obj);
-      console.log(questionId);
-    }
-  }
-
+  console.log(chapter);
   return (
     <Section styles="main-section">
       <ChapterList />
@@ -81,6 +70,7 @@ const Day = ({ data, pageContext, location }) => {
                     changeId={handleChangeAccordion}
                     location={location}
                     chapter={chapter}
+                    id={id}
                   />
                 );
               })
