@@ -7,9 +7,7 @@ import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
 import ChapterList from '../components/Chapter';
 import Icon from '../components/Icon';
-
 import SyncLoader from 'react-spinners/SyncLoader';
-import { useCallback } from 'react';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
@@ -18,7 +16,6 @@ const IndexPage = ({ data, location }) => {
   const [questionId, setQuestionId] = useState({});
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
-  console.log(day);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [numberOfPage, setNumberOfPage] = useState(1);
   const [countOfPages, setCountOfPages] = useState(1);
