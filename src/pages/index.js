@@ -11,7 +11,6 @@ import Icon from '../components/Icon';
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
-  // const id = location.search.split('=')[1];
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
 
@@ -20,7 +19,7 @@ const IndexPage = ({ data, location }) => {
   //   chapter || days[0].frontmatter.chapter,
   // );
 
-  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
+  const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
   // useEffect(() => {
@@ -37,9 +36,9 @@ const IndexPage = ({ data, location }) => {
     element.questions.map(el => (objForAccordion[String(el.id)] = false)),
   );
 
-  // useEffect(() => {
-  //   setQuestionId(objForAccordion);
-  // }, []);
+  useEffect(() => {
+    setQuestionId(objForAccordion);
+  }, []);
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
@@ -56,8 +55,10 @@ const IndexPage = ({ data, location }) => {
   }, [location.search]);
   console.log(id);
   useEffect(() => {
-    if (id) activateCurrentAccordion(questionId, id);
-  }, [id]);
+    if (id) {
+      activateCurrentAccordion(questionId, id);
+    }
+  }, [id, questionId]);
 
   function activateCurrentAccordion(obj, id) {
     if (Object.keys(obj).length > 0) {

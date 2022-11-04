@@ -11,6 +11,8 @@ const Accordion = ({
   location,
   chapter,
 }) => {
+  console.log(questionId);
+
   return (
     <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>

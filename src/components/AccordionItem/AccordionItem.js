@@ -1,5 +1,5 @@
 import Markdown from 'markdown-to-jsx';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { memo } from 'react';
 import {
   accordionItem,
@@ -22,11 +22,18 @@ import Swal from 'sweetalert2';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
+import { Link } from 'react-scroll';
 
 import myPlusIcon from '../../assets/images/plus-icon.svg';
 
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
   const { t } = useTranslation();
+  console.log(location.search.split('=')[1]);
+  // useEffect(() => {
+  //   if (location.search !== '') {
+  //     changeId(location.search.split('=')[1]);
+  //   }
+  // }, [location.search]);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -39,6 +46,9 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
       toast.addEventListener('mouseleave', Swal.resumeTimer);
     },
   });
+  // console.log(titleId);
+  console.log(titleId[data.id]);
+  console.log(data);
 
   function handleClick(e, id) {
     if (e.target.dataset.svg === 'copy') {
@@ -58,8 +68,14 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
     });
   };
 
+  const normalizedPath = path => (path === 'start' ? '' : path);
+
   return (
-    <li className={accordionItem} id={data.id}>
+    <li
+      className={accordionItem}
+      id={`/${normalizedPath(chapter)}?id=${data.id}`}
+    >
+      {/* <Link href={data.id} smooth to={data.id}> */}
       <div
         onClick={e => {
           handleClick(e, data.id);
@@ -92,6 +108,7 @@ const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
       >
         <Markdown>{data.content}</Markdown>
       </div>
+      {/* </Link> */}
     </li>
   );
 });
