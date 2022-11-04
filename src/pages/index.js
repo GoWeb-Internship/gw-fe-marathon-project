@@ -14,7 +14,7 @@ const IndexPage = ({ data, location }) => {
   const chapterOfMainPage = day.chapter;
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
-  const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
+  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
@@ -146,24 +146,23 @@ const IndexPage = ({ data, location }) => {
       setId(location.search.split('=')[1]);
     }
   }, [location.search]);
-  console.log(id);
+
   useEffect(() => {
-    if (id) {
+    function activateCurrentAccordion(obj, id) {
+      if (Object.keys(obj).length > 0) {
+        for (let key in obj) {
+          obj[key] = false;
+        }
+
+        obj[id] = true;
+
+        setQuestionId(obj);
+      }
+    }
+    if (id !== null) {
       activateCurrentAccordion(questionId, id);
     }
   }, [id, questionId]);
-
-  function activateCurrentAccordion(obj, id) {
-    if (Object.keys(obj).length > 0) {
-      for (let key in obj) {
-        obj[key] = false;
-      }
-
-      obj[id] = true;
-
-      setQuestionId(obj);
-    }
-  }
 
   // const handleNavigate = redirect => {
   //   setSearchParams(redirect);

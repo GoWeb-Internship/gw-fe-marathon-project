@@ -129,6 +129,7 @@ const Day = ({ data, pageContext, location }) => {
   day.subhead.map(element =>
     element.questions.map(el => (objForAccordion[String(el.id)] = false)),
   );
+
   useEffect(() => {
     setQuestionId(objForAccordion);
   }, []);

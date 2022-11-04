@@ -54,7 +54,7 @@ const AccordionItem = memo(
       const idUrl = url.searchParams.get('id');
       console.log(idUrl);
       changeId(id);
-      alert(url);
+      // alert(url);
     }
 
     useEffect(() => {}, []);
