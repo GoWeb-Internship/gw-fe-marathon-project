@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import ChapterList from '../components/Chapter/ChapterList';
 import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
+import Icon from '../components/Icon';
 
 const Day = ({ data, pageContext, location }) => {
   const chapter = pageContext.i18n.originalPath.slice(1);
@@ -66,6 +67,9 @@ const Day = ({ data, pageContext, location }) => {
             : null}
         </ul>
       </div>
+
+      <Icon iconId="main-page" className="main-page-image-mobile" />
+      <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
     </Section>
   );
 };
