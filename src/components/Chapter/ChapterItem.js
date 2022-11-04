@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import { useLocation } from 'react-use';
 import { item, button, activeButton } from './Chapter.module.css';
 import PropTypes from 'prop-types';
 
 const ChapterItem = ({ frontmatter }) => {
+  const [activeDay, setActiveDay] = useState('');
   const { pathname } = useLocation();
-  const activeDay = pathname.split('/')[2];
+
+  useEffect(() => {
+    let arr = pathname.split('');
+    let counter = 0;
+    for (let elem of arr) {
+      if (elem === '/') {
+        counter++;
+      }
+    }
+
+    if (counter === 1) {
+      setActiveDay(pathname.split('/')[1]);
+    } else {
+      setActiveDay(pathname.split('/')[2]);
+    }
+  }, [pathname]);
+
   const normalizedPath = path => (path === 'start' ? '' : path);
 
   return (
