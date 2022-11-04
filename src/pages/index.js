@@ -24,7 +24,6 @@ const IndexPage = ({ data, location }) => {
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
 
-  //
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
@@ -48,22 +47,21 @@ const IndexPage = ({ data, location }) => {
   useEffect(() => {
     if (!target) return;
 
-    function handleIntersection(entries, observer) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setNumberOfPage(numberOfPage + 1);
-        }
-      });
-    }
-
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
       threshold: 1.0,
     });
+    function handleIntersection(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setNumberOfPage(prevState => prevState + 1);
+        }
+      });
+    }
 
     observer?.observe(target);
-  }, [numberOfPage, target]);
+  }, [target]);
 
   useEffect(() => {
     if (!visibleQuestionsId) {

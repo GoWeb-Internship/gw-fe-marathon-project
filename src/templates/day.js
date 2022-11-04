@@ -13,13 +13,9 @@ const Day = ({ data, pageContext, location }) => {
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
   ).frontmatter;
-  // console.log(chapter);
-  // console.log(day);
 
   const { page: chapters, title: id } = qs.parse(location.search.slice(1));
   const [questionId, setQuestionId] = useState({});
-
-  //
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [numberOfPage, setNumberOfPage] = useState(1);
@@ -29,9 +25,6 @@ const Day = ({ data, pageContext, location }) => {
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
 
-  console.log(visibleQuestions);
-
-  //
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
@@ -55,22 +48,22 @@ const Day = ({ data, pageContext, location }) => {
   useEffect(() => {
     if (!target) return;
 
-    function handleIntersection(entries, observer) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setNumberOfPage(numberOfPage + 1);
-        }
-      });
-    }
-
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
       threshold: 1.0,
     });
 
+    function handleIntersection(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setNumberOfPage(prevState => prevState + 1);
+        }
+      });
+    }
+
     observer?.observe(target);
-  }, [numberOfPage, target]);
+  }, [target]);
 
   useEffect(() => {
     if (!visibleQuestionsId) {
