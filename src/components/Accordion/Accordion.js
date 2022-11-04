@@ -1,6 +1,7 @@
 import React from 'react';
 import AccordionItem from '../AccordionItem/AccordionItem';
 import { subheadTitle, subhead } from './Accordion.module.css';
+
 import PropTypes from 'prop-types';
 
 const Accordion = ({
@@ -17,8 +18,8 @@ const Accordion = ({
       <ul>
         {[
           ...questions
-            .sort((a, b) => a.question_range - b.question_range)
-            .map(question => {
+            ?.sort((a, b) => a.question_range - b.question_range)
+            ?.map(question => {
               return (
                 <AccordionItem
                   key={question.id}
@@ -39,7 +40,7 @@ const Accordion = ({
 export default Accordion;
 
 Accordion.propTypes = {
-  subhead_title: PropTypes.string.isRequired,
+  subhead_title: PropTypes.string,
   // questions: PropTypes.arrayOf(PropTypes.shape({})),
   // questionId: PropTypes.object.isRequired,
   // changeId,

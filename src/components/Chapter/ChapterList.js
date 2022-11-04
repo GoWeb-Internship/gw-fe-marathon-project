@@ -23,6 +23,7 @@ const ChapterList = () => {
       }
     }
   `);
+
   const days = data.allMarkdownRemark.nodes;
   const filteredDays = days?.filter(
     ({ frontmatter: { language } }) => language === i18n.language,

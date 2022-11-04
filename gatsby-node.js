@@ -13,19 +13,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-// exports.onCreateNode = ({ node, actions, getNode }) => {
-//   const { createNodeField } = actions;
-
-//   if (node.internal.type === `allMarkdownRemark`) {
-//     const value = createFilePath({ node, getNode, basePath: `chapters` });
-//     createNodeField({
-//       name: `chapter`,
-//       node,
-//       value,
-//     });
-//   }
-// };
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 

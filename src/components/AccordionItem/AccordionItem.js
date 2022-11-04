@@ -21,8 +21,6 @@ import copy from 'copy-to-clipboard';
 import Swal from 'sweetalert2';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
-
 import myPlusIcon from '../../assets/images/plus-icon.svg';
 
 const AccordionItem = memo(({ data, titleId, changeId, location, chapter }) => {
