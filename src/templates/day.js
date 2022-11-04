@@ -25,6 +25,7 @@ const Day = ({ data, pageContext, location }) => {
   const [allQuestions, setAllQuestions] = useState(null);
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
+  let url = new URL(location.href);
 
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
@@ -41,6 +42,19 @@ const Day = ({ data, pageContext, location }) => {
   };
 
   useEffect(() => {
+    if (!visibleQuestions) return;
+    const idByUrl = url?.searchParams?.get('id');
+
+    console.log(document.getElementById(`${idByUrl}`));
+
+    if (visibleQuestions && idByUrl) {
+      document
+        .getElementById(`${idByUrl}`)
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [url?.searchParams, visibleQuestions]);
+
+  useEffect(() => {
     numberOfPage < countOfPages
       ? setIsSpinnerShown(true)
       : setIsSpinnerShown(false);
@@ -55,7 +69,7 @@ const Day = ({ data, pageContext, location }) => {
       threshold: 1.0,
     });
 
-    function handleIntersection(entries, observer) {
+    function handleIntersection(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setNumberOfPage(prevState => prevState + 1);
@@ -116,13 +130,17 @@ const Day = ({ data, pageContext, location }) => {
 
   //calculate count of pages for lazy load
   useEffect(() => {
+    if (url.searchParams.get('id')) {
+      // setCountOfPages(1);
+      return;
+    }
+
     if (allQuestions?.length <= countOfQuestionsAtPage) {
       setCountOfPages(1);
-      return;
     } else {
       setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
     }
-  }, [allQuestions]);
+  }, [allQuestions, url.searchParams]);
 
   let objForAccordion = {};
 

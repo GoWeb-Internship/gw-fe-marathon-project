@@ -79,6 +79,7 @@ const AccordionItem = memo(
       >
         {/* <Link to={`/${normalizedPath(chapter)}?id=${data.id}`}> */}
         <div
+          id={`${data.id}`}
           onClick={e => {
             handleClick(e, data.id);
           }}
