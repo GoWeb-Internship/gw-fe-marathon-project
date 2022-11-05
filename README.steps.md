@@ -76,8 +76,9 @@ const TelegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id
 
 ## Функціонування сервісу зворотнього звязку через телеграм бот
 
-- Потрібно налаштувати змінні середовища (environment variables): створюємо
-  файли .env.production та .env.development в директорії проекту за зразком
-  файлу .env.template , де GATSBY_TELEGRAM_BOT_ID це буде токен створеного
-  телеграм-боту, а GATSBY_TELEGRAM_GROUP_ID це буде ідентифікатор чату з ботом,
-  для того щоб зміни засосувалися потрібно перезапустити сервер
+- Потрібно налаштувати змінні середовища
+  ([environment variables](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/)):
+  створюємо файли .env.production та .env.development в директорії проекту за
+  зразком файлу .env.template , де GATSBY_TELEGRAM_BOT_ID це буде токен
+  створеного телеграм-боту, а GATSBY_TELEGRAM_GROUP_ID це буде ідентифікатор
+  чату з ботом, для того щоб зміни засосувалися потрібно перезапустити сервер
