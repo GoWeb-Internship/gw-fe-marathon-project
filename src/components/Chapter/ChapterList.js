@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { graphql, useStaticQuery } from 'gatsby';
-import ChapterItem from './ChapterItem';
+
 import { list } from './Chapter.module.css';
+import ChapterItem from './ChapterItem';
 
 const ChapterList = () => {
   const { i18n } = useTranslation();
