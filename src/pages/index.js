@@ -26,6 +26,7 @@ const IndexPage = ({ data, location }) => {
   const [allQuestions, setAllQuestions] = useState(null);
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
+  let url = new URL(location.href);
 
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
@@ -40,6 +41,17 @@ const IndexPage = ({ data, location }) => {
       setColor(spinnerDarkTheme);
     }
   };
+
+  useEffect(() => {
+    if (!visibleQuestions) return;
+    const idByUrl = url?.searchParams?.get('id');
+
+    if (visibleQuestions && idByUrl) {
+      document
+        .getElementById(`${idByUrl}`)
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [url?.searchParams, visibleQuestions]);
 
   useEffect(() => {
     numberOfPage < countOfPages
@@ -116,13 +128,17 @@ const IndexPage = ({ data, location }) => {
 
   //calculate count of pages for lazy load
   useEffect(() => {
+    if (url.searchParams.get('id')) {
+      return;
+    }
+
     if (allQuestions?.length <= countOfQuestionsAtPage) {
       setCountOfPages(1);
       return;
     } else {
       setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
     }
-  }, [allQuestions]);
+  }, [allQuestions, url.searchParams]);
 
   let objForAccordion = {};
 
@@ -137,10 +153,6 @@ const IndexPage = ({ data, location }) => {
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
   };
-
-  // useEffect(() => {
-  //   if (chapter) setOpenedDayId(chapter);
-  // }, [chapter]);
 
   useEffect(() => {
     if (location.search) {
@@ -160,10 +172,10 @@ const IndexPage = ({ data, location }) => {
         setQuestionId(obj);
       }
     }
-    if (id !== null) {
+    if (!id) {
       activateCurrentAccordion(questionId, id);
     }
-  }, [id, questionId]);
+  }, [id]);
 
   // const handleNavigate = redirect => {
   //   setSearchParams(redirect);
