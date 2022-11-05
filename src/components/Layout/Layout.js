@@ -4,7 +4,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
 import Modal from '../Modal';
-import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +21,7 @@ const Layout = ({ children }) => {
         <Header openModal={openModal} />
         <Hero openModal={openModal} />
       </div>
+
       <main className="grow bg-body dark:bg-body-dark">{children}</main>
 
       <Footer />

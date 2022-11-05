@@ -32,8 +32,10 @@ const Hero = ({ openModal }) => {
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
         )}
+
         <Icon className={people} iconId="hero-section" />
       </Container>
+
       <Icon className={iconBottom} iconId="hero-bottom" />
     </section>
   );

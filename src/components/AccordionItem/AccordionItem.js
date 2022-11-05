@@ -121,11 +121,14 @@ const AccordionItem = memo(
 export default AccordionItem;
 
 AccordionItem.propTypes = {
-  // data: PropTypes.shape({
-
-  // }),
-  // titleId: PropTypes.string.isRequired,
-  // changeId,
-  // location,
-  chapter: PropTypes.string,
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    question_range: PropTypes.string,
+    title: PropTypes.string.isRequired,
+  }),
+  titleId: PropTypes.object.isRequired,
+  changeId: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  chapter: PropTypes.string.isRequired,
 };

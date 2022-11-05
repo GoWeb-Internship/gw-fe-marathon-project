@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { withLayout } from '../components/Layout/Layout';
-import { graphql, navigate } from 'gatsby';
-import qs from 'qs';
-
+import { graphql } from 'gatsby';
 import Section from '../components/Section';
 import ChapterList from '../components/Chapter';
 import Accordion from '../components/Accordion/Accordion';
@@ -15,9 +13,6 @@ const IndexPage = ({ data, location }) => {
   const chapterOfMainPage = day.chapter;
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
-
-  console.log('questionId', questionId);
-  console.log('id', id);
 
   // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
@@ -245,8 +240,6 @@ const IndexPage = ({ data, location }) => {
 };
 
 export default withLayout(IndexPage);
-
-// export default IndexPage;
 
 export const query = graphql`
   query ($language: String!) {

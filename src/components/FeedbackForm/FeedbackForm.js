@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 import Swal from 'sweetalert2';
 import { sendFeedbackMessage } from '../../utils/feedbackFormApi';
 import Section from '../Section';
-import Button from '../Button';
+import Button from '../Button/Button';
 import icons from '../../assets/images/sprite.svg';
 import SyncLoader from 'react-spinners/SyncLoader';
 import {
@@ -217,6 +217,7 @@ const FeedbackForm = () => {
               <Button text={formText.send} type="submit"></Button>
             </form>
           )}
+
           <div className={imageWrapper}>
             <svg className={imageMobile}>
               <use href={`${icons}#feedback-page`} />

@@ -4,14 +4,9 @@ import { withLayout } from '../components/Layout/Layout';
 import FeedbackForm from '../components/FeedbackForm';
 
 const FeedbackPage = () => {
-  return (
-    // <Layout>
-    <FeedbackForm />
-    // </Layout>
-  );
+  return <FeedbackForm />;
 };
 
-// export default FeedbackPage;
 export default withLayout(FeedbackPage);
 
 export const query = graphql`
