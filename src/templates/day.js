@@ -43,15 +43,12 @@ const Day = ({ data, pageContext, location }) => {
   };
 
   useEffect(() => {
-    if (!visibleQuestions) return;
-    const idByUrl = url?.searchParams?.get('id');
+    if (!visibleQuestions || !id) return;
 
-    if (visibleQuestions && idByUrl) {
-      document
-        .getElementById(`${idByUrl}`)
-        ?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [url?.searchParams, visibleQuestions]);
+    handleChangeAccordion(id);
+
+    document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
+  }, [id, visibleQuestions]);
 
   useEffect(() => {
     numberOfPage < countOfPages

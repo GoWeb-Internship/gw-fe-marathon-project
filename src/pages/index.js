@@ -15,6 +15,10 @@ const IndexPage = ({ data, location }) => {
   const chapterOfMainPage = day.chapter;
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
+
+  console.log('questionId', questionId);
+  console.log('id', id);
+
   // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
@@ -43,15 +47,12 @@ const IndexPage = ({ data, location }) => {
   };
 
   useEffect(() => {
-    if (!visibleQuestions) return;
-    const idByUrl = url?.searchParams?.get('id');
+    if (!visibleQuestions || !id) return;
 
-    if (visibleQuestions && idByUrl) {
-      document
-        .getElementById(`${idByUrl}`)
-        ?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [url?.searchParams, visibleQuestions]);
+    handleChangeAccordion(id);
+
+    document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
+  }, [id, visibleQuestions]);
 
   useEffect(() => {
     numberOfPage < countOfPages
@@ -67,7 +68,7 @@ const IndexPage = ({ data, location }) => {
       rootMargin: '0px',
       threshold: 1.0,
     });
-    function handleIntersection(entries, observer) {
+    function handleIntersection(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setNumberOfPage(prevState => prevState + 1);
