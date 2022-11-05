@@ -14,12 +14,14 @@ import {
 const NotFound = ({ searchPhrase }) => {
   const { t } = useTranslation();
   const noAnswer = t('noAnswer', { returnObjects: true });
+
   return (
     <div className={`${noResultsWrapper}`}>
       <h3 className={`${noResultsTitle} `}>
         {noAnswer.title} <span className={searchWord}>{searchPhrase}</span>
       </h3>
       <p className={noResultsDesc}>{noAnswer.description}</p>
+
       <button className={btnToFeedbackPage}>
         <Link to="/feedback" className={link}>
           {noAnswer.button}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { subheadTitle, subhead } from './Accordion.module.css';
 import AccordionItem from '../AccordionItem/AccordionItem';
 
@@ -43,9 +42,16 @@ export default Accordion;
 
 Accordion.propTypes = {
   subhead_title: PropTypes.string,
-  // questions: PropTypes.arrayOf(PropTypes.shape({})),
-  // questionId: PropTypes.object.isRequired,
-  // changeId,
-  // location,
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      question_range: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    }),
+  ),
+  questionId: PropTypes.object.isRequired,
+  changeId: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
   chapter: PropTypes.string.isRequired,
 };

@@ -72,6 +72,7 @@ const Header = ({ openModal }) => {
           </ul>
         </div>
       </Container>
+
       <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
 
       <Icon className={decorIcon} iconId="hero-top" />

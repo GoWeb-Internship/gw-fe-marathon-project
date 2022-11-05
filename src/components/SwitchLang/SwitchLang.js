@@ -3,6 +3,13 @@ import { useI18next } from 'gatsby-plugin-react-i18next';
 import LangList from './LangList';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import Backdrop from '../Backdrop';
+import {
+  langSwitch,
+  buttonSwitch,
+  langLabel,
+  globeIcon,
+  langBackdrop,
+} from './SwitchLang.module.css';
 
 export const normalizeLang = language =>
   language === 'uk' ? 'UA' : language.toUpperCase();
@@ -16,22 +23,16 @@ const SwitchLang = () => {
   };
 
   return (
-    <div className="relative box-border w-full max-md:p-4">
-      <button
-        type="button"
-        className="text-main flex h-full w-full items-center gap-x-2 "
-        onClick={toggle}
-      >
-        <span className="text-font-light">{normalizeLang(language)}</span>
-        <GlobeAltIcon className="h-6 w-6 text-font-light" />
+    <div className={langSwitch}>
+      <button type="button" className={buttonSwitch} onClick={toggle}>
+        <span className={langLabel}>{normalizeLang(language)}</span>
+        <GlobeAltIcon className={globeIcon} />
       </button>
+
       {dropdown && (
         <>
           <LangList active={language} />
-          <Backdrop
-            className="fixed top-0 left-0 z-10 h-full w-full"
-            handleCloseFunction={toggle}
-          />
+          <Backdrop className={langBackdrop} handleCloseFunction={toggle} />
         </>
       )}
     </div>
