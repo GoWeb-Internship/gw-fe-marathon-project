@@ -46,8 +46,6 @@ const Day = ({ data, pageContext, location }) => {
     if (!visibleQuestions) return;
     const idByUrl = url?.searchParams?.get('id');
 
-    console.log(document.getElementById(`${idByUrl}`));
-
     if (visibleQuestions && idByUrl) {
       document
         .getElementById(`${idByUrl}`)
@@ -132,7 +130,6 @@ const Day = ({ data, pageContext, location }) => {
   //calculate count of pages for lazy load
   useEffect(() => {
     if (url.searchParams.get('id')) {
-      // setCountOfPages(1);
       return;
     }
 
@@ -175,10 +172,10 @@ const Day = ({ data, pageContext, location }) => {
         setQuestionId(obj);
       }
     }
-    if (id !== null) {
+    if (!id) {
       activateCurrentAccordion(questionId, id);
     }
-  }, [id, questionId]);
+  }, [id]);
 
   return (
     <Section styles="main-section">
