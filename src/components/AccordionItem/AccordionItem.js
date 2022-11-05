@@ -1,6 +1,18 @@
-import Markdown from 'markdown-to-jsx';
 import React, { useState, useEffect } from 'react';
 import { memo } from 'react';
+import { Link } from 'gatsby';
+import Markdown from 'markdown-to-jsx';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import qs from 'qs';
+import copy from 'copy-to-clipboard';
+import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
+
+import {
+  MinusCircleIcon,
+  DocumentDuplicateIcon,
+} from '@heroicons/react/24/outline';
+import myPlusIcon from '../../assets/images/plus-icon.svg';
 import {
   accordionItem,
   accordionHeading,
@@ -12,17 +24,6 @@ import {
   copyIcon,
   copyIconHover,
 } from './AccordionItem.module.css';
-import {
-  MinusCircleIcon,
-  DocumentDuplicateIcon,
-} from '@heroicons/react/24/outline';
-import qs from 'qs';
-import copy from 'copy-to-clipboard';
-import Swal from 'sweetalert2';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import myPlusIcon from '../../assets/images/plus-icon.svg';
 
 const AccordionItem = memo(
   ({ data, titleId, changeId, location, chapter, id }) => {

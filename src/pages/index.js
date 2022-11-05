@@ -2,12 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { withLayout } from '../components/Layout/Layout';
 import { graphql, navigate } from 'gatsby';
-import Section from '../components/Section';
-import Accordion from '../components/Accordion/Accordion';
 import qs from 'qs';
+
+import Section from '../components/Section';
 import ChapterList from '../components/Chapter';
-import Icon from '../components/Icon';
+import Accordion from '../components/Accordion/Accordion';
 import SyncLoader from 'react-spinners/SyncLoader';
+import Icon from '../components/Icon';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;

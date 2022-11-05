@@ -1,8 +1,8 @@
 import React from 'react';
-import AccordionItem from '../AccordionItem/AccordionItem';
-import { subheadTitle, subhead } from './Accordion.module.css';
-
 import PropTypes from 'prop-types';
+
+import { subheadTitle, subhead } from './Accordion.module.css';
+import AccordionItem from '../AccordionItem/AccordionItem';
 
 const Accordion = ({
   subhead_title,

@@ -1,12 +1,13 @@
-import { withLayout } from '../components/Layout/Layout';
 import React, { useState, useEffect } from 'react';
-import Section from '../components/Section';
 import { graphql } from 'gatsby';
+import qs from 'qs';
+import { withLayout } from '../components/Layout/Layout';
+
+import Section from '../components/Section';
 import ChapterList from '../components/Chapter/ChapterList';
 import Accordion from '../components/Accordion/Accordion';
-import qs from 'qs';
-import Icon from '../components/Icon';
 import SyncLoader from 'react-spinners/SyncLoader';
+import Icon from '../components/Icon';
 
 const Day = ({ data, pageContext, location }) => {
   const chapter = pageContext.i18n.originalPath.slice(1);
