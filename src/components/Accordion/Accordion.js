@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import { subheadTitle, subhead } from './Accordion.module.css';
 import AccordionItem from '../AccordionItem/AccordionItem';
 
-const Accordion = ({
-  subhead_title,
-  questions,
-  questionId,
-  changeId,
-  location,
-  chapter,
-  id,
-}) => {
+const Accordion = ({ subhead_title, questions, id }) => {
   return (
     <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>
@@ -21,15 +13,7 @@ const Accordion = ({
             ?.sort((a, b) => a.question_range - b.question_range)
             ?.map(question => {
               return (
-                <AccordionItem
-                  key={question.id}
-                  data={question}
-                  titleId={questionId}
-                  changeId={changeId}
-                  location={location}
-                  chapter={chapter}
-                  id={id}
-                />
+                <AccordionItem key={question.id} data={question} id={id} />
               );
             }),
         ]}
@@ -50,8 +34,5 @@ Accordion.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ),
-  questionId: PropTypes.object.isRequired,
-  changeId: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
-  chapter: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };

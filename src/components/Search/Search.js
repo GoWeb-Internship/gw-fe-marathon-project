@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
-import qs from 'qs';
 import { DebounceInput } from 'react-debounce-input';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import NotFound from './NotFound';
-import { Link } from 'gatsby';
 import {
   modalWrap,
   searchWrap,
@@ -96,12 +94,6 @@ const Search = ({ closeModal }) => {
   const handleInputChange = ({ target: { value } }) => {
     setSearchPhrase(value.toLowerCase());
   };
-
-  // const handleRedirect = (chapter, id) => {
-  //   const redirect = qs.parse({ page: chapter, title: id });
-  //   onNavigate(qs.stringify(redirect));
-  //   closeModal();
-  // };
 
   const normalizedPath = path => (path === 'start' ? '' : path);
 

@@ -9,7 +9,7 @@ subhead:
         description: |-
           Перевірте структуру проєкту, який ви завантажуєте на Netlify:
 
-          ![структура проєкту](/img/day-3-5-1.jpg "структура проєкту")
+          ![структура проєкту](/img/day-6-1.png "структура проєкту")
 
           А також назва файлу повинна бути `index.html`.
         question_range: '1'
@@ -23,7 +23,7 @@ subhead:
       - question_title: Як видалити / змінити проект на хостингу?
         description:
           Ви можете видалити поточний проєкт, дотримуючись цієї
-          інструкції: [https://i.goit.global/jyXy] (https://bit.ly/2T4SeHl) і
+          інструкції: [https://i.goit.global/jyXy](https://bit.ly/2T4SeHl) і
           залити новий виправлений проєкт.
         question_range: '3'
         id: '1666359804487'

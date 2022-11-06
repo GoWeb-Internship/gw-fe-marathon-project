@@ -21,9 +21,12 @@ import {
   glassBtn,
   mobileBtnsWrapper,
 } from './Header.module.css';
+import { useLocation } from 'react-use';
+import { routes } from '../../utils/routes';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
@@ -41,13 +44,15 @@ const Header = ({ openModal }) => {
         <div className={headerContainer}>
           <Logo />
           <div className={mobileBtnsWrapper}>
-            <button
-              className={glassBtn}
-              onClick={openModal}
-              aria-label="search button"
-            >
-              <MagnifyingGlassIcon className={glassIcon} />
-            </button>
+            {!pathname.includes(routes.FEEDBACK) && (
+              <button
+                className={glassBtn}
+                onClick={openModal}
+                aria-label="search button"
+              >
+                <MagnifyingGlassIcon className={glassIcon} />
+              </button>
+            )}
 
             <button
               aria-label="menu button"
