@@ -132,7 +132,7 @@ const Search = ({ closeModal }) => {
                 title={title}
                 onClick={closeModal}
               >
-                <Link to={`/${normalizedPath(chapter)}?id=${id}`}>
+                <Link to={`/${normalizedPath(chapter)}?#${id}`}>
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>
                 </Link>

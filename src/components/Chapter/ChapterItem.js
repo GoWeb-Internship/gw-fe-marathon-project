@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 const ChapterItem = ({ frontmatter }) => {
   const [activeDay, setActiveDay] = useState('');
   const { pathname } = useLocation();
+  const location = useLocation();
+  // console.log(location.hash);
 
   useEffect(() => {
     let arr = pathname.split('');
@@ -22,7 +24,13 @@ const ChapterItem = ({ frontmatter }) => {
     } else {
       setActiveDay(pathname.split('/')[2]);
     }
-  }, [pathname]);
+
+    // if (counter === 2 && location.hash) {
+    //   setActiveDay(pathname.split('/')[1]);
+    // } else {
+    //   setActiveDay(pathname.split('/')[2]);
+    // }
+  }, [location.hash, pathname]);
 
   const normalizedPath = path => (path === 'start' ? '' : path);
 

@@ -27,7 +27,7 @@ const Day = ({ data, pageContext, location }) => {
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
   let url = new URL(location.href);
-
+  console.log(location.hash.slice(1));
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
@@ -126,7 +126,7 @@ const Day = ({ data, pageContext, location }) => {
 
   //calculate count of pages for lazy load
   useEffect(() => {
-    if (url.searchParams.get('id')) {
+    if (id) {
       return;
     }
 
@@ -135,7 +135,7 @@ const Day = ({ data, pageContext, location }) => {
     } else {
       setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
     }
-  }, [allQuestions, url.searchParams]);
+  }, [allQuestions, id]);
 
   let objForAccordion = {};
 
@@ -152,10 +152,10 @@ const Day = ({ data, pageContext, location }) => {
   };
 
   useEffect(() => {
-    if (location.search) {
-      setId(location.search.split('=')[1]);
+    if (location.hash) {
+      setId(location.hash.slice(1));
     }
-  }, [location.search]);
+  }, [location.hash]);
 
   useEffect(() => {
     function activateCurrentAccordion(obj, id) {

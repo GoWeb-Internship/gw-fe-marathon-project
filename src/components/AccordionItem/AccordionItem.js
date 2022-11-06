@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { memo } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import qs from 'qs';
@@ -43,22 +43,23 @@ const AccordionItem = memo(
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
     });
-    // console.log(titleId);
-    // console.log(titleId[data.id]);
-    // console.log(data);
 
-    function handleClick(e, id) {
+    const handleClick = (e, id) => {
       if (e.target.dataset.svg === 'copy') {
         return;
       }
-      url.searchParams.set('id', id);
-      const idUrl = url.searchParams.get('id');
+      console.log(location.hash.slice(1));
+      // await url.searchParams.set('id', id);
+      // const idUrl = url.searchParams.get('id');
       // console.log(idUrl);
-      changeId(id);
-      // alert(url);
-    }
+      // changeId(id);
 
-    useEffect(() => {}, []);
+      if (location.hash.slice(1) === id) {
+        changeId(id);
+        return;
+      }
+      navigate(`?#${id}`);
+    };
 
     const handleCopyLink = (chapter, id) => {
       const params = `?${qs.stringify(qs.parse({ page: chapter, title: id }))}`;
@@ -74,13 +75,9 @@ const AccordionItem = memo(
     const normalizedPath = path => (path === 'start' ? '' : path);
 
     return (
-      <li
-        className={accordionItem}
-        id={`/${normalizedPath(chapter)}?id=${data.id}`}
-      >
-        {/* <Link to={`/${normalizedPath(chapter)}?id=${data.id}`}> */}
+      <li className={accordionItem} id={data.id}>
+        {/* <Link to={`#${data.id}`}> */}
         <div
-          id={`${data.id}`}
           onClick={e => {
             handleClick(e, data.id);
           }}
