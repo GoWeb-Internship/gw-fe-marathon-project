@@ -26,7 +26,7 @@ const Hero = ({ openModal }) => {
       <Container>
         <h2 className={title}>{t('title')}</h2>
 
-        {media !== 'mobile' && pathname !== routes.FEEDBACK && (
+        {media !== 'mobile' && !pathname.includes(routes.FEEDBACK) && (
           <button className={search} onClick={openModal}>
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
