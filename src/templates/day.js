@@ -15,7 +15,7 @@ const Day = ({ data, pageContext, location }) => {
     day => chapter === day.frontmatter.chapter,
   ).frontmatter;
 
-  const [questionId, setQuestionId] = useState({});
+  // const [questionId, setQuestionId] = useState({});
   const [id, setId] = useState(null);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
@@ -26,8 +26,7 @@ const Day = ({ data, pageContext, location }) => {
   const [allQuestions, setAllQuestions] = useState(null);
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
-  let url = new URL(location.href);
-  // console.log(location.hash.slice(1));
+
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
@@ -45,8 +44,7 @@ const Day = ({ data, pageContext, location }) => {
   useEffect(() => {
     if (!visibleQuestions || !id) return;
 
-    handleChangeAccordion(id);
-
+    // handleChangeAccordion(id);
     document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
   }, [id, visibleQuestions]);
 
@@ -137,24 +135,19 @@ const Day = ({ data, pageContext, location }) => {
     }
   }, [allQuestions, id]);
 
-  let objForAccordion = {};
+  // let objForAccordion = {};
 
-  day.subhead.map(element =>
-    element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-  );
+  // day.subhead.map(element =>
+  //   element.questions.map(el => (objForAccordion[String(el.id)] = false)),
+  // );
 
-  useEffect(() => {
-    setQuestionId(objForAccordion);
-  }, []);
+  // useEffect(() => {
+  //   setQuestionId(objForAccordion);
+  // }, []);
 
-  const handleChangeAccordion = id => {
-    setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
-    // setId(prev => {
-    //   console.log(prev);
-    // });
-    // setId('');
-    console.log(questionId[id]);
-  };
+  // const handleChangeAccordion = id => {
+  //   setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
+  // };
 
   useEffect(() => {
     if (location.hash) {
@@ -162,22 +155,22 @@ const Day = ({ data, pageContext, location }) => {
     }
   }, [location.hash]);
 
-  useEffect(() => {
-    function activateCurrentAccordion(obj, id) {
-      if (Object.keys(obj).length > 0) {
-        for (let key in obj) {
-          obj[key] = false;
-        }
+  // useEffect(() => {
+  //   function activateCurrentAccordion(obj, id) {
+  //     if (Object.keys(obj).length > 0) {
+  //       for (let key in obj) {
+  //         obj[key] = false;
+  //       }
 
-        obj[id] = true;
-        console.log(obj[id]);
-        setQuestionId(obj);
-      }
-    }
-    if (!id) {
-      activateCurrentAccordion(questionId, id);
-    }
-  }, [id]);
+  //       obj[id] = true;
+  //       console.log(obj[id]);
+  //       setQuestionId(obj);
+  //     }
+  //   }
+  //   if (!id) {
+  //     activateCurrentAccordion(questionId, id);
+  //   }
+  // }, [id]);
 
   return (
     <Section styles="main-section">
@@ -192,10 +185,6 @@ const Day = ({ data, pageContext, location }) => {
                     key={index}
                     subhead_title={subhead_title}
                     questions={questions}
-                    questionId={questionId}
-                    changeId={handleChangeAccordion}
-                    location={location}
-                    chapter={chapter}
                     id={id}
                   />
                 );

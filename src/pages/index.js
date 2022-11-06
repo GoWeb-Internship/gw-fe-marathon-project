@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withLayout } from '../components/Layout/Layout';
 import { graphql } from 'gatsby';
 import Section from '../components/Section';
@@ -10,12 +9,8 @@ import Icon from '../components/Icon';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
-  const chapterOfMainPage = day.chapter;
-  const [questionId, setQuestionId] = useState({});
+  // const [questionId, setQuestionId] = useState({});
   const [id, setId] = useState(null);
-  // console.log(location.hash);
-  // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
-  // const [dataByChapter, setDataByChapter] = useState(null);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
@@ -25,7 +20,6 @@ const IndexPage = ({ data, location }) => {
   const [allQuestions, setAllQuestions] = useState(null);
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
-  let url = new URL(location.href);
 
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
@@ -44,8 +38,7 @@ const IndexPage = ({ data, location }) => {
   useEffect(() => {
     if (!visibleQuestions || !id) return;
 
-    handleChangeAccordion(id);
-
+    // handleChangeAccordion(id);
     document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
   }, [id, visibleQuestions]);
 
@@ -136,19 +129,19 @@ const IndexPage = ({ data, location }) => {
     }
   }, [allQuestions, id]);
 
-  let objForAccordion = {};
+  // let objForAccordion = {};
 
-  day.subhead.map(element =>
-    element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-  );
+  // day.subhead.map(element =>
+  //   element.questions.map(el => (objForAccordion[String(el.id)] = false)),
+  // );
 
-  useEffect(() => {
-    setQuestionId(objForAccordion);
-  }, []);
+  // useEffect(() => {
+  //   setQuestionId(objForAccordion);
+  // }, []);
 
-  const handleChangeAccordion = id => {
-    setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
-  };
+  // const handleChangeAccordion = id => {
+  //   setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
+  // };
 
   useEffect(() => {
     if (location.hash) {
@@ -156,32 +149,22 @@ const IndexPage = ({ data, location }) => {
     }
   }, [location.hash]);
 
-  useEffect(() => {
-    function activateCurrentAccordion(obj, id) {
-      if (Object.keys(obj).length > 0) {
-        for (let key in obj) {
-          obj[key] = false;
-        }
-
-        obj[id] = true;
-
-        setQuestionId(obj);
-      }
-    }
-    if (!id) {
-      activateCurrentAccordion(questionId, id);
-    }
-  }, [id]);
-
-  // const handleNavigate = redirect => {
-  //   setSearchParams(redirect);
-  // };
-
   // useEffect(() => {
-  //   if (searchParams) {
-  //     navigate(`?${searchParams}`);
+  //   function activateCurrentAccordion(obj, id) {
+  //     if (Object.keys(obj).length > 0) {
+  //       for (let key in obj) {
+  //         obj[key] = false;
+  //       }
+
+  //       obj[id] = true;
+
+  //       setQuestionId(obj);
+  //     }
   //   }
-  // }, [searchParams]);
+  //   if (!id) {
+  //     activateCurrentAccordion(questionId, id);
+  //   }
+  // }, [id]);
 
   useEffect(() => {
     if (window.netlifyIdentity) {
@@ -208,10 +191,7 @@ const IndexPage = ({ data, location }) => {
                     key={index}
                     subhead_title={subhead_title}
                     questions={questions}
-                    questionId={questionId}
-                    changeId={handleChangeAccordion}
-                    location={location}
-                    chapter={chapterOfMainPage}
+                    id={id}
                   />
                 );
               })
