@@ -30,9 +30,72 @@
 ## Локалізація
 
 - Підтримка різних мов з плагіном
-  ["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package),
-  **потрібна версія плагіну (1.2.3) для 17-ї версії React.js що використовується
-  в проекті**
+  ["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package).
+
+Необхідно встановити версію нижче: **npm i gatsby-plugin-react-i18next@1.2.3**
+
+- У файлі **gatsby-config** вносимо налаштування. Приклад:
+
+```bash
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`uk`, `en`, `ru`],
+        defaultLanguage: `uk`,
+        generateDefaultLanguagePage: '/uk',
+        siteUrl: ``,
+
+        i18nextOptions: {
+          lng: 'uk',
+          load: 'currentOnly',
+
+          interpolation: {
+            escapeValue: false,
+          },
+
+          keySeparator: false,
+          nsSeparator: true,
+        },
+      },
+    },
+```
+
+- Створюємо і наповнюємо структуру даних, які не залежать від CMS.
+
+```bash
+|-- locales
+    |-- en
+        |-- translation.json
+    |-- uk
+        |-- translation.json
+    |-- ru
+        |-- translation.json
+```
+
+- На кожну сторінку потрібно добавити запит `graphql`
+
+```bash
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
+```
+
+- Для зміни мови пишемо компонент, например `SwitchLang`.
+
+- Плагін на кожну сторінку добавляє контекст `language`, який ми використовуємо
+  для конкретизації запитів в `graphql`. Таким чином, використовуючи фільтр, ми
+  "звужуємо" пошук і здійснюємо локалізацію даних, які нам приходять з СMS.
 
 ## Форма зворотнього зв'язку
 
