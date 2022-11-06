@@ -11,9 +11,9 @@ import Icon from '../components/Icon';
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
   const chapterOfMainPage = day.chapter;
-  const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
-  console.log(location.hash);
+  const [id, setId] = useState(null);
+  // console.log(location.hash);
   // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 

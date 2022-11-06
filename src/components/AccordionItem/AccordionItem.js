@@ -29,7 +29,7 @@ const AccordionItem = memo(
   ({ data, titleId, changeId, location, chapter, id }) => {
     const { t } = useTranslation();
     // console.log(location.href);
-
+    // console.log(window.history.state);
     let url = new URL(location.href);
 
     const Toast = Swal.mixin({
@@ -43,22 +43,25 @@ const AccordionItem = memo(
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
     });
-
+    // console.log(titleId[data.id]);
     const handleClick = (e, id) => {
       if (e.target.dataset.svg === 'copy') {
         return;
       }
-      console.log(location.hash.slice(1));
-      // await url.searchParams.set('id', id);
+      // console.log(titleId[id]);
+      // url.searchParams.set('id', id);
       // const idUrl = url.searchParams.get('id');
       // console.log(idUrl);
       // changeId(id);
+      // console.log(location.hash.slice(1));
 
       if (location.hash.slice(1) === id) {
+        navigate('');
         changeId(id);
         return;
       }
       navigate(`?#${id}`);
+      // titleId[id] ? changeId(id) : navigate(`?#${id}`);
     };
 
     const handleCopyLink = (chapter, id) => {

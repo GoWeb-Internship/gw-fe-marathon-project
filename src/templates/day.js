@@ -27,12 +27,12 @@ const Day = ({ data, pageContext, location }) => {
   const countOfQuestionsAtPage = 5;
   const target = document.getElementById('spinner');
   let url = new URL(location.href);
-  console.log(location.hash.slice(1));
+  // console.log(location.hash.slice(1));
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
   let htmlDark;
-
+  // console.log(setId(prev => console.log(prev)));
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
   }
@@ -149,6 +149,11 @@ const Day = ({ data, pageContext, location }) => {
 
   const handleChangeAccordion = id => {
     setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
+    // setId(prev => {
+    //   console.log(prev);
+    // });
+    // setId('');
+    console.log(questionId[id]);
   };
 
   useEffect(() => {
@@ -165,7 +170,7 @@ const Day = ({ data, pageContext, location }) => {
         }
 
         obj[id] = true;
-
+        console.log(obj[id]);
         setQuestionId(obj);
       }
     }
