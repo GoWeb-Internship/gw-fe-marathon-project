@@ -13,7 +13,7 @@ const IndexPage = ({ data, location }) => {
   const chapterOfMainPage = day.chapter;
   const [id, setId] = useState(null);
   const [questionId, setQuestionId] = useState({});
-
+  console.log(location.hash);
   // const [openedDayId, setOpenedDayId] = useState(chapterOfMainPage);
   // const [dataByChapter, setDataByChapter] = useState(null);
 
@@ -124,7 +124,7 @@ const IndexPage = ({ data, location }) => {
 
   //calculate count of pages for lazy load
   useEffect(() => {
-    if (url.searchParams.get('id')) {
+    if (id) {
       return;
     }
 
@@ -134,7 +134,7 @@ const IndexPage = ({ data, location }) => {
     } else {
       setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
     }
-  }, [allQuestions, url.searchParams]);
+  }, [allQuestions, id]);
 
   let objForAccordion = {};
 
@@ -151,10 +151,10 @@ const IndexPage = ({ data, location }) => {
   };
 
   useEffect(() => {
-    if (location.search) {
-      setId(location.search.split('=')[1]);
+    if (location.hash) {
+      setId(location.hash.slice(1));
     }
-  }, [location.search]);
+  }, [location.hash]);
 
   useEffect(() => {
     function activateCurrentAccordion(obj, id) {
