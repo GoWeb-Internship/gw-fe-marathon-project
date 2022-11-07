@@ -6,6 +6,7 @@ import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 const ToggleTheme = () => {
   let websiteTheme;
   let mql;
+
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme;
 
@@ -14,16 +15,20 @@ const ToggleTheme = () => {
       setChecked(e.matches);
     });
   }
+
   useEffect(() => {
     setTheme(window.__theme);
   }, [websiteTheme]);
 
+  // these states should always be after the typeof window !== `undefined` expression
   const [theme, setTheme] = useState(websiteTheme);
   const [checked, setChecked] = useState(theme === 'dark');
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
+
     setTheme(websiteTheme === 'dark' ? 'light' : 'dark');
+
     setChecked(
       localStorage.getItem('preferred-theme') === 'dark' ? true : false,
     );

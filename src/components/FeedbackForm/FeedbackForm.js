@@ -83,6 +83,7 @@ const FeedbackForm = () => {
       name: '',
       message: '',
     },
+
     resolver: yupResolver(schema),
   });
 
@@ -98,6 +99,7 @@ const FeedbackForm = () => {
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
   }
+
   const darkSpinner = () => {
     if (htmlDark) {
       setColor(spinnerDarkTheme);
@@ -105,11 +107,15 @@ const FeedbackForm = () => {
   };
 
   const formResult = result;
+
   function onSubmit(data) {
     darkSpinner();
+
     setLoading(true);
+
     setTimeout(() => {
       const res = sendFeedbackMessage(data);
+
       res.then(res => {
         if (!res?.data.ok) {
           Swal.fire({
@@ -117,20 +123,25 @@ const FeedbackForm = () => {
             title: formText.errorMessageTitle,
             text: formText.errorMessageText,
           });
+
           setLoading(false);
           return;
         }
+
         setResult(res?.data.ok);
+
         if (result) {
           setLoading(false);
         }
       });
+
       reset();
     }, 500);
   }
 
   const backToPage = () => {
     setResult(null);
+
     return;
   };
 
