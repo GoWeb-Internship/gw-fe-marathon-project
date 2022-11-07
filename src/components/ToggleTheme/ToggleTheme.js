@@ -17,11 +17,13 @@ const ToggleTheme = () => {
       setChecked(e.matches);
     });
   }
+  console.log(theme === 'dark');
 
   useEffect(() => {
     setTheme(window.__theme);
     console.log(websiteTheme);
-  }, [websiteTheme]);
+    console.log(theme === 'dark');
+  }, [theme, websiteTheme]);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
