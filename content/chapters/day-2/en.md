@@ -7,7 +7,8 @@ subhead:
     questions:
       - id: "1666790468592"
         question_title: W﻿hat a `normalize.css` is needed for?
-        description: It provides the best default cross-browser style for `HTML-` elements.
+        description: It provides the best default cross-browser style for `HTML`
+          -  elements.
         question_range: "1"
       - id: "1666790651842"
         question_title: How to make a comment?
