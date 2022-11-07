@@ -45,5 +45,5 @@
 }
 
 .link {
-  @apply mx-auto table rounded border border-[#FCFCFC] bg-[#FCFCFC] py-4 px-8 text-center font-inter text-[0.875rem] font-semibold leading-[1.25rem] text-font-dark outline-none duration-300 hover:bg-transparent hover:text-font-light focus:bg-transparent focus:text-font-light md:mx-0;
+  @apply mx-auto table rounded border border-body bg-body py-4 px-8 text-center font-inter text-[0.875rem] font-semibold leading-[1.25rem] text-font-dark outline-none duration-300 hover:bg-transparent hover:text-font-light focus:bg-transparent focus:text-font-light md:mx-0;
 }

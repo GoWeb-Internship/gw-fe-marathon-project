@@ -8,6 +8,7 @@
 - [Стилі з Tailwind CSS](#tailwind-css)
 - [Адмінпанель Netlify CMS](#netlify-cms)
 - [Локалізація](#locales)
+- [Програмне створення сторінок](#programmatic-page-creation)
 - [Форма зворотнього зв'язку](#feedback-form)
 - [Telegram API](#telegram-api)
 - [Функціонування сервісу зворотнього зв'язку через телеграм-бот](#feedback-service-with-telegram-bot)
@@ -27,48 +28,42 @@
   ["gatsby-plugin-mdx"](https://www.gatsbyjs.com/docs/working-with-images-in-markdown/#using-the-mdx-plugin)
   що також підтримує .md файли за умови відповідних налаштувань.
 
-- Routing в проекті здійснено з використанням
-  ["gatsby-node.js"](https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs)
-  та
-  ["create-pages"](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages)
-
 ## Tailwind CSS
 
 ## Стилізація з Tailwind CSS
 
-- Стилізацію здійснено з допомогою [Tailwind CSS](https://tailwindcss.com).
-  [Як підключити до Gatsby](https://tailwindcss.com/docs/guides/gatsby)
+Стилізацію здійснено з допомогою [Tailwind CSS](https://tailwindcss.com).
+[Як підключити до Gatsby](https://tailwindcss.com/docs/guides/gatsby)
 
 ## Netlify CMS
 
 ## Адмін-панель з Netlify CMS
 
-- Контроль контенту здійснюється через
-  [Netlify CMS](https://www.netlifycms.org/docs/add-to-your-site/) та хостинг на
-  [Netlify](https://www.netlify.com/)
+Контроль контенту здійснюється через
+[Netlify CMS](https://www.netlifycms.org/docs/add-to-your-site/) та хостинг на
+[Netlify](https://www.netlify.com/)
 
-  [Як налаштувати генератор сайтів Gatsby під Netlify CMS](https://www.gatsbyjs.com/docs/how-to/sourcing-data/sourcing-from-netlify-cms/)
+[Як налаштувати генератор сайтів Gatsby під Netlify CMS](https://www.gatsbyjs.com/docs/how-to/sourcing-data/sourcing-from-netlify-cms/)
 
-  Щоб отримати унікальний ідентифікатор для кожного питання, при цьому не
-  навантажуючи цією функцією адміністратора, було створено спеціальний віджет
-  для адмін-панелі. Він має назву id, а його вихідний код розміщений у папці
-  utils.
+Щоб отримати унікальний ідентифікатор для кожного питання, при цьому не
+навантажуючи цією функцією адміністратора, було створено спеціальний віджет для
+адмін-панелі. Він має назву id, а його вихідний код розміщений у папці utils.
 
-  В момент створення в адмін-панелі запитання він автоматично додає для нього id
-  поле у форматі unix-часу, яке приховане від адміністратора.
+В момент створення в адмін-панелі запитання він автоматично додає для нього id
+поле у форматі unix-часу, яке приховане від адміністратора.
 
-  [Інструкція з користування адмінпанеллю проєкту](README.admin.md)
+[Інструкція з користування адмінпанеллю проєкту](README.admin.md)
 
 ## Locales
 
 ## Локалізація
 
-- Підтримка різних мов здійснена за допомогою плагіна
-  ["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package).
+Підтримка різних мов здійснена за допомогою плагіна
+["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package).
 
 Необхідно встановити версію нижче: **npm i gatsby-plugin-react-i18next@1.2.3**
 
-- У файлі **gatsby-config** вносимо налаштування. Приклад:
+У файлі **gatsby-config** вносимо налаштування. Приклад:
 
 ```bash
     {
@@ -95,7 +90,7 @@
     },
 ```
 
-- Створюємо і наповнюємо структуру даних, які не залежать від CMS.
+Створюємо і наповнюємо структуру даних, які не залежать від CMS.
 
 ```bash
 |-- locales
@@ -107,7 +102,7 @@
         |-- translation.json
 ```
 
-- На кожну сторінку потрібно добавити запит `graphql`
+На кожну сторінку потрібно добавити запит `graphql`
 
 ```bash
 export const query = graphql`
@@ -125,17 +120,22 @@ export const query = graphql`
 `;
 ```
 
-- Для зміни мови пишемо компонент, наприклад `SwitchLang`.
+Для зміни мови пишемо компонент, наприклад `SwitchLang`.
 
-- Плагін на кожну сторінку добавляє контекст `language`, який ми використовуємо
-  для конкретизації запитів в `graphql`. Таким чином, використовуючи фільтр, ми
-  "звужуємо" пошук і здійснюємо локалізацію даних, які нам приходять з СMS.
+Плагін на кожну сторінку добавляє контекст `language`, який ми використовуємо
+для конкретизації запитів в `graphql`. Таким чином, використовуючи фільтр, ми
+"звужуємо" пошук і здійснюємо локалізацію даних, які нам приходять з СMS.
 
-## Programmatic page creation at Gatsby
+## Programmatic page creation
 
-## Програмне створення сторінок у Gatsby
+## Програмне створення сторінок
 
-Домашня сторінка (індекс) налаштована на відображення інформації із дня start на
+Routing в проекті здійснено з використанням
+["gatsby-node.js"](https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs)
+та
+["create-pages"](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages)
+
+Домашня сторінка (індекс) налаштована на відображення інформації дня start на
 шлях "/".
 
 Інші сторінки даного проєкту були створені програмним способом із використанням
@@ -198,18 +198,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 ## Telegram API
 
-- Потрібно створити бота з допомогою "BotFather", після того бот отримає свій
-  токен який додаємо в .env файл.
-- Потім створюємо групу та/або додаємо в існуючу, куди будуть приходити
-  повідомлення після відправки форми.
-- Даємо нашому боту права адміністратора групи.
-- Використовуючи арі запит, отримуємо ID нашої групи, який також додаємо в .env
-  файл.
-- Відео приклад як виконувати
-  [тут](https://www.youtube.com/watch?v=R4RhgBJpXSQ).
-- [Посібник](https://tlgrm.ru/docs/bots/api) з Bot API.
-- Для відправки повідомлення з форми зворотнього зв'язку було використано
-  ["axios"](https://axios-http.com/ru/docs/intro), метод post.
+Потрібно створити бота з допомогою "BotFather", після того бот отримає свій
+токен який додаємо в .env файл. Потім створюємо групу та/або додаємо в існуючу,
+куди будуть приходити повідомлення після відправки форми.
+
+Даємо нашому боту права адміністратора групи. Використовуючи арі запит,
+отримуємо ID нашої групи, який також додаємо в .env файл.
+
+Для відправки повідомлення з форми зворотнього зв'язку було використано
+["axios"](https://axios-http.com/ru/docs/intro), метод post.
 
 ```bash
 const data = await axios.post(TelegramUrl, {
@@ -224,6 +221,10 @@ const data = await axios.post(TelegramUrl, {
 ```bash
 const TelegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}`;
 ```
+
+- Відео приклад як виконувати
+  [тут](https://www.youtube.com/watch?v=R4RhgBJpXSQ).
+- [Посібник](https://tlgrm.ru/docs/bots/api) з Bot API.
 
 ## Feedback service with Telegram-bot.
 
