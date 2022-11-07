@@ -50,7 +50,8 @@ module.exports = {
           dark: '#1D1C4A', // class="bg-font-dark text-font-dark border-font-dark"
           light: '#FCFCFC', // class="bg-font-light text-font-light border-font-light"
           placeholder: '#9A9A9A', // class="bg-font-placeholder text-font-placeholder border-font-placeholder"
-          search: '#D9D9D9',
+          searchDark: '#D9D9D9',
+          search: '#B2C3E1',
         },
         icon: {
           secondary: '#8892A4', // class="text-icon-secondary border-icon-secondary"
