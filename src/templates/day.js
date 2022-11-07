@@ -13,7 +13,7 @@ const Day = ({ data, pageContext, location }) => {
   const chapter = pageContext.i18n.originalPath.slice(1);
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
-  ).frontmatter;
+  )?.frontmatter;
   const { id } = qs.parse(location.search.slice(1));
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
@@ -23,15 +23,17 @@ const Day = ({ data, pageContext, location }) => {
   const [visibleQuestionsId, setVisibleQuestionsId] = useState(null);
   const [allQuestions, setAllQuestions] = useState(null);
   const countOfQuestionsAtPage = 5;
-  const target = document.getElementById('spinner');
 
   const spinnerDefault = '#3b82f6';
   const spinnerDarkTheme = '#fcfcfc';
   const [color, setColor] = useState(spinnerDefault);
+
   let htmlDark;
+  let target;
 
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
+    target = document.getElementById('spinner');
   }
   const darkSpinner = () => {
     if (htmlDark) {

@@ -2,8 +2,9 @@
 
 ### Опис проекту
 
-Репозиторій: https://github.com/GoWeb-Internship/gw-fe-marathon-project Робоча
-сторінка: https://gw-fe-marathon.netlify.app
+#### Репозиторій: https://github.com/GoWeb-Internship/gw-fe-marathon-project
+
+#### Робоча сторінка: https://gw-fe-marathon.netlify.app
 
 ### Основний стек
 
@@ -20,16 +21,6 @@
 
 - [Як запустити проєкт локально 🚀](README.launch.md)
 
-- [Правила користування адмін-панеллю 📋](README.admin.md)
+- [Інструкція з користування адмін-панеллю 📋](README.admin.md)
 
 - [Послідовність створення проєкту ⚙️](README.steps.md)
-
-### Корисні посилання
-
-- Gatsby.js [Документація](https://www.gatsbyjs.com/docs/)
-
-- Netlify CMS На даний момент для роботи Netlify Cms необхідна версія 17 React і
-  React-dom. [Docs для Gatsby](https://www.netlifycms.org/docs/gatsby/)
-  [Netlify CMS, підключення, налаштування](https://www.netlifycms.org/docs/gatsby/#enable-identity-and-git-gateway)
-
-### Про команду

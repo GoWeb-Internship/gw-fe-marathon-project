@@ -7,6 +7,11 @@ import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
 import Modal from '../Modal';
+import {
+  layoutWrapper,
+  mainContent,
+  heroAndHeaderWrapper,
+} from './Layout.module.css';
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +26,13 @@ const Layout = ({ children }) => {
   return (
     <BrowserRouter>
       <QueryParamProvider adapter={ReactRouter6Adapter}>
-        <div className=" flex min-h-screen flex-col">
-          <div className="bg-accent dark:bg-accent-dark ">
+        <div className={layoutWrapper}>
+          <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
             <Header openModal={openModal} />
             <Hero openModal={openModal} />
           </div>
 
-          <main className="grow bg-body dark:bg-body-dark">{children}</main>
+          <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
 
           <Footer />
           <Modal isOpen={isOpen} closeModal={closeModal} />
