@@ -13,7 +13,7 @@ const Day = ({ data, pageContext, location }) => {
   const chapter = pageContext.i18n.originalPath.slice(1);
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
-  ).frontmatter;
+  )?.frontmatter;
 
   // const [questionId, setQuestionId] = useState({});
   const [id, setId] = useState(null);
