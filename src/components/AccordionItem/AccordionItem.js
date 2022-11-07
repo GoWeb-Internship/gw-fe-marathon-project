@@ -12,29 +12,32 @@ import {
   plusIcon,
   minusIcon,
 } from './AccordionItem.module.css';
-import { useQueryParam, StringParam } from 'use-query-params';
+import { navigate } from 'gatsby';
+import { useLocation } from 'react-use';
+import { urlUpdate } from '../../helpers/urlUpdate';
 
 const AccordionItem = memo(({ data }) => {
   const [active, setActive] = useState(null);
-  const [id, setId] = useQueryParam('id', StringParam);
+  const location = useLocation();
 
   useEffect(() => {
-    setActive(id);
-  }, [id]);
+    if (location.hash) setActive(location.hash.slice(1));
+  }, [location.hash]);
 
   const handleClick = id => {
     if (active === id) {
       setActive(null);
-      setId(null);
+      location.hash = '';
+      urlUpdate(location.pathname);
       return;
     }
 
-    setId(id);
+    navigate(`?#${id}`);
     setActive(id);
   };
 
   return (
-    <li className={accordionItem} id={data.id}>
+    <li className={accordionItem}>
       <div
         onClick={() => {
           handleClick(data.id);
@@ -45,7 +48,7 @@ const AccordionItem = memo(({ data }) => {
             : accordionHeading
         }
       >
-        <h3>
+        <h3 id={data.id}>
           <Markdown>{data.title}</Markdown>
         </h3>
         {active === data.id ? (

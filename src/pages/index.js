@@ -6,11 +6,10 @@ import ChapterList from '../components/Chapter';
 import Accordion from '../components/Accordion/Accordion';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Icon from '../components/Icon';
-import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
-  const { id } = qs.parse(location.search.slice(1));
+  const id = location.hash.slice(1);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);

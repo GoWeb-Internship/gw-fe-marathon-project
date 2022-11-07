@@ -3,36 +3,28 @@ import { Link } from 'gatsby';
 import { useLocation } from 'react-use';
 import { item, button, activeButton } from './Chapter.module.css';
 import PropTypes from 'prop-types';
+import { normalizedPath } from '../../helpers/normalizedPath';
 
 const ChapterItem = ({ frontmatter }) => {
   const [activeDay, setActiveDay] = useState('');
   const { pathname } = useLocation();
-  const location = useLocation();
-  // console.log(location.hash);
 
   useEffect(() => {
     let arr = pathname.split('');
     let counter = 0;
-    for (let elem of arr) {
+
+    arr.forEach(elem => {
       if (elem === '/') {
         counter++;
       }
-    }
+    });
 
     if (counter === 1) {
       setActiveDay(pathname.split('/')[1]);
     } else {
       setActiveDay(pathname.split('/')[2]);
     }
-
-    // if (counter === 2 && location.hash) {
-    //   setActiveDay(pathname.split('/')[1]);
-    // } else {
-    //   setActiveDay(pathname.split('/')[2]);
-    // }
-  }, [location.hash, pathname]);
-
-  const normalizedPath = path => (path === 'start' ? '' : path);
+  }, [pathname]);
 
   return (
     <li className={`${item} dark:text-white`}>

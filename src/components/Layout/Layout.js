@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { QueryParamProvider } from 'use-query-params';
-import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
+// import { BrowserRouter } from 'react-router-dom';
+// import { QueryParamProvider } from 'use-query-params';
+// import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
@@ -24,21 +24,21 @@ const Layout = ({ children }) => {
     setIsOpen(true);
   };
   return (
-    <BrowserRouter>
-      <QueryParamProvider adapter={ReactRouter6Adapter}>
-        <div className={layoutWrapper}>
-          <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
-            <Header openModal={openModal} />
-            <Hero openModal={openModal} />
-          </div>
+    // <BrowserRouter>
+    //   <QueryParamProvider adapter={ReactRouter6Adapter}>
+    <div className={layoutWrapper}>
+      <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
+        <Header openModal={openModal} />
+        <Hero openModal={openModal} />
+      </div>
 
-          <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
+      <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
 
-          <Footer />
-          <Modal isOpen={isOpen} closeModal={closeModal} />
-        </div>
-      </QueryParamProvider>
-    </BrowserRouter>
+      <Footer />
+      <Modal isOpen={isOpen} closeModal={closeModal} />
+    </div>
+    //   </QueryParamProvider>
+    // </BrowserRouter>
   );
 };
 

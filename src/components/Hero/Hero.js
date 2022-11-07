@@ -27,7 +27,10 @@ const Hero = ({ openModal }) => {
         <h2 className={title}>{t('title')}</h2>
 
         {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && (
-          <button className={search} onClick={openModal}>
+          <button
+            className={`${search} dark:text-font-searchDark`}
+            onClick={openModal}
+          >
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
