@@ -1,15 +1,26 @@
-## Gatsby.js
+# Послідовність створення проєкту ⚙️
 
-- [Загальний туторіал](https://www.gatsbyjs.com/docs/tutorial/) Обов'язково
-  ознайомитись!!!
-- Контен проекту написаний на основі
+[🔙 Повернутися назад](README.md)
+
+Зміст:
+
+[Gatsby](#gatsby)
+
+## Gatsby
+
+- [Загальний туторіал по Gatsby.js](https://www.gatsbyjs.com/docs/tutorial/)
+  Обов'язково ознайомитись!!!
+
+- Контент проекту написаний на основі
   [Markdown](https://gist.github.com/Jekins/2bf2d0638163f1294637), файлів з
-  розширенням .md - плагіном для їх обробки слугує
+  розширенням .md. Плагіном для їх обробки слугує
   ["gatsby-transformer-remark"](https://www.gatsbyjs.com/docs/working-with-images-in-markdown/#using-the-transformer-remark-plugin)
+
 - Офіційний туторіал Gatsby на момент створення проекту вже використовує .mdx
   файли та плагін
   ["gatsby-plugin-mdx"](https://www.gatsbyjs.com/docs/working-with-images-in-markdown/#using-the-mdx-plugin)
-  що також підтримує .md файли за умови відповідних налаштувань
+  що також підтримує .md файли за умови відповідних налаштувань.
+
 - Routing в проекті здійснено з використанням
   ["gatsby-node.js"](https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs)
   та
@@ -17,19 +28,20 @@
 
 ## Стилі з Tailwind CSS
 
-- Стилізацію здійснено з допомогою [Tailwind CSS](https://tailwindcss.com), як
-  [підключити](https://tailwindcss.com/docs/guides/gatsby) до Gatsby
+- Стилізацію здійснено з допомогою [Tailwind CSS](https://tailwindcss.com).
+  [Як підключити до Gatsby](https://tailwindcss.com/docs/guides/gatsby)
 
 ## Адмінпанель Netlify CMS
 
 - Контроль контенту здійснюється через
   [Netlify CMS](https://www.netlifycms.org/docs/add-to-your-site/) та хостинг на
   [Netlify](https://www.netlify.com/)
-- Як користуватися адмінпанеллю можна переглянути [тут](README.admin.md)
+
+  [Інструкція з користування адмінпанеллю проєкту](README.admin.md)
 
 ## Локалізація
 
-- Підтримка різних мов з плагіном
+- Підтримка різних мов здійснена за допомогою плагіна
   ["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package).
 
 Необхідно встановити версію нижче: **npm i gatsby-plugin-react-i18next@1.2.3**
@@ -137,7 +149,7 @@ const data = await axios.post(TelegramUrl, {
 const TelegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}`;
 ```
 
-## Функціонування сервісу зворотнього звязку через телеграм бот
+## Функціонування сервісу зворотнього зв'язку через телеграм-бот
 
 - Потрібно налаштувати змінні середовища
   ([environment variables](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/)):
@@ -145,3 +157,17 @@ const TelegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id
   зразком файлу .env.template , де GATSBY_TELEGRAM_BOT_ID це буде токен
   створеного телеграм-боту, а GATSBY_TELEGRAM_GROUP_ID це буде ідентифікатор
   чату з ботом, для того щоб зміни засосувалися потрібно перезапустити сервер
+
+  ***
+
+# Корисні посилання
+
+- Gatsby.js [Документація](https://www.gatsbyjs.com/docs/)
+
+- Netlify CMS На даний момент для роботи Netlify Cms необхідна версія 17 React і
+  React-dom. [Docs для Gatsby](https://www.netlifycms.org/docs/gatsby/)
+  [Netlify CMS, підключення, налаштування](https://www.netlifycms.org/docs/gatsby/#enable-identity-and-git-gateway)
+
+  ***
+
+[🔙 Повернутися назад](README.md)
