@@ -2,8 +2,9 @@
 
 ### Опис проекту
 
-Репозиторій: https://github.com/GoWeb-Internship/gw-fe-marathon-project Робоча
-сторінка: https://gw-fe-marathon.netlify.app
+#### Репозиторій: https://github.com/GoWeb-Internship/gw-fe-marathon-project
+
+#### Робоча сторінка: https://gw-fe-marathon.netlify.app
 
 ### Основний стек
 
