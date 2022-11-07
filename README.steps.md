@@ -4,7 +4,13 @@
 
 Зміст:
 
-[Gatsby](#gatsby)
+- [Gatsby](#gatsby)
+- [Стилі з Tailwind CSS](#tailwind-css)
+- [Адмінпанель Netlify CMS](#netlify-cms)
+- [Локалізація](#locales)
+- [Форма зворотнього зв'язку](#feedback-form)
+- [Telegram API](#telegram-api)
+- [Функціонування сервісу зворотнього зв'язку через телеграм-бот](#feedback-service-with-telegram-bot)
 
 ## Gatsby
 
@@ -26,12 +32,12 @@
   та
   ["create-pages"](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createPages)
 
-## Стилі з Tailwind CSS
+## Tailwind CSS
 
 - Стилізацію здійснено з допомогою [Tailwind CSS](https://tailwindcss.com).
   [Як підключити до Gatsby](https://tailwindcss.com/docs/guides/gatsby)
 
-## Адмінпанель Netlify CMS
+## Netlify CMS
 
 - Контроль контенту здійснюється через
   [Netlify CMS](https://www.netlifycms.org/docs/add-to-your-site/) та хостинг на
@@ -39,7 +45,7 @@
 
   [Інструкція з користування адмінпанеллю проєкту](README.admin.md)
 
-## Локалізація
+## Locales
 
 - Підтримка різних мов здійснена за допомогою плагіна
   ["gatsby-plugin-i18next"](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/?=i18next#install-package).
@@ -109,7 +115,7 @@ export const query = graphql`
   для конкретизації запитів в `graphql`. Таким чином, використовуючи фільтр, ми
   "звужуємо" пошук і здійснюємо локалізацію даних, які нам приходять з СMS.
 
-## Форма зворотнього зв'язку
+## Feedback Form
 
 - Для створення форми зворотнього зв'язку було використано
   ["React Hook Form"](https://react-hook-form.com/get-started/#Quickstart)
