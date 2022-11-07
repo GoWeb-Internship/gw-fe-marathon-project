@@ -15,6 +15,7 @@ import {
   xMarkIcon,
   infoWrap,
 } from './Search.module.css';
+import { normalizedPath } from '../../helpers/normalizedPath';
 
 const Search = ({ closeModal }) => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -95,8 +96,6 @@ const Search = ({ closeModal }) => {
     setSearchPhrase(value.toLowerCase());
   };
 
-  const normalizedPath = path => (path === 'start' ? '' : path);
-
   return (
     <div className={modalWrap}>
       <div className={searchWrap}>
@@ -124,7 +123,7 @@ const Search = ({ closeModal }) => {
                 title={title}
                 onClick={closeModal}
               >
-                <Link to={`/${normalizedPath(chapter)}?id=${id}`}>
+                <Link to={`/${normalizedPath(chapter)}?#${id}`}>
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>
                 </Link>

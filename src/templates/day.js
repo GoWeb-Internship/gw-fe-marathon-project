@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import qs from 'qs';
 import { withLayout } from '../components/Layout/Layout';
 
 import Section from '../components/Section';
@@ -14,7 +13,7 @@ const Day = ({ data, pageContext, location }) => {
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
   )?.frontmatter;
-  const { id } = qs.parse(location.search.slice(1));
+  const id = location.hash.slice(1);
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
