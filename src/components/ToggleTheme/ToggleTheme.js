@@ -6,6 +6,8 @@ import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 const ToggleTheme = () => {
   let websiteTheme;
   let mql;
+  const [theme, setTheme] = useState(websiteTheme);
+  const [checked, setChecked] = useState(theme === 'dark');
 
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme;
@@ -20,9 +22,6 @@ const ToggleTheme = () => {
     setTheme(window.__theme);
     console.log(websiteTheme);
   }, [websiteTheme]);
-
-  const [theme, setTheme] = useState(websiteTheme);
-  const [checked, setChecked] = useState(theme === 'dark');
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
