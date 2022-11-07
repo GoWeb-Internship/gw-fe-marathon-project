@@ -12,24 +12,34 @@ import {
   plusIcon,
   minusIcon,
 } from './AccordionItem.module.css';
-import { useQueryParam, StringParam } from 'use-query-params';
+import { useLocation } from 'react-use';
+import queryString from 'query-string';
+import { navigate } from 'gatsby';
+import { urlUpdate } from '../../hooks/useUrlUpdate';
+
+// import { useQueryParam, StringParam } from 'use-query-params';
 
 const AccordionItem = memo(({ data }) => {
   const [active, setActive] = useState(null);
-  const [id, setId] = useQueryParam('id', StringParam);
+  const location = useLocation();
 
-  useEffect(() => {
-    setActive(id);
-  }, [id]);
+  // const [id, setId] = useQueryParam('id', StringParam);
+
+  // useEffect(() => {
+  //   setActive(id);
+  // }, [id]);
 
   const handleClick = id => {
     if (active === id) {
       setActive(null);
-      setId(null);
+      urlUpdate(location.pathname);
+      // setId(null);
+
       return;
     }
 
-    setId(id);
+    navigate(`#${id}`);
+    // setId(id);
     setActive(id);
   };
 

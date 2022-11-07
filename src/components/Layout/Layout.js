@@ -23,22 +23,19 @@ const Layout = ({ children }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
   return (
-    <BrowserRouter>
-      <QueryParamProvider adapter={ReactRouter6Adapter}>
-        <div className={layoutWrapper}>
-          <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
-            <Header openModal={openModal} />
-            <Hero openModal={openModal} />
-          </div>
+    <div className={layoutWrapper}>
+      <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
+        <Header openModal={openModal} />
+        <Hero openModal={openModal} />
+      </div>
 
-          <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
+      <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
 
-          <Footer />
-          <Modal isOpen={isOpen} closeModal={closeModal} />
-        </div>
-      </QueryParamProvider>
-    </BrowserRouter>
+      <Footer />
+      <Modal isOpen={isOpen} closeModal={closeModal} />
+    </div>
   );
 };
 
