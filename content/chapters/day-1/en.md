@@ -23,14 +23,14 @@ subhead:
         question_title: Attributes don't add, when you write tags (for example `<﻿t>`,
           `<img>`, or `<link>`). What to do?
         description: "The `emmet` plugin is used for this, which is already installed in
-          `VSCode `by default. All that remains is to write, for example: `img
-          `and press `tab`."
+          `VSCode` by default. All that remains is to write, for example: `img`
+          and press `tab`."
         question_range: "3"
       - id: "1666777973886"
         question_title: I﻿f Windows doesn't support `VSCode`?
         description: I﻿nstall [32-bit
-          VSCode](https://code.visualstudio.com/#alt-downloads)You can use
-          [Sublime Text](https://www.sublimetext.com/)or [Nodepad
+          VSCode](https://code.visualstudio.com/#alt-downloads) You can use
+          [Sublime Text](https://www.sublimetext.com/) or [Nodepad
           ++](https://notepad-plus-plus.org/downloads/) as well.
         question_range: "4"
       - id: "1666778416442"
@@ -82,12 +82,6 @@ subhead:
           * Use Latin only;
           * Write tags only from a small letter;
           * Where you need to specify an attribute, use only double tabs.
-
-            <html>- use latin only
-            <HTML>- do not use upper case
-            <html>- use the lower case only
-            src='images/arena.png'- do not use single tabs
-            src="images/arena.png"- use only double tabs
         question_range: "10"
 chapter_range: "2"
 ---
