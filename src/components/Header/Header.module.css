@@ -1,5 +1,5 @@
 .header {
-  @apply pt-8 text-center transition md:max-xl:pt-9 xl:pt-11;
+  @apply pt-[22px] text-center transition md:max-xl:pt-9 xl:pt-11;
 }
 
 .headerContainer {
@@ -35,5 +35,5 @@
 }
 
 .decorIcon {
-  @apply absolute -top-1 -left-1 h-[53px] w-[42px];
+  @apply absolute -top-1 -left-1 h-[50px] w-[44px] md:h-[63px] md:w-[66px] xl:h-[165px] xl:w-[124px];
 }
