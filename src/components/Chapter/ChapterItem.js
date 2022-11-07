@@ -13,11 +13,18 @@ const ChapterItem = ({ frontmatter }) => {
   useEffect(() => {
     let arr = pathname.split('');
     let counter = 0;
-    for (let elem of arr) {
+
+    arr.forEach(elem => {
       if (elem === '/') {
         counter++;
       }
-    }
+    });
+
+    // for (let elem of arr) {
+    //   if (elem === '/') {
+    //     counter++;
+    //   }
+    // }
 
     if (counter === 1) {
       setActiveDay(pathname.split('/')[1]);
@@ -39,7 +46,7 @@ const ChapterItem = ({ frontmatter }) => {
       <Link
         className={`${
           activeDay === normalizedPath(frontmatter.chapter) && activeButton
-        } ${button} `}
+        } ${button}`}
         to={`/${normalizedPath(frontmatter.chapter)}`}
       >
         {frontmatter.title}

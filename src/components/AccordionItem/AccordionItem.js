@@ -15,7 +15,7 @@ import {
 import { useLocation } from 'react-use';
 import queryString from 'query-string';
 import { navigate } from 'gatsby';
-import { urlUpdate } from '../../hooks/useUrlUpdate';
+import { urlUpdate } from '../../hooks/urlUpdate';
 
 // import { useQueryParam, StringParam } from 'use-query-params';
 

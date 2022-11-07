@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
-import { Link } from 'gatsby';
+import { Link, Script } from 'gatsby';
 import Swal from 'sweetalert2';
 import { sendFeedbackMessage } from '../../utils/feedbackFormApi';
 import Section from '../Section';
@@ -98,6 +98,7 @@ const FeedbackForm = () => {
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
   }
+
   const darkSpinner = () => {
     if (htmlDark) {
       setColor(spinnerDarkTheme);
@@ -105,11 +106,14 @@ const FeedbackForm = () => {
   };
 
   const formResult = result;
+
   function onSubmit(data) {
     darkSpinner();
     setLoading(true);
+
     setTimeout(() => {
       const res = sendFeedbackMessage(data);
+
       res.then(res => {
         if (!res?.data.ok) {
           Swal.fire({
@@ -117,14 +121,18 @@ const FeedbackForm = () => {
             title: formText.errorMessageTitle,
             text: formText.errorMessageText,
           });
+
           setLoading(false);
           return;
         }
+
         setResult(res?.data.ok);
+
         if (result) {
           setLoading(false);
         }
       });
+
       reset();
     }, 500);
   }
@@ -142,6 +150,7 @@ const FeedbackForm = () => {
             <h2 className={`${successPageTitle} dark:text-font-light`}>
               {formText.successTitle}
             </h2>
+
             <p className={`${successPageText} dark:text-font-light`}>
               {formText.successAnswer}
             </p>
@@ -149,6 +158,7 @@ const FeedbackForm = () => {
               {formText.home}
             </Link>
           </div>
+
           <svg className={successPageImageWrapper}>
             <use href={`${icons}#success-section`} />
           </svg>
@@ -209,12 +219,13 @@ const FeedbackForm = () => {
                   placeholder={formText.question}
                   style={resizeTextarea}
                 />
+
                 <p className={messageInputValidation}>
                   {errors.message?.message}
                 </p>
               </div>
 
-              <Button text={formText.send} type="submit"></Button>
+              <Button type="submit">{formText.send}</Button>
             </form>
           )}
 
@@ -222,9 +233,11 @@ const FeedbackForm = () => {
             <svg className={imageMobile}>
               <use href={`${icons}#feedback-page`} />
             </svg>
+
             <svg className={imageTablet}>
               <use href={`${icons}#feedback-page-tablet`} />
             </svg>
+
             <svg className={imageDesktop}>
               <use href={`${icons}#feedback-page-desktop`} />
             </svg>
