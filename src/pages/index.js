@@ -6,11 +6,11 @@ import ChapterList from '../components/Chapter';
 import Accordion from '../components/Accordion/Accordion';
 import SyncLoader from 'react-spinners/SyncLoader';
 import Icon from '../components/Icon';
+import qs from 'qs';
 
 const IndexPage = ({ data, location }) => {
   const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
-  // const [questionId, setQuestionId] = useState({});
-  const [id, setId] = useState(null);
+  const { id } = qs.parse(location.search.slice(1));
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
@@ -38,7 +38,6 @@ const IndexPage = ({ data, location }) => {
   useEffect(() => {
     if (!visibleQuestions || !id) return;
 
-    // handleChangeAccordion(id);
     document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
   }, [id, visibleQuestions]);
 
@@ -129,43 +128,6 @@ const IndexPage = ({ data, location }) => {
     }
   }, [allQuestions, id]);
 
-  // let objForAccordion = {};
-
-  // day.subhead.map(element =>
-  //   element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-  // );
-
-  // useEffect(() => {
-  //   setQuestionId(objForAccordion);
-  // }, []);
-
-  // const handleChangeAccordion = id => {
-  //   setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
-  // };
-
-  useEffect(() => {
-    if (location.hash) {
-      setId(location.hash.slice(1));
-    }
-  }, [location.hash]);
-
-  // useEffect(() => {
-  //   function activateCurrentAccordion(obj, id) {
-  //     if (Object.keys(obj).length > 0) {
-  //       for (let key in obj) {
-  //         obj[key] = false;
-  //       }
-
-  //       obj[id] = true;
-
-  //       setQuestionId(obj);
-  //     }
-  //   }
-  //   if (!id) {
-  //     activateCurrentAccordion(questionId, id);
-  //   }
-  // }, [id]);
-
   useEffect(() => {
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
@@ -191,7 +153,6 @@ const IndexPage = ({ data, location }) => {
                     key={index}
                     subhead_title={subhead_title}
                     questions={questions}
-                    id={id}
                   />
                 );
               })

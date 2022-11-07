@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { memo } from 'react';
-import { Link, navigate } from 'gatsby';
+import React, { useState, useEffect, memo } from 'react';
 import Markdown from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
-// import qs from 'qs';
-// import copy from 'copy-to-clipboard';
-// import Swal from 'sweetalert2';
-
 import { MinusCircleIcon } from '@heroicons/react/24/outline';
 import myPlusIcon from '../../assets/images/plus-icon.svg';
 import {
@@ -18,9 +12,11 @@ import {
   plusIcon,
   minusIcon,
 } from './AccordionItem.module.css';
+import { useQueryParam, StringParam } from 'use-query-params';
 
-const AccordionItem = memo(({ data, id }) => {
+const AccordionItem = memo(({ data }) => {
   const [active, setActive] = useState(null);
+  const [id, setId] = useQueryParam('id', StringParam);
 
   useEffect(() => {
     setActive(id);
@@ -29,36 +25,13 @@ const AccordionItem = memo(({ data, id }) => {
   const handleClick = id => {
     if (active === id) {
       setActive(null);
-      navigate('');
+      setId(null);
       return;
     }
 
+    setId(id);
     setActive(id);
-    navigate(`?#${id}`);
   };
-
-  // const Toast = Swal.mixin({
-  //   toast: true,
-  //   position: 'top-end',
-  //   showConfirmButton: false,
-  //   timer: 1000,
-  //   timerProgressBar: true,
-  //   didOpen: toast => {
-  //     toast.addEventListener('mouseenter', Swal.stopTimer);
-  //     toast.addEventListener('mouseleave', Swal.resumeTimer);
-  //   },
-  // });
-
-  // const handleCopyLink = (chapter, id) => {
-  //   const params = `?${qs.stringify(qs.parse({ page: chapter, title: id }))}`;
-  //   const copyLink = `${location.origin}${location.pathname}${params} `;
-  //   copy(copyLink);
-
-  //   Toast.fire({
-  //     icon: 'success',
-  //     title: t('copyLink'),
-  //   });
-  // };
 
   return (
     <li className={accordionItem} id={data.id}>
@@ -100,5 +73,4 @@ AccordionItem.propTypes = {
     question_range: PropTypes.string,
     title: PropTypes.string.isRequired,
   }),
-  id: PropTypes.string,
 };
