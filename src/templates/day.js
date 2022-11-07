@@ -14,9 +14,7 @@ const Day = ({ data, pageContext, location }) => {
   const day = data?.allMarkdownRemark?.nodes?.find(
     day => chapter === day.frontmatter.chapter,
   )?.frontmatter;
-
-  // const [questionId, setQuestionId] = useState({});
-  const [id, setId] = useState(null);
+  const { id } = qs.parse(location.search.slice(1));
 
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
@@ -32,7 +30,7 @@ const Day = ({ data, pageContext, location }) => {
 
   let htmlDark;
   let target;
-  // console.log(setId(prev => console.log(prev)));
+
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
     target = document.getElementById('spinner');
@@ -46,7 +44,6 @@ const Day = ({ data, pageContext, location }) => {
   useEffect(() => {
     if (!visibleQuestions || !id) return;
 
-    // handleChangeAccordion(id);
     document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
   }, [id, visibleQuestions]);
 
@@ -137,43 +134,6 @@ const Day = ({ data, pageContext, location }) => {
     }
   }, [allQuestions, id]);
 
-  // let objForAccordion = {};
-
-  // day.subhead.map(element =>
-  //   element.questions.map(el => (objForAccordion[String(el.id)] = false)),
-  // );
-
-  // useEffect(() => {
-  //   setQuestionId(objForAccordion);
-  // }, []);
-
-  // const handleChangeAccordion = id => {
-  //   setQuestionId(prev => Object.assign({}, prev, { [id]: !prev[id] }));
-  // };
-
-  useEffect(() => {
-    if (location.hash) {
-      setId(location.hash.slice(1));
-    }
-  }, [location.hash]);
-
-  // useEffect(() => {
-  //   function activateCurrentAccordion(obj, id) {
-  //     if (Object.keys(obj).length > 0) {
-  //       for (let key in obj) {
-  //         obj[key] = false;
-  //       }
-
-  //       obj[id] = true;
-  //       console.log(obj[id]);
-  //       setQuestionId(obj);
-  //     }
-  //   }
-  //   if (!id) {
-  //     activateCurrentAccordion(questionId, id);
-  //   }
-  // }, [id]);
-
   return (
     <Section styles="main-section">
       <ChapterList />
@@ -187,7 +147,6 @@ const Day = ({ data, pageContext, location }) => {
                     key={index}
                     subhead_title={subhead_title}
                     questions={questions}
-                    id={id}
                   />
                 );
               })
