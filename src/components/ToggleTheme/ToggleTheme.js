@@ -6,20 +6,26 @@ import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
 const ToggleTheme = () => {
   let websiteTheme;
   let mql;
+
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme;
+    console.log(window.__theme);
 
     mql = window.matchMedia('(prefers-color-scheme: dark)');
     mql.addEventListener('change', e => {
       setChecked(e.matches);
     });
   }
+
+  console.log('websiteTheme', websiteTheme);
+
   useEffect(() => {
     setTheme(window.__theme);
   }, [websiteTheme]);
 
   const [theme, setTheme] = useState(websiteTheme);
   const [checked, setChecked] = useState(theme === 'dark');
+  console.log('theme', theme);
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
