@@ -9,5 +9,3 @@
 .heroAndHeaderWrapper {
   @apply bg-accent;
 }
-
-/* bg-[url('src/assets/images/header-icon-desktop.svg')] */
