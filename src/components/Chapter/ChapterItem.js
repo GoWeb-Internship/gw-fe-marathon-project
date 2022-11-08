@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { normalizedPath } from '../../helpers/normalizedPath';
 
 const ChapterItem = ({ frontmatter }) => {
-  const [activeDay, setActiveDay] = useState('');
+  const [activeDay, setActiveDay] = useState(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
