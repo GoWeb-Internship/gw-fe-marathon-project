@@ -7,7 +7,6 @@ import SwitchLang from '../SwitchLang';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
-import Icon from '../Icon';
 import PropTypes from 'prop-types';
 import {
   header,
@@ -16,36 +15,20 @@ import {
   glassIcon,
   menuBtn,
   menuIcon,
-  decorIcon,
   switchWrapperFirstItem,
   glassBtn,
   mobileBtnsWrapper,
 } from './Header.module.css';
 import { useLocation } from 'react-use';
-import { useMediaQuery } from 'react-responsive';
 import { routes } from '../../utils/routes';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [headerIconId, setHeaderIconId] = useState('');
   const { pathname } = useLocation();
-
-  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };
-
-  useEffect(() => {
-    if (isDesktop) {
-      setHeaderIconId('header-icon-desktop');
-    } else if (isTablet) {
-      setHeaderIconId('header-icon-tablet');
-    } else {
-      setHeaderIconId('hero-top');
-    }
-  }, [isDesktop, isTablet]);
 
   useEffect(() => {
     isMenuOpen

@@ -3,14 +3,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Container from '../Container';
 import useMediaRules from '../../helpers/getMedia';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import Icon from '../Icon';
-import {
-  title,
-  searchIcon,
-  iconBottom,
-  section,
-  search,
-} from './Hero.module.css';
+import { title, searchIcon, section, search } from './Hero.module.css';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
@@ -36,8 +29,6 @@ const Hero = ({ openModal, isOpen }) => {
           </button>
         )}
       </Container>
-
-      {/* <Icon className={iconBottom} iconId="hero-bottom" /> */}
     </section>
   );
 };
