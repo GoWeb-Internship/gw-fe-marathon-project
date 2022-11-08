@@ -17,11 +17,11 @@ const Modal = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 z-20 bg-overlay	 dark:bg-overlay-dark" />
+            <div className="overlay	dark:bg-overlay-dark" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-20 ">
-            <div className=" absolute  top-1/3  left-1/2 min-h-full -translate-x-1/2  text-center ">
+          <div className="modal-wrap">
+            <div className="modal">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -31,7 +31,7 @@ const Modal = ({ isOpen, closeModal }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className=" w-[300px] transform overflow-hidden rounded bg-body px-4 py-6 text-center  align-middle  transition-all  dark:bg-body-dark dark:text-font-light xs:w-[335px]  sm:w-[440px] md:w-[704px]  xl:w-[1200px] ">
+                <Dialog.Panel className="dialog-panel">
                   <Search closeModal={closeModal} />
                 </Dialog.Panel>
               </Transition.Child>
