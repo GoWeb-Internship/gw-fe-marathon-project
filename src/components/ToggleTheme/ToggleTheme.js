@@ -16,11 +16,18 @@ const ToggleTheme = () => {
     });
   }
   console.log(websiteTheme);
+
+  const toggleChecked = () => {
+    if (theme === 'dark') {
+      return true;
+    }
+    if (theme === 'light') {
+      return false;
+    }
+  };
   // these states should always be after the typeof window !== `undefined` expression
   const [theme, setTheme] = useState(websiteTheme);
-  const [checked, setChecked] = useState(
-    localStorage.getItem('preferred-theme') === 'dark',
-  );
+  const [checked, setChecked] = useState(toggleChecked());
   console.log(theme === 'dark');
   console.log(checked);
   console.log(localStorage.getItem('preferred-theme'));
