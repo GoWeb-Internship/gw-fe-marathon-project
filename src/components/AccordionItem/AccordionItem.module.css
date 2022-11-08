@@ -24,11 +24,11 @@
 }
 
 .accordionContent {
-  @apply mb-4 box-border h-0 overflow-hidden rounded-lg px-4 py-0 text-xs leading-4 shadow-main transition-all duration-300  ease-in-out last:mb-0 md:block md:px-6 md:py-0 md:text-base md:leading-5 xl:text-lg xl:leading-6;
+  @apply mb-4 box-border h-0 overflow-hidden rounded-lg px-4 py-0 text-xs font-light leading-4 shadow-main transition-all duration-300  ease-in-out last:mb-0 md:block md:px-6 md:py-0 md:text-base md:leading-5 xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow {
-  @apply mb-4 box-border h-auto rounded-lg px-4 py-4 text-xs leading-4 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:text-lg xl:leading-6;
+  @apply mb-4 box-border h-auto rounded-lg px-4 py-4 text-xs font-light leading-4 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow p {
