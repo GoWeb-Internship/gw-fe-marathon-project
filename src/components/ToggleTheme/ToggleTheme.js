@@ -56,7 +56,7 @@ const ToggleTheme = () => {
           checked: <MoonIcon className={moonIcon} />,
           unchecked: <SunIcon className={sunIcon} />,
         }}
-        checked={checked}
+        checked={theme === 'dark' ? true : false || checked}
         onChange={ThemeToggle}
       />
     </div>
