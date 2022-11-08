@@ -27,18 +27,15 @@ import { routes } from '../../utils/routes';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [headerIconId, setHeaderIconId] = useState(null);
+  const [headerIconId, setHeaderIconId] = useState('');
   const { pathname } = useLocation();
 
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };
-
-  console.log(headerIconId);
 
   useEffect(() => {
     if (isDesktop) {
