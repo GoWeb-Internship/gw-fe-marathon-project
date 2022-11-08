@@ -1,5 +1,9 @@
 .section {
-  @apply relative flex justify-center overflow-hidden pb-[194px] pt-[32px] md:block  md:h-[270px] md:pt-[43px] md:pb-[70px] xl:h-[460px] xl:py-[149px] xl:pt-[124px];
+  @apply relative flex h-[250px] justify-center overflow-hidden  md:block md:h-[270px]  xl:h-[460px];
+}
+
+.heroContainer {
+  @apply h-full bg-[url('../../assets/images/hero-bg.svg')] bg-[length:268px_172px] bg-[50%_77px] bg-no-repeat pt-[32px] md:bg-[length:335px_211px] md:bg-[401px_43px]  md:pt-[43px] xl:bg-[length:687px_434px] xl:bg-[555px_13px] xl:pt-[124px];
 }
 
 .title {

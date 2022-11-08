@@ -15,6 +15,8 @@ import {
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
+import { heroBg } from '../../assets/images/hero-bg.svg';
+import { heroContainer } from './Hero.module.css';
 
 const Hero = ({ openModal }) => {
   const { t } = useTranslation();
@@ -23,7 +25,7 @@ const Hero = ({ openModal }) => {
 
   return (
     <section className={section}>
-      <Container>
+      <Container styles={heroContainer}>
         <h2 className={title}>{t('title')}</h2>
 
         {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && (
@@ -36,7 +38,8 @@ const Hero = ({ openModal }) => {
           </button>
         )}
 
-        <Icon className={people} iconId="hero-section" />
+        {/* <Icon className={people} iconId="hero-section" /> */}
+        {/* <img src={heroBg} alt="" className={people} /> */}
       </Container>
 
       <Icon className={iconBottom} iconId="hero-bottom" />
