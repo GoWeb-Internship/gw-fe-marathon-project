@@ -214,7 +214,7 @@ const FeedbackForm = () => {
                 </p>
               </div>
 
-              <Button text={formText.send} type="submit"></Button>
+              <Button children={formText.send} type="submit" />
             </form>
           )}
 

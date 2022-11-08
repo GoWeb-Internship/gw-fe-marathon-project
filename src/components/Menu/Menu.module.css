@@ -19,7 +19,7 @@
 }
 
 .menuBackdrop {
-  @apply fixed left-0 top-0 -z-0 h-screen w-screen bg-overlay transition duration-200 ease-in-out  md:hidden;
+  @apply fixed left-0 top-0 z-[2] h-screen w-screen bg-overlay transition duration-200 ease-in-out  md:hidden;
 }
 
 .menuBackdropShown {

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { dayButton } from './Button.module.css';
 
-const Button = ({ text, handleClick }) => {
+const Button = ({ children, ...props }) => {
   return (
-    <button onClick={handleClick} className={dayButton}>
-      {text}
+    <button className={dayButton} {...props}>
+      {children}
     </button>
   );
 };
@@ -13,6 +13,6 @@ const Button = ({ text, handleClick }) => {
 export default Button;
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  handleClick: PropTypes.func,
+  children: PropTypes.string,
+  props: PropTypes.object,
 };
