@@ -1,3 +1,3 @@
 .dayButton {
-  @apply rounded border-2 border-accent bg-accent py-4 px-8 text-white duration-300 hover:bg-white hover:text-accent;
+  @apply rounded border-2 border-accent bg-accent py-4 px-8 text-base font-normal leading-5 text-white duration-300 hover:border-accent-dark hover:bg-white hover:text-hover-dark;
 }
