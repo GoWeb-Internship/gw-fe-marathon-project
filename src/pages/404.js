@@ -16,7 +16,7 @@ const NotFoundPage = () => {
             <h1 className={css.title}>{content.title}</h1>
             <p className={css.text}>{content.description}</p>
             <Link className={css.link} to="/">
-              {content.btn}
+              {content.button}
             </Link>
           </div>
         </Container>
