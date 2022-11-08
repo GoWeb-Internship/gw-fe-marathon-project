@@ -1,5 +1,5 @@
 .section {
-  @apply relative  flex justify-center overflow-hidden pb-[194px] pt-[32px]  md:block md:pt-16 md:pb-[70px] xl:py-[149px];
+  @apply relative flex justify-center overflow-hidden pb-[194px] pt-[32px] md:block  md:min-h-[304px] md:pt-16 md:pb-[70px] xl:min-h-[516px] xl:py-[149px];
 }
 
 .title {
