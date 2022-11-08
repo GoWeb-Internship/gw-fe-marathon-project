@@ -1,5 +1,5 @@
 .header {
-  @apply pt-[22px] text-center transition md:max-xl:pt-9 xl:pt-11;
+  @apply bg-[url('../../assets/images/header-icon.svg')] bg-[length:52px_44px] bg-left-top bg-no-repeat pt-[22px] text-center transition md:max-xl:pt-9 xl:bg-[length:90px_92px] xl:pt-11;
 }
 
 .headerContainer {
@@ -32,8 +32,4 @@
 
 .switchWrapperFirstItem {
   @apply mr-6;
-}
-
-.decorIcon {
-  @apply absolute -top-1 -left-1 h-[50px] w-[44px] md:left-[-20px] md:h-[63px] md:w-[66px] xl:left-[-10px] xl:h-[132px] xl:w-[100px];
 }

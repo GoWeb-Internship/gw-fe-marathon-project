@@ -94,8 +94,6 @@ const Header = ({ openModal }) => {
       </Container>
 
       <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-
-      <Icon className={decorIcon} iconId={headerIconId} />
     </header>
   );
 };

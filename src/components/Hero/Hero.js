@@ -5,7 +5,6 @@ import useMediaRules from '../../helpers/getMedia';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Icon from '../Icon';
 import {
-  people,
   title,
   searchIcon,
   iconBottom,
@@ -15,7 +14,6 @@ import {
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
-import { heroBg } from '../../assets/images/hero-bg.svg';
 import { heroContainer } from './Hero.module.css';
 
 const Hero = ({ openModal }) => {
@@ -37,12 +35,9 @@ const Hero = ({ openModal }) => {
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
         )}
-
-        {/* <Icon className={people} iconId="hero-section" /> */}
-        {/* <img src={heroBg} alt="" className={people} /> */}
       </Container>
 
-      <Icon className={iconBottom} iconId="hero-bottom" />
+      {/* <Icon className={iconBottom} iconId="hero-bottom" /> */}
     </section>
   );
 };
