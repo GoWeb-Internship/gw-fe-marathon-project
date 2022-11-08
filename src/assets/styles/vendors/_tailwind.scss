@@ -20,6 +20,22 @@ body {
   @apply font-inter font-normal text-font-dark  dark:text-font-light;
 }
 
+body::-webkit-scrollbar-track {
+  border: 1px solid #fcfcfc;
+  border-radius: 10px;
+  background-color: #f8f5f5;
+}
+
+body::-webkit-scrollbar {
+  width: 14px;
+  background-color: #fcfcfc;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  background-color: #bcc9e7;
+}
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
