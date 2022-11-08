@@ -76,7 +76,7 @@ const Day = ({ data, pageContext, location }) => {
     if (!visibleQuestionsId) {
       return;
     }
-    const arrayOfSubheads = day.subhead;
+    const arrayOfSubheads = day?.subhead;
 
     const visibleQuestionsAtPage = arrayOfSubheads.map(subhead => {
       return {
@@ -92,7 +92,7 @@ const Day = ({ data, pageContext, location }) => {
 
   //return all or cut and return array of needed id
   useEffect(() => {
-    const arrayOfSubheads = day.subhead;
+    const arrayOfSubheads = day?.subhead;
 
     //if it's the last page
     if (countOfPages / numberOfPage === 1) {
