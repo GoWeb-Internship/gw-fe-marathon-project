@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
 
-const Hero = ({ openModal }) => {
+const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
   const media = useMediaRules();
   const { pathname } = useLocation();
@@ -26,7 +26,7 @@ const Hero = ({ openModal }) => {
       <Container>
         <h2 className={title}>{t('title')}</h2>
 
-        {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && (
+        {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && !isOpen && (
           <button
             className={`${search} dark:text-font-searchDark`}
             onClick={openModal}

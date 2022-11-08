@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
     <div className={layoutWrapper}>
       <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
         <Header openModal={openModal} />
-        <Hero openModal={openModal} />
+        <Hero openModal={openModal} isOpen={isOpen} />
       </div>
 
       <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>

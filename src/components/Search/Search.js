@@ -117,13 +117,11 @@ const Search = ({ closeModal }) => {
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
-              <li
-                key={id}
-                className={foundOption}
-                title={title}
-                onClick={closeModal}
-              >
-                <Link to={`/${normalizedPath(chapter)}?#${id}`}>
+              <li key={id} className={`${foundOption} `} onClick={closeModal}>
+                <Link
+                  to={`/${normalizedPath(chapter)}?#${id}`}
+                  className="flex"
+                >
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>
                 </Link>
