@@ -30,7 +30,6 @@ const ToggleTheme = () => {
   const [checked, setChecked] = useState(toggleChecked());
   console.log(theme === 'dark');
   console.log(checked);
-  console.log(localStorage.getItem('preferred-theme'));
 
   useEffect(() => {
     setTheme(window.__theme);
