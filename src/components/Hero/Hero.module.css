@@ -1,13 +1,13 @@
 .section {
-  @apply relative flex justify-center overflow-hidden pb-[194px] pt-[32px] md:block  md:min-h-[304px] md:pt-16 md:pb-[70px] xl:min-h-[516px] xl:py-[149px];
+  @apply relative flex justify-center overflow-hidden pb-[194px] pt-[32px] md:block  md:h-[270px] md:pt-[43px] md:pb-[70px] xl:h-[460px] xl:py-[149px] xl:pt-[124px];
 }
 
 .title {
-  @apply text-center font-montserrat text-xl font-bold leading-[1.2] text-font-light md:mb-11 md:w-[342px] md:text-left md:text-[40px] md:leading-[1.225] xl:mb-16 xl:w-[420px] xl:text-5xl xl:leading-[59px];
+  @apply text-center font-montserrat text-xl font-bold leading-[1.2] text-font-light md:mb-[44px] md:w-[342px] md:text-left md:text-[40px] md:leading-[1.225] xl:mb-[64px] xl:w-[420px] xl:text-5xl xl:leading-[59px];
 }
 
 .people {
-  @apply absolute bottom-0 left-2/4 h-[172px] w-[268px] -translate-x-1/2 md:right-[-13px] md:bottom-[-3px] md:left-1/2 md:h-[231px] md:w-[369px] md:translate-x-[6%] md:translate-y-[0%]  xl:bottom-[-10px] xl:h-[510px] xl:w-[812px] xl:translate-x-[-10%] xl:translate-y-[-1%];
+  @apply absolute bottom-0 left-2/4 h-[172px] w-[268px] -translate-x-1/2 md:right-0 md:bottom-[12px]  md:h-[211px] md:w-[335px] md:translate-x-[6%] md:translate-y-[0%]  xl:bottom-[4px] xl:right-0 xl:h-[434px] xl:w-[687px] xl:translate-x-[-10%] xl:translate-y-[-1%];
 }
 
 .search {
@@ -27,5 +27,5 @@
 }
 
 .iconBottom {
-  @apply absolute bottom-0 left-0 h-[53px] w-[42px] md:left-[-4px] md:h-[64px] md:w-[68px] xl:left-[-50px] xl:bottom-[-28px] xl:h-[186px] xl:w-[274px];
+  @apply absolute bottom-0 left-0 h-[53px] w-[42px] md:left-[-4px] md:h-[64px] md:w-[68px] xl:left-[-79px] xl:bottom-[-7px] xl:h-[186px] xl:w-[274px];
 }
