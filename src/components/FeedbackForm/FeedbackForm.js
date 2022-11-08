@@ -37,6 +37,7 @@ import {
   successPageLink,
   successPageImageWrapper,
 } from './FeedbackForm.module.css';
+import { spinnerDefault, spinnerDarkTheme } from './spinnerThemeColors';
 
 const resizeTextarea = {
   resize: 'none',
@@ -86,9 +87,6 @@ const FeedbackForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const spinnerDefault = '#3b82f6';
-  const spinnerDarkTheme = '#fcfcfc';
-
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [color, setColor] = useState(spinnerDefault);
@@ -98,6 +96,7 @@ const FeedbackForm = () => {
   if (typeof window !== 'undefined') {
     htmlDark = document.querySelector('.dark');
   }
+
   const darkSpinner = () => {
     if (htmlDark) {
       setColor(spinnerDarkTheme);
@@ -105,11 +104,15 @@ const FeedbackForm = () => {
   };
 
   const formResult = result;
+
   function onSubmit(data) {
     darkSpinner();
+
     setLoading(true);
+
     setTimeout(() => {
       const res = sendFeedbackMessage(data);
+
       res.then(res => {
         if (!res?.data.ok) {
           Swal.fire({
@@ -117,14 +120,18 @@ const FeedbackForm = () => {
             title: formText.errorMessageTitle,
             text: formText.errorMessageText,
           });
+
           setLoading(false);
           return;
         }
+
         setResult(res?.data.ok);
+
         if (result) {
           setLoading(false);
         }
       });
+
       reset();
     }, 500);
   }
@@ -145,7 +152,11 @@ const FeedbackForm = () => {
             <p className={`${successPageText} dark:text-font-light`}>
               {formText.successAnswer}
             </p>
-            <Link className={successPageLink} onClick={backToPage} to="/">
+            <Link
+              className={`${successPageLink} dark:hover:border-accent`}
+              onClick={backToPage}
+              to="/"
+            >
               {formText.home}
             </Link>
           </div>

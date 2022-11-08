@@ -30,6 +30,9 @@ exports.onRenderBody = ({ setHeadComponents }) => {
               window.__setPreferredTheme(e.matches ? 'dark' : 'light');
             });
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+            try {
+                localStorage.setItem('preferred-theme', preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+              } catch (e) {}
           })();`,
       }}
     />,
