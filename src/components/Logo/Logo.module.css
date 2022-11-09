@@ -1,7 +1,7 @@
 .logoLink {
-  @apply relative z-20 block h-full w-20 md:w-24;
+  @apply relative z-20 block h-6 w-20 md:h-[30px] md:w-[100px];
 }
 
 .logo {
-  @apply h-7 w-20 md:block md:w-24;
+  @apply h-6 w-20 md:block md:h-[30px] md:w-[100px];
 }
