@@ -19,14 +19,19 @@ const ToggleTheme = () => {
   useEffect(() => {
     setTheme(window.__theme);
 
-    setChecked(window.__theme === 'dark');
+    setChecked(() => websiteTheme === 'dark');
   }, [websiteTheme]);
 
-  const initialState = () => websiteTheme === 'dark';
-  console.log(initialState());
+  const toggleInitial = theme => {
+    return theme === 'dark';
+  };
   // these states should always be after the typeof window !== `undefined` expression
   const [theme, setTheme] = useState(websiteTheme);
-  const [checked, setChecked] = useState(initialState());
+  const [checked, setChecked] = useState(() => {
+    const initialState = toggleInitial(theme);
+    console.log(theme);
+    return initialState;
+  });
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
