@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @include font-face('Montserrat', '../fonts/Montserrat-Regular', 400);
+  @include font-face('Montserrat', '../fonts/Montserrat-Bold', 700);
+  @include font-face('Inter', '../fonts/Inter-ExtraLight', 200);
+  @include font-face('Inter', '../fonts/Inter-Light', 300);
+  @include font-face('Inter', '../fonts/Inter-Regular', 400);
+  @include font-face('Inter', '../fonts/Inter-Medium', 500);
+  @include font-face('Inter', '../fonts/Inter-SemiBold', 600);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-inter font-normal text-font-dark  dark:text-font-light;
+}
+
+body::-webkit-scrollbar-track {
+  border: 1px solid #fcfcfc;
+  border-radius: 10px;
+  background-color: #f8f5f5;
+}
+
+body::-webkit-scrollbar {
+  width: 14px;
+  background-color: #fcfcfc;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  background-color: #bcc9e7;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}

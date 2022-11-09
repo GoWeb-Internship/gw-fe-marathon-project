@@ -1,0 +1,15 @@
+.overlay {
+  @apply fixed inset-0 z-20 bg-overlay;
+}
+
+.modal-wrap {
+  @apply fixed inset-0 z-20;
+}
+
+.modal {
+  @apply absolute top-6 left-1/2 min-h-full  -translate-x-1/2 text-center md:top-9  xl:top-[160px];
+}
+
+.dialog-panel {
+  @apply w-[300px] transform overflow-hidden rounded-lg bg-body py-[38px]  text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px]  sm:px-4 md:w-[704px]  xl:w-[1200px];
+}

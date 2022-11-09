@@ -1,0 +1,35 @@
+.header {
+  @apply bg-[url('../../assets/images/header-icon.svg')] bg-[length:52px_44px] bg-left-top bg-no-repeat pt-[22px] text-center transition md:max-xl:pt-9 xl:bg-[length:90px_92px] xl:pt-11;
+}
+
+.headerContainer {
+  @apply flex items-center justify-between;
+}
+
+.mobileBtnsWrapper {
+  @apply flex md:hidden;
+}
+
+.glassBtn {
+  @apply relative z-0 mr-3 h-12 w-12 cursor-pointer rounded-full bg-transparent;
+}
+
+.glassIcon {
+  @apply absolute bottom-3.5 left-3.5 z-0 h-5 w-5  text-font-light;
+}
+
+.menuBtn {
+  @apply relative z-20 flex h-12 w-12 items-center justify-center rounded-full;
+}
+
+.menuIcon {
+  @apply h-6 w-6 text-font-light;
+}
+
+.switchWrapper {
+  @apply flex items-center max-md:hidden;
+}
+
+.switchWrapperFirstItem {
+  @apply mr-6;
+}

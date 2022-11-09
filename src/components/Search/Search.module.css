@@ -1,0 +1,67 @@
+.modalWrap {
+  @apply relative leading-[21px];
+}
+
+.searchWrap {
+  @apply relative mx-auto  w-[268px] 	xs:w-[328px]   xl:w-[374px];
+}
+
+.searchInput {
+  @apply w-[268px] border-b-2 border-font-dark bg-transparent pb-2 pl-3 pr-7 text-left text-[16px] text-font-dark   caret-current outline-none placeholder:text-font-dark xs:w-[328px]    xl:w-[374px];
+}
+
+.xMarkIcon {
+  @apply absolute right-2 top-0 h-6 w-6 text-font-dark;
+}
+
+.iconGlass {
+  @apply mr-2 inline	h-4 w-4 shrink-0 cursor-pointer text-icon-secondary;
+}
+
+.infoWrap {
+  @apply mt-[22px] max-h-[160px]  overflow-y-auto px-4 sm:px-0;
+}
+
+.infoWrap::-webkit-scrollbar-track {
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+}
+
+.infoWrap::-webkit-scrollbar {
+  width: 10px;
+  background-color: #fcfcfc;
+}
+
+.infoWrap::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #3b82f6;
+}
+
+.foundOption {
+  @apply mb-4 cursor-pointer text-ellipsis text-left  text-sm leading-[17px] last:mb-0;
+}
+
+.noResultsWrapper {
+  @apply flex flex-col items-center overflow-hidden text-ellipsis px-4 sm:px-0;
+}
+
+.noResultsTitle {
+  @apply font-montserrat text-base font-bold;
+}
+
+.searchWord {
+  @apply text-accent;
+}
+
+.noResultsDesc {
+  @apply mt-5 text-base;
+}
+
+.btnToFeedbackPage {
+  @apply mt-4 rounded border-transparent  bg-accent  text-white duration-300 hover:bg-hover;
+}
+
+.link {
+  @apply block py-4 px-8;
+}

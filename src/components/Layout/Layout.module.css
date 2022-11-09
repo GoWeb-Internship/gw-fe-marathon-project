@@ -1,0 +1,11 @@
+.layoutWrapper {
+  @apply flex min-h-screen flex-col;
+}
+
+.mainContent {
+  @apply grow bg-body;
+}
+
+.heroAndHeaderWrapper {
+  @apply bg-accent;
+}

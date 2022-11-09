@@ -1,0 +1,37 @@
+{
+  "title": "<Questions> and <Answers>",
+  "input": "Enter what interests you...",
+  "noAnswer": {
+    "title": "Sorry, we did not find an answer about",
+    "description": "The mentor is waiting for your question",
+    "button": "Write to the mentor"
+  },
+  "Form": {
+    "title": "Write to the mentor",
+    "email": "Email",
+    "name": "Name",
+    "question": "Ask a question",
+    "send": "Send",
+    "successTitle": "Your question has been sent successfully",
+    "successAnswer": "Wait for a response from the mentor",
+    "home": "Home",
+    "errorMessageTitle": "Oops...something went wrong!",
+    "errorMessageText": "Try again later."
+  },
+  "formValidation": {
+    "required": "Field is required",
+    "email": "Enter a valid email address",
+    "nameLength": "Name must be at least 2 characters long",
+    "messageLength": "Message must be at least 10 characters long"
+  },
+  "showMoreButton": {
+    "show": "Show more",
+    "hide": "Hide"
+  },
+  "404": {
+    "title": "Sorry, temporary system failure",
+    "description": "Would you like to return to the home page?",
+    "button": "Home"
+  },
+  "copyLink": "Link copied"
+}

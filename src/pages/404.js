@@ -1,49 +1,42 @@
-import * as React from "react";
-import { Link } from "gatsby";
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
-
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-};
+import * as React from 'react';
+import { Link, graphql } from 'gatsby';
+import Container from '../components/Container';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
+import * as css from '../assets/styles/sections/404.module.css';
 
 const NotFoundPage = () => {
+  const { t } = useTranslation();
+  const content = t('404', { returnObjects: true });
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
+    <main>
+      <section className={`${css.section} dark:bg-body-dark`}>
+        <Container styles={css.container}>
+          <div className={css.wrapper}>
+            <h1 className={css.title}>{content.title}</h1>
+            <p className={css.text}>{content.description}</p>
+            <Link className={css.link} to="/">
+              {content.button}
+            </Link>
+          </div>
+        </Container>
+      </section>
     </main>
   );
 };
 
 export default NotFoundPage;
 
-export const Head = () => <title>Not found</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

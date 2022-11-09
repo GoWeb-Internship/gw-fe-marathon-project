@@ -1,87 +1,211 @@
-import * as React from 'react';
-import { useState } from 'react';
-import Layout from '../components/Layout/Layout';
+import React, { useState, useEffect } from 'react';
+import { withLayout } from '../components/Layout/Layout';
 import { graphql } from 'gatsby';
-import Markdown from 'markdown-to-jsx';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
+import Section from '../components/Section';
+import ChapterList from '../components/Chapter';
+import Accordion from '../components/Accordion/Accordion';
+import SyncLoader from 'react-spinners/SyncLoader';
+import Icon from '../components/Icon';
 
-// const IndexPage = () => {
-const IndexPage = ({ data }) => {
-  const { t } = useTranslation();
-  const days = data.allMarkdownRemark.nodes;
-  const [openedDayId, setOpenedDayId] = useState(days[0].id || 0);
+const IndexPage = ({ data, location }) => {
+  const day = data?.allMarkdownRemark?.nodes[0].frontmatter;
+  const id = location.hash.slice(1);
+
+  const [isSpinnerShown, setIsSpinnerShown] = useState(false);
+  const [visibleQuestions, setVisibleQuestions] = useState(null);
+  const [numberOfPage, setNumberOfPage] = useState(1);
+  const [countOfPages, setCountOfPages] = useState(1);
+  const [visibleQuestionsId, setVisibleQuestionsId] = useState(null);
+  const [allQuestions, setAllQuestions] = useState(null);
+  const countOfQuestionsAtPage = 5;
+
+  const spinnerDefault = '#3b82f6';
+  const spinnerDarkTheme = '#fcfcfc';
+  const [color, setColor] = useState(spinnerDefault);
+
+  let htmlDark;
+  let target;
+
+  if (typeof window !== 'undefined') {
+    htmlDark = document.querySelector('.dark');
+    target = document.getElementById('spinner');
+  }
+  const darkSpinner = () => {
+    if (htmlDark) {
+      setColor(spinnerDarkTheme);
+    }
+  };
+
+  useEffect(() => {
+    if (!visibleQuestions || !id) return;
+
+    document.getElementById(`${id}`)?.scrollIntoView({ behavior: 'smooth' });
+  }, [id, visibleQuestions]);
+
+  useEffect(() => {
+    numberOfPage < countOfPages
+      ? setIsSpinnerShown(true)
+      : setIsSpinnerShown(false);
+  }, [countOfPages, numberOfPage]);
+
+  useEffect(() => {
+    if (!target) return;
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    });
+    function handleIntersection(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setNumberOfPage(prevState => prevState + 1);
+        }
+      });
+    }
+
+    observer?.observe(target);
+  }, [target]);
+
+  useEffect(() => {
+    if (!visibleQuestionsId) {
+      return;
+    }
+    const arrayOfSubheads = day.subhead;
+
+    const visibleQuestionsAtPage = arrayOfSubheads.map(subhead => {
+      return {
+        subhead_title: subhead.subhead_title,
+        questions: subhead.questions.filter(({ id }) =>
+          visibleQuestionsId.includes(id),
+        ),
+      };
+    });
+
+    setVisibleQuestions(visibleQuestionsAtPage);
+  }, [day, visibleQuestionsId]);
+
+  //return all or cut and return array of needed id
+  useEffect(() => {
+    const arrayOfSubheads = day.subhead;
+
+    //if it's the last page
+    if (countOfPages / numberOfPage === 1) {
+      setVisibleQuestions(arrayOfSubheads);
+      return;
+    } else if (countOfPages / numberOfPage > 1) {
+      const countOfNeededQuestions = countOfQuestionsAtPage * numberOfPage;
+
+      const visibleQ = allQuestions?.slice(0, countOfNeededQuestions);
+
+      const visibleQId = visibleQ.map(({ id }) => id);
+      setVisibleQuestionsId(visibleQId);
+    }
+  }, [countOfPages, day, numberOfPage, allQuestions]);
+
+  //return array of all questions (sorted)
+  useEffect(() => {
+    const allOfTheQuestions = day?.subhead?.reduce((prev, { questions }) => {
+      return [
+        ...prev,
+        ...questions.sort((a, b) => a.question_range - b.question_range),
+      ];
+    }, []);
+
+    setAllQuestions(allOfTheQuestions);
+  }, [day?.subhead]);
+
+  //calculate count of pages for lazy load
+  useEffect(() => {
+    if (id) {
+      return;
+    }
+
+    if (allQuestions?.length <= countOfQuestionsAtPage) {
+      setCountOfPages(1);
+      return;
+    } else {
+      setCountOfPages(Math.ceil(allQuestions?.length / countOfQuestionsAtPage));
+    }
+  }, [allQuestions, id]);
+
+  useEffect(() => {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  }, []);
 
   return (
-    <Layout pageTitle="Home Page">
-      <p>{t('Subtitle')}</p>
+    <Section styles="main-section">
+      <ChapterList />
 
-      <ul>
-        {days
-          ? days?.map(({ id, frontmatter }) => {
-              return (
-                <li key={frontmatter.title}>
-                  <button onClick={() => setOpenedDayId(id)}>
-                    {frontmatter.title}
-                  </button>
-                </li>
-              );
-            })
-          : null}
-      </ul>
-      <ul>
-        {days
-          ? days
-              ?.find(day => openedDayId === day.id)
-              ?.frontmatter?.subhead?.map(
-                ({ subhead_title, questions }, index) => {
-                  return (
-                    <div key={index}>
-                      <h3>{subhead_title}</h3>
-                      <ul key={index}>
-                        {questions.map((question, index) => {
-                          return (
-                            <li key={index}>
-                              <h2>
-                                <Markdown>{question.question_title}</Markdown>
-                              </h2>
-                              <p>
-                                <Markdown>{question.description}</Markdown>
-                              </p>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  );
-                },
-              )
-          : null}
-      </ul>
-    </Layout>
+      <div>
+        <ul className="subhead-list" id="subhead-list">
+          {visibleQuestions
+            ? visibleQuestions?.map(({ subhead_title, questions }, index) => {
+                return (
+                  <Accordion
+                    key={index}
+                    subhead_title={subhead_title}
+                    questions={questions}
+                  />
+                );
+              })
+            : null}
+        </ul>
+
+        {isSpinnerShown ? (
+          <div className="loaderContainer" id="spinner">
+            <div className="loaderWrapper">
+              <SyncLoader
+                color={color}
+                cssOverride={{
+                  display: 'block',
+                  margin: '0 auto',
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      <Icon iconId="main-page" className="main-page-image-mobile" />
+      <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
+    </Section>
   );
 };
 
-export default IndexPage;
+export default withLayout(IndexPage);
 
 export const query = graphql`
   query ($language: String!) {
     allMarkdownRemark(
-      filter: { frontmatter: { language: { eq: $language } } }
+      filter: {
+        frontmatter: { language: { eq: $language }, chapter: { eq: "start" } }
+      }
     ) {
       nodes {
         frontmatter {
+          title
+          chapter_range
           chapter
           language
-          title
           subhead {
             subhead_title
             questions {
-              question_title
-              description
+              id
+              question_range
+              content: description
+              title: question_title
             }
           }
         }
-        id
       }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
@@ -95,44 +219,3 @@ export const query = graphql`
     }
   }
 `;
-
-// export const query = graphql`
-//   query ($language: String!) {
-//     locales: allLocale(filter: { language: { eq: $language } }) {
-//       edges {
-//         node {
-//           ns
-//           data
-//           language
-//         }
-//       }
-//     }
-//   }
-// `;
-
-// export const query = graphql`;
-//   query MainPage {
-//     allMarkdownRemark(filter: { frontmatter: { language: { eq: "ua" } } }) {
-//        nodes {
-//       frontmatter {
-//         chapter
-//         language
-//         title
-//         subhead {
-//           Subhead_title
-//           questions {
-//             description
-//             question_title
-//             image {
-//               alt
-//               image {
-//                 relativePath
-//               }
-//             }
-//           }
-//         }
-//       }
-//       id
-//     }
-//   }
-// `;
