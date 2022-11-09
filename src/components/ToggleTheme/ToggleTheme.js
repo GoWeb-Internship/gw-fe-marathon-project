@@ -22,9 +22,15 @@ const ToggleTheme = () => {
     setChecked(websiteTheme === 'dark');
   }, [websiteTheme]);
 
+  const isThemeDark = function (theme) {
+    if (theme) {
+      console.log(theme);
+      return theme === 'dark';
+    }
+  };
   // these states should always be after the typeof window !== `undefined` expression
   const [theme, setTheme] = useState(websiteTheme);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(isThemeDark(theme));
 
   const ThemeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
