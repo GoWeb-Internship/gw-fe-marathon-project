@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
+import { useNetworkState } from 'react-use';
 
 const ToggleTheme = () => {
   let websiteTheme;
@@ -24,7 +25,7 @@ const ToggleTheme = () => {
 
   // these states should always be after the typeof window !== `undefined` expression
   const [theme, setTheme] = useState(websiteTheme);
-  const [checked, setChecked] = useState(() => theme === 'dark');
+  const [checked, setChecked] = useState(prevState => websiteTheme === 'dark');
   console.log(checked);
 
   const ThemeToggle = () => {
