@@ -4,7 +4,7 @@ import { dayButton } from './Button.module.css';
 
 const Button = ({ children, ...props }) => {
   return (
-    <button className={dayButton} {...props}>
+    <button className={`${dayButton} dark:hover:border-accent`} {...props}>
       {children}
     </button>
   );

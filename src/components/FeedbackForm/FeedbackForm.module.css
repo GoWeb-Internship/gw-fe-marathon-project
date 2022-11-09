@@ -23,7 +23,7 @@
 }
 
 .nameInputValidationMessage {
-  @apply absolute  left-2 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
 }
 
 .emailContainer {
@@ -35,7 +35,7 @@
 }
 
 .emailInputValidationMessage {
-  @apply absolute  left-2 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
 }
 
 .messageContainer {
@@ -47,7 +47,7 @@
 }
 
 .messageInputValidation {
-  @apply absolute top-[124px] left-2 font-inter text-xs font-extralight text-red-600;
+  @apply absolute top-[124px] left-3 font-inter text-xs font-extralight text-red-600;
 }
 
 .imageWrapper {
@@ -79,7 +79,7 @@
 }
 
 .successPageContainer {
-  @apply text-left md:w-[337px] xl:w-[472px] xl:pt-[98px];
+  @apply text-left max-md:mb-[34px] md:w-[337px] xl:w-[472px] xl:pt-[98px];
 }
 
 .successPageTitle {
@@ -91,7 +91,7 @@
 }
 
 .successPageLink {
-  @apply inline-block rounded border-2 border-blue-700 bg-blue-700 py-4 px-8 text-white duration-300 hover:bg-white hover:text-blue-700 xl:text-lg xl:font-semibold xl:leading-[22px];
+  @apply inline-block rounded border-2 border-accent bg-accent py-4 px-8 text-white duration-300 hover:border-hover-dark hover:bg-white hover:text-hover-dark xl:text-base xl:font-normal xl:leading-[20px];
 }
 
 .successPageImageWrapper {
