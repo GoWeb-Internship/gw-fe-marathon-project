@@ -12,8 +12,6 @@ import { heroContainer } from './Hero.module.css';
 const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
   const main = t('title', { returnObjects: true });
-  const mainArr = main.split(' ');
-  const first = mainArr.shift();
   const media = useMediaRules();
   const { pathname } = useLocation();
   return (
@@ -21,9 +19,9 @@ const Hero = ({ openModal, isOpen }) => {
       <Container styles={heroContainer}>
         {media !== 'mobile' ? (
           <h1 className={title}>
-            {first}
+            {main.split(' ')[0]}
             <br />
-            {mainArr.join(' ')}
+            {main.split(' ').slice(1).join(' ')}
           </h1>
         ) : (
           <h1 className={title}>{main}</h1>
