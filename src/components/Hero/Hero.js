@@ -11,13 +11,23 @@ import { heroContainer } from './Hero.module.css';
 
 const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
+  const main = t('title', { returnObjects: true });
+  const mainArr = main.split(' ');
+  const first = mainArr.shift();
   const media = useMediaRules();
   const { pathname } = useLocation();
-
   return (
     <section className={section}>
       <Container styles={heroContainer}>
-        <h2 className={title}>{t('title')}</h2>
+        {media !== 'mobile' ? (
+          <h1 className={title}>
+            {first}
+            <br />
+            {mainArr.join(' ')}
+          </h1>
+        ) : (
+          <h1 className={title}>{main}</h1>
+        )}
 
         {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && !isOpen && (
           <button
