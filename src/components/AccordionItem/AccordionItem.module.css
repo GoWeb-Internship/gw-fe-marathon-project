@@ -3,11 +3,15 @@
 }
 
 .accordionHeading {
-  @apply flex cursor-pointer items-center justify-between break-words rounded-lg p-4 text-sm font-light leading-4 shadow-main duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:font-normal xl:leading-7;
+  @apply flex w-full cursor-pointer items-center justify-between break-words rounded-lg p-4 text-sm font-light leading-4 shadow-main duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:font-normal xl:leading-7;
 }
 
 .accordionHeadingShown {
-  @apply mb-2 flex cursor-pointer items-center justify-between break-words rounded-lg  bg-hover-light p-4 text-sm font-light   leading-4 duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:font-normal xl:leading-7;
+  @apply mb-2 flex w-full cursor-pointer items-center justify-between break-words rounded-lg  bg-hover-light p-4 text-sm font-light   leading-4 duration-300 ease-in-out md:p-6 md:text-lg md:leading-[22px] xl:text-[22px] xl:font-normal xl:leading-7;
+}
+
+.questionTitle {
+  @apply text-left;
 }
 
 .accordionHeading code,

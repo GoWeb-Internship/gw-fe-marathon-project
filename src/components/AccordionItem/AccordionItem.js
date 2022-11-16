@@ -11,6 +11,7 @@ import {
   accordionContentShow,
   plusIcon,
   minusIcon,
+  questionTitle,
 } from './AccordionItem.module.css';
 import { navigate } from 'gatsby';
 import { useLocation } from 'react-use';
@@ -38,7 +39,7 @@ const AccordionItem = memo(({ data }) => {
 
   return (
     <li className={accordionItem}>
-      <div
+      <button
         onClick={() => {
           handleClick(data.id);
         }}
@@ -48,7 +49,7 @@ const AccordionItem = memo(({ data }) => {
             : accordionHeading
         }
       >
-        <h3 id={data.id}>
+        <h3 id={data.id} className={questionTitle}>
           <Markdown>{data.title}</Markdown>
         </h3>
         {active === data.id ? (
@@ -56,7 +57,7 @@ const AccordionItem = memo(({ data }) => {
         ) : (
           <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
         )}
-      </div>
+      </button>
 
       <div
         className={active === data.id ? accordionContentShow : accordionContent}
