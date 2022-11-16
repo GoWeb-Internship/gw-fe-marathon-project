@@ -15,7 +15,7 @@ subhead:
         description: |-
           P﻿ress `ctrl + /`
 
-          ![](/img/giphy.gif)
+          ![how to make a comment](/img/giphy.gif "how to make a comment")
 
           [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
         question_range: "2"
@@ -25,26 +25,27 @@ subhead:
         question_title: The `index.html` is edited when you save it. What to do?
         description: >-
           If the Prettier plugin is installed and there is a `pretier.json`
-          configuration file
+          configuration file.
 
 
           Simple solution:
 
 
-          ![](/img/day2-1.jpg)
+          ![a pretier.json configuration file](/img/day2-1.jpg "a pretier.json configuration file")
 
 
           You can also disable formatting:
 
 
-          ![](/img/day2-2.jpg)
+          ![how to disable formatting](/img/day2-2.jpg "how to disable formatting")
         question_range: "1"
       - id: "1666791000840"
         question_title: How to reduce the indentation?
-        description: |-
+        description: >-
           P﻿ress `shift + tab`.
 
-          ![](/img/giphy-1-.gif)
+
+          ![how to reduce the indentation](/img/giphy-1-.gif "how to reduce the indentation")
         question_range: "2"
       - id: "1666791114003"
         question_title: "`<﻿img>` is not displayed, what to do?"
@@ -60,13 +61,13 @@ subhead:
           – `css` folder (it will then have a style file)
 
 
-          ![](/img/day2_scren-img.jpeg)
+          ![a folder hierarchy](/img/day2_scren-img.jpeg "a folder hierarchy")
 
 
           in this case, in `index.html` write `<img src="./img/photo.jpg" alt="my photo">`
 
 
-          ![](/img/day2_scren1-img.jpeg)
+          ![how to write tag img](/img/day2_scren1-img.jpeg "how to write tag img")
 
 
           – we do not have any cyrillic characters, no large letters, no filenames or folders
