@@ -40,6 +40,7 @@ const AccordionItem = memo(({ data }) => {
   return (
     <li className={accordionItem}>
       <button
+        type="button"
         onClick={() => {
           handleClick(data.id);
         }}
