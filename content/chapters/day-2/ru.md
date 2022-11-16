@@ -15,7 +15,7 @@ subhead:
         description: |-
           Нажмите `ctrl + /`
 
-          ![](/img/giphy.gif)
+          ![к﻿ак сделать комментарий](/img/giphy.gif "к﻿ак сделать комментарий")
 
           [via GIPHY](https://giphy.com/gifs/Vbzq0GcG0CY2PNGeQq)
         question_range: "2"
@@ -44,14 +44,13 @@ subhead:
         description: |-
           Нужно нажать `shift+tab`.
 
-          ![](/img/giphy-1-.gif)
+          ![как уменьшить отступ](/img/giphy-1-.gif "как уменьшить отступ")
         question_range: "2"
       - id: "1666611845307"
         question_title: П﻿очему не отображается `<img>`?
         description: >-
-          
-
-          Проверьте, правильна ли у Вас иерархия папок. В папке `project` должны быть:
+          Проверьте, правильна ли у Вас иерархия папок. В папке `project` должны
+          быть:
 
 
           * – файл `index.html`,
@@ -60,11 +59,11 @@ subhead:
 
           * – папка `css` (в ней в дальнейшем будет файл со стилями),
 
-            ![](/img/day2_scren-img.jpeg)
+            ![иерархия папок](/img/day2_scren-img.jpeg "иерархия папок")
 
             в таком случае в `index.html` пишем: `<img src="./img/photo.jpg" alt="my photo">`
 
-            ![](/img/day2_scren1-img.jpeg)
+            ![как написать тег img](/img/day2_scren1-img.jpeg "как написать тег img")
 
             – в названиях папок и файлов у нас нет кириллицы, пробелов и заглавных букв.
         question_range: "3"
