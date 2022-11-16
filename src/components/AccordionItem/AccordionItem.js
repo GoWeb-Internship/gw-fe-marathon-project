@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo } from 'react';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import Markdown from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import { MinusCircleIcon } from '@heroicons/react/24/outline';
@@ -19,6 +20,7 @@ import { urlUpdate } from '../../helpers/urlUpdate';
 const AccordionItem = memo(({ data }) => {
   const [active, setActive] = useState(null);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (location.hash) setActive(location.hash.slice(1));
@@ -54,7 +56,7 @@ const AccordionItem = memo(({ data }) => {
         {active === data.id ? (
           <MinusCircleIcon className={minusIcon} />
         ) : (
-          <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
+          <img src={myPlusIcon} alt={t('plusIcon')} className={plusIcon} />
         )}
       </div>
 
