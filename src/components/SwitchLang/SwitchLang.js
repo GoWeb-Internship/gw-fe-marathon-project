@@ -32,7 +32,11 @@ const SwitchLang = () => {
       {dropdown && (
         <>
           <LangList active={language} />
-          <Backdrop className={langBackdrop} handleCloseFunction={toggle} />
+          <Backdrop
+            className={langBackdrop}
+            handleCloseFunction={toggle}
+            flag={dropdown}
+          />
         </>
       )}
     </div>

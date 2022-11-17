@@ -21,10 +21,12 @@ import {
 } from './Header.module.css';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
@@ -52,17 +54,19 @@ const Header = ({ openModal }) => {
               </button>
             )}
 
-            <button
-              aria-label="menu button"
-              className={menuBtn}
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? (
-                <XMarkIcon className={menuIcon} />
-              ) : (
-                <Bars3Icon className={menuIcon} />
-              )}
-            </button>
+            {isMobile && (
+              <button
+                aria-expanded={isMenuOpen ? true : false}
+                className={menuBtn}
+                onClick={toggleMenu}
+              >
+                {isMenuOpen ? (
+                  <XMarkIcon className={menuIcon} />
+                ) : (
+                  <Bars3Icon className={menuIcon} />
+                )}
+              </button>
+            )}
           </div>
 
           <ul className={switchWrapper}>
@@ -76,7 +80,7 @@ const Header = ({ openModal }) => {
         </div>
       </Container>
 
-      <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+      {isMobile && <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />}
     </header>
   );
 };

@@ -42,7 +42,8 @@ const AccordionItem = memo(({ data }) => {
   return (
     <li className={accordionItem}>
       <button
-        type="button"
+        // type="button"
+        aria-expanded={active === data.id ? true : false}
         onClick={() => {
           handleClick(data.id);
         }}
