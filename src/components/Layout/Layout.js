@@ -26,6 +26,7 @@ const Layout = ({ children }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
   return (
     <div className={layoutWrapper}>
       <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
