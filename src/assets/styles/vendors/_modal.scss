@@ -7,9 +7,13 @@
 }
 
 .modal {
-  @apply absolute top-6 left-1/2 min-h-full  -translate-x-1/2 text-center md:top-9  xl:top-[160px];
+  @apply absolute top-6 left-1/2 min-h-full  -translate-x-1/2 text-center md:top-20  xl:top-[166px];
 }
 
 .dialog-panel {
-  @apply w-[300px] transform overflow-hidden rounded-lg bg-body py-[38px]  text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px]  sm:px-4 md:w-[704px]  xl:w-[1200px];
+  @apply w-[300px] transform overflow-hidden rounded-lg bg-body pt-[38px] pb-9 text-center  align-middle transition-all  dark:bg-body-dark  dark:text-font-light  xs:w-[335px] sm:w-[440px] sm:px-4  md:w-[704px] md:py-11  xl:w-[1200px];
+}
+
+.xMarkIcon {
+  @apply absolute right-4 top-4 h-6 w-6 text-font-dark;
 }
