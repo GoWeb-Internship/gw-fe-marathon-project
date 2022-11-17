@@ -58,7 +58,8 @@ subhead:
 
           <a
           href=\"https://faq.m.goit.global/ua/assets/fonts/download/prettier.js\
-          on\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">\r
+          on\" target=\"_blank\" rel=\"noopener noreferrer nofollow\"
+          download>\r
 
           \        Завантажити `prettier.json`\r
 
