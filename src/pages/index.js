@@ -36,6 +36,8 @@ const IndexPage = ({ data, location }) => {
     }
   };
 
+  console.log();
+
   useEffect(() => {
     if (!visibleQuestions || !id) return;
 
