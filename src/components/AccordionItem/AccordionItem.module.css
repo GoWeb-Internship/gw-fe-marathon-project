@@ -28,11 +28,12 @@
 }
 
 .accordionContent {
-  @apply mb-4 box-border hidden h-0 overflow-hidden break-words rounded-lg px-4 py-0 text-xs font-light leading-4 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:hidden md:px-6 md:py-0 md:text-base md:leading-5 xl:hidden xl:text-lg xl:leading-6;
+  @apply mb-4 box-border hidden h-0 overflow-hidden break-words rounded-lg px-4 py-0 text-xs font-light leading-4 shadow-main  last:mb-0 md:hidden md:px-6 md:py-0 md:text-base md:leading-5 xl:hidden xl:text-lg xl:leading-6;
 }
+/* transition-[height] delay-150  duration-300 ease-in-out  */
 
 .accordionContentShow {
-  @apply mb-4 box-border block h-auto overflow-visible break-words rounded-lg px-4 py-4 text-xs font-light leading-4 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:text-lg xl:leading-6;
+  @apply mb-4 box-border block h-auto overflow-visible break-words rounded-lg px-4 py-4 text-xs font-light leading-4 shadow-main last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:block xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow p {

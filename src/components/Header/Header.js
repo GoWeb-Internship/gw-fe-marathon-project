@@ -54,17 +54,19 @@ const Header = ({ openModal }) => {
               </button>
             )}
 
-            <button
-              aria-label="menu button"
-              className={menuBtn}
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? (
-                <XMarkIcon className={menuIcon} />
-              ) : (
-                <Bars3Icon className={menuIcon} />
-              )}
-            </button>
+            {isMobile && (
+              <button
+                aria-expanded={isMenuOpen ? true : false}
+                className={menuBtn}
+                onClick={toggleMenu}
+              >
+                {isMenuOpen ? (
+                  <XMarkIcon className={menuIcon} />
+                ) : (
+                  <Bars3Icon className={menuIcon} />
+                )}
+              </button>
+            )}
           </div>
 
           <ul className={switchWrapper}>
