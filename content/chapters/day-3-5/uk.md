@@ -56,7 +56,7 @@ subhead:
           розширення `prettier`, або додати у файл `prettier.json`.
 
 
-          <a href=\"/img/prettier.json\" target=\"_blank\"
+          <a href=\"/files/prettier.json\" target=\"_blank\"
           rel=\"noopener noreferrer nofollow\" download>\r
 
           \        Завантажити `prettier.json`\r
