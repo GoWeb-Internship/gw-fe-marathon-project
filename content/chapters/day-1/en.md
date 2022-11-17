@@ -10,7 +10,8 @@ subhead:
         description: |-
           If the layout does not open (blank screen), copy it to your drafts
 
-          ![](/img/day1.jpg)
+          ![how to copy layout](/img/day1.jpg "how to copy layout")
+        question_range: "1"
       - id: "1666699220811"
         question_title: There is no basic markup after `!+tab`
         description: >-
@@ -63,13 +64,13 @@ subhead:
           A little higher🤗
 
 
-          ![](/img/day1-1.png)
+          ![how to open index.html in the browser](/img/day1-1.png "how to open index.html in the browser")
 
 
           \-﻿ here,
 
 
-          ![](/img/day1-2.png)
+          ![how to open index.html](/img/day1-2.png "how to open index.html")
 
 
           n﻿ot here.

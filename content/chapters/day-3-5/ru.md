@@ -42,10 +42,10 @@ subhead:
           отключить `adblock`.
 
 
-          ![](/img/screen_gf.jpeg)
+          ![как вернуться к классическому сайту](/img/screen_gf.jpeg "как вернуться к классическому сайту")
 
 
-          ![](/img/adblock_1.jpeg)
+          ![как отключить adblock](/img/adblock_1.jpeg "как отключить adblock")
         question_range: "4"
       - id: "1666612422135"
         question_title: К﻿ак не допустить автоформатирование? Текст под `contacts

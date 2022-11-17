@@ -42,10 +42,10 @@ subhead:
           відключити `adblock`.
 
 
-          ![](/img/screen_gf.jpeg)
+          ![як повернутись до класичного сайту](/img/screen_gf.jpeg "як повернутись до класичного сайту")
 
 
-          ![](/img/adblock_1.jpeg)
+          ![як відключити adblock](/img/adblock_1.jpeg "як відключити adblock")
         question_range: "4"
       - id: "1666605271180"
         question_title: Я﻿к перемогти автоформатування? Текст `contacts` (телефон email)
