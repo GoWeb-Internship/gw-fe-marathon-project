@@ -1,5 +1,6 @@
 {
   "logoAlt": "Logo",
+  "description": "Questions and Answers",
   "title": "<Questions> and <Answers>",
   "input": "Enter what interests you...",
   "noAnswer": {

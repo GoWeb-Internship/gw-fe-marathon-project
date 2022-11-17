@@ -4,7 +4,10 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    title: ``,
+    description: ``,
+    author: `GoWeb`,
+    siteUrl: ``,
   },
   plugins: [
     `gatsby-plugin-image`,
