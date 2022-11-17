@@ -50,14 +50,18 @@ subhead:
       - id: "1666605271180"
         question_title: Я﻿к перемогти автоформатування? Текст `contacts` (телефон email)
           встають в один рядок при збереженні.
-        description: >-
-          Спробуйте додати у
-          налаштування `prettier` рядок `"htmlWhitespaceSensitivity"`: `"ignore"`,
-          цей параметр можна додати у налаштування розширення `prettier`, або
-          додати у файл `prettier.json`.
+        description: "Спробуйте додати у
+          налаштування `prettier` рядок `\"htmlWhitespaceSensitivity\"`: `\"ign\
+          ore\"`, цей параметр можна додати у налаштування
+          розширення `prettier`, або додати у файл `prettier.json`.
 
 
-          [Завантажити `prettier.json`](https://faq.m.goit.global/ua/assets/fonts/download/prettier.json)
+          <a href=\"/files/prettier.json\" target=\"_blank\"
+          rel=\"noopener noreferrer nofollow\" download>\r
+
+          \        Завантажити `prettier.json`\r
+
+          \      </a>"
         question_range: "5"
       - id: "1666605791401"
         question_title: Я﻿к правильно іменувати класи?

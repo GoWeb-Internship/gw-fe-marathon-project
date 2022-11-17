@@ -29,6 +29,7 @@ const Layout = ({ children }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
   return (
     <>
       <Seo
