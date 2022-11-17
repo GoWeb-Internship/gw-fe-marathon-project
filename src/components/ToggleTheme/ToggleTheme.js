@@ -40,7 +40,6 @@ const ToggleTheme = () => {
   return (
     <div className={toggleBar}>
       <Toggle
-        ariaLabel="theme switch"
         className={toggle}
         icons={{
           checked: <MoonIcon className={moonIcon} />,

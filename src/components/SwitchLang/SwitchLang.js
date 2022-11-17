@@ -24,12 +24,7 @@ const SwitchLang = () => {
 
   return (
     <div className={langSwitch}>
-      <button
-        type="button"
-        className={buttonSwitch}
-        onClick={toggle}
-        ariaLabel="language switch"
-      >
+      <button type="button" className={buttonSwitch} onClick={toggle}>
         <span className={langLabel}>{normalizeLang(language)}</span>
         <GlobeAltIcon className={globeIcon} />
       </button>

@@ -31,7 +31,6 @@ const Hero = ({ openModal, isOpen }) => {
           <button
             className={`${search} dark:text-font-searchDark`}
             onClick={openModal}
-            ariaLabel="search"
           >
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
