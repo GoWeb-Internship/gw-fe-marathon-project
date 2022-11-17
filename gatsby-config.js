@@ -7,7 +7,7 @@ module.exports = {
     title: ``,
     description: ``,
     author: `GoWeb`,
-    siteUrl: ``,
+    siteUrl: `https://gw-fe-marathon.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-image`,
