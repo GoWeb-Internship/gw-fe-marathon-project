@@ -18,6 +18,7 @@ import {
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
+    if (!isMenuOpen) return;
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
       window.removeEventListener('keydown', handleEscape);
@@ -29,7 +30,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [toggleMenu]);
+  }, [isMenuOpen, toggleMenu]);
 
   return (
     <>
