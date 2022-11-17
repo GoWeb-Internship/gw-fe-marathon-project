@@ -4,7 +4,10 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    title: ``,
+    description: ``,
+    author: `GoWeb`,
+    siteUrl: `https://gw-fe-marathon.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-image`,
