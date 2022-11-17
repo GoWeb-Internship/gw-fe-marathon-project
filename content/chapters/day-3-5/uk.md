@@ -56,10 +56,8 @@ subhead:
           розширення `prettier`, або додати у файл `prettier.json`.
 
 
-          <a
-          href=\"https://faq.m.goit.global/ua/assets/fonts/download/prettier.js\
-          on\" target=\"_blank\" rel=\"noopener noreferrer nofollow\"
-          download>\r
+          <a href=\"/static/img/prettier.json\" target=\"_blank\"
+          rel=\"noopener noreferrer nofollow\" download>\r
 
           \        Завантажити `prettier.json`\r
 
