@@ -18,34 +18,26 @@ import {
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
-    console.log(isMenuOpen);
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
       if (e.code === 'Escape' && isMenuOpen) {
         window.removeEventListener('keydown', handleEscape);
         toggleMenu();
-        console.log(isMenuOpen);
-        console.log('toggle');
       }
       if (e.code === 'Escape' && !isMenuOpen) {
-        console.log(isMenuOpen);
-        console.log('return');
         return;
       }
     };
 
     if (!isMenuOpen) {
       window.removeEventListener('keydown', handleEscape);
-      console.log('remove');
       return;
     } else {
       window.addEventListener('keydown', handleEscape);
-      console.log('add');
     }
 
     return () => {
       window.removeEventListener('keydown', handleEscape);
-      console.log('bye');
     };
   }, [isMenuOpen, toggleMenu]);
 
@@ -72,6 +64,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
           isMenuOpen ? menuBackdropShown : menuBackdropHidden
         }`}
         handleCloseFunction={toggleMenu}
+        flag={isMenuOpen}
       />
     </>
   );
