@@ -19,11 +19,11 @@
 }
 
 .nameInput {
-  @apply min-w-full border-b-2 border-solid border-accent  p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply min-w-full border-b-2 border-solid border-accent bg-transparent p-4  pb-2 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .nameInputValidationMessage {
-  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .emailContainer {
@@ -31,11 +31,11 @@
 }
 
 .emailInput {
-  @apply min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply min-w-full border-b-2 border-solid border-accent bg-transparent p-4 pb-2 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .emailInputValidationMessage {
-  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .messageContainer {
@@ -43,11 +43,11 @@
 }
 
 .messageInput {
-  @apply h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply h-[124px] min-w-full rounded-lg border-2 border-solid border-accent bg-transparent p-4 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .messageInputValidation {
-  @apply absolute top-[124px] left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute top-[124px] left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .imageWrapper {
