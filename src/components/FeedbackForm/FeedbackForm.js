@@ -160,9 +160,7 @@ const FeedbackForm = () => {
               {formText.home}
             </Link>
           </div>
-          <svg className={successPageImageWrapper}>
-            <use href={`${icons}#success-section`} />
-          </svg>
+          <div className={successPageImageWrapper}></div>
         </div>
       ) : (
         <div className={feedbackFormBlock}>
@@ -229,17 +227,7 @@ const FeedbackForm = () => {
             </form>
           )}
 
-          <div className={imageWrapper}>
-            <svg className={imageMobile}>
-              <use href={`${icons}#feedback-page`} />
-            </svg>
-            <svg className={imageTablet}>
-              <use href={`${icons}#feedback-page-tablet`} />
-            </svg>
-            <svg className={imageDesktop}>
-              <use href={`${icons}#feedback-page-desktop`} />
-            </svg>
-          </div>
+          <div className={imageWrapper}></div>
         </div>
       )}
     </Section>
