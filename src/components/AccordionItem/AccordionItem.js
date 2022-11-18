@@ -69,10 +69,10 @@ const AccordionItem = memo(({ data }) => {
 
       {active === data.id ? (
         <div className={`${accordionContentShow} dark:text-font-light`}>
-          <Markdown>{data.content}</Markdown>{' '}
+          <Markdown>{data.content}</Markdown>
         </div>
       ) : (
-        <div className={accordionContent}></div>
+        <div className={`${accordionContent} dark:text-font-light`}></div>
       )}
     </li>
   );
