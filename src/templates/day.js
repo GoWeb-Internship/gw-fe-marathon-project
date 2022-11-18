@@ -143,6 +143,7 @@ const Day = ({ data, pageContext, location }) => {
       />
 
       <Section styles="main-section">
+        <h2 className="visually-hidden">{day.title}</h2>
         <ChapterList />
 
         <div>

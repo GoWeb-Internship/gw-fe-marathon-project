@@ -11,7 +11,7 @@
 }
 
 .xMarkIcon {
-  @apply absolute right-2 top-0 h-6 w-6 text-font-dark;
+  @apply absolute right-2 top-0 h-6 w-6 cursor-pointer text-font-dark;
 }
 
 .iconGlass {

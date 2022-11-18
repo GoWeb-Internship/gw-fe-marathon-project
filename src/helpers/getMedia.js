@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useMedia } from 'react-use';
 
 const useMediaRules = () => {
-  const [media, setMedia] = useState('mobile');
+  const [media, setMedia] = useState(null);
 
   const isMobile = useMedia('(max-width:767px)');
   const isDesktop = useMedia('(min-width:1280px)');

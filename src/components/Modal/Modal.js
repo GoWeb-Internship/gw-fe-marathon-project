@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Search from '../Search/Search';
 import PropTypes from 'prop-types';
-// import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const Modal = ({ isOpen, closeModal }) => {
   return (
@@ -34,10 +33,6 @@ const Modal = ({ isOpen, closeModal }) => {
               >
                 <Dialog.Panel className="dialog-panel">
                   <Search closeModal={closeModal} />
-                  {/* <XMarkIcon
-                    className="xMarkIcon dark:text-font-light"
-                    onClick={closeModal}
-                  /> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

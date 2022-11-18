@@ -107,10 +107,12 @@ const Search = ({ closeModal }) => {
           value={searchPhrase}
           placeholder={t('input')}
         />
-        <XMarkIcon
-          className={`${xMarkIcon} dark:text-font-light`}
-          onClick={closeModal}
-        />
+        {searchPhrase.length > 0 && (
+          <XMarkIcon
+            className={`${xMarkIcon} dark:text-font-light`}
+            onClick={() => setSearchPhrase('')}
+          />
+        )}
       </div>
 
       {filteredQuestions ? (
