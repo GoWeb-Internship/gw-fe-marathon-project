@@ -13,6 +13,7 @@ const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
   const main = t('title', { returnObjects: true });
   const media = useMediaRules();
+
   const { pathname } = useLocation();
   return (
     <section className={section}>
