@@ -4,16 +4,17 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: ``,
+    title: `Marathon-FAQ`,
     description: ``,
     author: `GoWeb`,
-    siteUrl: `https://gw-fe-marathon.netlify.app/`,
+    siteUrl: `https://gw-fe-marathon.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

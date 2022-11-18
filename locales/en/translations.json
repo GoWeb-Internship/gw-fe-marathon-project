@@ -9,6 +9,7 @@
     "button": "Write to the mentor"
   },
   "Form": {
+    "seo": "Feedback form",
     "title": "Write to the mentor",
     "email": "Email",
     "name": "Name",
