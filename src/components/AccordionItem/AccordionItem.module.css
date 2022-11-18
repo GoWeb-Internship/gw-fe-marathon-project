@@ -20,7 +20,7 @@
 }
 
 .plusIcon {
-  @apply ml-4 h-[18px] w-[18px] shrink-0 text-accent md:h-6 md:w-6;
+  @apply ml-4 h-[18px] w-[18px] shrink-0  md:h-6 md:w-6;
 }
 
 .minusIcon {
@@ -28,16 +28,15 @@
 }
 
 .accordionContent {
-  @apply mb-4 box-border hidden h-0 overflow-hidden break-words rounded-lg px-4 py-0 text-xs font-light leading-4 shadow-main  last:mb-0 md:hidden md:px-6 md:py-0 md:text-base md:leading-5 xl:hidden xl:text-lg xl:leading-6;
+  @apply mb-4 box-border h-0 overflow-hidden rounded-lg px-4 py-0 text-font-dark opacity-0 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:px-6 md:py-0;
 }
-/* transition-[height] delay-150  duration-300 ease-in-out  */
 
 .accordionContentShow {
-  @apply mb-4 box-border block h-auto overflow-visible break-words rounded-lg px-4 py-4 text-xs font-light leading-4 shadow-main last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:block xl:text-lg xl:leading-6;
+  @apply mb-4 box-border block h-auto overflow-visible break-words rounded-lg px-4 py-4 text-xs leading-4 text-font-dark opacity-100 shadow-main transition-all duration-300 ease-in-out last:mb-0 md:block md:px-6 md:py-6 md:text-base md:leading-5 xl:block xl:text-lg xl:leading-6;
 }
 
 .accordionContentShow p {
-  @apply mb-4 break-words last:mb-0 md:mb-8 md:last:mb-0 xl:mb-[34px] xl:last:mb-0;
+  @apply mb-4 break-words text-inherit last:mb-0 md:mb-8 md:last:mb-0 xl:mb-[34px] xl:last:mb-0;
 }
 
 .accordionContentShow a {
@@ -46,12 +45,4 @@
 
 .accordionContentShow code {
   @apply break-words font-bold;
-}
-
-.copyIcon {
-  @apply z-10 ml-auto h-6 w-7 shrink-0 pl-1 text-hover-light;
-}
-
-.copyIconHover {
-  @apply z-10 ml-auto h-6 w-7 shrink-0 pl-1 text-accent;
 }
