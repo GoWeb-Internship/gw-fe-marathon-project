@@ -9,12 +9,9 @@ import {
   mainContent,
   heroAndHeaderWrapper,
 } from './Layout.module.css';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
-import Seo from '../Seo';
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     isOpen
@@ -31,24 +28,17 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <>
-      <Seo
-        title="Marathon-FAQ"
-        description={t('description')}
-        lang={i18n.language}
-      />
-      <div className={layoutWrapper}>
-        <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
-          <Header openModal={openModal} />
-          <Hero openModal={openModal} isOpen={isOpen} />
-        </div>
-
-        <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
-
-        <Footer />
-        <Modal isOpen={isOpen} closeModal={closeModal} />
+    <div className={layoutWrapper}>
+      <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>
+        <Header openModal={openModal} />
+        <Hero openModal={openModal} isOpen={isOpen} />
       </div>
-    </>
+
+      <main className={`${mainContent} dark:bg-body-dark`}>{children}</main>
+
+      <Footer />
+      <Modal isOpen={isOpen} closeModal={closeModal} />
+    </div>
   );
 };
 

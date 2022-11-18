@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import image from '../assets/images/cover.png';
-import appleTouchIcon from '../favicon/apple-touch-icon.png';
-import faviconBig from '../favicon/favicon-32x32.png';
-import faviconSmall from '../favicon/favicon-16x16.png';
-// import webmanifest from '../favicon/manifest.json';
+import appleTouchIcon from '../../static/favicon/apple-touch-icon.png';
+import faviconBig from '../../static/favicon/favicon-32x32.png';
+import faviconSmall from '../../static/favicon/favicon-16x16.png';
 
 function Seo({ description, title, lang = 'uk', meta = [] }) {
   const { site } = useStaticQuery(
@@ -16,6 +15,8 @@ function Seo({ description, title, lang = 'uk', meta = [] }) {
           siteMetadata {
             title
             description
+            siteUrl
+            author
           }
         }
       }
@@ -50,7 +51,7 @@ function Seo({ description, title, lang = 'uk', meta = [] }) {
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.siteUrl + '/' + image,
+          content: site.siteMetadata.siteUrl + image,
         },
         {
           name: `twitter:card`,
@@ -75,7 +76,7 @@ function Seo({ description, title, lang = 'uk', meta = [] }) {
       <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
       <link rel="icon" type="image/png" sizes="32x32" href={faviconBig} />
       <link rel="icon" type="image/png" sizes="16x16" href={faviconSmall} />
-      <link rel="manifest" href="../favicon/manifest.json" />
+      {/* <link rel="manifest" href="favicon/manifest.json" /> */}
       <base target="_blank" rel="noreferrer noopener"></base>
     </Helmet>
   );
