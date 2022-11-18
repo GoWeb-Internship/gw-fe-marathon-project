@@ -72,12 +72,27 @@ function Seo({ description, title, lang = 'uk', meta = [] }) {
       ].concat(meta)}
     >
       <title>{title}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+      ></link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet"
+      ></link>
       <link rel="canonical" href="/"></link>
-      <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
-      <link rel="icon" type="image/png" sizes="32x32" href={faviconBig} />
-      <link rel="icon" type="image/png" sizes="16x16" href={faviconSmall} />
+      <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon}></link>
+      <link rel="icon" type="image/png" sizes="32x32" href={faviconBig}></link>
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href={faviconSmall}
+      ></link>
       {/* <link rel="manifest" href="favicon/manifest.json" /> */}
-      <base target="_blank" rel="noreferrer noopener"></base>
+      <base target="_blank"></base>
     </Helmet>
   );
 }

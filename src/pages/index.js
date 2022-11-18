@@ -151,6 +151,7 @@ const IndexPage = ({ data, location }) => {
         lang={i18n.language}
       />
       <Section styles="main-section">
+        <h2 className="visually-hidden">{day.title}</h2>
         <ChapterList />
 
         <div>
