@@ -28,7 +28,9 @@ const Hero = ({ openModal, isOpen }) => {
           <h1 className={title}>{main}</h1>
         )}
 
-        {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && !isOpen && (
+        {media !== 'mobile' &&
+        !pathname?.includes(routes.FEEDBACK) &&
+        !isOpen ? (
           <button
             className={`${search} dark:text-font-searchDark`}
             onClick={openModal}
@@ -36,7 +38,7 @@ const Hero = ({ openModal, isOpen }) => {
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
-        )}
+        ) : null}
       </Container>
     </section>
   );

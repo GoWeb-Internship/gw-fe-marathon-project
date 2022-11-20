@@ -44,7 +44,7 @@ const Header = ({ openModal }) => {
         <div className={headerContainer}>
           <Logo />
           <div className={mobileBtnsWrapper}>
-            {!pathname?.includes(routes.FEEDBACK) && (
+            {isMobile && !pathname?.includes(routes.FEEDBACK) && (
               <button
                 className={glassBtn}
                 onClick={openModal}
