@@ -14,6 +14,7 @@ import {
   iconGlass,
   xMarkIcon,
   infoWrap,
+  foundLink,
 } from './Search.module.css';
 import { normalizedPath } from '../../helpers/normalizedPath';
 
@@ -122,7 +123,7 @@ const Search = ({ closeModal }) => {
               <li key={id} className={`${foundOption} `} onClick={closeModal}>
                 <Link
                   to={`/${normalizedPath(chapter)}?#${id}`}
-                  className="flex"
+                  className={foundLink}
                 >
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>
