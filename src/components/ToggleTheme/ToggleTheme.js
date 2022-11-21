@@ -44,8 +44,8 @@ const ToggleTheme = () => {
         <span
           aria-hidden="true"
           className={`${
-            checked ? 'translate-x-[20px] bg-font-dark' : 'translate-x-[0px]'
-          } ${toggle} shadow-lg `}
+            checked ? 'translate-x-[20px]' : 'translate-x-[0px]'
+          } ${toggle} shadow-lg dark:bg-accent-dark`}
         />
         <SunIcon className={`${sunIcon} absolute right-0`} />
       </Switch>
