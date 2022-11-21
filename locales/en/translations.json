@@ -23,9 +23,13 @@
   },
   "formValidation": {
     "required": "Field is required",
-    "email": "Enter a valid email address",
+    "name": "Name must consist of only letters",
+    "email": "Field accepts only Latin characters and at least 3 characters before @",
+    "emailMaxLength": "Email must be 63 characters maximum",
     "nameLength": "Name must be at least 2 characters long",
-    "messageLength": "Message must be at least 10 characters long"
+    "nameMaxLength": "Name must be no longer than 30 characters",
+    "messageLength": "Message must be at least 10 characters long",
+    "messageMaxLength": "Message must be no more than 2000 characters"
   },
   "showMoreButton": {
     "show": "Show more",
