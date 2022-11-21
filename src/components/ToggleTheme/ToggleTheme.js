@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Toggle from 'react-toggle';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { toggleBar, toggle, moonIcon, sunIcon } from './ToggleTheme.module.css';
-import { useNetworkState } from 'react-use';
+import { Switch } from '@headlessui/react';
 
 const ToggleTheme = () => {
   let websiteTheme;
@@ -38,16 +37,18 @@ const ToggleTheme = () => {
   };
 
   return (
-    <div className={toggleBar}>
-      <Toggle
-        className={toggle}
-        icons={{
-          checked: <MoonIcon className={moonIcon} />,
-          unchecked: <SunIcon className={sunIcon} />,
-        }}
-        checked={checked}
-        onChange={ThemeToggle}
-      />
+    <div className="h-[20px] w-[40px]">
+      <Switch checked={checked} onChange={ThemeToggle} className={toggleBar}>
+        <span className="sr-only">Use setting</span>
+        <MoonIcon className={`${moonIcon} absolute`} />
+        <span
+          aria-hidden="true"
+          className={`${
+            checked ? 'translate-x-[20px] bg-font-dark' : 'translate-x-[0px]'
+          } ${toggle} shadow-lg `}
+        />
+        <SunIcon className={`${sunIcon} absolute right-0`} />
+      </Switch>
     </div>
   );
 };
