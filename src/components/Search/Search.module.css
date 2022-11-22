@@ -46,7 +46,7 @@
 }
 
 .foundOption {
-  @apply mb-4 cursor-pointer text-ellipsis text-left text-sm  leading-[17px] last:mb-0 md:mb-[18px] md:text-lg md:leading-[22px];
+  @apply mb-4 cursor-pointer text-ellipsis text-left text-sm leading-[17px]  last:mb-0 hover:bg-[#bcc9e7] md:mb-[18px] md:text-lg md:leading-[22px];
 }
 
 .foundLink {

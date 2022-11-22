@@ -120,7 +120,11 @@ const Search = ({ closeModal }) => {
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
-              <li key={id} className={`${foundOption} `} onClick={closeModal}>
+              <li
+                key={id}
+                className={`${foundOption} dark:hover:bg-accent-dark`}
+                onClick={closeModal}
+              >
                 <Link
                   to={`/${normalizedPath(chapter)}?#${id}`}
                   className={foundLink}
