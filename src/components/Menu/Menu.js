@@ -15,6 +15,8 @@ import {
   menuBackdropShown,
   menuBackdropHidden,
 } from './Menu.module.css';
+import { useState } from 'react';
+import { useMemo } from 'react';
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
@@ -46,6 +48,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <div
+        id="menu"
         className={`${menuWrapper} dark:bg-menu-dark
           ${isMenuOpen ? menuShown : menuHidden}`}
       >
