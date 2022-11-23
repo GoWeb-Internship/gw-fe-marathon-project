@@ -4,7 +4,6 @@ import loadable from '@loadable/component';
 import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
-// import Modal from '../Modal';
 import {
   layoutWrapper,
   mainContent,
