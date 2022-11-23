@@ -15,15 +15,19 @@ import {
   menuBackdropShown,
   menuBackdropHidden,
 } from './Menu.module.css';
+import { useState } from 'react';
+import { useMemo } from 'react';
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
+
       if (e.code === 'Escape' && isMenuOpen) {
         window.removeEventListener('keydown', handleEscape);
         toggleMenu();
       }
+
       if (e.code === 'Escape' && !isMenuOpen) {
         return;
       }
@@ -44,6 +48,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   return (
     <>
       <div
+        id="menu"
         className={`${menuWrapper} dark:bg-menu-dark
           ${isMenuOpen ? menuShown : menuHidden}`}
       >

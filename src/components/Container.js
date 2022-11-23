@@ -9,4 +9,5 @@ export default Container;
 
 Container.propTypes = {
   styles: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };

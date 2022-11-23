@@ -8,13 +8,11 @@ const Accordion = ({ subhead_title, questions }) => {
     <li className={subhead}>
       <h2 className={subheadTitle}>{subhead_title}</h2>
       <ul>
-        {[
-          ...questions
-            ?.sort((a, b) => a.question_range - b.question_range)
-            ?.map(question => {
-              return <AccordionItem key={question.id} data={question} />;
-            }),
-        ]}
+        {[...questions]
+          ?.sort((a, b) => a.question_range - b.question_range)
+          ?.map(question => {
+            return <AccordionItem key={question.id} data={question} />;
+          })}
       </ul>
     </li>
   );

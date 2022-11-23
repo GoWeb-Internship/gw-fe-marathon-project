@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -25,6 +30,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [target, setTarget] = useState(null);
   const { pathname } = useLocation();
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
@@ -33,10 +39,21 @@ const Header = ({ openModal }) => {
   };
 
   useEffect(() => {
-    isMenuOpen
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'auto');
-  }, [isMenuOpen]);
+    const menuRef = document.getElementById('menu');
+    setTarget(menuRef);
+  }, []);
+
+  useEffect(() => {
+    if (!target) return;
+
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+      disableBodyScroll(target);
+    } else {
+      document.body.style.overflowY = 'auto';
+      enableBodyScroll(target);
+    }
+  }, [isMenuOpen, target]);
 
   return (
     <header className={header}>
