@@ -52,7 +52,7 @@ const FeedbackForm = () => {
         .min(2, formValidation.nameLength)
         .max(30, formValidation.nameMaxLength)
         .matches(
-          /^[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]{1}[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ' ]+$/,
+          /^[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]+(([ʼ’'` -][а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ ])?[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]*)*$/,
           formValidation.name,
         )
         .trim(),
