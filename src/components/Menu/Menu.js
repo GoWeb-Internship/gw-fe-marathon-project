@@ -15,8 +15,6 @@ import {
   menuBackdropShown,
   menuBackdropHidden,
 } from './Menu.module.css';
-import { useState } from 'react';
-import { useMemo } from 'react';
 
 export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
