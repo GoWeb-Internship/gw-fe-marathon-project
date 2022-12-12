@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import { withLayout } from '../components/Layout/Layout';
-
+import Seo from '../components/Seo';
 import Section from '../components/Section';
 import ChapterList from '../components/Chapter/ChapterList';
 import Accordion from '../components/Accordion/Accordion';
@@ -14,7 +15,7 @@ const Day = ({ data, pageContext, location }) => {
     day => chapter === day.frontmatter.chapter,
   )?.frontmatter;
   const id = location.hash.slice(1);
-
+  const { t, i18n } = useTranslation();
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const [visibleQuestions, setVisibleQuestions] = useState(null);
   const [numberOfPage, setNumberOfPage] = useState(1);
@@ -134,42 +135,51 @@ const Day = ({ data, pageContext, location }) => {
   }, [allQuestions, id]);
 
   return (
-    <Section styles="main-section">
-      <ChapterList />
+    <>
+      <Seo
+        title={day.title}
+        description={t('description')}
+        lang={i18n.language}
+      />
 
-      <div>
-        <ul className="subhead-list" id="subhead-list">
-          {visibleQuestions
-            ? visibleQuestions?.map(({ subhead_title, questions }, index) => {
-                return (
-                  <Accordion
-                    key={index}
-                    subhead_title={subhead_title}
-                    questions={questions}
-                  />
-                );
-              })
-            : null}
-        </ul>
+      <Section styles="main-section">
+        <h2 className="visually-hidden">{day.title}</h2>
+        <ChapterList />
 
-        {isSpinnerShown ? (
-          <div className="loaderContainer" id="spinner">
-            <div className="loaderWrapper">
-              <SyncLoader
-                color={color}
-                cssOverride={{
-                  display: 'block',
-                  margin: '0 auto',
-                }}
-              />
+        <div>
+          <ul className="subhead-list" id="subhead-list">
+            {visibleQuestions
+              ? visibleQuestions?.map(({ subhead_title, questions }, index) => {
+                  return (
+                    <Accordion
+                      key={index}
+                      subhead_title={subhead_title}
+                      questions={questions}
+                    />
+                  );
+                })
+              : null}
+          </ul>
+
+          {isSpinnerShown ? (
+            <div className="loaderContainer" id="spinner">
+              <div className="loaderWrapper">
+                <SyncLoader
+                  color={color}
+                  cssOverride={{
+                    display: 'block',
+                    margin: '0 auto',
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        ) : null}
-      </div>
+          ) : null}
+        </div>
 
-      <Icon iconId="main-page" className="main-page-image-mobile" />
-      <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
-    </Section>
+        <Icon iconId="main-page" className="main-page-image-mobile" />
+        <Icon iconId="main-page-desktop" className="main-page-image-desktop" />
+      </Section>
+    </>
   );
 };
 

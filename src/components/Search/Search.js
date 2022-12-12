@@ -14,6 +14,7 @@ import {
   iconGlass,
   xMarkIcon,
   infoWrap,
+  foundLink,
 } from './Search.module.css';
 import { normalizedPath } from '../../helpers/normalizedPath';
 
@@ -107,20 +108,26 @@ const Search = ({ closeModal }) => {
           value={searchPhrase}
           placeholder={t('input')}
         />
-        <XMarkIcon
-          className={`${xMarkIcon} dark:text-font-light`}
-          onClick={closeModal}
-        />
+        {searchPhrase.length > 0 && (
+          <XMarkIcon
+            className={`${xMarkIcon} dark:text-font-light`}
+            onClick={() => setSearchPhrase('')}
+          />
+        )}
       </div>
 
       {filteredQuestions ? (
         <ul className={infoWrap}>
           {filteredQuestions?.map(({ title, chapter, id }) => {
             return (
-              <li key={id} className={`${foundOption} `} onClick={closeModal}>
+              <li
+                key={id}
+                className={`${foundOption} dark:hover:bg-accent-dark`}
+                onClick={closeModal}
+              >
                 <Link
                   to={`/${normalizedPath(chapter)}?#${id}`}
-                  className="flex"
+                  className={foundLink}
                 >
                   <MagnifyingGlassIcon className={iconGlass} />
                   <Markdown>{title}</Markdown>

@@ -24,7 +24,7 @@ subhead:
           `<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=cyrillic" rel="stylesheet">`
 
 
-          ![](/img/day-3-5-1.jpg)
+          ![how to attach a font](/img/day-3-5-1.jpg "how to attach a font")
         question_range: "2"
       - id: "1666861295427"
         question_title: How to enter the size of the photo?
@@ -37,12 +37,14 @@ subhead:
         question_range: "3"
       - id: "1666861564071"
         question_title: There is no red `+` to choose the font, where to search?
-        description: |-
+        description: >-
           Click `"Return to classic site"` or try to disable `adblock`.
 
-          ![](/img/screen_gf.jpeg)
 
-          ![](/img/adblock_1.jpeg)
+          ![how to return to classic site](/img/screen_gf.jpeg "how to return to classic site")
+
+
+          ![how to disable adblock](/img/adblock_1.jpeg "how to disable adblock")
         question_range: "4"
       - id: "1666861726810"
         question_title: How to win autopforming? Text `contacts` (phone number and

@@ -19,11 +19,11 @@
 }
 
 .nameInput {
-  @apply min-w-full border-b-2 border-solid border-accent  p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply min-w-full border-b-2 border-solid border-accent bg-transparent p-4  pb-2 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .nameInputValidationMessage {
-  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .emailContainer {
@@ -31,11 +31,11 @@
 }
 
 .emailInput {
-  @apply min-w-full border-b-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply min-w-full border-b-2 border-solid border-accent bg-transparent p-4 pb-2 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .emailInputValidationMessage {
-  @apply absolute  left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute  left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .messageContainer {
@@ -43,27 +43,15 @@
 }
 
 .messageInput {
-  @apply h-[124px] min-w-full rounded-lg border-2 border-solid border-accent p-3 font-inter text-base font-normal leading-[19px] text-font-dark focus:outline-none xl:text-lg xl:leading-[22px];
+  @apply h-[124px] min-w-full rounded-lg border-2 border-solid border-accent bg-transparent p-4 font-inter text-base font-normal leading-[19px] text-font-dark placeholder-font-search focus:outline-none xl:text-lg xl:leading-[22px];
 }
 
 .messageInputValidation {
-  @apply absolute top-[124px] left-3 font-inter text-xs font-extralight text-red-600;
+  @apply absolute top-[124px] left-4 font-inter text-xs font-extralight text-red-600;
 }
 
 .imageWrapper {
-  @apply md:flex md:flex-col-reverse;
-}
-
-.imageMobile {
-  @apply h-[212px] w-[334px] max-md:min-w-full md:hidden;
-}
-
-.imageTablet {
-  @apply h-[285px] w-[334px] max-md:hidden md:mb-[100px] xl:hidden;
-}
-
-.imageDesktop {
-  @apply h-[436px] w-[687px] max-xl:hidden xl:mb-[18px];
+  @apply h-[212px] w-[334px] bg-[url('../../assets/images/feedback-bg.svg')] bg-[length:334px_212px] bg-[50%_50%]  bg-no-repeat md:max-xl:bg-[50%_102px] max-md:m-auto md:flex md:h-auto md:flex-col-reverse xl:h-[436px] xl:w-[688px] xl:bg-[length:688px_436px];
 }
 
 .loaderContainer {
@@ -79,7 +67,7 @@
 }
 
 .successPageContainer {
-  @apply text-left max-md:mb-[34px] md:w-[337px] xl:w-[472px] xl:pt-[98px];
+  @apply text-left max-md:mb-[34px] md:w-[337px] md:pt-[20px] xl:w-[472px] xl:pt-[98px];
 }
 
 .successPageTitle {
@@ -95,5 +83,5 @@
 }
 
 .successPageImageWrapper {
-  @apply h-[212px] w-[334px] max-md:min-w-full xl:h-[436px] xl:w-[684px];
+  @apply h-[214px] w-[336px] bg-[url('../../assets/images/feedback-success-bg.svg')] bg-[length:336px_214px] bg-[50%_50%] bg-no-repeat max-md:m-auto  xl:h-[436px] xl:w-[684px] xl:bg-[length:684px_436px];
 }

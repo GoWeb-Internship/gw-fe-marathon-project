@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 import { sendFeedbackMessage } from '../../utils/feedbackFormApi';
 import Section from '../Section';
 import Button from '../Button/Button';
-import icons from '../../assets/images/sprite.svg';
 import SyncLoader from 'react-spinners/SyncLoader';
 import {
   feedbackFormSection,
@@ -25,9 +24,6 @@ import {
   messageInput,
   messageInputValidation,
   imageWrapper,
-  imageMobile,
-  imageTablet,
-  imageDesktop,
   loaderContainer,
   loaderWrapper,
   successPageSection,
@@ -50,24 +46,30 @@ const FeedbackForm = () => {
 
   const schema = yup
     .object({
-      email: yup
-        .string()
-        .required(formValidation.required)
-        .matches(
-          /^(?=^.{3,63}$)(((^[^<>()!?-\\.\/а-яА-ЯёЁЇїІіЄєҐґ][^а-яА-ЯёЁЇїІіЄєҐґ<>()[\],;:\s@"]{2,}(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,10})))$/,
-          formValidation.email,
-        ),
       name: yup
         .string()
         .required(formValidation.required)
         .min(2, formValidation.nameLength)
-        .max(30)
+        .max(30, formValidation.nameMaxLength)
+        .matches(
+          /^[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]+(([ʼ’'` -][а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ ])?[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]*)*$/,
+          formValidation.name,
+        )
         .trim(),
+      email: yup
+        .string()
+        .required(formValidation.required)
+        .max(63, formValidation.emailMaxLength)
+        .email(formValidation.email)
+        .matches(
+          /^[a-zA-Z0-9+_.]+[a-zA-Z0-9+_.-/]+[a-zA-Z0-9+_./-]+@[a-zA-Z0-9_.-]+$/,
+          formValidation.email,
+        ),
       message: yup
         .string()
         .required(formValidation.required)
         .min(10, formValidation.messageLength)
-        .max(2000)
+        .max(2000, formValidation.messageMaxLength)
         .trim(),
     })
     .required();
@@ -160,9 +162,7 @@ const FeedbackForm = () => {
               {formText.home}
             </Link>
           </div>
-          <svg className={successPageImageWrapper}>
-            <use href={`${icons}#success-section`} />
-          </svg>
+          <div className={successPageImageWrapper}></div>
         </div>
       ) : (
         <div className={feedbackFormBlock}>
@@ -229,17 +229,7 @@ const FeedbackForm = () => {
             </form>
           )}
 
-          <div className={imageWrapper}>
-            <svg className={imageMobile}>
-              <use href={`${icons}#feedback-page`} />
-            </svg>
-            <svg className={imageTablet}>
-              <use href={`${icons}#feedback-page-tablet`} />
-            </svg>
-            <svg className={imageDesktop}>
-              <use href={`${icons}#feedback-page-desktop`} />
-            </svg>
-          </div>
+          <div className={imageWrapper}></div>
         </div>
       )}
     </Section>

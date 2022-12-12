@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import loadable from '@loadable/component';
 import Header from '../Header/Header';
 import Footer from '../Footer';
 import Hero from '../Hero';
-import Modal from '../Modal';
 import {
   layoutWrapper,
   mainContent,
   heroAndHeaderWrapper,
 } from './Layout.module.css';
+const Modal = loadable(() => import('../Modal'));
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,7 @@ const Layout = ({ children }) => {
   const openModal = () => {
     setIsOpen(true);
   };
+
   return (
     <div className={layoutWrapper}>
       <div className={`${heroAndHeaderWrapper} dark:bg-accent-dark `}>

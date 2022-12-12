@@ -2,19 +2,32 @@ import React from 'react';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Backdrop({ className, handleCloseFunction }) {
+export default function Backdrop({ className, handleCloseFunction, flag }) {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
-      window.removeEventListener('keydown', handleEscape);
-      handleCloseFunction();
+
+      if (e.code === 'Escape' && flag) {
+        window.removeEventListener('keydown', handleEscape);
+        handleCloseFunction();
+      }
+
+      if (e.code === 'Escape' && !flag) {
+        return;
+      }
     };
 
-    window.addEventListener('keydown', handleEscape);
+    if (!flag) {
+      window.removeEventListener('keydown', handleEscape);
+      return;
+    } else {
+      window.addEventListener('keydown', handleEscape);
+    }
+
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [handleCloseFunction]);
+  }, [flag, handleCloseFunction]);
 
   return <div className={className} onClick={handleCloseFunction}></div>;
 }
@@ -22,4 +35,5 @@ export default function Backdrop({ className, handleCloseFunction }) {
 Backdrop.propTypes = {
   className: PropTypes.string,
   handleCloseFunction: PropTypes.func.isRequired,
+  flag: PropTypes.bool.isRequired,
 };

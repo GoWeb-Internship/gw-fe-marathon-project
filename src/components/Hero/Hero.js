@@ -11,15 +11,26 @@ import { heroContainer } from './Hero.module.css';
 
 const Hero = ({ openModal, isOpen }) => {
   const { t } = useTranslation();
+  const main = t('title', { returnObjects: true });
   const media = useMediaRules();
-  const { pathname } = useLocation();
 
+  const { pathname } = useLocation();
   return (
     <section className={section}>
       <Container styles={heroContainer}>
-        <h2 className={title}>{t('title')}</h2>
+        {media !== 'mobile' ? (
+          <h1 className={title}>
+            {main.split(' ')[0]}
+            <br />
+            {main.split(' ').slice(1).join(' ')}
+          </h1>
+        ) : (
+          <h1 className={title}>{main}</h1>
+        )}
 
-        {media !== 'mobile' && !pathname?.includes(routes.FEEDBACK) && !isOpen && (
+        {media !== 'mobile' &&
+        !pathname?.includes(routes.FEEDBACK) &&
+        !isOpen ? (
           <button
             className={`${search} dark:text-font-searchDark`}
             onClick={openModal}
@@ -27,7 +38,7 @@ const Hero = ({ openModal, isOpen }) => {
             {t('input')}
             <MagnifyingGlassIcon className={searchIcon} />
           </button>
-        )}
+        ) : null}
       </Container>
     </section>
   );

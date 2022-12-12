@@ -2,7 +2,6 @@ import React, { useState, useEffect, memo } from 'react';
 import Markdown from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import { MinusCircleIcon } from '@heroicons/react/24/outline';
-import myPlusIcon from '../../assets/images/plus-icon.svg';
 import {
   accordionItem,
   accordionHeading,
@@ -11,10 +10,12 @@ import {
   accordionContentShow,
   plusIcon,
   minusIcon,
+  questionTitle,
 } from './AccordionItem.module.css';
 import { navigate } from 'gatsby';
 import { useLocation } from 'react-use';
 import { urlUpdate } from '../../helpers/urlUpdate';
+import PlusIconComponent from '../PlusIconComponent';
 
 const AccordionItem = memo(({ data }) => {
   const [active, setActive] = useState(null);
@@ -38,7 +39,9 @@ const AccordionItem = memo(({ data }) => {
 
   return (
     <li className={accordionItem}>
-      <div
+      <button
+        type="button"
+        aria-expanded={active === data.id ? true : false}
         onClick={() => {
           handleClick(data.id);
         }}
@@ -48,21 +51,23 @@ const AccordionItem = memo(({ data }) => {
             : accordionHeading
         }
       >
-        <h3 id={data.id}>
+        <span id={data.id} className={questionTitle}>
           <Markdown>{data.title}</Markdown>
-        </h3>
+        </span>
         {active === data.id ? (
           <MinusCircleIcon className={minusIcon} />
         ) : (
-          <img src={myPlusIcon} alt="plusIcon" className={plusIcon} />
+          <PlusIconComponent className={plusIcon} />
         )}
-      </div>
+      </button>
 
-      <div
-        className={active === data.id ? accordionContentShow : accordionContent}
-      >
-        <Markdown>{data.content}</Markdown>
-      </div>
+      {active === data.id ? (
+        <div className={`${accordionContentShow} dark:text-font-light`}>
+          <Markdown>{data.content}</Markdown>
+        </div>
+      ) : (
+        <div className={`${accordionContent} dark:text-font-light`}></div>
+      )}
     </li>
   );
 });

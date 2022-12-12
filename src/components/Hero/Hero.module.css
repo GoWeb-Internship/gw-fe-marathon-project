@@ -7,19 +7,19 @@
 }
 
 .title {
-  @apply text-center font-montserrat text-xl font-bold leading-[1.2] text-font-light md:mb-[44px] md:w-[342px] md:text-left md:text-[40px] md:leading-[1.225] xl:mb-[64px] xl:w-[420px] xl:text-5xl xl:leading-[59px];
+  @apply text-center font-montserrat text-xl font-bold leading-[1.2] text-font-light md:mb-[44px]  md:w-[342px] md:text-left md:text-[40px] md:leading-[1.225] xl:mb-[64px] xl:w-[420px] xl:text-5xl xl:leading-[59px];
 }
 
 .search {
-  @apply relative border-b-2 border-solid  border-b-font-light text-left font-inter  text-xs font-extralight text-font-search md:h-[28px] md:w-[336px] md:pl-[6px] xl:h-9 xl:w-[375px] xl:pl-3;
+  @apply relative border-b-2 border-solid  border-b-font-light text-left font-inter  text-xs font-extralight leading-[15px] text-font-search md:h-[28px]  md:w-[336px]  md:pb-[8px] md:pl-[6px] xl:h-9 xl:w-[375px] xl:pt-[6px] xl:pr-[45px] xl:pb-[10px] xl:pl-3 xl:text-base xl:leading-[19px];
 }
 
 .searchHidden {
-  @apply relative border-b-2 border-solid  border-b-transparent text-left font-inter  text-xs font-extralight text-transparent md:h-[28px] md:w-[336px] md:pl-[6px] xl:h-9 xl:w-96 xl:pl-3;
+  @apply relative border-b-2 border-solid border-b-transparent  text-left font-inter text-xs  font-extralight text-transparent md:h-[28px] md:w-[336px]  md:pl-[6px] xl:h-9 xl:w-96 xl:pl-3;
 }
 
 .searchIcon {
-  @apply absolute top-0 right-[10px] z-0 h-5 w-5  text-font-light;
+  @apply absolute right-[8px] z-0 text-font-light  md:top-0 md:h-5 md:w-5 xl:top-[2px] xl:h-6  xl:w-6;
 }
 
 .searchIconHidden {

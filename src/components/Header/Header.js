@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -21,20 +22,34 @@ import {
 } from './Header.module.css';
 import { useLocation } from 'react-use';
 import { routes } from '../../utils/routes';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = ({ openModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [target, setTarget] = useState(null);
   const { pathname } = useLocation();
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   const toggleMenu = () => {
     isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };
 
   useEffect(() => {
-    isMenuOpen
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'auto');
-  }, [isMenuOpen]);
+    const menuRef = document.getElementById('menu');
+    setTarget(menuRef);
+  }, []);
+
+  useEffect(() => {
+    if (!target) return;
+
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+      disableBodyScroll(target);
+    } else {
+      document.body.style.overflowY = 'auto';
+      enableBodyScroll(target);
+    }
+  }, [isMenuOpen, target]);
 
   return (
     <header className={header}>
@@ -42,7 +57,7 @@ const Header = ({ openModal }) => {
         <div className={headerContainer}>
           <Logo />
           <div className={mobileBtnsWrapper}>
-            {!pathname?.includes(routes.FEEDBACK) && (
+            {isMobile && !pathname?.includes(routes.FEEDBACK) && (
               <button
                 className={glassBtn}
                 onClick={openModal}
@@ -52,17 +67,19 @@ const Header = ({ openModal }) => {
               </button>
             )}
 
-            <button
-              aria-label="menu button"
-              className={menuBtn}
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? (
-                <XMarkIcon className={menuIcon} />
-              ) : (
-                <Bars3Icon className={menuIcon} />
-              )}
-            </button>
+            {isMobile && (
+              <button
+                aria-expanded={isMenuOpen ? true : false}
+                className={menuBtn}
+                onClick={toggleMenu}
+              >
+                {isMenuOpen ? (
+                  <XMarkIcon className={menuIcon} />
+                ) : (
+                  <Bars3Icon className={menuIcon} />
+                )}
+              </button>
+            )}
           </div>
 
           <ul className={switchWrapper}>
@@ -76,7 +93,7 @@ const Header = ({ openModal }) => {
         </div>
       </Container>
 
-      <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+      {isMobile && <Menu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />}
     </header>
   );
 };

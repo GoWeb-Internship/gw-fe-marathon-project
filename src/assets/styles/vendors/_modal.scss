@@ -7,9 +7,9 @@
 }
 
 .modal {
-  @apply absolute top-6 left-1/2 min-h-full  -translate-x-1/2 text-center md:top-9  xl:top-[160px];
+  @apply absolute top-[100px] left-1/2 min-h-full  -translate-x-1/2 text-center   xl:top-[166px];
 }
 
 .dialog-panel {
-  @apply w-[300px] transform overflow-hidden rounded-lg bg-body py-[38px]  text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px]  sm:px-4 md:w-[704px]  xl:w-[1200px];
+  @apply w-[300px] transform overflow-hidden rounded-lg bg-body px-4 pt-[38px] pb-9  text-center align-middle  transition-all  dark:bg-body-dark  dark:text-font-light xs:w-[335px] sm:w-[440px] md:w-[704px] md:px-[34px] md:py-11 xl:w-[1200px]  xl:px-6;
 }

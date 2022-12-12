@@ -20,20 +20,33 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
-      window.removeEventListener('keydown', handleEscape);
-      toggleMenu();
+
+      if (e.code === 'Escape' && isMenuOpen) {
+        window.removeEventListener('keydown', handleEscape);
+        toggleMenu();
+      }
+
+      if (e.code === 'Escape' && !isMenuOpen) {
+        return;
+      }
     };
 
-    window.addEventListener('keydown', handleEscape);
+    if (!isMenuOpen) {
+      window.removeEventListener('keydown', handleEscape);
+      return;
+    } else {
+      window.addEventListener('keydown', handleEscape);
+    }
 
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [toggleMenu]);
+  }, [isMenuOpen, toggleMenu]);
 
   return (
     <>
       <div
+        id="menu"
         className={`${menuWrapper} dark:bg-menu-dark
           ${isMenuOpen ? menuShown : menuHidden}`}
       >
@@ -54,6 +67,7 @@ export default function Menu({ toggleMenu, isMenuOpen }) {
           isMenuOpen ? menuBackdropShown : menuBackdropHidden
         }`}
         handleCloseFunction={toggleMenu}
+        flag={isMenuOpen}
       />
     </>
   );
